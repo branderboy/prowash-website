@@ -1,0 +1,1235 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Wash | Professional Auto Clean. Every Time.</title>
+    
+    <!-- Google Fonts: Franchise/Corporate Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables - Strict Corporate Franchise Palette */
+        :root {
+            --dark-blue: #0B2545;
+            --baby-blue: #5BA4CF;
+            --orange: #E8602C;
+            --white: #FFFFFF;
+            --light-gray: #F4F6F8;
+            --dark-gray: #333333;
+            --border-color: #E2E8F0;
+            --transition: all 0.2s ease-in-out;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(11, 37, 69, 0.08);
+            --shadow-lg: 0 12px 32px rgba(11, 37, 69, 0.12);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding { padding: 80px 0; }
+        
+        .bg-white { background-color: var(--white); }
+        .bg-light { background-color: var(--light-gray); }
+        .bg-dark { background-color: var(--dark-blue); color: var(--white); }
+        
+        /* SVG Utility */
+        svg {
+            fill: currentColor;
+            display: inline-block;
+        }
+
+        /* ==========================================================
+           ClickFunnels Style 3D Buttons 
+           ========================================================== */
+        .btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            font-family: 'Oswald', sans-serif;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .btn { width: auto; }
+        }
+
+        .btn-main-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .btn-sub-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: none;
+            opacity: 0.95;
+            font-family: 'Source Sans 3', sans-serif;
+            margin-top: 4px;
+        }
+
+        /* Primary Action (Orange) */
+        .btn-primary {
+            background: linear-gradient(to bottom, #ff7a45, var(--orange));
+            color: var(--white);
+            box-shadow: 0 5px 0 #c24b1f, 0 10px 20px rgba(232, 96, 44, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to bottom, #ff8c5e, #f26b38);
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #c24b1f, 0 6px 15px rgba(232, 96, 44, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #c24b1f, 0 0 0 rgba(232, 96, 44, 0);
+        }
+
+        /* Secondary Action (Baby Blue) */
+        .btn-secondary {
+            background: linear-gradient(to bottom, #7abbed, var(--baby-blue));
+            color: var(--white);
+            box-shadow: 0 5px 0 #3a80a8, 0 10px 20px rgba(91, 164, 207, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(to bottom, #8dc7f2, #68b0d9);
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #3a80a8, 0 6px 15px rgba(91, 164, 207, 0.4);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #3a80a8, 0 0 0 rgba(91, 164, 207, 0);
+        }
+
+        /* Standard Buttons (used in smaller cards) */
+        .btn-standard {
+            padding: 12px 24px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        @media(min-width: 1024px) {
+            .top-bar { display: block; }
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-bar a:hover { color: var(--baby-blue); }
+
+        /* Header / Nav */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            color: var(--dark-blue);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a.nav-item {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a.nav-item:hover {
+            color: var(--baby-blue);
+        }
+
+        .nav-btn {
+            background: var(--orange);
+            color: var(--white);
+            padding: 10px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 4px 0 #c24b1f;
+        }
+        
+        .nav-btn:hover {
+            background: #d15525;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #c24b1f;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark-blue);
+            cursor: pointer;
+        }
+
+        /* Labels */
+        .section-label {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .label-orange { color: var(--orange); }
+        .label-blue { color: var(--baby-blue); }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+        }
+
+        /* ==========================================================
+           Hero Section - Sales Page Style 
+           ========================================================== */
+        .hero {
+            padding: 140px 0 120px 0;
+            background-color: var(--dark-blue);
+            /* Sales Page background image with dark corporate overlay */
+            background-image: linear-gradient(rgba(11, 37, 69, 0.85), rgba(11, 37, 69, 0.93)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            color: var(--white);
+            border-bottom: 6px solid var(--orange);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            color: var(--white);
+            margin-bottom: 24px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            line-height: 1.05;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #E2E8F0;
+            margin-bottom: 48px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-item svg {
+            width: 24px; height: 24px;
+            color: var(--baby-blue);
+        }
+
+        /* Trust Strip */
+        .trust-strip {
+            background-color: var(--white);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            color: var(--dark-blue);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            flex: 1;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .trust-item:last-child { border-right: none; }
+
+        .trust-item svg {
+            width: 32px; height: 32px;
+            color: var(--baby-blue);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .about-checklist {
+            background-color: var(--light-gray);
+            padding: 40px;
+            border-left: 4px solid var(--baby-blue);
+        }
+
+        .about-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark-blue);
+        }
+
+        .about-checklist li:last-child { margin-bottom: 0; }
+
+        .about-checklist svg {
+            width: 24px; height: 24px;
+            color: var(--baby-blue);
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-top: 4px solid var(--baby-blue);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .service-badge {
+            display: inline-block;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            padding: 4px 12px;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .price-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 32px;
+        }
+
+        .price-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .service-card .btn { margin-top: auto; }
+
+        /* Highlighted Service Card */
+        .service-card.highlight {
+            border-top: none;
+            border: 2px solid var(--orange);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transform: scale(1.02);
+        }
+
+        .service-card.highlight:hover {
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .popular-banner {
+            background-color: var(--orange);
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin: -40px -40px 24px -40px;
+        }
+
+        /* Mobile Services */
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .mobile-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-top: 4px solid var(--baby-blue);
+            box-shadow: var(--shadow-sm);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-card svg {
+            width: 48px; height: 48px;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .mobile-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .mobile-card p {
+            color: var(--dark-gray);
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        /* Window Tinting */
+        .tinting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tinting-content p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .tinting-card {
+            background-color: var(--white);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            border-top: 4px solid var(--dark-blue);
+        }
+
+        .lifetime-badge {
+            background-color: var(--baby-blue);
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            padding: 6px 16px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            position: absolute;
+            top: -16px;
+            right: 40px;
+        }
+
+        .tinting-card .price-row { border-bottom-color: var(--light-gray); }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .program-card {
+            background-color: var(--white);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .program-card.loyalty { border-top: 4px solid var(--baby-blue); }
+        .program-card.birthday { border-top: 4px solid var(--orange); }
+
+        .program-card h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        /* Locations */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .location-card {
+            background-color: var(--white);
+            padding: 32px 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .location-card svg {
+            width: 32px; height: 32px;
+            color: var(--baby-blue);
+            margin-bottom: 16px;
+        }
+
+        .location-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .location-card p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+        }
+
+        .location-link {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            color: var(--baby-blue);
+            font-size: 1.1rem;
+            margin-top: 16px;
+            text-transform: uppercase;
+        }
+
+        .location-link:hover { color: var(--dark-blue); }
+
+        /* CTA Banner */
+        .cta-banner {
+            text-align: center;
+            padding: 100px 0;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            border-top: 4px solid var(--orange);
+        }
+
+        .cta-banner h2 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--light-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-banner .hero-actions {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 0 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .footer-col h4 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 24px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #A0B3C6; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--baby-blue); }
+
+        .footer-info {
+            color: #A0B3C6;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .franchise-link {
+            color: var(--orange) !important;
+            font-weight: 700;
+        }
+
+        .franchise-link:hover { color: var(--white) !important; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #A0B3C6;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icons svg {
+            width: 24px; height: 24px;
+            color: #A0B3C6;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover svg { color: var(--baby-blue); }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 4rem; }
+            .section-title { font-size: 3rem; }
+            .about-grid, .tinting-grid { grid-template-columns: 1fr; }
+            .trust-grid { flex-wrap: wrap; justify-content: center; }
+            .trust-item { flex: 0 0 33.33%; border-bottom: 1px solid var(--border-color); border-right: none; padding: 20px 0; }
+            .mobile-grid { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background-color: var(--white); flex-direction: column; padding: 24px;
+                box-shadow: var(--shadow-md); border-top: 1px solid var(--border-color);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links .nav-btn { width: 100%; margin-top: 16px; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn svg { width: 32px; height: 32px; }
+
+            .hero { padding: 80px 0; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-actions { flex-direction: column; }
+            .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
+            
+            .trust-item { flex: 0 0 50%; }
+            .service-card.highlight { transform: scale(1); margin-top: 40px; }
+            .service-card.highlight:hover { transform: scale(1); }
+            
+            .cta-banner h2 { font-size: 3rem; }
+            
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="tel:3013071414">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                (301) 307-1414
+            </a>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">PRO WASH</a>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-item">Home</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#tinting" class="nav-item">Window Tinting</a>
+                <a href="#locations" class="nav-item">Locations</a>
+                <a href="tel:3013071414" class="nav-item">Contact</a>
+                <a href="tel:3013071414" class="nav-btn">BOOK NOW</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content reveal">
+            <span class="hero-badge">5 LOCATIONS ACROSS MD & DC</span>
+            <h1>PROFESSIONAL AUTO CLEAN. EVERY TIME.</h1>
+            <p>Pro Wash delivers the time efficiency of an express automated car wash with the quality and swirl-free paint results of a premium hand wash.</p>
+            
+            <div class="hero-actions">
+                <a href="tel:3013071414" class="btn btn-primary">
+                    <span class="btn-main-text">BOOK AN APPOINTMENT ➔</span>
+                    <span class="btn-sub-text">Skip the line. Call (301) 307-1414</span>
+                </a>
+                <a href="#locations" class="btn btn-secondary">
+                    <span class="btn-main-text">WALK-INS WELCOME</span>
+                    <span class="btn-sub-text">Find a Location Near You</span>
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    5 Locations
+                </div>
+                <div class="stat-item">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    20 Min Express Wash
+                </div>
+                <div class="stat-item">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
+                    100% Hand Washed
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="trust-strip">
+        <div class="container trust-grid">
+            <div class="trust-item reveal">
+                <svg viewBox="0 0 24 24"><path d="M21 12v-1.5L10 5.75v2.1l8 4.6V12l-8-4.6v2.1l8 4.6V15l-8-4.6v2.1l8 4.6V18l-8-4.6v2.1l8 4.6V21l-8-4.6v2.1l8 4.6V24l-8-4.6v2.1l8 4.6z M5 5h2v14H5z"/></svg>
+                HAND WASH ONLY
+            </div>
+            <div class="trust-item reveal">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                EXPRESS SERVICE
+            </div>
+            <div class="trust-item reveal">
+                <svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2zm0 4.24l1.54 3.57 3.89.33-2.95 2.56.88 3.8L12 14.53l-3.36 1.97.88-3.8-2.95-2.56 3.89-.33L12 6.24z"/></svg>
+                SWIRL-FREE RESULTS
+            </div>
+            <div class="trust-item reveal">
+                <svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-3-3v3H8V5h8zm3 13H5v-8h14v8z M12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                MOBILE SERVICE
+            </div>
+            <div class="trust-item reveal">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                LIFETIME TINT WARRANTY
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container about-grid">
+            <div class="about-text reveal">
+                <span class="section-label label-blue">ABOUT PRO WASH</span>
+                <h2 class="section-title">THE BEST IN HAND WASH</h2>
+                <p>Pro Wash is a premier full-service hand car wash. Pro Wash offers the time efficiency of an express automated car wash with the quality and swirl free paint results of a hand wash.</p>
+                <p>We offer an array of service packages from basic hand wash to the extensive master detail package. We also offer consultation and education on basic paint and interior car care. Power washing services are also available and include decks, sidewalks, houses, fleet washing and dealership lot spraying.</p>
+            </div>
+            <div class="about-checklist reveal">
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> No Appointment Needed</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins Welcome</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mobile Service Available</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mon–Sat 8am–6pm</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Tint Warranty</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Power Washing Services</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label label-orange">OUR SERVICES</span>
+                <h2 class="section-title">DETAIL PACKAGES</h2>
+                <p>From express washes to full master details. All detail jobs completed between 8am and 4:30pm.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <span class="service-badge">#10</span>
+                    <h3>SUPER SPORT</h3>
+                    <div class="price-row"><span>Cars</span><span class="price-value">$95</span></div>
+                    <div class="price-row"><span>Trucks</span><span class="price-value">$110</span></div>
+                    <div class="price-row"><span>XL Trucks</span><span class="price-value">$125</span></div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">BOOK APPOINTMENT</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card reveal">
+                    <span class="service-badge">#4</span>
+                    <h3>INTERIOR STEAM CLEAN</h3>
+                    <div class="price-row"><span>Cars</span><span class="price-value">$150</span></div>
+                    <div class="price-row"><span>Trucks</span><span class="price-value">$175</span></div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">BOOK APPOINTMENT</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card reveal">
+                    <span class="service-badge">#8</span>
+                    <h3>EXTENSIVE BUFF WAX</h3>
+                    <div class="price-row"><span>Cars</span><span class="price-value">$175</span></div>
+                    <div class="price-row"><span>Trucks</span><span class="price-value">$215</span></div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">BOOK APPOINTMENT</a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card reveal">
+                    <span class="service-badge">#5</span>
+                    <h3>TOTAL EXPRESS DETAIL</h3>
+                    <div class="price-row"><span>Cars</span><span class="price-value">$185</span></div>
+                    <div class="price-row"><span>Trucks</span><span class="price-value">$210</span></div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">BOOK APPOINTMENT</a>
+                </div>
+
+                <!-- Service 5 (Highlighted) -->
+                <div class="service-card highlight reveal">
+                    <div class="popular-banner">MOST POPULAR</div>
+                    <span class="service-badge">#9</span>
+                    <h3>EXTENSIVE MASTER DETAIL</h3>
+                    <div class="price-row"><span>Cars</span><span class="price-value">$295</span></div>
+                    <div class="price-row"><span>Trucks</span><span class="price-value">$355</span></div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">BOOK APPOINTMENT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Services Section -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label label-blue">WE COME TO YOU</span>
+                <h2 class="section-title">MOBILE SERVICES</h2>
+            </div>
+            <div class="mobile-grid">
+                <div class="mobile-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
+                    <h3>Mobile Car Wash</h3>
+                    <p>Book between 8am–6:30pm, Mon-Sat. $10 additional for mobile service. Takes up to 20 minutes.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">Book Mobile Wash</a>
+                </div>
+                <div class="mobile-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
+                    <h3>Mobile Car Detail</h3>
+                    <p>Available 8am–4:30pm. $10 additional for mobile service. Takes up to 90 minutes.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">Book Mobile Detail</a>
+                </div>
+                <div class="mobile-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M21 11.01L3 11v2h18zM3 16h12v2H3zM21 6H3v2.01L21 8z"/></svg>
+                    <h3>Window Tinting</h3>
+                    <p>All tinting jobs include a lifetime warranty. Takes up to 2 hours.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-standard">Book Tinting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Window Tinting Section -->
+    <section id="tinting" class="section-padding bg-light">
+        <div class="container tinting-grid">
+            <div class="tinting-content reveal">
+                <h2 class="section-title">GET YOUR TINT ON</h2>
+                <p>Our certified window tinting services include a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty.</p>
+                <ul class="about-checklist" style="background: transparent; padding: 0; border: none;">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free Car Wash Included</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Industry-Leading Products</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Proper Installation Techniques</li>
+                </ul>
+            </div>
+            <div class="tinting-card reveal">
+                <div class="lifetime-badge">LIFETIME WARRANTY</div>
+                <div class="price-row"><span>First 2 Windows</span><span class="price-value">$59.95</span></div>
+                <div class="price-row"><span>Full Sedan</span><span class="price-value">$120.00</span></div>
+                <a href="tel:3013071414" class="btn btn-primary btn-standard" style="width: 100%; margin-top: 16px;">BOOK TINTING</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty & Birthday -->
+    <section class="section-padding bg-white">
+        <div class="container programs-grid">
+            <div class="program-card loyalty reveal">
+                <h3>LOYALTY REWARDS</h3>
+                <p>Join the Pro Wash loyalty rewards program today. Earn points with every wash and detail service to unlock exclusive discounts and free upgrades.</p>
+            </div>
+            <div class="program-card birthday reveal">
+                <h3>BIRTHDAY CLUB</h3>
+                <p>Register for our Birthday Club to receive special birthday deals, free washes, and exclusive perks during your birthday month.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="section-padding bg-light">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label label-orange">FIND US</span>
+                <h2 class="section-title">OUR LOCATIONS</h2>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4>Clinton</h4>
+                    <p>6311 Coventry Way<br>Clinton, MD 20735</p>
+                    <p>Mon–Sat: 8am–6pm</p>
+                    <a href="https://maps.google.com/?q=6311+Coventry+Way,+Clinton,+MD+20735" target="_blank" class="location-link">Get Directions &rarr;</a>
+                </div>
+                <div class="location-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4>Capitol Heights</h4>
+                    <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
+                    <p>Mon–Sat: 8am–6pm</p>
+                    <a href="https://maps.google.com/?q=29+Hampton+Park+Blvd,+Capitol+Heights,+MD+20743" target="_blank" class="location-link">Get Directions &rarr;</a>
+                </div>
+                <div class="location-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4>Bowie</h4>
+                    <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
+                    <p>Mon–Sat: 8am–6pm</p>
+                    <a href="https://maps.google.com/?q=4406+NW+Crain+Hwy,+Bowie,+MD+20716" target="_blank" class="location-link">Get Directions &rarr;</a>
+                </div>
+                <div class="location-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4>Upper Marlboro</h4>
+                    <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
+                    <p>Mon–Sat: 8am–6pm</p>
+                    <a href="https://maps.google.com/?q=7538+NW+Crain+Hwy,+Upper+Marlboro,+MD+20772" target="_blank" class="location-link">Get Directions &rarr;</a>
+                </div>
+                <div class="location-card reveal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h4>Washington DC</h4>
+                    <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
+                    <p>Mon–Sat: 8am–6pm</p>
+                    <a href="https://maps.google.com/?q=1329+Kenilworth+Ave+NE,+Washington,+DC+20019" target="_blank" class="location-link">Get Directions &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="cta-banner bg-dark">
+        <div class="container reveal">
+            <h2>READY FOR A PROFESSIONAL CLEAN?</h2>
+            <p>Two convenient ways to get started. Walk into any of our 5 locations, or book an appointment to skip the wait.</p>
+            <div class="hero-actions" style="justify-content: center; margin-top: 32px;">
+                <a href="tel:3013071414" class="btn btn-primary">
+                    <span class="btn-main-text">BOOK AN APPOINTMENT</span>
+                    <span class="btn-sub-text">Call (301) 307-1414</span>
+                </a>
+                <a href="#locations" class="btn btn-secondary">
+                    <span class="btn-main-text">WALK-INS WELCOME</span>
+                    <span class="btn-sub-text">Find a Location Near You</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo">PRO WASH</span>
+                    <p class="footer-info">Professional Auto Clean. Every Time. The premium standard in hand washing, detailing, and mobile auto care.</p>
+                </div>
+                <div class="footer-col reveal">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#tinting">Window Tinting</a></li>
+                        <li><a href="#locations">Locations</a></li>
+                        <li><a href="tel:3013071414">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal">
+                    <h4>Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Loyalty Card</a></li>
+                        <li><a href="#">Birthday Club</a></li>
+                        <li><a href="#">Check Code Balance</a></li>
+                        <li style="margin-top: 16px;"><a href="#" class="franchise-link">Franchise Opportunities</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal">
+                    <h4>Contact Info</h4>
+                    <p class="footer-info">(301) 307-1414</p>
+                    <p class="footer-info">Mon–Sat: 8:00am – 6:00pm</p>
+                    <p class="footer-info" style="margin-top: 16px;">Serving Capitol Heights, Clinton, Bowie, Upper Marlboro & DC</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom reveal">
+                <p>&copy; 2025 Pro Wash Inc. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Sticky Header Script
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation via Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
