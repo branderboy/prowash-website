@@ -3,40 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Wash | Premium Auto Detailing</title>
+    <title>Pro Wash | America's Express Auto Salon</title>
 
-    <!-- Prohauz Style Industrial Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables - Industrial/Prohauz Theme Palette */
         :root {
-            --red: #B33A34;         /* Corporate Brand Red */
+            --red: #B33A34;
             --red-hover: #9A322D;
-            --dark-blue: #0A1E3D;      /* Corporate Navy */
+            --dark-blue: #0A1E3D;
             --darker-blue: #051024;
             --white: #FFFFFF;
-            --gray-light: #F4F5F7;     /* Section Backgrounds */
-            --gray-mid: #E0E4E8;       /* Borders */
-            --text-dark: #333333;
-            --text-muted: #666666;
-
-            /* Sharp, structural shadows */
-            --shadow-subtle: 0 5px 15px rgba(0, 0, 0, 0.05);
-            --shadow-strong: 0 10px 30px rgba(10, 30, 61, 0.15);
-
+            --gray-light: #F7F8FA;
+            --gray-mid: #E0E4E8;
+            --text-dark: #1A1A2E;
+            --text-muted: #5A6272;
+            --shadow-sm: 0 2px 8px rgba(10,30,61,0.06);
+            --shadow-md: 0 8px 30px rgba(10,30,61,0.10);
+            --shadow-lg: 0 20px 50px rgba(10,30,61,0.12);
+            --radius: 12px;
+            --radius-sm: 8px;
             --transition: all 0.3s ease;
         }
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: var(--white);
@@ -45,709 +37,348 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6 {
+        h1,h2,h3,h4,h5,h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             line-height: 1.2;
             color: var(--dark-blue);
-            margin-bottom: 0.5em;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        @media (min-width: 768px) {
-            .container { padding: 0 40px; }
-        }
-        /* SVG Utility */
-        svg {
-            fill: currentColor;
-            display: inline-block;
-        }
-        /* Industrial Buttons (Sharp, blocky) */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            border-radius: 2px; /* Sharp edges */
-        }
-        .btn-sm {
-            padding: 12px 24px;
-            font-size: 0.8rem;
-        }
-        .btn-red {
-            background-color: var(--red);
-            color: var(--white);
-        }
-        .btn-red:hover {
-            background-color: var(--dark-blue);
-            color: var(--white);
-        }
-        .btn-dark {
-            background-color: var(--dark-blue);
-            color: var(--white);
-        }
+        svg { fill: currentColor; display: inline-block; }
+        img { max-width: 100%; }
 
-        .btn-dark:hover {
-            background-color: var(--red);
-            color: var(--white);
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        @media (min-width: 768px) { .container { padding: 0 40px; } }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 32px;
+            font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem;
+            letter-spacing: 1px; text-transform: uppercase;
+            border: 2px solid transparent; cursor: pointer;
+            transition: var(--transition); border-radius: 50px;
         }
-        .btn-outline {
-            background-color: transparent;
-            border-color: var(--gray-mid);
-            color: var(--dark-blue);
-        }
-        .btn-outline:hover {
-            border-color: var(--red);
-            background-color: var(--red);
-            color: var(--white);
-        }
-        /* Top Bar - Classic Theme Style */
+        .btn-red { background: var(--red); color: var(--white); }
+        .btn-red:hover { background: var(--dark-blue); }
+        .btn-dark { background: var(--dark-blue); color: var(--white); }
+        .btn-dark:hover { background: var(--red); }
+        .btn-outline { background: transparent; border-color: var(--gray-mid); color: var(--dark-blue); }
+        .btn-outline:hover { border-color: var(--red); background: var(--red); color: var(--white); }
+        .btn-white { background: var(--white); color: var(--dark-blue); }
+        .btn-white:hover { background: var(--gray-light); }
+        .btn-sm { padding: 10px 22px; font-size: 0.8rem; }
+        .btn-lg { padding: 18px 44px; font-size: 0.95rem; }
+
+        /* ─── Top Bar ─── */
         .top-bar {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            font-size: 0.85rem;
-            padding: 10px 0;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            background: var(--dark-blue); color: var(--white);
+            font-size: 0.82rem; padding: 8px 0;
+            font-family: 'Montserrat', sans-serif; font-weight: 600;
         }
-        .top-bar-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
+        .top-bar-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
         @media (min-width: 768px) {
-            .top-bar-inner {
-                flex-direction: row;
-                justify-content: space-between;
-            }
+            .top-bar-inner { flex-direction: row; justify-content: space-between; }
         }
-        .top-bar-contact {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .top-bar-contact span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .top-bar-contact svg { color: var(--red); width: 16px; height: 16px; }
-        /* Main Header */
+        .top-bar-contact { display: flex; align-items: center; gap: 20px; }
+        .top-bar-contact span { display: flex; align-items: center; gap: 6px; }
+        .top-bar-contact svg { color: var(--red); width: 14px; height: 14px; }
+
+        /* ─── Header ─── */
         header {
-            background-color: var(--white);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: var(--white); padding: 15px 0;
+            position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid var(--gray-mid);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
         }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-area img {
-            max-height: 90px;
-            width: auto;
-        }
-        @media (min-width: 768px) {
-            .logo-area img { max-height: 120px; }
-        }
-        .nav-links {
-            display: none;
-        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area img { max-height: 80px; width: auto; }
+        @media (min-width: 768px) { .logo-area img { max-height: 100px; } }
+        .nav-links { display: none; }
         @media (min-width: 1024px) {
-            .nav-links {
-                display: flex;
-                gap: 35px;
-                align-items: center;
-            }
+            .nav-links { display: flex; gap: 30px; align-items: center; }
         }
         .nav-item {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--dark-blue);
-            text-transform: uppercase;
-            position: relative;
-            padding: 10px 0;
+            font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: 0.85rem; color: var(--dark-blue);
+            text-transform: uppercase; position: relative; padding: 8px 0;
         }
         .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--red);
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 3px; background: var(--red);
             transition: width 0.3s ease;
         }
         .nav-item:hover::after { width: 100%; }
         .nav-item:hover { color: var(--red); }
         .mobile-menu-btn {
-            display: block;
-            background: var(--red);
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 2px;
+            display: block; background: var(--red); border: none;
+            color: var(--white); cursor: pointer; padding: 10px; border-radius: var(--radius-sm);
         }
-        @media (min-width: 1024px) {
-            .mobile-menu-btn { display: none; }
-        }
-        /* Dark, Structural Hero Section */
+        @media (min-width: 1024px) { .mobile-menu-btn { display: none; } }
+
+        /* ─── Hero ─── */
         .hero {
-            position: relative;
-            background-image: linear-gradient(rgba(14, 26, 43, 0.8), rgba(14, 26, 43, 0.9)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0 140px 0; /* Tightened padding */
-            color: var(--white);
+            background: var(--white);
+            padding: 60px 0 40px;
             text-align: center;
         }
-        @media (min-width: 768px) {
-            .hero {
-                padding: 100px 0 160px 0;
-                text-align: left;
-            }
-        }
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        @media (min-width: 768px) {
-            .hero-content { margin: 0; }
-        }
-        .hero-subtitle {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            color: var(--red);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            position: relative;
+        @media (min-width: 768px) { .hero { padding: 80px 0 50px; } }
+        .hero-badge {
+            display: inline-block; background: var(--gray-light);
+            color: var(--red); font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.8rem; letter-spacing: 2px;
+            text-transform: uppercase; padding: 8px 20px;
+            border-radius: 50px; margin-bottom: 24px;
         }
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            color: var(--white);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            color: var(--dark-blue); margin-bottom: 20px;
+            max-width: 800px; margin-left: auto; margin-right: auto;
         }
-        .hero-divider {
-            width: 80px;
-            height: 4px;
-            background-color: var(--red);
-            margin: 0 auto 20px auto;
-        }
-        @media (min-width: 768px) {
-            .hero-divider { margin: 0 0 20px 0; }
-        }
+        .hero h1 span { color: var(--red); }
         .hero p {
-            font-size: 1.2rem;
-            color: #D0D5DA;
-            margin-bottom: 30px;
-            max-width: 600px;
-            font-weight: 400;
+            font-size: 1.15rem; color: var(--text-muted);
+            max-width: 600px; margin: 0 auto 30px;
         }
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            align-items: center;
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        /* ─── Stats Bar ─── */
+        .stats-bar {
+            background: var(--dark-blue); padding: 40px 0;
         }
-        @media (min-width: 600px) {
-            .hero-actions {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
-        @media (min-width: 768px) {
-            .hero-actions { justify-content: flex-start; }
-        }
-        /* Overlapping Locations Grid - Tightened margin */
-        .locations-overlap {
-            margin-top: -80px;
-            position: relative;
-            z-index: 20;
-            margin-bottom: 40px;
-        }
-        .loc-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 600px) {
-            .loc-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        }
-        @media (min-width: 1024px) {
-            .loc-grid { grid-template-columns: repeat(5, 1fr); gap: 15px; }
-        }
-        .loc-card {
-            background: var(--white);
-            padding: 25px 20px;
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
             text-align: center;
-            border-bottom: 4px solid var(--gray-mid);
-            box-shadow: var(--shadow-strong);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-        .loc-card:hover {
-            transform: translateY(-5px);
-            border-bottom-color: var(--red);
+        @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+        .stat-item h3 {
+            font-size: clamp(2rem, 4vw, 2.8rem); color: var(--white); margin-bottom: 4px;
         }
-        .loc-card svg {
-            width: 32px;
-            height: 32px;
-            color: var(--red);
-            margin-bottom: 15px;
-        }
-        .loc-card h4 {
-            font-size: 1.1rem;
-            color: var(--dark-blue);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .loc-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        .loc-btn-wrap {
-            margin-top: auto;
-            width: 100%;
-        }
-        /* Tightened Section Layouts */
-        .section-padding { padding: 50px 0; }
-        @media (min-width: 768px) {
-            .section-padding { padding: 70px 0; }
-        }
-        .bg-light { background-color: var(--gray-light); }
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .section-subtitle {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--red);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .section-title {
-            font-size: clamp(2.2rem, 5vw, 3rem);
-            color: var(--dark-blue);
-            text-transform: uppercase;
-            margin-bottom: 0;
-        }
-        .title-divider {
-            width: 60px;
-            height: 4px;
-            background-color: var(--red);
-            margin: 15px auto 0 auto;
-        }
-        .title-divider.left {
-            margin: 15px 0 0 0;
-        }
-        /* Split Mission Section */
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        @media (min-width: 1024px) {
-            .mission-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
-        }
-        .mission-content p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-        /* Heavy Block Features */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        @media (min-width: 600px) {
-            .feature-grid { grid-template-columns: 1fr 1fr; }
-        }
-        .feature-box {
-            background: var(--white);
-            padding: 25px;
-            border: 1px solid var(--gray-mid);
-            border-left: 4px solid var(--dark-blue);
-            transition: var(--transition);
-        }
-        .feature-box:hover {
-            border-left-color: var(--red);
-            box-shadow: var(--shadow-subtle);
-        }
-        .feature-box svg {
-            width: 26px; height: 26px;
-            color: var(--red);
-            margin-bottom: 10px;
-        }
-        .feature-box h5 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        .feature-box p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-        /* Services Grid - Structured & Boxy */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        /* Dedicated class for bottom 2 to prevent shrinking */
-        .services-grid-bottom {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 770px;
-            margin: 0 auto;
-        }
-        @media (min-width: 768px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .services-grid-bottom { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (min-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        .service-card {
-            background: var(--white);
-            border: 1px solid var(--gray-mid);
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-        .service-card:hover {
-            box-shadow: var(--shadow-strong);
-            border-color: var(--red);
-        }
-        .service-header {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 25px 20px;
-            text-align: center;
-            position: relative;
-        }
-        .service-header h3 {
-            color: var(--white);
-            font-size: 1.4rem;
-            margin: 0;
-        }
-        .service-header .pkg-num {
-            color: var(--red);
-            font-family: 'Montserrat';
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        /* Featured Service Override */
-        .service-card.featured {
-            border: 2px solid var(--red);
-            box-shadow: var(--shadow-strong);
-        }
-        @media (min-width: 1024px) {
-            .service-card.featured { z-index: 10; }
-        }
-        .service-card.featured .service-header {
-            background-color: var(--red);
-        }
-        .service-card.featured .service-header h3 {
-            color: var(--white);
+        .stat-item h3 span { color: var(--red); }
+        .stat-item p {
+            color: #8A97A8; font-family: 'Montserrat', sans-serif;
+            font-weight: 600; font-size: 0.8rem; text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .service-card.featured .service-header .pkg-num {
-            color: var(--white);
-            opacity: 0.9;
+        /* ─── Section Common ─── */
+        .section-padding { padding: 60px 0; }
+        @media (min-width: 768px) { .section-padding { padding: 80px 0; } }
+        .bg-light { background: var(--gray-light); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-tag {
+            display: inline-block; background: rgba(179,58,52,0.08);
+            color: var(--red); font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.8rem; letter-spacing: 2px;
+            text-transform: uppercase; padding: 6px 16px;
+            border-radius: 50px; margin-bottom: 14px;
         }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem); color: var(--dark-blue);
+        }
+        .section-desc {
+            color: var(--text-muted); font-size: 1.05rem;
+            max-width: 600px; margin: 12px auto 0;
+        }
+
+        /* ─── Locations ─── */
+        .loc-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+        }
+        @media (min-width: 600px) { .loc-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .loc-grid { grid-template-columns: repeat(3, 1fr); } }
+        .loc-card {
+            background: var(--white); padding: 30px; border-radius: var(--radius);
+            box-shadow: var(--shadow-sm); border: 1px solid var(--gray-mid);
+            transition: var(--transition); display: flex; flex-direction: column;
+        }
+        .loc-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--red); }
+        .loc-card-icon {
+            width: 48px; height: 48px; background: rgba(179,58,52,0.08);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .loc-card-icon svg { width: 24px; height: 24px; color: var(--red); }
+        .loc-card h4 {
+            font-size: 1.1rem; color: var(--dark-blue); margin-bottom: 6px;
+        }
+        .loc-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+        .loc-card .btn { margin-top: auto; width: 100%; }
+
+        /* ─── Why Pro Wash ─── */
+        .why-grid {
+            display: grid; grid-template-columns: 1fr; gap: 24px;
+        }
+        @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .why-grid { grid-template-columns: repeat(4, 1fr); } }
+        .why-card {
+            background: var(--white); padding: 32px 24px; border-radius: var(--radius);
+            text-align: center; box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-mid); transition: var(--transition);
+        }
+        .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+        .why-icon {
+            width: 60px; height: 60px; border-radius: 14px;
+            background: rgba(179,58,52,0.08);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+        }
+        .why-icon svg { width: 28px; height: 28px; color: var(--red); }
+        .why-card h4 { font-size: 1rem; margin-bottom: 8px; }
+        .why-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+        /* ─── Services ─── */
+        .services-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+        }
+        @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+        .service-card {
+            background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--gray-mid); overflow: hidden;
+            transition: var(--transition); display: flex; flex-direction: column;
+        }
+        .service-card:hover { box-shadow: var(--shadow-md); border-color: var(--red); }
+        .service-card.featured { border: 2px solid var(--red); box-shadow: var(--shadow-md); }
+        .service-header {
+            background: var(--dark-blue); color: var(--white);
+            padding: 24px 20px; text-align: center;
+        }
+        .service-card.featured .service-header { background: var(--red); }
+        .service-header .pkg-num {
+            color: var(--red); font-family: 'Montserrat'; font-weight: 700;
+            font-size: 0.8rem; letter-spacing: 2px; display: block; margin-bottom: 4px;
+        }
+        .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.8); }
+        .service-header h3 { color: var(--white); font-size: 1.3rem; margin: 0; }
         .service-body {
-            padding: 30px 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 24px; flex-grow: 1; display: flex; flex-direction: column;
         }
         .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--gray-mid);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid var(--gray-mid);
         }
-        .price-item:last-of-type {
-            border-bottom: none;
-            margin-bottom: 25px;
-        }
+        .price-item:last-of-type { border-bottom: none; margin-bottom: 20px; }
         .price-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            display: flex; align-items: center; gap: 8px;
+            font-weight: 700; color: var(--text-dark);
+            text-transform: uppercase; font-size: 0.82rem;
         }
-        .price-label svg {
-            width: 18px; height: 18px;
-            color: var(--red);
-        }
+        .price-label svg { width: 18px; height: 18px; color: var(--red); }
         .price-value {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--dark-blue);
+            font-family: 'Montserrat', sans-serif; font-weight: 800;
+            font-size: 1.3rem; color: var(--dark-blue);
         }
-        /* Mobile Services Horizontal Strip */
-        .mobile-strip-item {
-            display: flex;
-            flex-direction: column;
-            background: var(--white);
-            border: 1px solid var(--gray-mid);
-            padding: 25px;
-            margin-bottom: 15px;
+
+        /* ─── Mobile Services ─── */
+        .mobile-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+            max-width: 800px; margin: 0 auto;
+        }
+        @media (min-width: 768px) { .mobile-grid { grid-template-columns: repeat(2, 1fr); } }
+        .mobile-card {
+            background: var(--white); padding: 32px 24px; border-radius: var(--radius);
+            border: 1px solid var(--gray-mid); text-align: center;
             transition: var(--transition);
         }
-        @media (min-width: 768px) {
-            .mobile-strip-item {
-                flex-direction: row;
-                align-items: center;
-                gap: 30px;
-            }
-        }
-        .mobile-strip-item:hover {
-            border-color: var(--dark-blue);
-            box-shadow: var(--shadow-subtle);
-        }
-        .mobile-strip-icon {
-            width: 60px; height: 60px;
+        .mobile-card:hover { box-shadow: var(--shadow-md); border-color: var(--dark-blue); }
+        .mobile-card-icon {
+            width: 64px; height: 64px; border-radius: 14px;
             background: var(--gray-light);
             display: flex; align-items: center; justify-content: center;
-            color: var(--dark-blue);
-            margin-bottom: 15px;
+            margin: 0 auto 16px; color: var(--dark-blue);
         }
-        @media (min-width: 768px) {
-            .mobile-strip-icon { margin-bottom: 0; flex-shrink: 0; }
-        }
-        .mobile-strip-icon svg { width: 30px; height: 30px; }
-        .mobile-strip-content {
-            flex-grow: 1;
-        }
-        .mobile-strip-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
-        .mobile-strip-content p { color: var(--text-muted); margin-bottom: 0; }
-        .mobile-strip-action {
-            margin-top: 15px;
-        }
-        @media (min-width: 768px) {
-            .mobile-strip-action { margin-top: 0; flex-shrink: 0; text-align: right; }
-        }
-        /* Solid Dark Section (Tinting & Programs) */
-        .dark-section {
-            background-color: var(--dark-blue);
-            color: var(--white);
-        }
-        .dark-section .section-title { color: var(--white); }
-        .dark-section .text-muted { color: #A0ABB5; }
+        .mobile-card-icon svg { width: 30px; height: 30px; }
+        .mobile-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .mobile-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+        /* ─── Tinting ─── */
+        .tint-section { background: var(--white); }
         .tint-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
+            display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
         }
-        @media (min-width: 1024px) {
-            .tint-grid { grid-template-columns: 1fr 1fr; }
-        }
+        @media (min-width: 1024px) { .tint-grid { grid-template-columns: 1fr 1fr; } }
+        .tint-content .section-tag { margin-bottom: 14px; }
+        .tint-content h2 { margin-bottom: 16px; }
+        .tint-content > p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 24px; }
         .check-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 1rem;
-            font-weight: 600;
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 14px; font-size: 1rem; font-weight: 600;
+            color: var(--text-dark);
         }
-        .check-list svg {
-            color: var(--red);
-            width: 18px; height: 18px;
-            flex-shrink: 0;
-        }
+        .check-list svg { color: var(--red); width: 20px; height: 20px; flex-shrink: 0; }
         .tint-pricing-box {
-            background: var(--white);
-            padding: 30px;
-            border-top: 6px solid var(--red);
-            color: var(--text-dark);
+            background: var(--gray-light); padding: 32px; border-radius: var(--radius);
+            border: 1px solid var(--gray-mid);
         }
-        .tint-pricing-box .price-value { color: var(--red); font-size: 2rem; }
-        /* Banner CTA */
+        .tint-pricing-box h3 {
+            font-family: 'Montserrat'; font-size: 1.3rem; margin-bottom: 16px;
+        }
+        .tint-pricing-box .price-value { color: var(--red); font-size: 1.8rem; }
+
+        /* ─── CTA Banner ─── */
         .cta-banner {
-            background-color: var(--gray-light);
-            padding: 50px 20px;
-            text-align: center;
-            border-top: 1px solid var(--gray-mid);
-            border-bottom: 1px solid var(--gray-mid);
+            background: var(--red); padding: 60px 20px; text-align: center;
         }
-        @media (min-width: 768px) {
-            .cta-banner {
-                padding: 60px 40px;
-                max-width: 1200px;
-                margin: 0 auto;
-                border: none;
-            }
-        }
-        .cta-banner h2 {
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-        }
-        .cta-banner p {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        .cta-banner a {
-            color: var(--red);
-            font-weight: 800;
-            text-decoration: underline;
-            transition: var(--transition);
-        }
-        .cta-banner a:hover {
-            color: var(--dark-blue);
-        }
-        /* Industrial Footer */
+        .cta-banner h2 { color: var(--white); margin-bottom: 12px; font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+        .cta-banner p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 24px; }
+        .cta-banner .btn-white { font-size: 0.9rem; }
+
+        /* ─── Footer ─── */
         footer {
-            background-color: var(--darker-blue);
-            color: #8C98A4;
-            padding: 50px 0 30px;
-            border-top: 4px solid var(--dark-blue);
+            background: var(--dark-blue); color: #8C98A4;
+            padding: 60px 0 30px;
         }
         .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px;
         }
-        @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 50px;}
-        }
-        @media (min-width: 1024px) {
-            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-        }
-        .footer-logo img {
-            max-height: 100px;
-            margin-bottom: 20px;
-            filter: brightness(0) invert(1);
-        }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; } }
+        .footer-logo img { max-height: 80px; margin-bottom: 16px; }
         .footer-col h5 {
-            color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 12px;
+            color: var(--white); font-size: 1rem; margin-bottom: 20px;
+            position: relative; padding-bottom: 10px;
         }
         .footer-col h5::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 30px; height: 3px;
-            background: var(--red);
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 30px; height: 3px; background: var(--red);
         }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { transition: var(--transition); }
-        .footer-links a:hover { color: var(--red); padding-left: 5px; }
-        .f-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        .f-contact-item svg {
-            color: var(--red);
-            width: 20px; height: 20px;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--red); padding-left: 4px; }
+        .f-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+        .f-contact-item svg { color: var(--red); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; }
         .f-contact-item strong {
-            display: block;
-            color: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+            display: block; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1rem;
         }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 25px;
-            text-align: center;
-            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px; text-align: center; font-size: 0.82rem;
         }
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+        /* ─── Animations ─── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
     </style>
 </head>
-<body class="bg-light">
-    <!-- Prohauz Style Dark Top Bar -->
+<body>
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="top-bar-contact">
                 <span><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Mon - Sat: 8:00 AM - 6:00 PM</span>
-                <span class="hidden-mobile"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving MD & Washington DC</span>
+                <span><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> 5 Locations in MD &amp; DC</span>
             </div>
             <div class="top-bar-contact">
-                <span><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> CALL US: (301) 307-1414</span>
+                <span><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
             </div>
         </div>
     </div>
-    <!-- Main Header -->
+
+    <!-- Header -->
     <header id="header">
         <div class="container nav-container">
             <div class="logo-area">
@@ -755,137 +386,162 @@
                     <img src="images/logo.png" alt="Pro Wash Logo">
                 </a>
             </div>
-
             <button class="mobile-menu-btn" id="mobileBtn">
                 <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
-
             <nav class="nav-links" id="navLinks">
-                <a href="#mission" class="nav-item">Our Mission</a>
+                <a href="#locations" class="nav-item">Locations</a>
                 <a href="#services" class="nav-item">Services</a>
                 <a href="#mobile" class="nav-item">Mobile Fleet</a>
-                <a href="#locations" class="nav-item">Locations</a>
-                <a href="tel:3013071414" class="btn btn-red">Book Now</a>
+                <a href="#tinting" class="nav-item">Tinting</a>
+                <a href="#mission" class="nav-item">About</a>
+                <a href="tel:3013071414" class="btn btn-red btn-sm">Book Now</a>
             </nav>
         </div>
     </header>
-    <!-- Dark Structured Hero -->
+
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content reveal">
-                <span class="hero-subtitle">Premium Auto Detailing</span>
-                <h1>THE FULL SERVICE WASH YOUR CAR DESERVES.</h1>
-                <div class="hero-divider left"></div>
-                <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
+            <div class="reveal">
+                <span class="hero-badge">Est. 2010 &mdash; America's Express Auto Salon</span>
+                <h1>Premium Full-Service <span>Car Wash</span> &amp; Detailing</h1>
+                <p>Express efficiency meets hand-wash quality. Walk in to any of our 5 locations or book a mobile unit. In and out in 20 minutes.</p>
                 <div class="hero-actions">
-                    <a href="tel:3013071414" class="btn btn-red">Book A Wash Today</a>
-                    <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
+                    <a href="tel:3013071414" class="btn btn-red btn-lg">Book A Wash Today</a>
+                    <a href="#services" class="btn btn-outline btn-lg">View Packages</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Overlapping Locations Grid -->
-    <div class="locations-overlap">
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
         <div class="container">
-            <div class="loc-grid">
-                <div class="loc-card reveal">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>CLINTON</h4>
-                    <p>6311 Coventry Way<br>Clinton, MD 20735</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3>5<span>+</span></h3>
+                    <p>Locations</p>
                 </div>
-
-                <div class="loc-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>CAPITOL HEIGHTS</h4>
-                    <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                <div class="stat-item reveal delay-1">
+                    <h3>15<span>+</span></h3>
+                    <p>Years of Service</p>
                 </div>
-
-                <div class="loc-card reveal delay-2">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>BOWIE</h4>
-                    <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                <div class="stat-item reveal delay-2">
+                    <h3>A<span>+</span></h3>
+                    <p>BBB Rating</p>
                 </div>
-
-                <div class="loc-card reveal delay-3">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>UPPER MARLBORO</h4>
-                    <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
-                </div>
-
-                <div class="loc-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>WASHINGTON DC</h4>
-                    <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Corporate Mission Section -->
-    <section id="mission" class="section-padding bg-light">
-        <div class="container mission-grid">
-            <div class="mission-content reveal">
-                <span class="section-subtitle">Corporate Mission</span>
-                <h2 class="section-title">BUILT TO SET THE STANDARD IN CAR CARE</h2>
-                <div class="title-divider left"></div>
-                <p style="margin-top: 25px;">Pro Wash is a premier full-service car wash. Pro Wash offers the time efficiency of an express automated car wash with the quality and swirl free paint results of a premium full service wash.</p>
-                <p>We offer an array of service packages from basic full service washes to the extensive master detail package. We also provide professional consultation and education on paint and interior car preservation.</p>
-
-                <div class="founder-quote">
-                    <p>"Early on I recognized a need for mobile full service washing and car detailing."</p>
-                    <span>— Lamond B., Founder & Owner</span>
-                </div>
-            </div>
-
-            <div class="feature-grid reveal delay-1">
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <h5>Walk-Ins Welcome</h5>
-                    <p>No Appointment Needed</p>
-                </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                    <h5>Mon-Sat: 8am-6pm</h5>
-                    <p>Open for consistent service</p>
-                </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
-                    <h5>Mobile Fleet</h5>
-                    <p>Available (+$10 fee)</p>
-                </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></svg>
-                    <h5>Power Washing</h5>
-                    <p>Home & Fleet washing</p>
+                <div class="stat-item reveal delay-3">
+                    <h3>20<span>min</span></h3>
+                    <p>Express Service</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Detail Packages Section -->
-    <section id="services" class="section-padding">
+
+    <!-- Locations -->
+    <section id="locations" class="section-padding bg-light">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-subtitle">Our Services</span>
-                <h2 class="section-title">DETAIL PACKAGES</h2>
-                <div class="title-divider"></div>
-                <p style="margin-top:15px; color: var(--text-muted); font-size: 1.1rem;">From express washes to full master details. All detail jobs completed between 8am and 4:30pm.</p>
+                <span class="section-tag">Find Us Near You</span>
+                <h2 class="section-title">Our Locations</h2>
+                <p class="section-desc">Walk in to any location. No appointment needed for washes.</p>
             </div>
-            <!-- Top 3 Column Tier -->
-            <div class="services-grid mb-4" style="margin-bottom: 20px;">
+            <div class="loc-grid">
+                <div class="loc-card reveal">
+                    <div class="loc-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h4>Clinton</h4>
+                    <p>6311 Coventry Way<br>Clinton, MD 20735</p>
+                    <a href="#" class="btn btn-outline btn-sm">Book a Wash</a>
+                </div>
+                <div class="loc-card reveal delay-1">
+                    <div class="loc-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h4>Capitol Heights</h4>
+                    <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
+                    <a href="#" class="btn btn-outline btn-sm">Book a Wash</a>
+                </div>
+                <div class="loc-card reveal delay-2">
+                    <div class="loc-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h4>Bowie</h4>
+                    <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
+                    <a href="#" class="btn btn-outline btn-sm">Book a Wash</a>
+                </div>
+                <div class="loc-card reveal">
+                    <div class="loc-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h4>Upper Marlboro</h4>
+                    <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
+                    <a href="#" class="btn btn-outline btn-sm">Book a Wash</a>
+                </div>
+                <div class="loc-card reveal delay-1">
+                    <div class="loc-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h4>Washington DC</h4>
+                    <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
+                    <a href="#" class="btn btn-outline btn-sm">Book a Wash</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Pro Wash -->
+    <section id="mission" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">The Pro Wash Difference</span>
+                <h2 class="section-title">Why Choose Pro Wash</h2>
+                <p class="section-desc">Setting the standard in car care since 2010.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h4>Walk-Ins Welcome</h4>
+                    <p>No appointment needed. Drive in any time during business hours.</p>
+                </div>
+                <div class="why-card reveal delay-1">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <h4>20-Minute Express</h4>
+                    <p>Full-service quality in express time. In and out fast.</p>
+                </div>
+                <div class="why-card reveal delay-2">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
+                    </div>
+                    <h4>Mobile Fleet</h4>
+                    <p>We come to you. Mobile wash and detail with a small dispatch fee.</p>
+                </div>
+                <div class="why-card reveal delay-3">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></svg>
+                    </div>
+                    <h4>Power Washing</h4>
+                    <p>Commercial fleet and residential power washing available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Packages -->
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">Detail Packages</h2>
+                <p class="section-desc">From express washes to full master details. All detail jobs completed between 8am and 4:30pm.</p>
+            </div>
+            <div class="services-grid" style="margin-bottom: 20px;">
                 <!-- Package #10 -->
                 <div class="service-card reveal">
                     <div class="service-header">
@@ -905,7 +561,7 @@
                             <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg> XL Trucks</span>
                             <span class="price-value">$125</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top:auto;">Book Now</a>
                     </div>
                 </div>
                 <!-- Package #9 (Featured) -->
@@ -923,7 +579,7 @@
                             <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
                             <span class="price-value">$355</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-dark" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-dark" style="margin-top:auto;">Book Now</a>
                     </div>
                 </div>
                 <!-- Package #5 -->
@@ -941,12 +597,9 @@
                             <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
                             <span class="price-value">$210</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top:auto;">Book Now</a>
                     </div>
                 </div>
-            </div>
-            <!-- Bottom 2 Column Tier -->
-            <div class="services-grid-bottom">
                 <!-- Package #4 -->
                 <div class="service-card reveal">
                     <div class="service-header">
@@ -962,7 +615,7 @@
                             <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
                             <span class="price-value">$175</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top:auto;">Book Now</a>
                     </div>
                 </div>
                 <!-- Package #8 -->
@@ -980,59 +633,49 @@
                             <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
                             <span class="price-value">$215</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top:auto;">Book Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Mobile Services Segment (Horizontal Strips) -->
-    <section id="mobile" class="section-padding bg-light">
+
+    <!-- Mobile Services -->
+    <section id="mobile" class="section-padding">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-subtitle">We Come To You</span>
-                <h2 class="section-title">MOBILE SERVICES</h2>
-                <div class="title-divider"></div>
+                <span class="section-tag">We Come To You</span>
+                <h2 class="section-title">Mobile Services</h2>
+                <p class="section-desc">Book a mobile unit to your home or office. Available Mon-Sat.</p>
             </div>
-
-            <div class="max-w-800" style="max-width: 900px; margin: 0 auto;">
-                <div class="mobile-strip-item reveal">
-                    <div class="mobile-strip-icon">
+            <div class="mobile-grid">
+                <div class="mobile-card reveal">
+                    <div class="mobile-card-icon">
                         <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
                     </div>
-                    <div class="mobile-strip-content">
-                        <h3>Mobile Car Wash</h3>
-                        <p>Book between 8am–6:30pm, Mon-Sat. Fast 20 minute turnaround. (+$10 Dispatch Fee)</p>
-                    </div>
-                    <div class="mobile-strip-action">
-                        <a href="tel:3013071414" class="btn btn-outline">Book Wash</a>
-                    </div>
+                    <h3>Mobile Car Wash</h3>
+                    <p>Book between 8am-6:30pm, Mon-Sat. Fast 20 minute turnaround. (+$10 Dispatch Fee)</p>
+                    <a href="tel:3013071414" class="btn btn-outline btn-sm">Book Wash</a>
                 </div>
-
-                <div class="mobile-strip-item reveal delay-1">
-                    <div class="mobile-strip-icon">
+                <div class="mobile-card reveal delay-1">
+                    <div class="mobile-card-icon">
                         <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
                     </div>
-                    <div class="mobile-strip-content">
-                        <h3>Mobile Car Detail</h3>
-                        <p>Available 8am–4:30pm. Complete interior and exterior care. Up to 90 minutes. (+$10 Fee)</p>
-                    </div>
-                    <div class="mobile-strip-action">
-                        <a href="tel:3013071414" class="btn btn-outline">Book Detail</a>
-                    </div>
+                    <h3>Mobile Car Detail</h3>
+                    <p>Available 8am-4:30pm. Complete interior and exterior care. Up to 90 minutes. (+$10 Fee)</p>
+                    <a href="tel:3013071414" class="btn btn-outline btn-sm">Book Detail</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Window Tinting (Dark Section) -->
-    <section id="tinting" class="dark-section section-padding">
+
+    <!-- Window Tinting -->
+    <section id="tinting" class="tint-section section-padding bg-light">
         <div class="container tint-grid">
             <div class="tint-content reveal">
-                <span class="section-subtitle">Premium Installation</span>
-                <h2 class="section-title">PROFESSIONAL WINDOW TINTING</h2>
-                <div class="title-divider left"></div>
-                <p style="margin-top: 25px;" class="text-muted">Our certified window tinting services include a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty.</p>
-
+                <span class="section-tag">Premium Installation</span>
+                <h2>Professional Window Tinting</h2>
+                <p>Certified window tinting with a lifetime warranty on all installations. Competitive rates starting at $59.95 for the first 2 windows, which includes a free car wash.</p>
                 <ul class="check-list">
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty</li>
@@ -1040,29 +683,31 @@
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Industry-Leading Products</li>
                 </ul>
             </div>
-
             <div class="tint-pricing-box reveal delay-1">
-                <h3 style="font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 15px;">TINTING RATES</h3>
-                <div class="price-item" style="border-bottom-color: var(--gray-mid);">
+                <h3>Tinting Rates</h3>
+                <div class="price-item">
                     <span class="price-label">FIRST 2 WINDOWS</span>
                     <span class="price-value">$59.95</span>
                 </div>
-                <div class="price-item" style="border:none;">
+                <div class="price-item" style="border-bottom:none;">
                     <span class="price-label">FULL SEDAN</span>
                     <span class="price-value">$120.00</span>
                 </div>
-                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:10px;">Book Tinting</a>
+                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:16px;">Book Tinting</a>
             </div>
         </div>
     </section>
-    <!-- Banner CTA (Light Grey Background) -->
+
+    <!-- CTA Banner -->
     <section class="cta-banner">
-        <div class="cta-banner-text reveal">
-            <h2>YOUR CAR DESERVES BETTER THAN A MACHINE WASH</h2>
-            <p>Walk in to any of our 5 locations or call <a href="tel:3013071414" style="color: var(--red); font-weight: 800;">(301) 307-1414</a> to dispatch a mobile unit today.</p>
+        <div class="reveal">
+            <h2>Your Car Deserves Better Than a Machine Wash</h2>
+            <p>Walk in to any of our 5 locations or call (301) 307-1414 to dispatch a mobile unit today.</p>
+            <a href="tel:3013071414" class="btn btn-white btn-lg">Call Now &mdash; (301) 307-1414</a>
         </div>
     </section>
-    <!-- Corporate Footer -->
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1071,34 +716,30 @@
                         <img src="images/logo.png" alt="Pro Wash Logo">
                     </span>
                     <p>Built to set the standard in auto care. The corporate standard in high-end vehicle detailing, paint preservation, and commercial fleet management.</p>
-
-                    <div style="margin-top:20px; display:flex; gap:10px; align-items:center;">
-                        <svg viewBox="0 0 24 24" width="24" height="24" style="color:var(--red);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        <span style="font-family:'Montserrat'; font-weight:700; font-size:0.85rem; color:var(--white); letter-spacing: 1px;">A+ BBB RATING</span>
+                    <div style="margin-top:16px; display:flex; gap:10px; align-items:center;">
+                        <svg viewBox="0 0 24 24" width="22" height="22" style="color:var(--red);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span style="font-family:'Montserrat'; font-weight:700; font-size:0.82rem; color:var(--white); letter-spacing:1px;">A+ BBB RATING</span>
                     </div>
                 </div>
-
                 <div class="footer-col reveal delay-1">
-                    <h5>QUICK LINKS</h5>
+                    <h5>Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="#mission">Corporate Mission</a></li>
+                        <li><a href="#mission">About Us</a></li>
                         <li><a href="#services">Detail Packages</a></li>
                         <li><a href="#tinting">Window Tinting</a></li>
-                        <li><a href="#locations">Facility Locations</a></li>
+                        <li><a href="#locations">Locations</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col reveal delay-2">
-                    <h5>PORTAL</h5>
+                    <h5>Programs</h5>
                     <ul class="footer-links">
                         <li><a href="#">Loyalty Program</a></li>
                         <li><a href="#">Birthday Club</a></li>
                         <li><a href="#">Check Balance</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col reveal delay-3">
-                    <h5>CONTACT US</h5>
+                    <h5>Contact Us</h5>
                     <div class="f-contact-item">
                         <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         <div>
@@ -1115,29 +756,26 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom reveal">
-                <p>&copy; 2026 Pro Wash Inc. All Rights Reserved. | Designed with Industrial Standard</p>
+                <p>&copy; 2026 Pro Wash Inc. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
-    <!-- Scripts -->
+
     <script>
         // Sticky Header
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.style.boxShadow = window.scrollY > 20
+                ? '0 4px 20px rgba(10,30,61,0.10)'
+                : '0 2px 8px rgba(10,30,61,0.06)';
         });
+
         // Mobile Nav
         const mobileBtn = document.getElementById('mobileBtn');
         const navLinks = document.getElementById('navLinks');
-
         mobileBtn.addEventListener('click', () => {
-            if(navLinks.style.display === 'flex') {
+            if (navLinks.style.display === 'flex') {
                 navLinks.style.display = 'none';
             } else {
                 navLinks.style.display = 'flex';
@@ -1148,32 +786,31 @@
                 navLinks.style.width = '100%';
                 navLinks.style.background = 'var(--white)';
                 navLinks.style.padding = '20px';
-                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
                 navLinks.style.borderTop = '1px solid var(--gray-mid)';
+                navLinks.style.borderRadius = '0 0 12px 12px';
             }
         });
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', () => {
-                if(window.innerWidth < 1024) {
-                    navLinks.style.display = 'none';
-                }
+                if (window.innerWidth < 1024) navLinks.style.display = 'none';
             });
         });
-        // Handle window resize for nav
         window.addEventListener('resize', () => {
-            if(window.innerWidth >= 1024) {
+            if (window.innerWidth >= 1024) {
                 navLinks.style.display = 'flex';
                 navLinks.style.flexDirection = 'row';
                 navLinks.style.position = 'static';
                 navLinks.style.boxShadow = 'none';
                 navLinks.style.borderTop = 'none';
                 navLinks.style.padding = '0';
+                navLinks.style.borderRadius = '0';
             } else {
                 navLinks.style.display = 'none';
             }
         });
-        // Staggered Scroll Reveal via Intersection Observer
-        const revealElements = document.querySelectorAll('.reveal');
+
+        // Scroll Reveal
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1181,14 +818,8 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            root: null,
-            threshold: 0.15,
-            rootMargin: "0px 0px -20px 0px"
-        });
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
-        });
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
