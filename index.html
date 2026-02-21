@@ -110,6 +110,17 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(10, 30, 61, 0.3);
         }
+        .btn-blue {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(10, 30, 61, 0.3);
+        }
+        .btn-blue:hover {
+            background-color: var(--red);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--red-glow);
+        }
         .btn-dark {
             background-color: var(--dark-blue);
             color: var(--white);
@@ -1011,9 +1022,9 @@
             width: 16px;
             height: 16px;
         }
-        .faq-item.active .faq-icon {
+        .faq-item.faq-open .faq-icon {
             transform: rotate(180deg);
-            background: var(--red);
+            background: var(--dark-blue);
             color: var(--white);
         }
         .faq-answer {
@@ -1346,7 +1357,7 @@
                     </div>
                     <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
                     <div class="mobile-row-action">
-                        <a href="tel:3013071414" class="btn btn-red btn-sm">I Need a Mobile Wash!</a>
+                        <a href="tel:3013071414" class="btn btn-blue btn-sm">I Need a Mobile Wash!</a>
                     </div>
                 </div>
 
@@ -1358,7 +1369,7 @@
                     </div>
                     <span class="mobile-row-tag tag-fee">+$10 Fee</span>
                     <div class="mobile-row-action">
-                        <a href="tel:3013071414" class="btn btn-red btn-sm">I Need a Car Detail!</a>
+                        <a href="tel:3013071414" class="btn btn-blue btn-sm">I Need a Car Detail!</a>
                     </div>
                 </div>
 
@@ -1662,15 +1673,15 @@
         function toggleFaq(btn) {
             var item = btn.parentElement;
             var answer = btn.nextElementSibling;
-            var isOpen = item.classList.contains('active');
+            var isOpen = item.classList.contains('faq-open');
             // Close all FAQ items first
             document.querySelectorAll('.faq-item').forEach(function(fi) {
-                fi.classList.remove('active');
+                fi.classList.remove('faq-open');
                 fi.querySelector('.faq-answer').style.maxHeight = null;
             });
             // If it wasn't open, open it
             if (!isOpen) {
-                item.classList.add('active');
+                item.classList.add('faq-open');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         }
