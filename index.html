@@ -426,6 +426,18 @@
             font-weight: 700;
         }
 
+        .founder-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--navy);
+            border-left: 3px solid var(--orange);
+            padding: 20px 24px;
+            margin: 24px 0;
+            line-height: 1.7;
+            background: var(--off-white);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
         .mission-features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -653,6 +665,18 @@
             border: 1px solid var(--gray-200);
             border-radius: var(--radius);
             padding: 36px 32px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 12px;
+            right: 24px;
+            font-family: 'Oswald', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--gray-100);
+            pointer-events: none;
         }
         .testimonial-stars {
             color: var(--orange);
@@ -684,13 +708,14 @@
             gap: 24px;
         }
         .program-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border: none;
             border-radius: var(--radius);
             padding: 40px;
             display: flex;
             gap: 24px;
             align-items: start;
+            color: var(--white);
         }
         .program-icon {
             width: 52px;
@@ -701,11 +726,11 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .program-icon.loyalty { background: rgba(26, 111, 181, 0.1); color: var(--blue); }
-        .program-icon.birthday { background: rgba(212, 82, 30, 0.1); color: var(--orange); }
+        .program-icon.loyalty { background: rgba(255, 255, 255, 0.1); color: var(--orange-light); }
+        .program-icon.birthday { background: rgba(255, 255, 255, 0.1); color: var(--orange-light); }
         .program-icon svg { width: 24px; height: 24px; }
-        .program-card h3 { font-size: 1.4rem; margin-bottom: 8px; }
-        .program-card p { font-size: 0.95rem; color: var(--gray-400); line-height: 1.6; }
+        .program-card h3 { font-size: 1.4rem; margin-bottom: 8px; color: var(--white); }
+        .program-card p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
         /* ── Locations ── */
         .locations-grid {
@@ -753,6 +778,15 @@
         }
         .location-link:hover { color: var(--navy); }
         .location-link svg { width: 14px; height: 14px; }
+        .location-neighborhood {
+            font-size: 0.8rem;
+            color: var(--blue);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-100);
+        }
 
         /* ── CTA Banner ── */
         .cta-section {
@@ -978,13 +1012,13 @@
         <div class="container">
             <div class="hero-grid reveal">
                 <div class="hero-left">
-                    <span class="hero-eyebrow">Maryland &amp; DC's Trusted Car Wash</span>
-                    <h1>THE HAND WASH YOUR CAR DESERVES. IN&nbsp;20&nbsp;MINUTES.</h1>
-                    <p class="hero-description">Pro Wash delivers the speed of an express wash with the swirl-free quality of a premium hand detail. No machines. No scratches. No shortcuts. Just a professional clean, every single time.</p>
+                    <span class="hero-eyebrow">PG County &amp; DC&rsquo;s Hand Car Wash</span>
+                    <h1>NO MACHINES. NO SCRATCHES. JUST HANDS THAT KNOW WHAT THEY&rsquo;RE DOING.</h1>
+                    <p class="hero-description">Pro Wash is a hand car wash &mdash; not an automated tunnel. Every vehicle is washed by trained staff using clean towels and proper technique, start to finish. Five locations across PG County and DC. Walk-ins welcome, 20 minutes or less.</p>
 
                     <div class="hero-actions">
-                        <a href="tel:3013071414" class="btn btn-primary btn-lg">Book Appointment</a>
-                        <a href="#locations" class="btn btn-outline btn-lg">Find a Location</a>
+                        <a href="tel:3013071414" class="btn btn-primary btn-lg">Call Us &mdash; (301) 307-1414</a>
+                        <a href="#locations" class="btn btn-outline btn-lg">Find Your Location</a>
                     </div>
 
                     <div class="hero-proof">
@@ -1071,12 +1105,13 @@
         <div class="container">
             <div class="mission-grid">
                 <div class="mission-text reveal">
-                    <span class="section-label">Our Mission</span>
-                    <h2 class="section-title">BUILT TO SET THE STANDARD IN AUTO CARE</h2>
-                    <p><strong>Pro Wash is a premier full-service hand car wash franchise</strong> serving Maryland and Washington DC. We built this company on a simple belief: your car deserves better than a machine wash.</p>
-                    <p>We deliver the speed and convenience of an express automated wash with the quality, care, and swirl-free results that only a trained hand wash team can provide. From basic exterior washes to full master detail packages, fleet washing to power washing services &mdash; we do it all, and we do it right.</p>
-                    <p>Every Pro Wash location follows the same proven process, trained staff, and quality standards. That's the franchise promise.</p>
-                    <a href="tel:3013071414" class="btn btn-primary" style="margin-top: 8px;">Schedule Your First Wash</a>
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">WE STARTED WITH ONE BAY AND A LOT OF PRIDE</h2>
+                    <p>Pro Wash grew out of Prince George&rsquo;s County &mdash; not a boardroom. We saw neighbors running their cars through machines that left swirl marks, water spots, and that &ldquo;close enough&rdquo; clean. We knew there was a better way.</p>
+                    <p>So we built one. <strong>A hand wash that moves at express speed but treats your car like it&rsquo;s ours.</strong> No brushes grinding your paint. No recycled water. Just trained hands, clean towels, and people who take pride in the finish.</p>
+                    <blockquote class="founder-quote">&ldquo;We didn&rsquo;t set out to build a franchise. We set out to give PG County and DC a car wash they could actually trust. The growth happened because people kept telling their neighbors.&rdquo;</blockquote>
+                    <p>Today we&rsquo;re at five locations &mdash; Clinton, Capitol Heights, Bowie, Upper Marlboro, and DC &mdash; and every one runs the same way: the right process, the right people, no shortcuts.</p>
+                    <a href="tel:3013071414" class="btn btn-primary" style="margin-top: 8px;">Come See the Difference</a>
                 </div>
                 <div class="mission-features reveal">
                     <div class="mission-feature">
@@ -1104,9 +1139,9 @@
     <section id="services" class="section-padding" style="background: var(--off-white);">
         <div class="container">
             <div class="services-intro reveal">
-                <span class="section-label">Services &amp; Pricing</span>
-                <h2 class="section-title">DETAIL PACKAGES</h2>
-                <p class="section-subtitle mx-auto">Professional results at every price point. All detail jobs completed between 8am and 4:30pm.</p>
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">DETAIL PACKAGES FOR EVERY LEVEL OF CLEAN</h2>
+                <p class="section-subtitle mx-auto">Whether you need a quick 20-minute refresh or a full master detail, we&rsquo;ve got a package that fits. All details completed between 8am and 4:30pm, Mon&ndash;Sat.</p>
             </div>
 
             <div class="services-grid reveal">
@@ -1120,7 +1155,7 @@
                         <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$110</span></div>
                         <div class="price-row"><span class="price-label">XL Trucks</span><span class="price-value">$125</span></div>
                     </div>
-                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Book Now</a>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $95</a>
                 </div>
 
                 <!-- Tier 2: Extensive Master Detail (Featured) -->
@@ -1132,7 +1167,7 @@
                         <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$295</span></div>
                         <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$355</span></div>
                     </div>
-                    <a href="tel:3013071414" class="btn btn-primary btn-block">Book Now</a>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule This Package</a>
                 </div>
 
                 <!-- Tier 3: Total Express Detail -->
@@ -1144,7 +1179,7 @@
                         <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$185</span></div>
                         <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$210</span></div>
                     </div>
-                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Book Now</a>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $185</a>
                 </div>
             </div>
 
@@ -1158,7 +1193,7 @@
                         <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$150</span></div>
                         <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$175</span></div>
                     </div>
-                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Book Now</a>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $150</a>
                 </div>
 
                 <!-- Extensive Buff Wax -->
@@ -1170,7 +1205,7 @@
                         <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$175</span></div>
                         <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$215</span></div>
                     </div>
-                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Book Now</a>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $175</a>
                 </div>
             </div>
         </div>
@@ -1181,8 +1216,8 @@
         <div class="container">
             <div class="services-intro reveal">
                 <span class="section-label">We Come to You</span>
-                <h2 class="section-title">MOBILE SERVICES</h2>
-                <p class="section-subtitle mx-auto">Same professional quality, delivered to your home, office, or dealership. Just $10 additional for mobile service.</p>
+                <h2 class="section-title">CAN&rsquo;T COME TO US? WE&rsquo;LL PULL UP.</h2>
+                <p class="section-subtitle mx-auto">Same crew, same quality, your driveway. Mobile wash, detail, or tinting at your home, office, or dealership for just $10 extra.</p>
             </div>
             <div class="mobile-services-grid reveal">
                 <div class="mobile-service-card">
@@ -1191,7 +1226,7 @@
                     </div>
                     <h3>Mobile Car Wash</h3>
                     <p>Available Mon&ndash;Sat, 8am&ndash;6:30pm. Completed in approximately 20 minutes at your location.</p>
-                    <a href="tel:3013071414" class="btn btn-primary btn-block">Book Mobile Wash</a>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule a Mobile Wash</a>
                 </div>
                 <div class="mobile-service-card">
                     <div class="mobile-icon">
@@ -1199,7 +1234,7 @@
                     </div>
                     <h3>Mobile Car Detail</h3>
                     <p>Full detail service at your door. Available 8am&ndash;4:30pm. Completed in approximately 90 minutes.</p>
-                    <a href="tel:3013071414" class="btn btn-primary btn-block">Book Mobile Detail</a>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule a Mobile Detail</a>
                 </div>
                 <div class="mobile-service-card">
                     <div class="mobile-icon">
@@ -1207,7 +1242,7 @@
                     </div>
                     <h3>Window Tinting</h3>
                     <p>Professional installation with lifetime warranty. Completed in approximately 2 hours.</p>
-                    <a href="tel:3013071414" class="btn btn-primary btn-block">Book Tinting</a>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule Tinting</a>
                 </div>
             </div>
         </div>
@@ -1218,10 +1253,10 @@
         <div class="container">
             <div class="tinting-grid">
                 <div class="tinting-content reveal">
-                    <span class="section-label">Certified Installation</span>
-                    <h2 class="section-title">PROFESSIONAL WINDOW TINTING</h2>
-                    <p>Every tint installation at Pro Wash comes with a lifetime warranty &mdash; no fine print, no gimmicks. Our certified installers use industry-leading film and proper techniques to ensure a flawless finish that lasts.</p>
-                    <p>Starting at just $59.95 for the first 2 windows, which includes a free car wash.</p>
+                    <span class="section-label">Tinting</span>
+                    <h2 class="section-title">WINDOW TINTING WITH A LIFETIME WARRANTY. PERIOD.</h2>
+                    <p>No fine print. No gimmicks. If it peels, bubbles, or fades &mdash; ever &mdash; we fix it free. Our certified installers use industry-leading film and proper techniques so it won&rsquo;t come to that.</p>
+                    <p>Starting at $59.95 for the first 2 windows, and every tint job includes a free car wash on us.</p>
                     <ul class="tinting-checklist">
                         <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
                         <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty on Every Job</li>
@@ -1245,11 +1280,12 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="section-padding">
+    <section class="section-padding" style="background: var(--navy);">
         <div class="container">
             <div class="services-intro reveal">
-                <span class="section-label">Customer Reviews</span>
-                <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
+                <span class="section-label">From the Neighborhood</span>
+                <h2 class="section-title" style="color: var(--white);">DON&rsquo;T TAKE OUR WORD FOR IT</h2>
+                <p class="section-subtitle mx-auto" style="color: rgba(255,255,255,0.5);">Real reviews from real neighbors &mdash; the people who keep coming back.</p>
             </div>
             <div class="testimonials-grid reveal">
                 <div class="testimonial-card">
@@ -1278,8 +1314,9 @@
     <section class="section-padding" style="background: var(--off-white);">
         <div class="container">
             <div class="services-intro reveal">
-                <span class="section-label">Rewards</span>
-                <h2 class="section-title">LOYALTY PROGRAMS</h2>
+                <span class="section-label">Give Back</span>
+                <h2 class="section-title">WE REMEMBER OUR REGULARS</h2>
+                <p class="section-subtitle mx-auto">You show up for us, we show up for you. Simple as that.</p>
             </div>
             <div class="programs-grid reveal">
                 <div class="program-card">
@@ -1308,53 +1345,58 @@
     <section id="locations" class="section-padding">
         <div class="container">
             <div class="services-intro reveal">
-                <span class="section-label">Find Us</span>
-                <h2 class="section-title">5 LOCATIONS SERVING MD &amp; DC</h2>
-                <p class="section-subtitle mx-auto">Every location staffed with trained professionals following the same Pro Wash quality standards.</p>
+                <span class="section-label">Your Neighborhood</span>
+                <h2 class="section-title">5 LOCATIONS ACROSS THE COMMUNITIES WE CALL HOME</h2>
+                <p class="section-subtitle mx-auto">We didn&rsquo;t just pick locations on a map. We set up where we live, where our families drive, and where our neighbors need us.</p>
             </div>
             <div class="locations-grid reveal">
                 <div class="location-card">
                     <h4>Clinton</h4>
+                    <p class="location-neighborhood">Our original home &mdash; serving the Surratts Road corridor and Branch Ave community since day one.</p>
                     <p>6311 Coventry Way<br>Clinton, MD 20735</p>
                     <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
                     <a href="https://maps.google.com/?q=6311+Coventry+Way,+Clinton,+MD+20735" target="_blank" class="location-link">
-                        Get Directions
+                        Visit This Location
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
                 </div>
                 <div class="location-card">
                     <h4>Capitol Heights</h4>
+                    <p class="location-neighborhood">Right off the Beltway near Hampton Mall &mdash; a quick stop for the Addison Road and Seat Pleasant crowd.</p>
                     <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
                     <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
                     <a href="https://maps.google.com/?q=29+Hampton+Park+Blvd,+Capitol+Heights,+MD+20743" target="_blank" class="location-link">
-                        Get Directions
+                        Visit This Location
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
                 </div>
                 <div class="location-card">
                     <h4>Bowie</h4>
+                    <p class="location-neighborhood">Serving the Bowie, Mitchellville, and Crofton families along the Crain Highway stretch.</p>
                     <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
                     <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
                     <a href="https://maps.google.com/?q=4406+NW+Crain+Hwy,+Bowie,+MD+20716" target="_blank" class="location-link">
-                        Get Directions
+                        Visit This Location
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
                 </div>
                 <div class="location-card">
                     <h4>Upper Marlboro</h4>
+                    <p class="location-neighborhood">Near the county courthouse and Marlboro Pike &mdash; the go-to for PG County&rsquo;s heart.</p>
                     <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
                     <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
                     <a href="https://maps.google.com/?q=7538+NW+Crain+Hwy,+Upper+Marlboro,+MD+20772" target="_blank" class="location-link">
-                        Get Directions
+                        Visit This Location
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
                 </div>
                 <div class="location-card">
                     <h4>Washington DC</h4>
+                    <p class="location-neighborhood">Our District location off Kenilworth Ave &mdash; serving Northeast DC, Deanwood, and the Anacostia corridor.</p>
                     <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
                     <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
                     <a href="https://maps.google.com/?q=1329+Kenilworth+Ave+NE,+Washington,+DC+20019" target="_blank" class="location-link">
-                        Get Directions
+                        Visit This Location
                         <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
                     </a>
                 </div>
@@ -1365,13 +1407,13 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container reveal">
-            <h2>YOUR CAR DESERVES BETTER THAN A MACHINE WASH</h2>
-            <p>Walk into any of our 5 locations or call to book an appointment. Same-day service available.</p>
+            <h2>COME THROUGH. WE&rsquo;LL TAKE CARE OF YOU.</h2>
+            <p>Five locations across PG County and DC. Walk in any time Mon&ndash;Sat, or call and we&rsquo;ll come to you.</p>
             <div class="cta-actions">
-                <a href="tel:3013071414" class="btn btn-primary btn-lg">Book Appointment</a>
-                <a href="#locations" class="btn btn-outline btn-lg">Find a Location</a>
+                <a href="tel:3013071414" class="btn btn-primary btn-lg">Call (301) 307-1414</a>
+                <a href="#locations" class="btn btn-outline btn-lg">Find Your Nearest Location</a>
             </div>
-            <span class="cta-phone">Call us directly: <strong>(301) 307-1414</strong></span>
+            <span class="cta-phone">Same-day service &mdash; walk-ins always welcome</span>
         </div>
     </section>
 
