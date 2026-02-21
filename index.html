@@ -492,16 +492,13 @@
         }
         /* Car Wash Promo Banner */
         .promo-banner {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a2a4a 100%);
+            background: #D6EAFF;
             padding: 50px 0;
             position: relative;
             overflow: hidden;
         }
         .promo-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 80% 50%, rgba(200,16,46,0.15) 0%, transparent 60%);
+            content: none;
         }
         .promo-inner {
             display: flex;
@@ -522,25 +519,26 @@
         }
         .promo-text { flex: 1; }
         .promo-text h2 {
-            color: var(--white);
+            color: var(--dark-blue);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 10px;
         }
-        .promo-text h2 span { color: var(--red); }
+        .promo-text h2 span { color: var(--dark-blue); }
         .promo-text p {
-            color: #b0bec5;
+            color: var(--text-muted);
             font-size: 1.05rem;
             line-height: 1.7;
             max-width: 550px;
         }
         .promo-price-box {
             flex-shrink: 0;
-            background: var(--red);
-            color: var(--white);
+            background: var(--white);
+            color: var(--dark-blue);
             border-radius: 10px;
             padding: 25px 35px;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .promo-price-box .price-label {
             font-size: 0.85rem;
@@ -1262,7 +1260,7 @@
             <div class="promo-text">
                 <h2>Car Wash Starting at <span>$15</span></h2>
                 <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
-                <a href="#services" class="btn btn-primary" style="margin-top: 20px;">View Packages</a>
+                <a href="#services" class="btn btn-blue" style="margin-top: 20px;">View Packages</a>
             </div>
             <div class="promo-price-box">
                 <div class="price-label">Starting at</div>
@@ -1437,53 +1435,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-    <div class="accent-stripe"></div>
-    <!-- Tinting Promo Banner -->
-    <section class="promo-banner" style="background: linear-gradient(135deg, #0d1b2a 0%, var(--dark-blue) 100%);">
-        <div class="container promo-inner reveal">
-            <div class="promo-text">
-                <h2>Get Your <span>Tint</span> On!</h2>
-                <p>Our certified window tinting services includes a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty. Sedans $120.</p>
-                <a href="#tinting" class="btn btn-primary" style="margin-top: 20px;">View Tinting Rates</a>
-            </div>
-            <div class="promo-price-box">
-                <div class="price-label">2 Windows From</div>
-                <div class="price">$59.95</div>
-                <div class="price-note">Includes Free Car Wash</div>
-            </div>
-        </div>
-    </section>
-    <!-- Window Tinting (Dark Section) -->
-    <section id="tinting" class="dark-section section-padding">
-        <div class="container tint-grid">
-            <div class="tint-content reveal">
-                <span class="section-subtitle">Premium Installation</span>
-                <h2 class="section-title">PROFESSIONAL WINDOW TINTING</h2>
-                <div class="title-divider left"></div>
-                <p style="margin-top: 25px;" class="text-muted">Our certified window tinting services include a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty.</p>
-
-                <ul class="check-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free Car Wash Included</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Industry-Leading Products</li>
-                </ul>
-            </div>
-
-            <div class="tint-pricing-box reveal delay-1">
-                <h3 style="font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 15px;">TINTING RATES</h3>
-                <div class="price-item" style="border-bottom-color: var(--gray-mid);">
-                    <span class="price-label">FIRST 2 WINDOWS</span>
-                    <span class="price-value">$59.95</span>
-                </div>
-                <div class="price-item" style="border:none;">
-                    <span class="price-label">FULL SEDAN</span>
-                    <span class="price-value">$120.00</span>
-                </div>
-                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:10px;">I Need My Windows Tinted!</a>
             </div>
         </div>
     </section>
