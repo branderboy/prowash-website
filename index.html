@@ -962,6 +962,50 @@
             text-align: center;
             font-size: 0.85rem;
         }
+        /* FAQ / Questions Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .faq-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (min-width: 992px) {
+            .faq-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
+        .faq-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-strong);
+            border-top: 4px solid var(--red);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-elevated);
+        }
+        .faq-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .faq-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .faq-card .btn {
+            width: 100%;
+        }
         /* Animations */
         .reveal {
             opacity: 0;
@@ -1023,7 +1067,7 @@
                 <div class="hero-divider left"></div>
                 <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
                 <div class="hero-actions reveal">
-                    <a href="tel:3013071414" class="btn btn-red">Book A Wash Today</a>
+                    <a href="tel:3013071414" class="btn btn-red">Call Now!</a>
                     <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
                 </div>
             </div>
@@ -1398,6 +1442,38 @@
                     <h3>Birthday Club</h3>
                     <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
                     <a href="#" class="btn btn-outline" style="border-color:var(--red); color:var(--red);">Sign Up Free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions / FAQ Section -->
+    <section id="questions" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Questions?</span>
+                <h2 class="section-title">FOR OUR CAR WASH SERVICES</h2>
+                <div class="title-divider"></div>
+                <p style="margin-top:15px; color: var(--text-muted); font-size: 1.15rem; font-weight: 600;">No appointment necessary. All walk-ins are welcomed.</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-card reveal">
+                    <h4>Mobile Wash</h4>
+                    <p>Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. We charge $10 more to come out to your location. Takes up to 20 min.</p>
+                    <a href="tel:3013071414" class="btn btn-red">I Need a Mobile Wash!</a>
+                </div>
+
+                <div class="faq-card reveal delay-1">
+                    <h4>Car Detail</h4>
+                    <p>All detail jobs are done between 8 am and 4:30 pm. We charge $10 more for our mobile services. Takes up to 90 min.</p>
+                    <a href="tel:3013071414" class="btn btn-red">I Need a Car Detail!</a>
+                </div>
+
+                <div class="faq-card reveal delay-2">
+                    <h4>Window Tinting</h4>
+                    <p>All of our window tinting jobs come with a lifetime warranty. All our window tinting jobs take up to 2 hours.</p>
+                    <a href="tel:3013071414" class="btn btn-red">I Need My Windows Tinted!</a>
                 </div>
             </div>
         </div>
