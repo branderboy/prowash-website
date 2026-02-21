@@ -373,6 +373,14 @@
             margin-top: auto;
             width: 100%;
         }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(179, 58, 52, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(179, 58, 52, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(179, 58, 52, 0); }
+        }
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
         /* Tightened Section Layouts */
         .section-padding { padding: 50px 0; }
         @media (min-width: 768px) {
@@ -464,12 +472,12 @@
         }
         .feature-box:hover { background: var(--gray-light); }
         .feature-box .icon-wrap {
-            width: 56px; height: 56px;
-            min-width: 56px;
+            width: 64px; height: 64px;
+            min-width: 64px;
             display: flex; align-items: center; justify-content: center;
         }
         .feature-box svg {
-            width: 48px; height: 48px;
+            width: 56px; height: 56px;
             color: var(--dark-blue);
         }
         .feature-box h5 {
@@ -1022,8 +1030,8 @@
                 <div class="hero-divider left"></div>
                 <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
                 <div class="hero-actions">
-                    <a href="tel:3013071414" class="btn btn-red">Book A Wash Today</a>
-                    <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
+                    <a href="tel:3013071414" class="btn btn-red btn-pulse">Book A Wash Today</a>
+                    <a href="#services" class="btn btn-outline btn-pulse" style="border-color: white; color: white;">View Our Services</a>
                 </div>
             </div>
         </div>
@@ -1036,7 +1044,7 @@
                     <h4>CLINTON</h4>
                     <p>6311 Coventry Way<br>Clinton, MD 20735</p>
                     <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                        <a href="#" class="btn btn-outline btn-sm btn-pulse" style="width:100%;">Book a Wash</a>
                     </div>
                 </div>
 
@@ -1044,7 +1052,7 @@
                     <h4>CAPITOL HEIGHTS</h4>
                     <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
                     <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                        <a href="#" class="btn btn-outline btn-sm btn-pulse" style="width:100%;">Book a Wash</a>
                     </div>
                 </div>
 
@@ -1052,7 +1060,7 @@
                     <h4>BOWIE</h4>
                     <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
                     <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                        <a href="#" class="btn btn-outline btn-sm btn-pulse" style="width:100%;">Book a Wash</a>
                     </div>
                 </div>
 
@@ -1060,7 +1068,7 @@
                     <h4>UPPER MARLBORO</h4>
                     <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
                     <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                        <a href="#" class="btn btn-outline btn-sm btn-pulse" style="width:100%;">Book a Wash</a>
                     </div>
                 </div>
 
@@ -1068,7 +1076,7 @@
                     <h4>WASHINGTON DC</h4>
                     <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
                     <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                        <a href="#" class="btn btn-outline btn-sm btn-pulse" style="width:100%;">Book a Wash</a>
                     </div>
                 </div>
             </div>
