@@ -15,8 +15,8 @@
             --red: #B33A34;         /* Corporate Brand Red */
             --red-hover: #9A322D;
             --red-glow: rgba(179, 58, 52, 0.25);
-            --dark-blue: #0A1E3D;      /* Corporate Navy */
-            --darker-blue: #051024;
+            --dark-blue: #4A90D9;      /* Light Blue */
+            --darker-blue: #2C6FB5;
             --white: #FFFFFF;
             --gray-light: #F4F5F7;     /* Section Backgrounds */
             --gray-mid: #E0E4E8;       /* Borders */
@@ -103,15 +103,15 @@
             font-size: 0.8rem;
         }
         .btn-red {
-            background-color: var(--red);
-            color: var(--white);
-            box-shadow: 0 4px 15px var(--red-glow);
-        }
-        .btn-red:hover {
             background-color: var(--dark-blue);
             color: var(--white);
+            box-shadow: 0 4px 15px rgba(74, 144, 217, 0.3);
+        }
+        .btn-red:hover {
+            background-color: var(--darker-blue);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 30, 61, 0.3);
+            box-shadow: 0 8px 25px rgba(44, 111, 181, 0.4);
         }
         .btn-blue {
             background-color: var(--dark-blue);
@@ -119,10 +119,10 @@
             box-shadow: 0 4px 15px rgba(10, 30, 61, 0.3);
         }
         .btn-blue:hover {
-            background-color: var(--red);
+            background-color: var(--darker-blue);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--red-glow);
+            box-shadow: 0 8px 25px rgba(44, 111, 181, 0.4);
         }
         .btn-dark {
             background-color: var(--dark-blue);
@@ -130,7 +130,7 @@
         }
 
         .btn-dark:hover {
-            background-color: var(--red);
+            background-color: var(--darker-blue);
             color: var(--white);
         }
         .btn-outline {
@@ -139,16 +139,16 @@
             color: var(--dark-blue);
         }
         .btn-outline:hover {
-            border-color: var(--red);
-            background-color: var(--red);
+            border-color: var(--dark-blue);
+            background-color: var(--dark-blue);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--red-glow);
+            box-shadow: 0 6px 20px rgba(74, 144, 217, 0.3);
         }
         /* Red accent stripe */
         .accent-stripe {
             height: 4px;
-            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
+            background: linear-gradient(90deg, var(--dark-blue), var(--white), var(--dark-blue));
         }
         /* Top Bar - Classic Theme Style */
         .top-bar {
@@ -174,7 +174,7 @@
             align-items: center;
             gap: 8px;
         }
-        .top-bar-item svg { color: var(--red); width: 16px; height: 16px; }
+        .top-bar-item svg { color: var(--white); width: 16px; height: 16px; }
         /* Main Header */
         header {
             background-color: var(--white);
@@ -223,14 +223,14 @@
             left: 0;
             width: 0;
             height: 3px;
-            background-color: var(--red);
+            background-color: var(--dark-blue);
             transition: width 0.3s ease;
         }
         .nav-item:hover::after { width: 100%; }
-        .nav-item:hover { color: var(--red); }
+        .nav-item:hover { color: var(--dark-blue); }
         .mobile-menu-btn {
             display: block;
-            background: var(--red);
+            background: var(--dark-blue);
             border: none;
             color: var(--white);
             cursor: pointer;
@@ -256,7 +256,7 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 6px;
-            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
+            background: linear-gradient(90deg, var(--dark-blue), var(--white), var(--dark-blue));
         }
         @media (min-width: 768px) {
             .hero {
@@ -277,7 +277,7 @@
             font-weight: 700;
             font-size: 1rem;
             text-transform: uppercase;
-            color: var(--red);
+            color: var(--white);
             letter-spacing: 2px;
             margin-bottom: 15px;
             position: relative;
@@ -291,12 +291,12 @@
             text-shadow: 0 4px 30px rgba(0,0,0,0.4);
         }
         .hero h1 span {
-            color: var(--red);
+            color: var(--white);
         }
         .hero-divider {
             width: 80px;
             height: 4px;
-            background-color: var(--red);
+            background-color: var(--white);
             margin: 0 auto 20px auto;
         }
         @media (min-width: 768px) {
@@ -355,13 +355,13 @@
         }
         .loc-card:hover {
             transform: translateY(-8px);
-            border-bottom-color: var(--red);
+            border-bottom-color: var(--dark-blue);
             box-shadow: var(--shadow-elevated);
         }
         .loc-card svg {
             width: 32px;
             height: 32px;
-            color: var(--red);
+            color: var(--dark-blue);
             margin-bottom: 15px;
         }
         .loc-card h4 {
@@ -396,7 +396,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
-            color: var(--red);
+            color: var(--dark-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -410,7 +410,7 @@
         .title-divider {
             width: 80px;
             height: 5px;
-            background: linear-gradient(90deg, var(--red), var(--dark-blue));
+            background: var(--dark-blue);
             margin: 15px auto 0 auto;
         }
         .title-divider.left {
@@ -434,7 +434,7 @@
         .founder-quote {
             margin-top: 25px;
             padding: 20px 25px;
-            border-left: 4px solid var(--red);
+            border-left: 4px solid var(--dark-blue);
             background: var(--white);
         }
         .founder-quote p {
@@ -447,7 +447,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--red);
+            color: var(--dark-blue);
         }
         /* Clean Feature Strips */
         .feature-grid {
@@ -492,16 +492,18 @@
         }
         /* Car Wash Promo Banner */
         .promo-banner {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a2a4a 100%);
+            background: var(--white);
             padding: 50px 0;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid var(--gray-mid);
+            border-bottom: 1px solid var(--gray-mid);
         }
         .promo-banner::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 80% 50%, rgba(200,16,46,0.15) 0%, transparent 60%);
+            background: none;
         }
         .promo-inner {
             display: flex;
@@ -522,20 +524,20 @@
         }
         .promo-text { flex: 1; }
         .promo-text h2 {
-            color: var(--white);
+            color: var(--dark-blue);
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 10px;
         }
-        .promo-text h2 span { color: var(--red); }
+        .promo-text h2 span { color: var(--dark-blue); }
         .promo-text p {
-            color: #b0bec5;
+            color: var(--text-muted);
             font-size: 1.05rem;
             line-height: 1.7;
             max-width: 550px;
         }
         .promo-price-box {
             flex-shrink: 0;
-            background: var(--red);
+            background: var(--dark-blue);
             color: var(--white);
             border-radius: 10px;
             padding: 25px 35px;
@@ -643,8 +645,8 @@
         }
         /* Featured — RED header, scaled up, bold border */
         .service-card.featured {
-            border-color: var(--red);
-            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.25);
+            border-color: var(--dark-blue);
+            box-shadow: 0 10px 40px rgba(74, 144, 217, 0.25);
         }
         @media (min-width: 1024px) {
             .service-card.featured {
@@ -654,12 +656,12 @@
             .service-card.featured:hover { transform: scale(1.08) translateY(-8px); }
         }
         .service-card.featured .service-header {
-            background: var(--red);
+            background: var(--dark-blue);
         }
         .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.7); }
-        .service-card.featured .service-price-hero .big-price { color: var(--red); }
+        .service-card.featured .service-price-hero .big-price { color: var(--dark-blue); }
         .featured-label {
-            background: var(--red);
+            background: var(--dark-blue);
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
@@ -670,9 +672,9 @@
             text-align: center;
         }
         /* Red tier accent */
-        .tier-gold { border-color: var(--red); }
-        .tier-gold .service-price-hero .big-price { color: var(--red); }
-        .tier-gold:hover { box-shadow: 0 15px 40px var(--red-glow); }
+        .tier-gold { border-color: var(--dark-blue); }
+        .tier-gold .service-price-hero .big-price { color: var(--dark-blue); }
+        .tier-gold:hover { box-shadow: 0 15px 40px rgba(74, 144, 217, 0.25); }
         .service-body {
             padding: 20px 25px 30px;
             flex-grow: 1;
@@ -701,7 +703,7 @@
         }
         .price-label svg {
             width: 18px; height: 18px;
-            color: var(--red);
+            color: var(--dark-blue);
         }
         .price-value {
             font-family: 'Montserrat', sans-serif;
@@ -782,18 +784,18 @@
             font-weight: 600;
         }
         .check-list svg {
-            color: var(--red);
+            color: var(--dark-blue);
             width: 18px; height: 18px;
             flex-shrink: 0;
         }
         .tint-pricing-box {
             background: var(--white);
             padding: 35px;
-            border-top: 6px solid var(--red);
+            border-top: 6px solid var(--dark-blue);
             color: var(--text-dark);
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        .tint-pricing-box .price-value { color: var(--red); font-size: 2rem; }
+        .tint-pricing-box .price-value { color: var(--dark-blue); font-size: 2rem; }
         /* Reviews Section */
         .reviews-grid {
             display: grid;
@@ -835,7 +837,7 @@
         .review-avatar {
             width: 44px; height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--red), #D4443D);
+            background: linear-gradient(135deg, var(--dark-blue), var(--darker-blue));
             display: flex; align-items: center; justify-content: center;
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
@@ -895,15 +897,15 @@
             border: 2px solid var(--dark-blue);
         }
         .program-loyalty .program-icon { background: var(--gray-light); }
-        .program-loyalty .program-icon svg { color: var(--red); }
+        .program-loyalty .program-icon svg { color: var(--dark-blue); }
         .program-loyalty h3 { color: var(--dark-blue); }
         .program-loyalty p { color: var(--text-muted); }
         .program-birthday {
             background: transparent;
-            border: 2px solid var(--red);
+            border: 2px solid var(--dark-blue);
         }
-        .program-birthday .program-icon { background: rgba(179, 58, 52, 0.08); }
-        .program-birthday .program-icon svg { color: var(--red); }
+        .program-birthday .program-icon { background: rgba(74, 144, 217, 0.08); }
+        .program-birthday .program-icon svg { color: var(--dark-blue); }
         .program-birthday h3 { color: var(--dark-blue); }
         .program-birthday p { color: var(--text-muted); }
         /* Mobile Services — Clean Rows */
@@ -1059,7 +1061,7 @@
             text-align: left;
             gap: 15px;
         }
-        .faq-question:hover { color: var(--red); }
+        .faq-question:hover { color: var(--dark-blue); }
         .faq-icon {
             flex-shrink: 0;
             width: 28px;
@@ -1070,7 +1072,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, background 0.3s ease;
-            color: var(--red);
+            color: var(--dark-blue);
         }
         .faq-icon svg {
             width: 16px;
@@ -1143,12 +1145,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <span class="hero-subtitle">Premium Auto Detailing</span>
-                <h1>THE FULL SERVICE WASH YOUR CAR <span>DESERVES.</span></h1>
+                <span class="hero-subtitle">America's Express Car Wash</span>
+                <h1>CAR WASH STARTING AT <span>$15</span></h1>
                 <div class="hero-divider left"></div>
-                <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
+                <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
                 <div class="hero-actions reveal">
-                    <a href="tel:3013071414" class="btn btn-red">Call Now!</a>
+                    <a href="#services" class="btn btn-red">View Packages</a>
                     <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
                 </div>
             </div>
@@ -1262,7 +1264,7 @@
             <div class="promo-text">
                 <h2>Car Wash Starting at <span>$15</span></h2>
                 <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
-                <a href="#services" class="btn btn-primary" style="margin-top: 20px;">View Packages</a>
+                <a href="#services" class="btn btn-red" style="margin-top: 20px;">View Packages</a>
             </div>
             <div class="promo-price-box">
                 <div class="price-label">Starting at</div>
@@ -1440,53 +1442,6 @@
             </div>
         </div>
     </section>
-    <div class="accent-stripe"></div>
-    <!-- Tinting Promo Banner -->
-    <section class="promo-banner" style="background: linear-gradient(135deg, #0d1b2a 0%, var(--dark-blue) 100%);">
-        <div class="container promo-inner reveal">
-            <div class="promo-text">
-                <h2>Get Your <span>Tint</span> On!</h2>
-                <p>Our certified window tinting services includes a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty. Sedans $120.</p>
-                <a href="#tinting" class="btn btn-primary" style="margin-top: 20px;">View Tinting Rates</a>
-            </div>
-            <div class="promo-price-box">
-                <div class="price-label">2 Windows From</div>
-                <div class="price">$59.95</div>
-                <div class="price-note">Includes Free Car Wash</div>
-            </div>
-        </div>
-    </section>
-    <!-- Window Tinting (Dark Section) -->
-    <section id="tinting" class="dark-section section-padding">
-        <div class="container tint-grid">
-            <div class="tint-content reveal">
-                <span class="section-subtitle">Premium Installation</span>
-                <h2 class="section-title">PROFESSIONAL WINDOW TINTING</h2>
-                <div class="title-divider left"></div>
-                <p style="margin-top: 25px;" class="text-muted">Our certified window tinting services include a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty.</p>
-
-                <ul class="check-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free Car Wash Included</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Industry-Leading Products</li>
-                </ul>
-            </div>
-
-            <div class="tint-pricing-box reveal delay-1">
-                <h3 style="font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 15px;">TINTING RATES</h3>
-                <div class="price-item" style="border-bottom-color: var(--gray-mid);">
-                    <span class="price-label">FIRST 2 WINDOWS</span>
-                    <span class="price-value">$59.95</span>
-                </div>
-                <div class="price-item" style="border:none;">
-                    <span class="price-label">FULL SEDAN</span>
-                    <span class="price-value">$120.00</span>
-                </div>
-                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:10px;">I Need My Windows Tinted!</a>
-            </div>
-        </div>
-    </section>
     <!-- Verified Client Experiences -->
     <section id="reviews" class="section-padding bg-light">
         <div class="container">
@@ -1552,7 +1507,7 @@
                 <div class="program-card program-birthday reveal delay-1">
                     <h3>Birthday Club</h3>
                     <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
-                    <a href="#" class="btn btn-outline" style="border-color:var(--red); color:var(--red);">Sign Up Free</a>
+                    <a href="#" class="btn btn-outline" style="border-color:var(--dark-blue); color:var(--dark-blue);">Sign Up Free</a>
                 </div>
             </div>
         </div>
