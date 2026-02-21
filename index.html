@@ -490,6 +490,75 @@
             color: var(--text-muted);
             margin: 0;
         }
+        /* Car Wash Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a2a4a 100%);
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(200,16,46,0.15) 0%, transparent 60%);
+        }
+        .promo-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .promo-banner { padding: 70px 0; }
+            .promo-inner {
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+            }
+        }
+        .promo-text { flex: 1; }
+        .promo-text h2 {
+            color: var(--white);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+        }
+        .promo-text h2 span { color: var(--red); }
+        .promo-text p {
+            color: #b0bec5;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 550px;
+        }
+        .promo-price-box {
+            flex-shrink: 0;
+            background: var(--red);
+            color: var(--white);
+            border-radius: 10px;
+            padding: 25px 35px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .promo-price-box .price-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .promo-price-box .price {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .promo-price-box .price-note {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
         /* Services Grid - Structured & Boxy */
         .services-grid {
             display: grid;
@@ -1187,6 +1256,21 @@
             </div>
         </div>
     </section>
+    <!-- Car Wash Promo Banner -->
+    <section class="promo-banner">
+        <div class="container promo-inner reveal">
+            <div class="promo-text">
+                <h2>Car Wash Starting at <span>$15</span></h2>
+                <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
+                <a href="#services" class="btn btn-primary" style="margin-top: 20px;">View Packages</a>
+            </div>
+            <div class="promo-price-box">
+                <div class="price-label">Starting at</div>
+                <div class="price">$15</div>
+                <div class="price-note">Full Service Wash</div>
+            </div>
+        </div>
+    </section>
     <!-- Detail Packages Section -->
     <section id="services" class="section-padding">
         <div class="container">
@@ -1357,6 +1441,21 @@
         </div>
     </section>
     <div class="accent-stripe"></div>
+    <!-- Tinting Promo Banner -->
+    <section class="promo-banner" style="background: linear-gradient(135deg, #0d1b2a 0%, var(--dark-blue) 100%);">
+        <div class="container promo-inner reveal">
+            <div class="promo-text">
+                <h2>Get Your <span>Tint</span> On!</h2>
+                <p>Our certified window tinting services includes a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty. Sedans $120.</p>
+                <a href="#tinting" class="btn btn-primary" style="margin-top: 20px;">View Tinting Rates</a>
+            </div>
+            <div class="promo-price-box">
+                <div class="price-label">2 Windows From</div>
+                <div class="price">$59.95</div>
+                <div class="price-note">Includes Free Car Wash</div>
+            </div>
+        </div>
+    </section>
     <!-- Window Tinting (Dark Section) -->
     <section id="tinting" class="dark-section section-padding">
         <div class="container tint-grid">
