@@ -73,22 +73,27 @@
             fill: currentColor;
             display: inline-block;
         }
-        /* Industrial Buttons (Sharp, blocky) */
+        /* Bold Impact Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 36px;
+            padding: 18px 40px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-align: center;
-            border-radius: 2px; /* Sharp edges */
+            border-radius: 4px;
+        }
+        .btn-big {
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            width: 100%;
         }
         .btn-sm {
             padding: 12px 24px;
@@ -231,7 +236,7 @@
         /* Dark, Structural Hero Section */
         .hero {
             position: relative;
-            background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.75) 0%, rgba(14, 26, 43, 0.65) 50%, rgba(179, 58, 52, 0.2) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
+            background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.7) 0%, rgba(14, 26, 43, 0.6) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://images.pexels.com/photos/6872148/pexels-photo-6872148.jpeg?auto=compress&cs=tinysrgb&w=1920');
             background-size: cover;
             background-position: center;
             padding: 80px 0 140px 0;
@@ -525,102 +530,101 @@
         @media (min-width: 1024px) {
             .services-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        /* ClickFunnels-Style Service Cards — Bold & High Impact */
         .service-card {
             background: var(--white);
-            border: 1px solid var(--gray-mid);
+            border: 3px solid var(--gray-mid);
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
         .service-card:hover {
             box-shadow: var(--shadow-elevated);
-            border-color: var(--dark-blue);
-            transform: translateY(-6px);
+            transform: translateY(-8px);
         }
         .service-header {
-            background-color: var(--dark-blue);
+            background: var(--dark-blue);
             color: var(--white);
-            padding: 30px 20px;
-            text-align: center;
+            padding: 25px 20px 20px;
             position: relative;
         }
-        .service-header h3 {
-            color: var(--white);
-            font-size: 1.4rem;
-            margin: 0;
-        }
         .service-header .pkg-num {
-            color: var(--red);
+            color: rgba(255,255,255,0.5);
             font-family: 'Montserrat';
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             display: block;
             margin-bottom: 5px;
         }
-        /* Tier badge system — each card gets a visual tier */
-        .service-card .tier-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            padding: 4px 14px;
-            margin-top: 10px;
-            text-transform: uppercase;
+        .service-header h3 {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin: 0;
         }
-        .tier-bronze .service-header { background: linear-gradient(135deg, #0A1E3D 0%, #142D54 100%); }
-        .tier-bronze .tier-badge { background: rgba(255,255,255,0.1); color: #8EACC7; border: 1px solid rgba(255,255,255,0.15); }
-        .tier-silver .service-header { background: linear-gradient(135deg, #0D2647 0%, #1A3A66 100%); }
-        .tier-silver .tier-badge { background: rgba(255,255,255,0.12); color: #B0C4DE; border: 1px solid rgba(255,255,255,0.2); }
-        .tier-gold .service-header { background: linear-gradient(135deg, #0A1E3D 0%, #1E3F6B 100%); }
-        .tier-gold .tier-badge { background: rgba(212,175,55,0.15); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
-        .tier-gold:hover { border-color: #D4AF37; }
-        /* Featured Service Override — Most Popular / Premium */
+        .service-price-hero {
+            background: var(--gray-light);
+            padding: 25px 20px;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+        .service-price-hero .from-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .service-price-hero .big-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: var(--dark-blue);
+            line-height: 1;
+            margin: 5px 0;
+        }
+        .service-price-hero .big-price .dollar {
+            font-size: 1.8rem;
+            vertical-align: super;
+        }
+        /* Featured — RED header, scaled up, bold border */
         .service-card.featured {
-            border: 2px solid var(--red);
-            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.2);
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.25);
         }
         @media (min-width: 1024px) {
             .service-card.featured {
                 z-index: 10;
-                transform: scale(1.03);
+                transform: scale(1.05);
             }
-            .service-card.featured:hover { transform: scale(1.06) translateY(-6px); }
+            .service-card.featured:hover { transform: scale(1.08) translateY(-8px); }
         }
         .service-card.featured .service-header {
-            background: linear-gradient(135deg, var(--red) 0%, #D4443D 100%);
-            padding: 35px 20px;
+            background: var(--red);
         }
-        .service-card.featured .service-header h3 {
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-        .service-card.featured .service-header .pkg-num {
-            color: var(--white);
-            opacity: 0.9;
-        }
-        .service-card.featured .tier-badge {
-            background: rgba(255,255,255,0.2);
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
+        .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.7); }
+        .service-card.featured .service-price-hero .big-price { color: var(--red); }
         .featured-label {
-            position: absolute;
-            top: 0; right: 0;
-            background: var(--darker-blue);
+            background: var(--red);
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
-            padding: 6px 14px;
+            letter-spacing: 1px;
+            padding: 8px 0;
             text-transform: uppercase;
+            text-align: center;
         }
+        /* Gold tier — subtle gold accent */
+        .tier-gold { border-color: #D4AF37; }
+        .tier-gold .service-price-hero .big-price { color: #B8941F; }
+        .tier-gold:hover { box-shadow: 0 15px 40px rgba(212,175,55,0.2); }
         .service-body {
-            padding: 30px 25px;
+            padding: 20px 25px 30px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -629,12 +633,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid var(--gray-mid);
         }
         .price-item:last-of-type {
             border-bottom: none;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .price-label {
             display: flex;
@@ -654,6 +658,10 @@
             font-weight: 800;
             font-size: 1.4rem;
             color: var(--dark-blue);
+        }
+        .service-body .btn {
+            margin-top: auto;
+            width: 100%;
         }
         /* Mobile Services Horizontal Strip */
         .mobile-strip-item {
@@ -1032,107 +1040,122 @@
             </div>
             <!-- Top 3 Column Tier -->
             <div class="services-grid mb-4" style="margin-bottom: 20px;">
-                <!-- Package #10 -->
-                <div class="service-card tier-silver reveal">
+                <!-- Package #10 — Super Sport -->
+                <div class="service-card reveal">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #10</span>
                         <h3>Super Sport</h3>
-                        <span class="tier-badge">Standard</span>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>95</div>
                     </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$95</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$110</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg> XL Trucks</span>
+                            <span class="price-label">XL Trucks</span>
                             <span class="price-value">$125</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #9 (Featured) -->
+                <!-- Package #9 — Master Detail (FEATURED) -->
                 <div class="service-card featured reveal delay-1">
-                    <span class="featured-label">Most Popular</span>
+                    <div class="featured-label">MOST POPULAR</div>
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #9</span>
                         <h3>Master Detail</h3>
-                        <span class="tier-badge">Premium</span>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>295</div>
                     </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$295</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$355</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-dark" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #5 -->
+                <!-- Package #5 — Express Detail -->
                 <div class="service-card tier-gold reveal delay-2">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #5</span>
                         <h3>Express Detail</h3>
-                        <span class="tier-badge">Advanced</span>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>185</div>
                     </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$185</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$210</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
             <!-- Bottom 2 Column Tier -->
             <div class="services-grid-bottom">
-                <!-- Package #4 -->
-                <div class="service-card tier-bronze reveal">
+                <!-- Package #4 — Steam Clean -->
+                <div class="service-card reveal">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #4</span>
                         <h3>Steam Clean</h3>
-                        <span class="tier-badge">Essential</span>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>150</div>
                     </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$150</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$175</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #8 -->
+                <!-- Package #8 — Buff Wax -->
                 <div class="service-card tier-gold reveal delay-1">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #8</span>
                         <h3>Buff Wax</h3>
-                        <span class="tier-badge">Advanced</span>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>175</div>
                     </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$175</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$215</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
