@@ -817,57 +817,91 @@
             margin-bottom: 20px;
         }
         .program-loyalty {
-            background: var(--dark-blue);
-            color: var(--white);
+            background: transparent;
+            border: 2px solid var(--dark-blue);
         }
-        .program-loyalty .program-icon { background: rgba(255,255,255,0.1); }
+        .program-loyalty .program-icon { background: var(--gray-light); }
         .program-loyalty .program-icon svg { color: var(--red); }
-        .program-loyalty h3 { color: var(--white); }
-        .program-loyalty p { color: #A0ABB5; }
+        .program-loyalty h3 { color: var(--dark-blue); }
+        .program-loyalty p { color: var(--text-muted); }
         .program-birthday {
-            background: linear-gradient(135deg, var(--red) 0%, #D4443D 100%);
-            color: var(--white);
+            background: transparent;
+            border: 2px solid var(--red);
         }
-        .program-birthday .program-icon { background: rgba(255,255,255,0.2); }
-        .program-birthday .program-icon svg { color: var(--white); }
-        .program-birthday h3 { color: var(--white); }
-        .program-birthday p { color: rgba(255,255,255,0.85); }
-        /* Mobile Services Cards */
-        .mobile-cards-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+        .program-birthday .program-icon { background: rgba(179, 58, 52, 0.08); }
+        .program-birthday .program-icon svg { color: var(--red); }
+        .program-birthday h3 { color: var(--dark-blue); }
+        .program-birthday p { color: var(--text-muted); }
+        /* Mobile Services — Dark Banner Rows */
+        .mobile-dark {
+            background: var(--dark-blue);
         }
+        .mobile-dark .section-title { color: var(--white); }
+        .mobile-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .mobile-row {
+            display: flex;
+            flex-direction: column;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            gap: 20px;
+        }
+        .mobile-row:last-child { border-bottom: none; }
         @media (min-width: 768px) {
-            .mobile-cards-grid { grid-template-columns: repeat(3, 1fr); }
+            .mobile-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 35px;
+            }
         }
-        .mobile-card {
-            background: var(--white);
-            border-radius: 8px;
-            border: 1px solid var(--gray-mid);
-            padding: 35px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
+        .mobile-row-num {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--red);
+            line-height: 1;
+            min-width: 60px;
+            opacity: 0.6;
         }
-        .mobile-card:hover {
-            box-shadow: var(--shadow-strong);
-            transform: translateY(-6px);
-            border-color: var(--red);
-        }
-        .mobile-card .mobile-card-icon {
-            width: 70px; height: 70px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--red) 0%, #D4443D 50%, #E8574F 100%);
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px var(--red-glow);
-        }
-        .mobile-card .mobile-card-icon svg {
-            width: 32px; height: 32px;
+        .mobile-row-info { flex-grow: 1; }
+        .mobile-row-info h3 {
             color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 6px;
         }
-        .mobile-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .mobile-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .mobile-row-info p {
+            color: #8EACC7;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .mobile-row-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 3px;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        .mobile-row-tag.tag-fee {
+            background: rgba(179, 58, 52, 0.15);
+            color: var(--red);
+            border: 1px solid rgba(179, 58, 52, 0.3);
+        }
+        .mobile-row-tag.tag-price {
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .mobile-row-action { flex-shrink: 0; }
+        @media (min-width: 768px) {
+            .mobile-row-action { text-align: right; }
+        }
         /* Industrial Footer */
         footer {
             background-color: var(--darker-blue);
@@ -1238,8 +1272,8 @@
             </div>
         </div>
     </section>
-    <!-- Mobile Services Cards -->
-    <section id="mobile" class="section-padding bg-light">
+    <!-- Mobile Services — Dark Rows -->
+    <section id="mobile" class="mobile-dark section-padding">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-subtitle">We Come To You</span>
@@ -1247,32 +1281,41 @@
                 <div class="title-divider"></div>
             </div>
 
-            <div class="mobile-cards-grid">
-                <div class="mobile-card reveal">
-                    <div class="mobile-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
+            <div class="mobile-rows">
+                <div class="mobile-row reveal">
+                    <div class="mobile-row-num">01</div>
+                    <div class="mobile-row-info">
+                        <h3>Mobile Car Wash</h3>
+                        <p>Book between 8am-6:30pm, Mon-Sat. Fast 20 minute turnaround.</p>
                     </div>
-                    <h3>Mobile Car Wash</h3>
-                    <p>Book between 8am-6:30pm, Mon-Sat. Fast 20 minute turnaround. (+$10 Dispatch Fee)</p>
-                    <a href="tel:3013071414" class="btn btn-red">Book Wash</a>
+                    <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
+                    <div class="mobile-row-action">
+                        <a href="tel:3013071414" class="btn btn-red btn-sm">Book Wash</a>
+                    </div>
                 </div>
 
-                <div class="mobile-card reveal delay-1">
-                    <div class="mobile-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
+                <div class="mobile-row reveal delay-1">
+                    <div class="mobile-row-num">02</div>
+                    <div class="mobile-row-info">
+                        <h3>Mobile Car Detail</h3>
+                        <p>Available 8am-4:30pm. Complete interior and exterior detail. Up to 90 minutes.</p>
                     </div>
-                    <h3>Mobile Car Detail</h3>
-                    <p>Available 8am-4:30pm. Complete interior and exterior detail. Up to 90 minutes. (+$10 Fee)</p>
-                    <a href="tel:3013071414" class="btn btn-red">Book Detail</a>
+                    <span class="mobile-row-tag tag-fee">+$10 Fee</span>
+                    <div class="mobile-row-action">
+                        <a href="tel:3013071414" class="btn btn-red btn-sm">Book Detail</a>
+                    </div>
                 </div>
 
-                <div class="mobile-card reveal delay-2">
-                    <div class="mobile-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z"/></svg>
+                <div class="mobile-row reveal delay-2">
+                    <div class="mobile-row-num">03</div>
+                    <div class="mobile-row-info">
+                        <h3>Window Tinting</h3>
+                        <p>Certified installation with lifetime warranty. Starting at $59.95 for first 2 windows.</p>
                     </div>
-                    <h3>Window Tinting</h3>
-                    <p>Certified installation with lifetime warranty. Starting at $59.95 for first 2 windows.</p>
-                    <a href="#tinting" class="btn btn-outline">Learn More</a>
+                    <span class="mobile-row-tag tag-price">From $59.95</span>
+                    <div class="mobile-row-action">
+                        <a href="#tinting" class="btn btn-sm" style="border:2px solid rgba(255,255,255,0.3); color:var(--white);">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1382,7 +1425,7 @@
                     </div>
                     <h3>Birthday Club</h3>
                     <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
-                    <a href="#" class="btn" style="background:var(--white); color:var(--red); font-weight:800;">Sign Up Free</a>
+                    <a href="#" class="btn btn-outline" style="border-color:var(--red); color:var(--red);">Sign Up Free</a>
                 </div>
             </div>
         </div>
