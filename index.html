@@ -451,36 +451,37 @@
             .feature-grid { grid-template-columns: 1fr 1fr; }
         }
         .feature-box {
-            padding: 24px 28px;
+            padding: 32px 35px;
             background: var(--white);
             border-bottom: 1px solid var(--gray-mid);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 22px;
         }
         @media (min-width: 600px) {
             .feature-box:nth-child(odd) { border-right: 1px solid var(--gray-mid); }
         }
         .feature-box:hover { background: var(--gray-light); }
         .feature-box .icon-wrap {
-            width: 48px; height: 48px;
-            min-width: 48px;
+            width: 60px; height: 60px;
+            min-width: 60px;
             display: flex; align-items: center; justify-content: center;
-            background: var(--dark-blue);
-            border-radius: 4px;
+            background: linear-gradient(135deg, var(--red) 0%, #D4443D 50%, #E8574F 100%);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px var(--red-glow);
         }
         .feature-box svg {
-            width: 24px; height: 24px;
+            width: 28px; height: 28px;
             color: var(--white);
         }
         .feature-box h5 {
-            font-size: 1rem;
-            margin-bottom: 2px;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
             color: var(--dark-blue);
         }
         .feature-box p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             margin: 0;
         }
@@ -594,10 +595,10 @@
             text-transform: uppercase;
             text-align: center;
         }
-        /* Gold tier — subtle gold accent */
-        .tier-gold { border-color: #D4AF37; }
-        .tier-gold .service-price-hero .big-price { color: #B8941F; }
-        .tier-gold:hover { box-shadow: 0 15px 40px rgba(212,175,55,0.2); }
+        /* Red tier accent */
+        .tier-gold { border-color: var(--red); }
+        .tier-gold .service-price-hero .big-price { color: var(--red); }
+        .tier-gold:hover { box-shadow: 0 15px 40px var(--red-glow); }
         .service-body {
             padding: 20px 25px 30px;
             flex-grow: 1;
