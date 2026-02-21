@@ -3,214 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Wash | Premium Auto Detailing</title>
-    
-    <!-- Corporate Franchise Typography -->
+    <title>Pro Wash | Maryland & DC's Trusted Hand Car Wash Franchise</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Variables - Premium Corporate Palette */
         :root {
-            /* Colors */
+            --navy: #0A1F3F;
+            --navy-light: #122B52;
+            --blue: #1A6FB5;
+            --blue-light: #2A8FD8;
+            --orange: #D4521E;
+            --orange-dark: #B8441A;
+            --orange-light: #E8652F;
             --white: #FFFFFF;
-            --gray-lightest: #F8F9FA;
-            --gray-light: #F0F2F5;
-            --gray-mid: #E4E7EB;
-            --navy: #0A1E3D;
-            --corp-blue: #1565C0;
-            --red: #B33A34; 
-            --red-hover: #9A322D; 
-            --text-dark: #1A2533;
-            --text-muted: #546275;
-            --gold: #FFC107;
-            
-            /* Shadows & Depth */
-            --shadow-sm: 0 4px 12px rgba(10, 30, 61, 0.04);
-            --shadow-md: 0 12px 32px rgba(10, 30, 61, 0.08);
-            --shadow-lg: 0 20px 48px rgba(10, 30, 61, 0.12);
-            
-            /* Transitions */
-            --transition-fast: all 0.2s ease-in-out;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --off-white: #F7F8FA;
+            --gray-100: #F1F3F5;
+            --gray-200: #E2E6EA;
+            --gray-400: #8C959D;
+            --gray-600: #4A5260;
+            --gray-900: #1A1D23;
+            --transition: all 0.2s ease;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+            --radius: 6px;
         }
 
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
+            color: var(--gray-600);
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Archivo Black', sans-serif;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 0.5em;
+            font-family: 'Oswald', sans-serif;
             color: var(--navy);
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: 0.5px;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition-fast);
-        }
-
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
+        svg { fill: currentColor; display: inline-block; flex-shrink: 0; }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 96px 0; }
 
-        @media (min-width: 768px) {
-            .container { padding: 0 40px; }
-        }
-
-        /* Utility & Texture Classes */
-        .pattern-stripes {
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(10, 30, 61, 0.02) 10px, rgba(10, 30, 61, 0.02) 20px);
-        }
-
-        .clip-angle-bottom {
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
-            padding-bottom: calc(60px + 4vw);
-        }
-
-        .clip-angle-both {
-            clip-path: polygon(0 4vw, 100% 0, 100% calc(100% - 4vw), 0 100%);
-            margin-top: -4vw;
-            padding-top: calc(60px + 4vw);
-            padding-bottom: calc(60px + 4vw);
-        }
-
-        /* SVG Utility */
-        svg {
-            fill: currentColor;
-            display: inline-block;
-        }
-
-        /* Corporate Buttons */
+        /* ── Buttons ── */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
             padding: 16px 32px;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
             text-transform: uppercase;
-            border: 1px solid transparent;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: var(--radius);
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: var(--transition);
             text-align: center;
-            border-radius: 6px;
         }
 
-        .btn-sm {
-            padding: 12px 24px;
-            font-size: 0.85rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-red {
-            background: linear-gradient(180deg, #C7443E 0%, #9A322D 100%);
-            color: var(--white);
-            border-color: #8A2D28;
-            box-shadow: 0 4px 14px rgba(179, 58, 52, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-red:hover {
-            background: linear-gradient(180deg, #D64A44 0%, #B33A34 100%);
-            box-shadow: 0 8px 24px rgba(179, 58, 52, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        .btn-primary {
+            background-color: var(--orange);
             color: var(--white);
         }
-
-        .btn-outline-corp {
-            background-color: var(--white);
-            color: var(--corp-blue);
-            border-color: var(--corp-blue);
+        .btn-primary:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 82, 30, 0.3);
         }
 
-        .btn-outline-corp:hover {
-            background: linear-gradient(180deg, #1E88E5 0%, #1565C0 100%);
+        .btn-outline {
+            background: transparent;
             color: var(--white);
-            border-color: #0D47A1;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
         }
 
-        .btn-corp {
-            background: linear-gradient(180deg, #1E88E5 0%, #1565C0 100%);
-            color: var(--white);
-            border-color: #0D47A1;
-            box-shadow: 0 4px 14px rgba(21, 101, 192, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        
-        .btn-corp:hover {
-            background: linear-gradient(180deg, #2196F3 0%, #1976D2 100%);
-            box-shadow: 0 8px 24px rgba(21, 101, 192, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            color: var(--white);
-        }
-
-        .btn-white {
-            background-color: var(--white);
-            color: var(--navy);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-white:hover {
-            background-color: var(--gray-lightest);
-            box-shadow: var(--shadow-md);
-            color: var(--corp-blue);
-        }
-
-        /* Top Ribbon */
-        .top-ribbon {
+        .btn-dark {
             background-color: var(--navy);
             color: var(--white);
-            text-align: center;
-            padding: 10px 0;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1001;
+        }
+        .btn-dark:hover {
+            background-color: var(--navy-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 31, 63, 0.3);
         }
 
-        /* Sticky Header */
+        .btn-ghost {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--gray-200);
+        }
+        .btn-ghost:hover {
+            border-color: var(--navy);
+            background: var(--gray-100);
+        }
+
+        .btn-lg {
+            padding: 18px 40px;
+            font-size: 1.15rem;
+        }
+
+        .btn-block { width: 100%; }
+
+        /* ── Top Bar ── */
+        .top-bar {
+            background-color: var(--navy);
+            color: rgba(255,255,255,0.8);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .top-bar a {
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-bar a:hover { color: var(--white); }
+        .top-bar svg { width: 14px; height: 14px; }
+
+        /* ── Header ── */
         header {
-            background-color: var(--white);
-            padding: 20px 0;
+            background: var(--white);
+            padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: var(--transition-fast);
-            border-bottom: 1px solid var(--gray-mid);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
         }
-
         header.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--shadow-md);
-            border-bottom-color: transparent;
+            padding: 10px 0;
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-container {
@@ -219,1573 +173,1294 @@
             align-items: center;
         }
 
-        .logo-area {
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            font-weight: 700;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 8px;
         }
-
-        .logo img {
-            max-height: 40px;
-            width: auto;
-        }
-
-        @media (min-width: 768px) {
-            .logo img { max-height: 48px; }
-            .logo-area { gap: 24px; }
-        }
-
-        .est-badge {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .est-badge {
-                display: flex;
-                flex-direction: column;
-                border-left: 2px solid var(--gray-mid);
-                padding-left: 24px;
-            }
-        }
-
-        .est-badge span:first-child {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .est-badge span:last-child {
-            font-family: 'Archivo Black';
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--orange);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-size: 1.1rem;
-            color: var(--navy);
-            line-height: 1.1;
+            font-weight: 700;
         }
 
         .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a.nav-item {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a.nav-item:hover { color: var(--navy); }
+
+        .nav-cta {
+            background: var(--orange);
+            color: var(--white);
+            padding: 10px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--radius);
+        }
+        .nav-cta:hover { background: var(--orange-dark); }
+
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            color: var(--navy);
+            cursor: pointer;
         }
 
-        @media (min-width: 1024px) {
-            .nav-links {
-                display: flex;
-                gap: 32px;
-                align-items: center;
-            }
-        }
-
-        .nav-item {
-            font-family: 'Outfit', sans-serif;
+        /* ── Section Labels ── */
+        .section-label {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 16px;
+            color: var(--orange);
+        }
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 100px 0 80px;
+            background: var(--navy);
+            background-image: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-image: url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.07;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange-light);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 24px;
+            line-height: 1.05;
+        }
+        .hero-description {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 520px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-proof {
+            display: flex;
+            gap: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+        .hero-proof-item {
+            text-align: left;
+        }
+        .hero-proof-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .hero-proof-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            backdrop-filter: blur(8px);
+        }
+        .hero-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.15rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .hero-card p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+        .hero-card-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 82, 30, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--orange-light);
+        }
+        .hero-card-icon svg { width: 20px; height: 20px; }
+
+        /* ── Trust Bar ── */
+        .trust-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 24px 0;
+        }
+        .trust-bar-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .trust-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
             font-size: 0.95rem;
             color: var(--navy);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        .nav-item:hover { color: var(--corp-blue); }
-
-        .header-phone {
-            font-family: 'Archivo Black';
-            font-size: 1.3rem;
-            color: var(--navy);
-            display: none;
-            align-items: center;
-            gap: 8px;
+        .trust-bar-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--blue);
         }
-        
-        @media (min-width: 1024px) {
-            .header-phone { display: flex; }
-        }
-        
-        .header-phone svg { color: var(--red); width: 22px; }
-
-        .mobile-menu-btn { 
-            display: block; 
-            background: none; 
-            border: none; 
-            color: var(--navy); 
-            cursor: pointer; 
+        .trust-bar-divider {
+            width: 1px;
+            height: 32px;
+            background: var(--gray-200);
         }
 
-        @media (min-width: 1024px) {
-            .mobile-menu-btn { display: none; }
-        }
-
-        /* Highly Visible Photo-Driven Split Hero */
-        .hero {
-            position: relative;
-            background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0) 100%), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center right;
-            padding: 80px 0 160px 0;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        @media (min-width: 768px) {
-            .hero { padding: 120px 0 200px 0; }
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 6.5fr 3.5fr;
-                gap: 60px;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.2rem);
-            color: var(--navy);
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 32px;
-            font-weight: 500;
-            max-width: 600px;
-        }
-
-        @media (min-width: 768px) {
-            .hero p {
-                font-size: 1.2rem;
-                margin-bottom: 40px;
-            }
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        @media (min-width: 600px) {
-            .hero-actions {
-                flex-direction: row;
-                gap: 20px;
-            }
-        }
-
-        /* Hero Right Split - Locations Box */
-        .hero-info-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            align-items: flex-start; /* Keeps the box tightly wrapped to the text */
-        }
-
-        .hero-locations-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 6px solid var(--red);
-            box-shadow: var(--shadow-lg);
-            max-width: fit-content;
-        }
-
-        @media (min-width: 768px) {
-            .hero-locations-card {
-                padding: 24px 30px;
-            }
-        }
-
-        .hero-locations-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-            color: var(--navy);
-            text-transform: uppercase;
-        }
-        
-        .locations-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .locations-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .locations-list li:last-child {
-            margin-bottom: 0;
-        }
-        
-        .locations-list svg {
-            width: 18px;
-            height: 18px;
-            color: var(--red);
-            flex-shrink: 0;
-        }
-
-        /* Overlapping Proof Stats Bar (Borderless) */
-        .stats-strip-container {
-            margin-top: -60px;
-            position: relative;
-            z-index: 20;
-        }
-
-        @media (min-width: 768px) {
-            .stats-strip-container { margin-top: -80px; }
-        }
-
-        .stats-grid {
-            background-color: var(--white);
-            box-shadow: var(--shadow-lg);
-            border-top: 4px solid var(--corp-blue);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-radius: 8px;
-        }
-
-        @media (min-width: 1024px) {
-            .stats-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .stat-card {
-            padding: 24px 16px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--gray-mid);
-            border-right: 1px solid var(--gray-mid);
-        }
-
-        @media (min-width: 1024px) {
-            .stat-card {
-                padding: 35px 24px;
-                border-bottom: none;
-            }
-            .stat-card:last-child { border-right: none; }
-        }
-
-        .stat-card svg {
-            width: 32px; height: 32px;
-            color: var(--red);
-        }
-
-        .stat-label {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.95rem;
-            color: var(--navy);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .stat-label { font-size: 1.1rem; }
-        }
-
-        /* Section Spacing */
-        .section-padding { padding: 60px 0; }
-
-        @media (min-width: 768px) {
-            .section-padding { padding: 120px 0; }
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 0.95rem;
-            color: var(--red);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-        
-        .section-label::before { content: ''; width: 40px; height: 3px; background: var(--red); }
-
-        .section-title {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            color: var(--navy);
-            margin-bottom: 30px;
-        }
-
-        /* Mission Section */
+        /* ── Mission / About ── */
         .mission-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
         }
-
-        @media (min-width: 1024px) {
-            .mission-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
-        }
-
+        .mission-text .section-title { margin-bottom: 24px; }
         .mission-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.05rem;
             margin-bottom: 20px;
+            color: var(--gray-600);
         }
-
-        @media (min-width: 768px) {
-            .mission-text p { font-size: 1.15rem; margin-bottom: 24px; }
-        }
-
-        /* Mission Features (Lighter, subtle layout) */
-        .feature-checklist {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            background-color: var(--gray-lightest);
-            padding: 30px;
-            border-radius: 12px;
-            border-top: 4px solid var(--corp-blue);
-        }
-
-        @media (min-width: 600px) {
-            .feature-checklist {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-                padding: 40px;
-            }
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .feature-item svg {
-            width: 16px; height: 16px;
-            color: var(--red);
-            flex-shrink: 0;
-            margin-top: 4px;
-        }
-
-        .feature-item div h5 {
-            font-size: 1.15rem;
+        .mission-text p strong {
             color: var(--navy);
-            margin-bottom: 4px;
-        }
-
-        .feature-item div p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin: 0;
+            font-weight: 700;
         }
 
         .founder-quote {
-            margin-top: 32px;
-            padding-left: 20px;
-            border-left: 4px solid var(--red);
-        }
-
-        .founder-quote p {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 1.15rem;
-            color: var(--navy);
+            font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 8px;
+            color: var(--navy);
+            border-left: 3px solid var(--orange);
+            padding: 20px 24px;
+            margin: 24px 0;
+            line-height: 1.7;
+            background: var(--off-white);
+            border-radius: 0 var(--radius) var(--radius) 0;
         }
 
-        .founder-quote span {
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        /* Services Matrix (3 Top, 2 Bottom) */
-        .services-wrapper {
-            background-color: var(--gray-light);
-            position: relative;
-        }
-
-        .services-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-        }
-
-        @media (min-width: 768px) {
-            .services-header { margin: 0 auto 80px; }
-        }
-
-        .services-header .section-label { justify-content: center; }
-        .services-header .section-label::before, .services-header .section-label::after { content: ''; width: 40px; height: 3px; background: var(--red); }
-
-        .services-grid-top, .services-grid-bottom {
+        .mission-features {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 24px;
-            align-items: stretch;
-            margin-bottom: 24px;
+        }
+        .mission-feature {
+            padding: 28px;
+            background: var(--off-white);
+            border-radius: var(--radius);
+            border-left: 3px solid var(--blue);
+        }
+        .mission-feature h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--navy);
+        }
+        .mission-feature p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            line-height: 1.6;
         }
 
-        @media (min-width: 768px) {
-            .services-grid-top { grid-template-columns: repeat(2, 1fr); gap: 32px; margin-bottom: 32px;}
-            .services-grid-bottom { grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto;}
+        /* ── Services ── */
+        .services-intro {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        @media (min-width: 1024px) {
-            .services-grid-top { grid-template-columns: repeat(3, 1fr); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        /* Sleek Service Boxes */
         .service-card {
             background: var(--white);
-            box-shadow: var(--shadow-sm);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
             position: relative;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--gray-mid);
         }
-
         .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--corp-blue);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gray-200);
+        }
+        .service-card.featured {
+            border: 2px solid var(--orange);
+            box-shadow: var(--shadow-md);
+        }
+        .service-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 4px 20px;
+            border-radius: 20px;
         }
 
-        .card-header {
-            background-color: var(--navy);
-            color: var(--white);
-            padding: 24px;
-            text-align: center;
-            border-bottom: 4px solid var(--corp-blue);
-        }
-
-        .pkg-num {
-            font-family: 'Outfit';
-            font-weight: 800;
-            color: var(--corp-blue);
-            font-size: 0.9rem;
+        .service-tier {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 6px;
-            display: block;
+            color: var(--gray-400);
+            margin-bottom: 8px;
         }
-
-        .card-header h3 {
+        .service-card h3 {
             font-size: 1.6rem;
-            margin: 0;
-            color: var(--white);
+            margin-bottom: 16px;
         }
-
-        .card-body {
-            padding: 30px 24px;
+        .service-card .service-desc {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: 24px;
+            line-height: 1.6;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
 
+        .price-table {
+            margin-bottom: 28px;
+        }
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--gray-mid);
-        }
-
-        .price-row:last-of-type { border-bottom: none; margin-bottom: 24px; }
-
-        .v-type {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-transform: uppercase;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
             font-size: 0.95rem;
-            letter-spacing: 1px;
         }
-
-        .v-type svg { width: 24px; height: 24px; color: var(--corp-blue); }
-
-        .p-val {
-            font-family: 'Archivo Black';
-            font-size: 1.6rem;
+        .price-row:last-child { border-bottom: none; }
+        .price-label { color: var(--gray-600); font-weight: 500; }
+        .price-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
             color: var(--navy);
+            font-weight: 600;
         }
 
-        .service-card .btn { width: 100%; margin-top: auto; }
+        .service-card .btn { margin-top: auto; }
 
-        /* Featured Package */
-        .service-card.featured {
-            border: 2px solid var(--red);
-            box-shadow: var(--shadow-md);
-            z-index: 10;
-        }
-
-        @media (min-width: 1024px) {
-            .service-card.featured { transform: scale(1.03); }
-            .service-card.featured:hover { transform: scale(1.03) translateY(-4px); }
-        }
-
-        .service-card.featured .card-header {
-            background-color: var(--corp-blue);
-            border-bottom-color: var(--navy);
-        }
-        
-        .service-card.featured .pkg-num { color: var(--white); opacity: 0.9; }
-
-        .ribbon-wrapper {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 120px;
-            height: 120px;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        @media (min-width: 768px) {
-            .ribbon-wrapper { width: 150px; height: 150px; }
-        }
-
-        .ribbon {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 0.75rem;
-            color: var(--white);
-            text-align: center;
-            text-transform: uppercase;
-            transform: rotate(45deg);
-            position: relative;
-            padding: 6px 0;
-            left: -20px;
-            top: 25px;
-            width: 180px;
-            background: linear-gradient(180deg, #C7443E 0%, #9A322D 100%);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            letter-spacing: 1px;
-        }
-
-        @media (min-width: 768px) {
-            .ribbon {
-                font-size: 0.8rem;
-                padding: 8px 0;
-                left: -15px;
-                top: 35px;
-                width: 220px;
-            }
-        }
-
-        /* Mobile Services Stack (Horizontal Icon Rows) */
-        .mobile-section {
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .mobile-grid {
+        /* ── Full Width Services Row ── */
+        .services-row {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        /* ── Mobile Services ── */
+        .mobile-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-
-        @media (min-width: 1024px) {
-            .mobile-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
-            }
+        .mobile-service-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            text-align: center;
+            transition: var(--transition);
         }
-
-        /* Differentiated Layout: Horizontal Items instead of standard cards */
-        .mobile-card {
-            background: var(--gray-lightest);
+        .mobile-service-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .mobile-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--off-white);
             border-radius: 12px;
-            padding: 24px;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--navy);
+        }
+        .mobile-icon svg { width: 28px; height: 28px; }
+        .mobile-service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .mobile-service-card p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* ── Window Tinting ── */
+        .tinting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .tinting-content .section-title { margin-bottom: 20px; }
+        .tinting-content p {
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+        .tinting-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--navy);
+        }
+        .tinting-checklist svg {
+            width: 20px;
+            height: 20px;
+            color: var(--blue);
+        }
+        .tinting-pricing {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        .tinting-warranty-badge {
+            position: absolute;
+            top: -14px;
+            right: 32px;
+            background: var(--blue);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 6px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+        .tinting-pricing h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .tinting-pricing .price-row {
+            border-bottom-color: var(--gray-100);
+            padding: 14px 0;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 12px;
+            right: 24px;
+            font-family: 'Oswald', serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: var(--gray-100);
+            pointer-events: none;
+        }
+        .testimonial-stars {
+            color: var(--orange);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.9rem;
+        }
+        .testimonial-location {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* ── Programs ── */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .program-card {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             border: none;
-            transition: var(--transition-fast);
+            border-radius: var(--radius);
+            padding: 40px;
+            display: flex;
+            gap: 24px;
+            align-items: start;
+            color: var(--white);
         }
-
-        @media (min-width: 600px) {
-            .mobile-card {
-                flex-direction: row;
-                align-items: center;
-                padding: 32px;
-            }
-        }
-
-        .mobile-card:hover {
-            box-shadow: var(--shadow-sm);
-            background: var(--white);
-        }
-
-        .mobile-icon-wrap {
-            background: var(--white);
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        .program-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
         }
+        .program-icon.loyalty { background: rgba(255, 255, 255, 0.1); color: var(--orange-light); }
+        .program-icon.birthday { background: rgba(255, 255, 255, 0.1); color: var(--orange-light); }
+        .program-icon svg { width: 24px; height: 24px; }
+        .program-card h3 { font-size: 1.4rem; margin-bottom: 8px; color: var(--white); }
+        .program-card p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
-        .mobile-icon-wrap svg {
-            width: 32px; height: 32px;
-            color: var(--corp-blue);
-        }
-
-        .mobile-content { flex-grow: 1; }
-
-        .mobile-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
-        .mobile-card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;}
-        
-        /* Window Tinting Highlight - Photography Background */
-        .tint-section {
-            background: linear-gradient(135deg, rgba(10, 30, 61, 0.92) 0%, rgba(21, 101, 192, 0.85) 100%), url('https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&q=80&w=1920') center/cover fixed;
-            color: var(--white);
-        }
-
-        .tint-section .section-title { color: var(--white); }
-
-        .tint-grid {
+        /* ── Locations ── */
+        .locations-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .tint-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
-        }
-
-        .tint-content p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 30px;
-        }
-
-        @media (min-width: 768px) {
-            .tint-content p { font-size: 1.25rem; margin-bottom: 40px; }
-        }
-        
-        .tint-content .feature-checklist {
-            background: transparent;
-            padding: 0; box-shadow: none; border: none;
-            display: flex; flex-direction: column; gap: 12px;
-        }
-        
-        .tint-content .feature-checklist li {
-            display: flex; align-items: flex-start; gap: 12px;
-        }
-
-        .tint-content .feature-checklist li svg { color: var(--corp-blue); background: var(--white); border-radius: 50%; padding: 3px; width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;}
-        .tint-content .feature-checklist li div h5 { color: var(--white); margin: 0; font-size: 1.1rem;}
-
-        .tint-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            margin-top: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .tint-card { padding: 56px 48px; margin-top: 0; }
-        }
-
-        .tint-badge {
-            position: absolute;
-            top: -16px; left: 30px;
-            background: linear-gradient(180deg, #1E88E5 0%, #1565C0 100%);
-            color: var(--white);
-            padding: 8px 16px;
-            font-family: 'Archivo Black';
-            font-size: 1rem;
-            box-shadow: 0 8px 16px rgba(21, 101, 192, 0.3);
-            border-radius: 4px;
-        }
-
-        @media (min-width: 768px) {
-            .tint-badge {
-                top: -20px; left: 48px;
-                padding: 12px 24px;
-                font-size: 1.2rem;
-            }
-        }
-
-        .tint-card .price-row { border-bottom-color: var(--gray-mid); }
-        .tint-card .v-type { color: var(--navy); font-family: 'Archivo Black'; font-size: 1.1rem;}
-        .tint-card .p-val { color: var(--red); font-size: 2.2rem; }
-
-        @media (min-width: 768px) {
-            .tint-card .v-type { font-size: 1.3rem;}
-            .tint-card .p-val { font-size: 2.8rem; }
-        }
-
-        /* Testimonials Section - Soft Bubbles */
-        .testimonials-section {
-            background-color: var(--white);
-        }
-        
-        .test-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .test-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        }
-
-        @media (min-width: 1024px) {
-            .test-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        
-        .test-card {
-            background: var(--gray-lightest);
-            padding: 40px 32px;
-            border-radius: 16px;
-            border: none;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .test-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 100px;
-            color: var(--gray-mid);
-            opacity: 0.5;
-            z-index: -1;
-            line-height: 1;
-        }
-        
-        .stars {
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            letter-spacing: 2px;
-        }
-        
-        .test-card p {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            font-style: italic;
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-        
-        .test-author {
-            font-family: 'Archivo Black';
-            font-size: 1rem;
-            color: var(--navy);
-        }
-
-        /* Full Width Programs Section */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 1024px) {
-            .programs-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-        }
-
-        /* Differentiated Boxes: Solid Color Rounded Banners */
-        .prog-card {
-            padding: 40px 30px;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 24px;
-            border: none;
-            color: var(--white);
-            box-shadow: var(--shadow-sm);
-        }
-
-        @media (min-width: 600px) {
-            .prog-card {
-                flex-direction: row;
-                align-items: center;
-                padding: 48px;
-                gap: 32px;
-            }
-        }
-
-        .prog-card.loyalty { background: linear-gradient(135deg, var(--navy), var(--corp-blue)); }
-        .prog-card.birthday { background: linear-gradient(135deg, var(--red-hover), var(--red)); }
-
-        .prog-icon {
-            width: 64px; height: 64px;
-            background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--white);
-            flex-shrink: 0;
-            border-radius: 50%;
-        }
-
-        @media (min-width: 600px) {
-            .prog-icon { width: 80px; height: 80px; }
-        }
-        
-        .prog-icon svg { width: 32px; height: 32px; }
-
-        .prog-text h3 { font-size: 1.8rem; margin-bottom: 8px; color: var(--white); }
-        .prog-text p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin: 0; }
-
-        /* Floating Locations Grid (Borderless) */
-        .loc-section { background-color: var(--gray-light); }
-        
-        .loc-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
         }
-
-        @media (min-width: 600px) {
-            .loc-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        }
-
-        @media (min-width: 1024px) {
-            .loc-grid { grid-template-columns: repeat(5, 1fr); }
-        }
-
-        .loc-card {
+        .location-card {
             background: var(--white);
-            padding: 32px 24px;
-            border-radius: 12px;
-            transition: var(--transition-fast);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: var(--transition);
         }
-
-        .loc-card:hover {
-            transform: translateY(-4px);
+        .location-card:hover {
             box-shadow: var(--shadow-md);
+            border-color: var(--blue);
+        }
+        .location-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .location-card p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        .location-hours {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-100);
+        }
+        .location-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--blue);
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+        .location-link:hover { color: var(--navy); }
+        .location-link svg { width: 14px; height: 14px; }
+        .location-neighborhood {
+            font-size: 0.8rem;
+            color: var(--blue);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-100);
         }
 
-        .loc-card svg { width: 32px; height: 32px; color: var(--red); margin-bottom: 16px; margin-left: auto; margin-right: auto;}
-        .loc-card h4 { font-size: 1.3rem; color: var(--navy); margin-bottom: 12px; }
-        .loc-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; line-height: 1.4;}
-
-        .loc-btn-wrap {
-            margin-top: auto;
-            padding-top: 20px;
-        }
-
-        /* Photography Pre-Footer CTA */
-        .cta-banner {
-            background: linear-gradient(rgba(179, 58, 52, 0.92), rgba(154, 50, 45, 0.95)), url('https://images.unsplash.com/photo-1605810730434-7dc4b85c184c?auto=format&fit=crop&q=80&w=1920') center/cover fixed;
-            color: var(--white);
-            text-align: center;
+        /* ── CTA Banner ── */
+        .cta-section {
+            background: var(--navy);
+            background-image: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
             padding: 80px 0;
+            text-align: center;
+            color: var(--white);
             position: relative;
         }
-
-        @media (min-width: 768px) {
-            .cta-banner { padding: 120px 0; }
-        }
-
-        .cta-banner h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 20px; color: var(--white); }
-        .cta-banner p { font-size: 1.15rem; font-weight: 400; margin-bottom: 32px; }
-
-        @media (min-width: 768px) {
-            .cta-banner p { font-size: 1.4rem; margin-bottom: 48px; }
-        }
-        
-        .mega-phone {
-            display: block;
-            font-family: 'Archivo Black';
-            font-size: clamp(2.5rem, 6vw, 6.5rem);
-            color: var(--white);
-            line-height: 1;
-            margin-top: 32px;
-            transition: var(--transition-fast);
-        }
-
-        @media (min-width: 768px) {
-            .mega-phone { margin-top: 48px; }
-        }
-        
-        .mega-phone:hover { color: var(--navy); }
-
-        /* Footer */
-        footer {
-            background-color: var(--navy);
-            color: var(--gray-light);
-            padding: 60px 0 30px;
-        }
-
-        @media (min-width: 768px) {
-            footer { padding: 80px 0 40px; }
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 60px; margin-bottom: 80px; }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
-        }
-
-        .footer-logo {
-            font-family: 'Archivo Black';
+        .cta-section h2 {
             font-size: 3rem;
             color: var(--white);
-            line-height: 1;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 36px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-phone {
+            display: block;
+            margin-top: 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 1px;
+        }
+        .cta-phone strong { color: var(--white); }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--gray-900);
+            color: rgba(255,255,255,0.5);
+            padding: 64px 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            padding-bottom: 48px;
+        }
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
             display: block;
         }
-        
-        .footer-logo img {
-            max-height: 50px;
-            width: auto;
-            filter: brightness(0) invert(1);
+        .footer-tagline {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 20px;
         }
-
-        @media (min-width: 768px) {
-            .footer-logo img { max-height: 60px; }
-        }
-
-        .footer-col h5 {
-            font-size: 1.1rem;
+        .footer-col h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
             color: var(--white);
-            margin-bottom: 24px;
-            position: relative;
-            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
-
-        @media (min-width: 768px) {
-            .footer-col h5 { font-size: 1.2rem; margin-bottom: 32px; padding-bottom: 16px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
         }
-        
-        .footer-col h5::after {
-            content: ''; position: absolute; bottom: 0; left: 0;
-            width: 40px; height: 3px; background: var(--corp-blue);
+        .footer-links a:hover { color: rgba(255,255,255,0.8); }
+        .franchise-link {
+            color: var(--orange) !important;
+            font-weight: 700;
         }
-
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { font-weight: 400; font-size: 1rem; color: #8F9EB3; }
-        .footer-links a:hover { color: var(--white); }
-
-        .footer-contact p { font-size: 1rem; color: #8F9EB3; margin-bottom: 12px; }
-        .footer-contact .f-phone { font-family: 'Archivo Black'; font-size: 1.4rem; color: var(--white); }
-
-        @media (min-width: 768px) {
-            .footer-contact .f-phone { font-size: 1.6rem; }
+        .franchise-link:hover { color: var(--orange-light) !important; }
+        .footer-contact p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: rgba(255,255,255,0.4);
         }
-
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 20px 0;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
             justify-content: space-between;
             align-items: center;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #8F9EB3;
+            font-size: 0.8rem;
         }
-
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-                text-align: left;
-                padding-top: 32px;
-                font-size: 0.95rem;
-            }
+        .social-icons {
+            display: flex;
+            gap: 16px;
         }
+        .social-icons svg {
+            width: 20px; height: 20px;
+            color: rgba(255,255,255,0.3);
+            transition: var(--transition);
+        }
+        .social-icons a:hover svg { color: rgba(255,255,255,0.7); }
 
-        /* Staggered Scroll Animations */
+        /* ── Animations ── */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
 
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.2rem; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-right { display: none; }
+            .section-title { font-size: 2.5rem; }
+            .mission-grid { grid-template-columns: 1fr; gap: 48px; }
+            .tinting-grid { grid-template-columns: 1fr; gap: 48px; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .services-row { grid-template-columns: 1fr; }
+            .mobile-services-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .locations-grid { grid-template-columns: repeat(3, 1fr); }
+            .trust-bar-grid { flex-wrap: wrap; gap: 16px; justify-content: center; }
+            .trust-bar-divider { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .top-bar { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid var(--gray-200);
+                gap: 16px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links .nav-cta { width: 100%; text-align: center; display: block; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn svg { width: 28px; height: 28px; }
+
+            .hero { padding: 64px 0; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-proof { flex-direction: column; gap: 20px; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions .btn { width: 100%; }
+
+            .section-padding { padding: 64px 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .locations-grid { grid-template-columns: 1fr; }
+            .mission-features { grid-template-columns: 1fr; }
+
+            .cta-section h2 { font-size: 2.2rem; }
+            .cta-actions { flex-direction: column; align-items: center; }
+            .cta-actions .btn { width: 100%; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Franchise Top Ribbon -->
-    <div class="top-ribbon">
-        NOW SERVING 5 LOCATIONS ACROSS MD & DC &nbsp;&nbsp;|&nbsp;&nbsp; MON-SAT: 8AM-6PM
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <a href="tel:3013071414">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    (301) 307-1414
+                </a>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <span>Mon &ndash; Sat: 8:00am &ndash; 6:00pm</span>
+            </div>
+            <div>
+                <a href="#locations">5 Locations Across MD &amp; DC</a>
+            </div>
+        </div>
     </div>
 
-    <!-- Corporate Header -->
+    <!-- Header -->
     <header id="header">
         <div class="container nav-container">
-            <div class="logo-area">
-                <a href="#" class="logo">
-                    <!-- Link to user's specified logo image -->
-                    <img src="https://prowashdetail.net/wp-content/uploads/2017/08/logo_main.png" alt="Pro Wash Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span style="display:none;">PRO WASH</span>
-                </a>
-                <div class="est-badge">
-                    <span>Established</span>
-                    <span>1998</span>
-                </div>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileBtn">
-                <svg viewBox="0 0 24 24" width="32" height="32"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </button>
-            
-            <nav class="nav-links" id="navLinks">
-                <a href="#mission" class="nav-item">Our Mission</a>
-                <a href="#services" class="nav-item">Services</a>
-                <a href="#mobile" class="nav-item">Mobile Fleet</a>
-                <a href="#locations" class="nav-item">Locations</a>
-                <a href="tel:3013071414" class="btn btn-red btn-sm">Book Now</a>
-            </nav>
-            
-            <a href="tel:3013071414" class="header-phone">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                (301) 307-1414
+            <a href="#" class="logo">
+                <div class="logo-mark">PW</div>
+                PRO WASH
             </a>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#tinting" class="nav-item">Tinting</a>
+                <a href="#locations" class="nav-item">Locations</a>
+                <a href="tel:3013071414" class="nav-item">Contact</a>
+                <a href="tel:3013071414" class="nav-cta">Book Now</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Photo-Driven Split Hero -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content reveal">
-                <h1>THE FULL SERVICE WASH YOUR CAR DESERVES.<br>IN 20 MINUTES.</h1>
-                <p>Professional Auto Clean. Every Time. Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash.</p>
-                <div class="hero-actions">
-                    <a href="tel:3013071414" class="btn btn-red">Book Now → (301) 307-1414</a>
-                    <a href="#services" class="btn btn-outline-corp">View Services</a>
+        <div class="container">
+            <div class="hero-grid reveal">
+                <div class="hero-left">
+                    <span class="hero-eyebrow">PG County &amp; DC&rsquo;s Hand Car Wash</span>
+                    <h1>NO MACHINES. NO SCRATCHES. JUST HANDS THAT KNOW WHAT THEY&rsquo;RE DOING.</h1>
+                    <p class="hero-description">Pro Wash is a hand car wash &mdash; not an automated tunnel. Every vehicle is washed by trained staff using clean towels and proper technique, start to finish. Five locations across PG County and DC. Walk-ins welcome, 20 minutes or less.</p>
+
+                    <div class="hero-actions">
+                        <a href="tel:3013071414" class="btn btn-primary btn-lg">Call Us &mdash; (301) 307-1414</a>
+                        <a href="#locations" class="btn btn-outline btn-lg">Find Your Location</a>
+                    </div>
+
+                    <div class="hero-proof">
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-number">5</div>
+                            <div class="hero-proof-label">Locations</div>
+                        </div>
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-number">20 min</div>
+                            <div class="hero-proof-label">Express Wash</div>
+                        </div>
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-number">100%</div>
+                            <div class="hero-proof-label">Hand Washed</div>
+                        </div>
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-number">Lifetime</div>
+                            <div class="hero-proof-label">Tint Warranty</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="hero-info-stack reveal delay-1">
-                <div class="hero-locations-card">
-                    <h4>Our Service Locations</h4>
-                    <ul class="locations-list">
-                        <li>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Clinton, MD
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Capitol Heights, MD
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Bowie, MD
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Upper Marlboro, MD
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Washington, DC
-                        </li>
-                    </ul>
+
+                <div class="hero-right">
+                    <div class="hero-card">
+                        <div class="hero-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div class="hero-card-title">Walk-Ins Welcome</div>
+                        <p>No appointment needed. Drive in to any of our 5 locations during business hours.</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
+                        </div>
+                        <div class="hero-card-title">Mobile Service Available</div>
+                        <p>We come to you. Book mobile wash or detail at your home or office.</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                        </div>
+                        <div class="hero-card-title">Lifetime Tint Warranty</div>
+                        <p>Every window tint installation backed by our lifetime warranty. No questions asked.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Anchored Proof Stats Bar (Borderless Design) -->
-    <div class="stats-strip-container">
+    <!-- Trust Bar -->
+    <div class="trust-bar">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <div class="stat-label">5 Regional<br>Locations</div>
+            <div class="trust-bar-grid">
+                <div class="trust-bar-item">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Hand Wash Only
                 </div>
-                <div class="stat-card reveal delay-2">
+                <div class="trust-bar-divider"></div>
+                <div class="trust-bar-item">
                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                    <div class="stat-label">20 Minute<br>Turnaround</div>
+                    Express 20-Min Service
                 </div>
-                <div class="stat-card reveal delay-3">
-                    <svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-3-3v3H8V5h8zm3 13H5v-8h14v8z M12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
-                    <div class="stat-label">Premium Full<br>Service</div>
+                <div class="trust-bar-divider"></div>
+                <div class="trust-bar-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>
+                    Swirl-Free Guarantee
                 </div>
-                <div class="stat-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-                    <div class="stat-label">Lifetime<br>Warranty</div>
+                <div class="trust-bar-divider"></div>
+                <div class="trust-bar-item">
+                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+                    Mobile Service
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Corporate Mission Section -->
-    <section id="mission" class="section-padding">
-        <div class="container mission-grid">
-            <div class="mission-text reveal">
-                <span class="section-label">CORPORATE MISSION</span>
-                <h2 class="section-title">BUILT TO SET THE STANDARD IN FULL SERVICE CAR CARE</h2>
-                <p>Pro Wash is a premier full-service car wash. Pro Wash offers the time efficiency of an express automated car wash with the quality and swirl free paint results of a premium full service wash.</p>
-                <p>We offer an array of service packages from basic full service washes to the extensive master detail package. We also provide professional consultation and education on paint and interior car preservation.</p>
-                <p>Beyond passenger vehicles, commercial power washing services are available for decks, sidewalks, houses, fleet washing, and dealership lot spraying.</p>
-                
-                <div class="founder-quote">
-                    <p>"Early on I recognized a need for mobile full service washing and car detailing."</p>
-                    <span>— Lamond B., Founder & Owner</span>
-                </div>
-            </div>
-            
-            <div class="feature-checklist reveal delay-1">
-                <div class="feature-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <div>
-                        <h5>Walk-Ins Welcome</h5>
-                        <p>No Appointment Needed</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <div>
-                        <h5>Mon-Sat: 8am-6pm</h5>
-                        <p>Open for consistent service</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <div>
-                        <h5>Mobile Fleet</h5>
-                        <p>Available (+$10 fee)</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <div>
-                        <h5>Power Washing</h5>
-                        <p>Home & Fleet washing</p>
-                    </div>
+                <div class="trust-bar-divider"></div>
+                <div class="trust-bar-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    Lifetime Tint Warranty
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Detail Packages Section (3+2 Matrix) -->
-    <section id="services" class="services-wrapper clip-angle-both pattern-stripes">
+    <!-- About / Mission -->
+    <section id="about" class="section-padding">
         <div class="container">
-            <div class="services-header reveal">
-                <span class="section-label">OUR SERVICES</span>
-                <h2 class="section-title">DETAIL PACKAGES</h2>
-                <p style="font-size: 1.15rem; color: var(--text-muted);">From express washes to full master details. All detail jobs completed between 8am and 4:30pm.</p>
-            </div>
-
-            <!-- Top 3 Column Tier -->
-            <div class="services-grid-top">
-                <!-- Package #10 -->
-                <div class="service-card reveal">
-                    <div class="card-header">
-                        <span class="pkg-num">PACKAGE #10</span>
-                        <h3>Super Sport</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
-                            <span class="p-val">$95</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
-                            <span class="p-val">$110</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg> XL Trucks</span>
-                            <span class="p-val">$125</span>
-                        </div>
-                        <a href="tel:3013071414" class="btn btn-corp">Book Now</a>
-                    </div>
+            <div class="mission-grid">
+                <div class="mission-text reveal">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">WE STARTED WITH ONE BAY AND A LOT OF PRIDE</h2>
+                    <p>Pro Wash grew out of Prince George&rsquo;s County &mdash; not a boardroom. We saw neighbors running their cars through machines that left swirl marks, water spots, and that &ldquo;close enough&rdquo; clean. We knew there was a better way.</p>
+                    <p>So we built one. <strong>A hand wash that moves at express speed but treats your car like it&rsquo;s ours.</strong> No brushes grinding your paint. No recycled water. Just trained hands, clean towels, and people who take pride in the finish.</p>
+                    <blockquote class="founder-quote">&ldquo;We didn&rsquo;t set out to build a franchise. We set out to give PG County and DC a car wash they could actually trust. The growth happened because people kept telling their neighbors.&rdquo;</blockquote>
+                    <p>Today we&rsquo;re at five locations &mdash; Clinton, Capitol Heights, Bowie, Upper Marlboro, and DC &mdash; and every one runs the same way: the right process, the right people, no shortcuts.</p>
+                    <a href="tel:3013071414" class="btn btn-primary" style="margin-top: 8px;">Come See the Difference</a>
                 </div>
-
-                <!-- Package #9 (Featured/Most Popular) - CENTERED -->
-                <div class="service-card featured reveal delay-1">
-                    <div class="ribbon-wrapper">
-                        <div class="ribbon">Most Popular</div>
+                <div class="mission-features reveal">
+                    <div class="mission-feature">
+                        <h4>Walk-Ins Welcome</h4>
+                        <p>No appointment needed for wash services. Drive in any time Mon&ndash;Sat, 8am&ndash;6pm.</p>
                     </div>
-                    <div class="card-header">
-                        <span class="pkg-num">PACKAGE #9</span>
-                        <h3>Master Detail</h3>
+                    <div class="mission-feature">
+                        <h4>Mobile Service</h4>
+                        <p>We come to your home, office, or dealership. Just $10 additional.</p>
                     </div>
-                    <div class="card-body">
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
-                            <span class="p-val">$295</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
-                            <span class="p-val">$355</span>
-                        </div>
-                        <a href="tel:3013071414" class="btn btn-red">Book Now</a>
+                    <div class="mission-feature">
+                        <h4>Lifetime Tint Warranty</h4>
+                        <p>Every tint installation backed by a no-questions-asked lifetime warranty.</p>
                     </div>
-                </div>
-
-                <!-- Package #5 -->
-                <div class="service-card reveal delay-2">
-                    <div class="card-header">
-                        <span class="pkg-num">PACKAGE #5</span>
-                        <h3>Express Detail</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
-                            <span class="p-val">$185</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
-                            <span class="p-val">$210</span>
-                        </div>
-                        <a href="tel:3013071414" class="btn btn-corp">Book Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom 2 Column Tier -->
-            <div class="services-grid-bottom">
-                <!-- Package #4 -->
-                <div class="service-card reveal">
-                    <div class="card-header">
-                        <span class="pkg-num">PACKAGE #4</span>
-                        <h3>Steam Clean</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
-                            <span class="p-val">$150</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
-                            <span class="p-val">$175</span>
-                        </div>
-                        <a href="tel:3013071414" class="btn btn-corp">Book Now</a>
-                    </div>
-                </div>
-
-                <!-- Package #8 -->
-                <div class="service-card reveal delay-1">
-                    <div class="card-header">
-                        <span class="pkg-num">PACKAGE #8</span>
-                        <h3>Buff Wax</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
-                            <span class="p-val">$175</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="v-type"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
-                            <span class="p-val">$215</span>
-                        </div>
-                        <a href="tel:3013071414" class="btn btn-corp">Book Now</a>
+                    <div class="mission-feature">
+                        <h4>Power Washing</h4>
+                        <p>Decks, sidewalks, houses, fleet washing, and dealership lot spraying.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mobile Services Segment (Horizontal Layouts) -->
-    <section id="mobile" class="mobile-section section-padding">
+    <!-- Services -->
+    <section id="services" class="section-padding" style="background: var(--off-white);">
         <div class="container">
-            <div class="services-header reveal">
-                <span class="section-label">WE COME TO YOU</span>
-                <h2 class="section-title">MOBILE SERVICES</h2>
+            <div class="services-intro reveal">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">DETAIL PACKAGES FOR EVERY LEVEL OF CLEAN</h2>
+                <p class="section-subtitle mx-auto">Whether you need a quick 20-minute refresh or a full master detail, we&rsquo;ve got a package that fits. All details completed between 8am and 4:30pm, Mon&ndash;Sat.</p>
             </div>
-            
-            <div class="mobile-grid">
-                <div class="mobile-card reveal">
-                    <div class="mobile-icon-wrap">
-                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
+
+            <div class="services-grid reveal">
+                <!-- Tier 1: Super Sport -->
+                <div class="service-card">
+                    <span class="service-tier">Package #10</span>
+                    <h3>Super Sport</h3>
+                    <p class="service-desc">Express exterior hand wash with tire shine, window cleaning, and dashboard wipe-down.</p>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$95</span></div>
+                        <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$110</span></div>
+                        <div class="price-row"><span class="price-label">XL Trucks</span><span class="price-value">$125</span></div>
                     </div>
-                    <div class="mobile-content">
-                        <h3>Mobile Car Wash</h3>
-                        <p>Book between 8am–6:30pm, Mon-Sat. Fast 20 minute turnaround. (+$10 Dispatch Fee)</p>
-                        <a href="tel:3013071414" class="btn btn-outline-corp btn-sm">Book Wash</a>
-                    </div>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $95</a>
                 </div>
-                
-                <div class="mobile-card reveal delay-1">
-                    <div class="mobile-icon-wrap">
-                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
+
+                <!-- Tier 2: Extensive Master Detail (Featured) -->
+                <div class="service-card featured">
+                    <span class="service-tier">Package #9</span>
+                    <h3>Extensive Master Detail</h3>
+                    <p class="service-desc">Our most comprehensive package. Full interior steam, exterior buff & wax, engine detail, and paint restoration.</p>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$295</span></div>
+                        <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$355</span></div>
                     </div>
-                    <div class="mobile-content">
-                        <h3>Mobile Car Detail</h3>
-                        <p>Available 8am–4:30pm. Complete interior and exterior care. Up to 90 minutes. (+$10 Fee)</p>
-                        <a href="tel:3013071414" class="btn btn-outline-corp btn-sm">Book Detail</a>
-                    </div>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule This Package</a>
                 </div>
-                
-                <div class="mobile-card reveal delay-2">
-                    <div class="mobile-icon-wrap">
-                        <svg viewBox="0 0 24 24"><path d="M21 11.01L3 11v2h18zM3 16h12v2H3zM21 6H3v2.01L21 8z"/></svg>
+
+                <!-- Tier 3: Total Express Detail -->
+                <div class="service-card">
+                    <span class="service-tier">Package #5</span>
+                    <h3>Total Express Detail</h3>
+                    <p class="service-desc">Full interior and exterior detail in an express timeframe. Deep clean without the full-day wait.</p>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$185</span></div>
+                        <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$210</span></div>
                     </div>
-                    <div class="mobile-content">
-                        <h3>Window Tinting</h3>
-                        <p>All tinting jobs include a lifetime warranty and free wash. Takes up to 2 hours.</p>
-                        <a href="tel:3013071414" class="btn btn-outline-corp btn-sm">Book Tinting</a>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $185</a>
+                </div>
+            </div>
+
+            <div class="services-row reveal">
+                <!-- Interior Steam Clean -->
+                <div class="service-card">
+                    <span class="service-tier">Package #4</span>
+                    <h3>Interior Steam Clean</h3>
+                    <p class="service-desc">Deep interior steam sanitization. Seats, carpets, dashboard, vents, and all surfaces thoroughly cleaned.</p>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$150</span></div>
+                        <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$175</span></div>
                     </div>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $150</a>
+                </div>
+
+                <!-- Extensive Buff Wax -->
+                <div class="service-card">
+                    <span class="service-tier">Package #8</span>
+                    <h3>Extensive Buff &amp; Wax</h3>
+                    <p class="service-desc">Multi-stage exterior paint correction, machine buffing, and premium wax sealant for a showroom finish.</p>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">Cars</span><span class="price-value">$175</span></div>
+                        <div class="price-row"><span class="price-label">Trucks</span><span class="price-value">$215</span></div>
+                    </div>
+                    <a href="tel:3013071414" class="btn btn-ghost btn-block">Get Started &mdash; $175</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Window Tinting Highlight -->
-    <section id="tinting" class="tint-section clip-angle-both pattern-stripes-light">
-        <div class="container tint-grid">
-            <div class="tint-content reveal">
-                <span class="section-label" style="color:var(--white); border:none;">PREMIUM INSTALLATION</span>
-                <h2 class="section-title" style="color:var(--white);">PROFESSIONAL WINDOW TINTING</h2>
-                <p>Our certified window tinting services include a lifetime warranty on all tint installations. We offer competitive rates starting at $59.95 for the first 2 windows which includes a Free Car Wash and Lifetime Warranty.</p>
-                
-                <ul class="feature-checklist">
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <div><h5>Certified Installers</h5></div></li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <div><h5>Lifetime Warranty</h5></div></li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <div><h5>Free Car Wash Included</h5></div></li>
-                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <div><h5>Industry-Leading Products</h5></div></li>
-                </ul>
-            </div>
-            
-            <div class="tint-card reveal delay-1">
-                <div class="tint-badge">LIFETIME WARRANTY</div>
-                <div class="price-row">
-                    <span class="v-type">FIRST 2 WINDOWS</span>
-                    <span class="p-val">$59.95</span>
-                </div>
-                <div class="price-row" style="border:none;">
-                    <span class="v-type">FULL SEDAN</span>
-                    <span class="p-val">$120.00</span>
-                </div>
-                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:20px;">Book Tinting</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section (Soft Shapes) -->
-    <section class="testimonials-section section-padding">
-        <div class="container">
-            <div class="services-header reveal">
-                <span class="section-label">CREDIBILITY</span>
-                <h2 class="section-title">VERIFIED CLIENT EXPERIENCES</h2>
-            </div>
-            
-            <div class="test-grid">
-                <div class="test-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p>"The operational efficiency is unmatched. I brought my fleet vehicle in and was out in exactly 20 minutes with a flawless, swirl-free exterior. This is franchise-level quality."</p>
-                    <div class="test-author">MARK T.</div>
-                </div>
-                
-                <div class="test-card reveal delay-1">
-                    <div class="stars">★★★★★</div>
-                    <p>"I utilized the mobile dispatch for an Extensive Master Detail. The unit arrived exactly on time, and the results were indistinguishable from a high-end static facility."</p>
-                    <div class="test-author">SARAH JENKINS</div>
-                </div>
-                
-                <div class="test-card reveal delay-2">
-                    <div class="stars">★★★★★</div>
-                    <p>"Got my windows tinted at the Capitol Heights location. The certified installers were professional, the lifetime warranty offers peace of mind, and the free wash was a great touch."</p>
-                    <div class="test-author">DAVID R.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Full Width Programs Banners -->
+    <!-- Mobile Services -->
     <section class="section-padding">
         <div class="container">
-            <div class="programs-grid">
-                <div class="prog-card loyalty reveal">
-                    <div class="prog-icon">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            <div class="services-intro reveal">
+                <span class="section-label">We Come to You</span>
+                <h2 class="section-title">CAN&rsquo;T COME TO US? WE&rsquo;LL PULL UP.</h2>
+                <p class="section-subtitle mx-auto">Same crew, same quality, your driveway. Mobile wash, detail, or tinting at your home, office, or dealership for just $10 extra.</p>
+            </div>
+            <div class="mobile-services-grid reveal">
+                <div class="mobile-service-card">
+                    <div class="mobile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
                     </div>
-                    <div class="prog-text" style="flex-grow: 1;">
-                        <h3>LOYALTY REWARDS</h3>
-                        <p>Earn points with every wash to unlock exclusive corporate discounts.</p>
-                        <a href="#" class="btn btn-white btn-sm" style="margin-top: 16px;">Check Balance</a>
-                    </div>
+                    <h3>Mobile Car Wash</h3>
+                    <p>Available Mon&ndash;Sat, 8am&ndash;6:30pm. Completed in approximately 20 minutes at your location.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule a Mobile Wash</a>
                 </div>
-                
-                <div class="prog-card birthday reveal delay-1">
-                    <div class="prog-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.14 1.64-1.4 0-2.1-.68-2.14-1.7H8.08c.04 1.56 1.27 2.65 2.82 2.97V19h2.22v-1.67c1.52-.35 2.83-1.28 2.83-2.88 0-2.19-1.89-2.83-3.64-3.31z"/></svg>
+                <div class="mobile-service-card">
+                    <div class="mobile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z"/></svg>
                     </div>
-                    <div class="prog-text" style="flex-grow: 1;">
-                        <h3>BIRTHDAY CLUB</h3>
-                        <p>Register to receive automated promotional offers during your birthday month.</p>
-                        <a href="#" class="btn btn-white btn-sm" style="margin-top: 16px;">Join Club</a>
+                    <h3>Mobile Car Detail</h3>
+                    <p>Full detail service at your door. Available 8am&ndash;4:30pm. Completed in approximately 90 minutes.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule a Mobile Detail</a>
+                </div>
+                <div class="mobile-service-card">
+                    <div class="mobile-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/></svg>
                     </div>
+                    <h3>Window Tinting</h3>
+                    <p>Professional installation with lifetime warranty. Completed in approximately 2 hours.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Schedule Tinting</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Floating Locations Grid (Borderless) -->
-    <section id="locations" class="loc-section section-padding clip-angle-both pattern-stripes">
+    <!-- Window Tinting -->
+    <section id="tinting" class="section-padding" style="background: var(--off-white);">
         <div class="container">
-            <div class="services-header reveal">
-                <span class="section-label">FIND US</span>
-                <h2 class="section-title">OUR LOCATIONS</h2>
+            <div class="tinting-grid">
+                <div class="tinting-content reveal">
+                    <span class="section-label">Tinting</span>
+                    <h2 class="section-title">WINDOW TINTING WITH A LIFETIME WARRANTY. PERIOD.</h2>
+                    <p>No fine print. No gimmicks. If it peels, bubbles, or fades &mdash; ever &mdash; we fix it free. Our certified installers use industry-leading film and proper techniques so it won&rsquo;t come to that.</p>
+                    <p>Starting at $59.95 for the first 2 windows, and every tint job includes a free car wash on us.</p>
+                    <ul class="tinting-checklist">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified Installers</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Lifetime Warranty on Every Job</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free Car Wash Included</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Industry-Leading Film Products</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Proper Installation Techniques</li>
+                    </ul>
+                </div>
+                <div class="tinting-pricing reveal">
+                    <div class="tinting-warranty-badge">Lifetime Warranty</div>
+                    <h3>Tinting Pricing</h3>
+                    <div class="price-table">
+                        <div class="price-row"><span class="price-label">First 2 Windows</span><span class="price-value">$59.95</span></div>
+                        <div class="price-row"><span class="price-label">Full Sedan</span><span class="price-value">$120.00</span></div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--gray-400); margin-bottom: 24px;">Includes free car wash with every tint installation.</p>
+                    <a href="tel:3013071414" class="btn btn-primary btn-block">Book Tinting &mdash; (301) 307-1414</a>
+                </div>
             </div>
-            
-            <div class="loc-grid">
-                <div class="loc-card reveal">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>CLINTON</h4>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding" style="background: var(--navy);">
+        <div class="container">
+            <div class="services-intro reveal">
+                <span class="section-label">From the Neighborhood</span>
+                <h2 class="section-title" style="color: var(--white);">DON&rsquo;T TAKE OUR WORD FOR IT</h2>
+                <p class="section-subtitle mx-auto" style="color: rgba(255,255,255,0.5);">Real reviews from real neighbors &mdash; the people who keep coming back.</p>
+            </div>
+            <div class="testimonials-grid reveal">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I've been going to Pro Wash for over two years. The hand wash is quick, thorough, and my paint has never looked better. No swirl marks, ever."</blockquote>
+                    <div class="testimonial-author">Marcus T.</div>
+                    <div class="testimonial-location">Capitol Heights, MD</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Got the Extensive Master Detail for my SUV before a road trip. It looked brand new. The interior steam clean alone was worth it. Highly recommend."</blockquote>
+                    <div class="testimonial-author">Tanya R.</div>
+                    <div class="testimonial-location">Bowie, MD</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"The window tinting came out perfect. Clean lines, no bubbles, and the lifetime warranty gives me total peace of mind. Best price in the area too."</blockquote>
+                    <div class="testimonial-author">James W.</div>
+                    <div class="testimonial-location">Washington, DC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="section-padding" style="background: var(--off-white);">
+        <div class="container">
+            <div class="services-intro reveal">
+                <span class="section-label">Give Back</span>
+                <h2 class="section-title">WE REMEMBER OUR REGULARS</h2>
+                <p class="section-subtitle mx-auto">You show up for us, we show up for you. Simple as that.</p>
+            </div>
+            <div class="programs-grid reveal">
+                <div class="program-card">
+                    <div class="program-icon loyalty">
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 12 7.4l3.38 4.6L17 10.83 14.92 8H20v6z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Loyalty Rewards</h3>
+                        <p>Earn points with every wash and detail. Unlock exclusive discounts, free upgrades, and member-only pricing. Ask about our loyalty card at any location.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon birthday">
+                        <svg viewBox="0 0 24 24"><path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Birthday Club</h3>
+                        <p>Register for our Birthday Club and receive special deals, a free wash, and exclusive perks during your birthday month. It's our way of saying thanks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section id="locations" class="section-padding">
+        <div class="container">
+            <div class="services-intro reveal">
+                <span class="section-label">Your Neighborhood</span>
+                <h2 class="section-title">5 LOCATIONS ACROSS THE COMMUNITIES WE CALL HOME</h2>
+                <p class="section-subtitle mx-auto">We didn&rsquo;t just pick locations on a map. We set up where we live, where our families drive, and where our neighbors need us.</p>
+            </div>
+            <div class="locations-grid reveal">
+                <div class="location-card">
+                    <h4>Clinton</h4>
+                    <p class="location-neighborhood">Our original home &mdash; serving the Surratts Road corridor and Branch Ave community since day one.</p>
                     <p>6311 Coventry Way<br>Clinton, MD 20735</p>
-                    <p style="color:var(--navy); font-weight:700;">Mon-Sat: 8am-6pm</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-red btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                    <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
+                    <a href="https://maps.google.com/?q=6311+Coventry+Way,+Clinton,+MD+20735" target="_blank" class="location-link">
+                        Visit This Location
+                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </a>
                 </div>
-                
-                <div class="loc-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>CAPITOL HEIGHTS</h4>
+                <div class="location-card">
+                    <h4>Capitol Heights</h4>
+                    <p class="location-neighborhood">Right off the Beltway near Hampton Mall &mdash; a quick stop for the Addison Road and Seat Pleasant crowd.</p>
                     <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
-                    <p style="color:var(--navy); font-weight:700;">Mon-Sat: 8am-6pm</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-red btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                    <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
+                    <a href="https://maps.google.com/?q=29+Hampton+Park+Blvd,+Capitol+Heights,+MD+20743" target="_blank" class="location-link">
+                        Visit This Location
+                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </a>
                 </div>
-                
-                <div class="loc-card reveal delay-2">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>BOWIE</h4>
+                <div class="location-card">
+                    <h4>Bowie</h4>
+                    <p class="location-neighborhood">Serving the Bowie, Mitchellville, and Crofton families along the Crain Highway stretch.</p>
                     <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
-                    <p style="color:var(--navy); font-weight:700;">Mon-Sat: 8am-6pm</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-red btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                    <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
+                    <a href="https://maps.google.com/?q=4406+NW+Crain+Hwy,+Bowie,+MD+20716" target="_blank" class="location-link">
+                        Visit This Location
+                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </a>
                 </div>
-                
-                <div class="loc-card reveal delay-3">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>UPPER MARLBORO</h4>
+                <div class="location-card">
+                    <h4>Upper Marlboro</h4>
+                    <p class="location-neighborhood">Near the county courthouse and Marlboro Pike &mdash; the go-to for PG County&rsquo;s heart.</p>
                     <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20772</p>
-                    <p style="color:var(--navy); font-weight:700;">Mon-Sat: 8am-6pm</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-red btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                    <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
+                    <a href="https://maps.google.com/?q=7538+NW+Crain+Hwy,+Upper+Marlboro,+MD+20772" target="_blank" class="location-link">
+                        Visit This Location
+                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </a>
                 </div>
-                
-                <div class="loc-card reveal delay-1">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <h4>WASHINGTON DC</h4>
+                <div class="location-card">
+                    <h4>Washington DC</h4>
+                    <p class="location-neighborhood">Our District location off Kenilworth Ave &mdash; serving Northeast DC, Deanwood, and the Anacostia corridor.</p>
                     <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
-                    <p style="color:var(--navy); font-weight:700;">Mon-Sat: 8am-6pm</p>
-                    <div class="loc-btn-wrap">
-                        <a href="#" class="btn btn-red btn-sm" style="width:100%;">Book a Wash</a>
-                    </div>
+                    <div class="location-hours">Mon&ndash;Sat: 8am&ndash;6pm</div>
+                    <a href="https://maps.google.com/?q=1329+Kenilworth+Ave+NE,+Washington,+DC+20019" target="_blank" class="location-link">
+                        Visit This Location
+                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Photography Pre-Footer CTA -->
-    <section class="cta-banner">
+    <!-- CTA -->
+    <section class="cta-section">
         <div class="container reveal">
-            <h2>YOUR CAR DESERVES BETTER THAN A MACHINE WASH</h2>
-            <p>Walk in to any of our 5 locations or call to dispatch a mobile unit today.</p>
-            <a href="tel:3013071414" class="btn btn-white" style="font-size: 1.1rem; padding: 20px 48px;">Call Us Today</a>
-            <a href="tel:3013071414" class="mega-phone">(301) 307-1414</a>
+            <h2>COME THROUGH. WE&rsquo;LL TAKE CARE OF YOU.</h2>
+            <p>Five locations across PG County and DC. Walk in any time Mon&ndash;Sat, or call and we&rsquo;ll come to you.</p>
+            <div class="cta-actions">
+                <a href="tel:3013071414" class="btn btn-primary btn-lg">Call (301) 307-1414</a>
+                <a href="#locations" class="btn btn-outline btn-lg">Find Your Nearest Location</a>
+            </div>
+            <span class="cta-phone">Same-day service &mdash; walk-ins always welcome</span>
         </div>
     </section>
 
-    <!-- Multi-Column Corporate Footer -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="reveal">
-                    <span class="footer-logo">
-                        <img src="https://prowashdetail.net/wp-content/uploads/2017/08/logo_main.png" alt="Pro Wash Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <span style="display:none;">PRO WASH</span>
-                    </span>
-                    <p>Built to set the standard in auto care. The corporate standard in high-end vehicle detailing, paint preservation, and commercial fleet management.</p>
-                    
-                    <div style="margin-top:20px; display:flex; gap:10px; align-items:center;">
-                        <svg viewBox="0 0 24 24" width="30" height="30" style="color:#5C6A7D;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        <span style="font-family:'Archivo Black'; font-size:0.8rem; color:#5C6A7D;">A+ BBB RATING</span>
-                    </div>
+                    <span class="footer-logo">PRO WASH</span>
+                    <p class="footer-tagline">Maryland &amp; DC's trusted hand car wash franchise. Professional auto clean, every time. Setting the standard in hand washing, detailing, window tinting, and mobile auto care.</p>
                 </div>
-                
-                <div class="footer-col reveal delay-1">
-                    <h5>QUICK LINKS</h5>
+                <div class="footer-col reveal">
+                    <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="#mission">Corporate Mission</a></li>
-                        <li><a href="#services">Detail Packages</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
                         <li><a href="#tinting">Window Tinting</a></li>
-                        <li><a href="#locations">Facility Locations</a></li>
+                        <li><a href="#locations">Locations</a></li>
+                        <li><a href="tel:3013071414">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col reveal delay-2">
-                    <h5>PORTAL</h5>
+                <div class="footer-col reveal">
+                    <h4>Programs</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Loyalty Program</a></li>
+                        <li><a href="#">Loyalty Card</a></li>
                         <li><a href="#">Birthday Club</a></li>
-                        <li><a href="#">Check Balance</a></li>
+                        <li><a href="#">Check Code Balance</a></li>
+                        <li style="margin-top: 16px;"><a href="#" class="franchise-link">Franchise Opportunities</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col footer-contact reveal delay-3">
-                    <h5>OPERATIONS</h5>
-                    <p class="f-phone">(301) 307-1414</p>
-                    <p style="color:var(--white); font-weight:600;">Mon–Sat: 8:00am – 6:00pm</p>
-                    <p style="margin-top:15px; font-size:0.85rem;">Serving Capitol Heights, Clinton, Bowie, Upper Marlboro & Washington DC.</p>
+                <div class="footer-col footer-contact reveal">
+                    <h4>Contact</h4>
+                    <p>(301) 307-1414</p>
+                    <p>Mon&ndash;Sat: 8:00am &ndash; 6:00pm</p>
+                    <p style="margin-top: 12px;">Serving Capitol Heights, Clinton, Bowie, Upper Marlboro &amp; Washington DC</p>
                 </div>
             </div>
-            
-            <div class="footer-bottom reveal">
-                <p>&copy; 2026 Pro Wash Inc. All Rights Reserved. | Corporate Entity</p>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pro Wash Inc. All Rights Reserved.</p>
                 <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
                     <a href="#" aria-label="LinkedIn">
                         <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     </a>
@@ -1794,50 +1469,29 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Sticky Header
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 10);
         });
 
-        // Mobile Nav
         const mobileBtn = document.getElementById('mobileBtn');
         const navLinks = document.getElementById('navLinks');
-        
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a.nav-item').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        document.querySelectorAll('.nav-item').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Staggered Scroll Reveal via Intersection Observer
-        const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            root: null,
-            threshold: 0.15, 
-            rootMargin: "0px 0px -20px 0px"
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
