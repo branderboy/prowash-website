@@ -971,12 +971,12 @@
             background: var(--white);
             border-radius: 8px;
             margin-bottom: 6px;
-            box-shadow: var(--shadow-strong);
-            overflow: visible;
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
             transition: all 0.3s ease;
         }
         .faq-item:hover {
-            box-shadow: var(--shadow-elevated);
+            box-shadow: var(--shadow-strong);
         }
         .faq-question {
             width: 100%;
@@ -1016,21 +1016,10 @@
             background: var(--red);
             color: var(--white);
         }
-        .faq-item {
-            position: relative;
-        }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.35s ease;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 100%;
-            z-index: 10;
-            background: var(--white);
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .faq-answer-inner {
             padding: 0 25px 22px;
@@ -1490,7 +1479,7 @@
 
             <div class="faq-list">
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    <button class="faq-question" onclick="toggleFaq(this)">
                         Do I need an appointment for a car wash?
                         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
@@ -1500,7 +1489,7 @@
                 </div>
 
                 <div class="faq-item reveal delay-1">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    <button class="faq-question" onclick="toggleFaq(this)">
                         How does mobile service work and what does it cost?
                         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
@@ -1510,7 +1499,7 @@
                 </div>
 
                 <div class="faq-item reveal delay-2">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    <button class="faq-question" onclick="toggleFaq(this)">
                         How long does a detail or wash take?
                         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
@@ -1520,7 +1509,7 @@
                 </div>
 
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    <button class="faq-question" onclick="toggleFaq(this)">
                         Does window tinting come with a warranty?
                         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
@@ -1530,7 +1519,7 @@
                 </div>
 
                 <div class="faq-item reveal delay-1">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                    <button class="faq-question" onclick="toggleFaq(this)">
                         What are your hours and locations?
                         <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
@@ -1669,6 +1658,22 @@
         revealElements.forEach(el => {
             revealObserver.observe(el);
         });
+        // FAQ Accordion — only one open at a time
+        function toggleFaq(btn) {
+            var item = btn.parentElement;
+            var answer = btn.nextElementSibling;
+            var isOpen = item.classList.contains('active');
+            // Close all FAQ items first
+            document.querySelectorAll('.faq-item').forEach(function(fi) {
+                fi.classList.remove('active');
+                fi.querySelector('.faq-answer').style.maxHeight = null;
+            });
+            // If it wasn't open, open it
+            if (!isOpen) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
     </script>
 </body>
 </html>
