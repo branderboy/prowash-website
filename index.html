@@ -15,8 +15,8 @@
             --red: #B33A34;         /* Corporate Brand Red */
             --red-hover: #9A322D;
             --red-glow: rgba(179, 58, 52, 0.25);
-            --dark-blue: #4A90D9;      /* Light Blue */
-            --darker-blue: #2C6FB5;
+            --dark-blue: #0A1E3D;      /* Corporate Navy */
+            --darker-blue: #051024;
             --white: #FFFFFF;
             --gray-light: #F4F5F7;     /* Section Backgrounds */
             --gray-mid: #E0E4E8;       /* Borders */
@@ -103,15 +103,15 @@
             font-size: 0.8rem;
         }
         .btn-red {
-            background-color: var(--dark-blue);
+            background-color: var(--red);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(74, 144, 217, 0.3);
+            box-shadow: 0 4px 15px var(--red-glow);
         }
         .btn-red:hover {
-            background-color: var(--darker-blue);
+            background-color: var(--dark-blue);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(44, 111, 181, 0.4);
+            box-shadow: 0 8px 25px rgba(10, 30, 61, 0.3);
         }
         .btn-blue {
             background-color: var(--dark-blue);
@@ -119,10 +119,10 @@
             box-shadow: 0 4px 15px rgba(10, 30, 61, 0.3);
         }
         .btn-blue:hover {
-            background-color: var(--darker-blue);
+            background-color: var(--red);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(44, 111, 181, 0.4);
+            box-shadow: 0 8px 25px var(--red-glow);
         }
         .btn-dark {
             background-color: var(--dark-blue);
@@ -130,7 +130,7 @@
         }
 
         .btn-dark:hover {
-            background-color: var(--darker-blue);
+            background-color: var(--red);
             color: var(--white);
         }
         .btn-outline {
@@ -139,16 +139,16 @@
             color: var(--dark-blue);
         }
         .btn-outline:hover {
-            border-color: var(--dark-blue);
-            background-color: var(--dark-blue);
+            border-color: var(--red);
+            background-color: var(--red);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 144, 217, 0.3);
+            box-shadow: 0 6px 20px var(--red-glow);
         }
         /* Red accent stripe */
         .accent-stripe {
             height: 4px;
-            background: linear-gradient(90deg, var(--dark-blue), var(--white), var(--dark-blue));
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
         }
         /* Top Bar - Classic Theme Style */
         .top-bar {
@@ -174,7 +174,7 @@
             align-items: center;
             gap: 8px;
         }
-        .top-bar-item svg { color: var(--white); width: 16px; height: 16px; }
+        .top-bar-item svg { color: var(--red); width: 16px; height: 16px; }
         /* Main Header */
         header {
             background-color: var(--white);
@@ -223,14 +223,14 @@
             left: 0;
             width: 0;
             height: 3px;
-            background-color: var(--dark-blue);
+            background-color: var(--red);
             transition: width 0.3s ease;
         }
         .nav-item:hover::after { width: 100%; }
-        .nav-item:hover { color: var(--dark-blue); }
+        .nav-item:hover { color: var(--red); }
         .mobile-menu-btn {
             display: block;
-            background: var(--dark-blue);
+            background: var(--red);
             border: none;
             color: var(--white);
             cursor: pointer;
@@ -256,7 +256,7 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 6px;
-            background: linear-gradient(90deg, var(--dark-blue), var(--white), var(--dark-blue));
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
         }
         @media (min-width: 768px) {
             .hero {
@@ -277,7 +277,7 @@
             font-weight: 700;
             font-size: 1rem;
             text-transform: uppercase;
-            color: var(--white);
+            color: var(--red);
             letter-spacing: 2px;
             margin-bottom: 15px;
             position: relative;
@@ -291,12 +291,12 @@
             text-shadow: 0 4px 30px rgba(0,0,0,0.4);
         }
         .hero h1 span {
-            color: var(--white);
+            color: var(--red);
         }
         .hero-divider {
             width: 80px;
             height: 4px;
-            background-color: var(--white);
+            background-color: var(--red);
             margin: 0 auto 20px auto;
         }
         @media (min-width: 768px) {
@@ -355,13 +355,13 @@
         }
         .loc-card:hover {
             transform: translateY(-8px);
-            border-bottom-color: var(--dark-blue);
+            border-bottom-color: var(--red);
             box-shadow: var(--shadow-elevated);
         }
         .loc-card svg {
             width: 32px;
             height: 32px;
-            color: var(--dark-blue);
+            color: var(--red);
             margin-bottom: 15px;
         }
         .loc-card h4 {
@@ -396,7 +396,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
-            color: var(--dark-blue);
+            color: var(--red);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -410,7 +410,7 @@
         .title-divider {
             width: 80px;
             height: 5px;
-            background: var(--dark-blue);
+            background: linear-gradient(90deg, var(--red), var(--dark-blue));
             margin: 15px auto 0 auto;
         }
         .title-divider.left {
@@ -434,7 +434,7 @@
         .founder-quote {
             margin-top: 25px;
             padding: 20px 25px;
-            border-left: 4px solid var(--dark-blue);
+            border-left: 4px solid var(--red);
             background: var(--white);
         }
         .founder-quote p {
@@ -447,7 +447,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--dark-blue);
+            color: var(--red);
         }
         /* Clean Feature Strips */
         .feature-grid {
@@ -500,10 +500,7 @@
             border-bottom: 1px solid var(--gray-mid);
         }
         .promo-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: none;
+            content: none;
         }
         .promo-inner {
             display: flex;
@@ -645,8 +642,8 @@
         }
         /* Featured — RED header, scaled up, bold border */
         .service-card.featured {
-            border-color: var(--dark-blue);
-            box-shadow: 0 10px 40px rgba(74, 144, 217, 0.25);
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.25);
         }
         @media (min-width: 1024px) {
             .service-card.featured {
@@ -656,12 +653,12 @@
             .service-card.featured:hover { transform: scale(1.08) translateY(-8px); }
         }
         .service-card.featured .service-header {
-            background: var(--dark-blue);
+            background: var(--red);
         }
         .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.7); }
-        .service-card.featured .service-price-hero .big-price { color: var(--dark-blue); }
+        .service-card.featured .service-price-hero .big-price { color: var(--red); }
         .featured-label {
-            background: var(--dark-blue);
+            background: var(--red);
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
@@ -672,9 +669,9 @@
             text-align: center;
         }
         /* Red tier accent */
-        .tier-gold { border-color: var(--dark-blue); }
-        .tier-gold .service-price-hero .big-price { color: var(--dark-blue); }
-        .tier-gold:hover { box-shadow: 0 15px 40px rgba(74, 144, 217, 0.25); }
+        .tier-gold { border-color: var(--red); }
+        .tier-gold .service-price-hero .big-price { color: var(--red); }
+        .tier-gold:hover { box-shadow: 0 15px 40px var(--red-glow); }
         .service-body {
             padding: 20px 25px 30px;
             flex-grow: 1;
@@ -703,7 +700,7 @@
         }
         .price-label svg {
             width: 18px; height: 18px;
-            color: var(--dark-blue);
+            color: var(--red);
         }
         .price-value {
             font-family: 'Montserrat', sans-serif;
@@ -784,18 +781,18 @@
             font-weight: 600;
         }
         .check-list svg {
-            color: var(--dark-blue);
+            color: var(--red);
             width: 18px; height: 18px;
             flex-shrink: 0;
         }
         .tint-pricing-box {
             background: var(--white);
             padding: 35px;
-            border-top: 6px solid var(--dark-blue);
+            border-top: 6px solid var(--red);
             color: var(--text-dark);
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        .tint-pricing-box .price-value { color: var(--dark-blue); font-size: 2rem; }
+        .tint-pricing-box .price-value { color: var(--red); font-size: 2rem; }
         /* Reviews Section */
         .reviews-grid {
             display: grid;
@@ -837,7 +834,7 @@
         .review-avatar {
             width: 44px; height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--dark-blue), var(--darker-blue));
+            background: linear-gradient(135deg, var(--red), #D4443D);
             display: flex; align-items: center; justify-content: center;
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
@@ -897,15 +894,15 @@
             border: 2px solid var(--dark-blue);
         }
         .program-loyalty .program-icon { background: var(--gray-light); }
-        .program-loyalty .program-icon svg { color: var(--dark-blue); }
+        .program-loyalty .program-icon svg { color: var(--red); }
         .program-loyalty h3 { color: var(--dark-blue); }
         .program-loyalty p { color: var(--text-muted); }
         .program-birthday {
             background: transparent;
-            border: 2px solid var(--dark-blue);
+            border: 2px solid var(--red);
         }
-        .program-birthday .program-icon { background: rgba(74, 144, 217, 0.08); }
-        .program-birthday .program-icon svg { color: var(--dark-blue); }
+        .program-birthday .program-icon { background: rgba(179, 58, 52, 0.08); }
+        .program-birthday .program-icon svg { color: var(--red); }
         .program-birthday h3 { color: var(--dark-blue); }
         .program-birthday p { color: var(--text-muted); }
         /* Mobile Services — Clean Rows */
@@ -1061,7 +1058,7 @@
             text-align: left;
             gap: 15px;
         }
-        .faq-question:hover { color: var(--dark-blue); }
+        .faq-question:hover { color: var(--red); }
         .faq-icon {
             flex-shrink: 0;
             width: 28px;
@@ -1072,7 +1069,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, background 0.3s ease;
-            color: var(--dark-blue);
+            color: var(--red);
         }
         .faq-icon svg {
             width: 16px;
@@ -1145,12 +1142,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <span class="hero-subtitle">America's Express Car Wash</span>
-                <h1>CAR WASH STARTING AT <span>$15</span></h1>
+                <span class="hero-subtitle">Premium Auto Detailing</span>
+                <h1>THE FULL SERVICE WASH YOUR CAR <span>DESERVES.</span></h1>
                 <div class="hero-divider left"></div>
-                <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
+                <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
                 <div class="hero-actions reveal">
-                    <a href="#services" class="btn btn-red">View Packages</a>
+                    <a href="tel:3013071414" class="btn btn-red">Call Now!</a>
                     <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
                 </div>
             </div>
@@ -1264,7 +1261,7 @@
             <div class="promo-text">
                 <h2>Car Wash Starting at <span>$15</span></h2>
                 <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
-                <a href="#services" class="btn btn-red" style="margin-top: 20px;">View Packages</a>
+                <a href="#services" class="btn btn-blue" style="margin-top: 20px;">View Packages</a>
             </div>
             <div class="promo-price-box">
                 <div class="price-label">Starting at</div>
@@ -1507,7 +1504,7 @@
                 <div class="program-card program-birthday reveal delay-1">
                     <h3>Birthday Club</h3>
                     <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
-                    <a href="#" class="btn btn-outline" style="border-color:var(--dark-blue); color:var(--dark-blue);">Sign Up Free</a>
+                    <a href="#" class="btn btn-outline" style="border-color:var(--red); color:var(--red);">Sign Up Free</a>
                 </div>
             </div>
         </div>
