@@ -897,7 +897,7 @@
         .mobile-row-tag.tag-price {
             color: var(--text-muted);
         }
-        .mobile-row-action { flex-shrink: 0; }
+        .mobile-row-action { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
         @media (min-width: 768px) {
             .mobile-row-action { text-align: right; }
         }
@@ -1347,8 +1347,8 @@
                         <h3>Mobile Car Wash</h3>
                         <p>Book between 8am-6:30pm, Mon-Sat. Fast 20 minute turnaround.</p>
                     </div>
-                    <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
                     <div class="mobile-row-action">
+                        <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
                         <a href="tel:3013071414" class="btn btn-outline btn-sm" style="border-color:var(--dark-blue); color:var(--dark-blue);">I Need a Mobile Wash!</a>
                     </div>
                 </div>
@@ -1359,8 +1359,8 @@
                         <h3>Mobile Car Detail</h3>
                         <p>Available 8am-4:30pm. Complete interior and exterior detail. Up to 90 minutes.</p>
                     </div>
-                    <span class="mobile-row-tag tag-fee">+$10 Fee</span>
                     <div class="mobile-row-action">
+                        <span class="mobile-row-tag tag-fee">+$10 Fee</span>
                         <a href="tel:3013071414" class="btn btn-outline btn-sm" style="border-color:var(--dark-blue); color:var(--dark-blue);">I Need a Car Detail!</a>
                     </div>
                 </div>
