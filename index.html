@@ -962,49 +962,68 @@
             text-align: center;
             font-size: 0.85rem;
         }
-        /* FAQ / Questions Section */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+        /* FAQ Accordion */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        @media (min-width: 768px) {
-            .faq-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (min-width: 992px) {
-            .faq-grid { grid-template-columns: 1fr 1fr 1fr; }
-        }
-        .faq-card {
+        .faq-item {
             background: var(--white);
             border-radius: 8px;
-            padding: 35px 30px;
-            text-align: center;
+            margin-bottom: 12px;
             box-shadow: var(--shadow-strong);
-            border-top: 4px solid var(--red);
+            overflow: hidden;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
-        .faq-card:hover {
-            transform: translateY(-6px);
+        .faq-item:hover {
             box-shadow: var(--shadow-elevated);
         }
-        .faq-card h4 {
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            text-align: left;
+            gap: 15px;
         }
-        .faq-card p {
+        .faq-question:hover { color: var(--red); }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-size: 1.1rem;
+            color: var(--red);
+            font-weight: 700;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--red);
+            color: var(--white);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 25px 22px;
             font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        .faq-card .btn {
-            width: 100%;
+            line-height: 1.8;
         }
         /* Animations */
         .reveal {
@@ -1325,7 +1344,7 @@
                     </div>
                     <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
                     <div class="mobile-row-action">
-                        <a href="tel:3013071414" class="btn btn-red btn-sm">Book Wash</a>
+                        <a href="tel:3013071414" class="btn btn-red btn-sm">I Need a Mobile Wash!</a>
                     </div>
                 </div>
 
@@ -1337,7 +1356,7 @@
                     </div>
                     <span class="mobile-row-tag tag-fee">+$10 Fee</span>
                     <div class="mobile-row-action">
-                        <a href="tel:3013071414" class="btn btn-red btn-sm">Book Detail</a>
+                        <a href="tel:3013071414" class="btn btn-red btn-sm">I Need a Car Detail!</a>
                     </div>
                 </div>
 
@@ -1372,7 +1391,7 @@
                     <span class="price-label">FULL SEDAN</span>
                     <span class="price-value">$120.00</span>
                 </div>
-                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:10px;">Book Tinting</a>
+                <a href="tel:3013071414" class="btn btn-red" style="width:100%; margin-top:10px;">I Need My Windows Tinted!</a>
             </div>
         </div>
     </section>
@@ -1447,33 +1466,64 @@
         </div>
     </section>
 
-    <!-- Questions / FAQ Section -->
-    <section id="questions" class="section-padding bg-light">
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding bg-light">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-subtitle">Questions?</span>
-                <h2 class="section-title">FOR OUR CAR WASH SERVICES</h2>
+                <span class="section-subtitle">Got Questions?</span>
+                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
                 <div class="title-divider"></div>
-                <p style="margin-top:15px; color: var(--text-muted); font-size: 1.15rem; font-weight: 600;">No appointment necessary. All walk-ins are welcomed.</p>
             </div>
 
-            <div class="faq-grid">
-                <div class="faq-card reveal">
-                    <h4>Mobile Wash</h4>
-                    <p>Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. We charge $10 more to come out to your location. Takes up to 20 min.</p>
-                    <a href="tel:3013071414" class="btn btn-red">I Need a Mobile Wash!</a>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                        Do I need an appointment for a car wash?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">No appointment necessary! All walk-ins are welcomed. Simply drive in during our operating hours and we'll take care of the rest. You'll be in and out in about 20 minutes.</div>
+                    </div>
                 </div>
 
-                <div class="faq-card reveal delay-1">
-                    <h4>Car Detail</h4>
-                    <p>All detail jobs are done between 8 am and 4:30 pm. We charge $10 more for our mobile services. Takes up to 90 min.</p>
-                    <a href="tel:3013071414" class="btn btn-red">I Need a Car Detail!</a>
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                        How does mobile service work and what does it cost?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We come to you! Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. Mobile detail jobs are available between 8 am and 4:30 pm. There is an additional $10 fee for us to come out to your location.</div>
+                    </div>
                 </div>
 
-                <div class="faq-card reveal delay-2">
-                    <h4>Window Tinting</h4>
-                    <p>All of our window tinting jobs come with a lifetime warranty. All our window tinting jobs take up to 2 hours.</p>
-                    <a href="tel:3013071414" class="btn btn-red">I Need My Windows Tinted!</a>
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                        How long does a detail or wash take?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">A standard car wash takes up to 20 minutes. Detail jobs take up to 90 minutes depending on the package and vehicle size. Window tinting jobs take up to 2 hours.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                        Does window tinting come with a warranty?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! All of our window tinting jobs come with a lifetime warranty. We use industry-leading products installed by certified technicians. Plus, every tint job includes a free car wash.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                        What are your hours and locations?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We have five convenient locations across the DMV area: Clinton, District Heights, Temple Hills, Oxon Hill, and Suitland. Car wash services run Mon-Sat with mobile washes available 8 am – 6:30 pm. Call us at (301) 307-1414 for specific location hours.</div>
+                    </div>
                 </div>
             </div>
         </div>
