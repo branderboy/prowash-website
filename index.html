@@ -1005,19 +1005,32 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease, background 0.3s ease;
-            font-size: 1.1rem;
             color: var(--red);
-            font-weight: 700;
+        }
+        .faq-icon svg {
+            width: 16px;
+            height: 16px;
         }
         .faq-item.active .faq-icon {
-            transform: rotate(45deg);
+            transform: rotate(180deg);
             background: var(--red);
             color: var(--white);
+        }
+        .faq-item {
+            position: relative;
         }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.35s ease;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            z-index: 10;
+            background: var(--white);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .faq-answer-inner {
             padding: 0 25px 22px;
@@ -1479,7 +1492,7 @@
                 <div class="faq-item reveal">
                     <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
                         Do I need an appointment for a car wash?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">No appointment necessary! All walk-ins are welcomed. Simply drive in during our operating hours and we'll take care of the rest. You'll be in and out in about 20 minutes.</div>
@@ -1489,7 +1502,7 @@
                 <div class="faq-item reveal delay-1">
                     <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
                         How does mobile service work and what does it cost?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">We come to you! Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. Mobile detail jobs are available between 8 am and 4:30 pm. There is an additional $10 fee for us to come out to your location.</div>
@@ -1499,7 +1512,7 @@
                 <div class="faq-item reveal delay-2">
                     <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
                         How long does a detail or wash take?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">A standard car wash takes up to 20 minutes. Detail jobs take up to 90 minutes depending on the package and vehicle size. Window tinting jobs take up to 2 hours.</div>
@@ -1509,7 +1522,7 @@
                 <div class="faq-item reveal">
                     <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
                         Does window tinting come with a warranty?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">Yes! All of our window tinting jobs come with a lifetime warranty. We use industry-leading products installed by certified technicians. Plus, every tint job includes a free car wash.</div>
@@ -1519,7 +1532,7 @@
                 <div class="faq-item reveal delay-1">
                     <button class="faq-question" onclick="this.parentElement.classList.toggle('active'); var a=this.nextElementSibling; a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
                         What are your hours and locations?
-                        <span class="faq-icon">+</span>
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">We have five convenient locations across the DMV area: Clinton, District Heights, Temple Hills, Oxon Hill, and Suitland. Car wash services run Mon-Sat with mobile washes available 8 am – 6:30 pm. Call us at (301) 307-1414 for specific location hours.</div>
