@@ -12,10 +12,11 @@
     <style>
         /* CSS Variables - ProWash Brand Palette */
         :root {
-            --red: #C41230;         /* ProWash Brand Red */
-            --red-hover: #A30F28;
-            --dark-blue: #002868;      /* ProWash Navy Blue */
-            --darker-blue: #001845;
+            --red: #B33A34;         /* Corporate Brand Red */
+            --red-hover: #9A322D;
+            --red-glow: rgba(179, 58, 52, 0.25);
+            --dark-blue: #0A1E3D;      /* Corporate Navy */
+            --darker-blue: #051024;
             --white: #FFFFFF;
             --gray-light: #F4F5F7;     /* Section Backgrounds */
             --gray-mid: #E0E4E8;       /* Borders */
@@ -25,6 +26,7 @@
             /* Sharp, structural shadows */
             --shadow-subtle: 0 5px 15px rgba(0, 0, 0, 0.05);
             --shadow-strong: 0 10px 30px rgba(10, 30, 61, 0.15);
+            --shadow-elevated: 0 20px 50px rgba(10, 30, 61, 0.20);
 
             --transition: all 0.3s ease;
         }
@@ -71,22 +73,27 @@
             fill: currentColor;
             display: inline-block;
         }
-        /* Industrial Buttons (Sharp, blocky) */
+        /* Bold Impact Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 36px;
+            padding: 18px 40px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-align: center;
-            border-radius: 2px; /* Sharp edges */
+            border-radius: 4px;
+        }
+        .btn-big {
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            width: 100%;
         }
         .btn-sm {
             padding: 12px 24px;
@@ -95,10 +102,13 @@
         .btn-red {
             background-color: var(--red);
             color: var(--white);
+            box-shadow: 0 4px 15px var(--red-glow);
         }
         .btn-red:hover {
             background-color: var(--dark-blue);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 30, 61, 0.3);
         }
         .btn-dark {
             background-color: var(--dark-blue);
@@ -118,6 +128,13 @@
             border-color: var(--red);
             background-color: var(--red);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--red-glow);
+        }
+        /* Red accent stripe */
+        .accent-stripe {
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
         }
         /* Top Bar - Classic Theme Style */
         .top-bar {
@@ -167,11 +184,11 @@
             align-items: center;
         }
         .logo-area img {
-            max-height: 45px;
+            max-height: 90px;
             width: auto;
         }
         @media (min-width: 768px) {
-            .logo-area img { max-height: 55px; }
+            .logo-area img { max-height: 120px; }
         }
         .nav-links {
             display: none;
@@ -219,16 +236,24 @@
         /* Dark, Structural Hero Section */
         .hero {
             position: relative;
-            background-image: linear-gradient(rgba(0, 40, 104, 0.8), rgba(0, 40, 104, 0.9)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1920');
+            background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.7) 0%, rgba(14, 26, 43, 0.6) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://images.pexels.com/photos/6872148/pexels-photo-6872148.jpeg?auto=compress&cs=tinysrgb&w=1920');
             background-size: cover;
             background-position: center;
-            padding: 80px 0 140px 0; /* Tightened padding */
+            padding: 80px 0 140px 0;
             color: var(--white);
             text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
         }
         @media (min-width: 768px) {
             .hero {
-                padding: 100px 0 160px 0;
+                padding: 120px 0 180px 0;
                 text-align: left;
             }
         }
@@ -256,6 +281,10 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: -1px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+        .hero h1 span {
+            color: var(--red);
         }
         .hero-divider {
             width: 80px;
@@ -312,14 +341,15 @@
             text-align: center;
             border-bottom: 4px solid var(--gray-mid);
             box-shadow: var(--shadow-strong);
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .loc-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-bottom-color: var(--red);
+            box-shadow: var(--shadow-elevated);
         }
         .loc-card svg {
             width: 32px;
@@ -370,9 +400,9 @@
             margin-bottom: 0;
         }
         .title-divider {
-            width: 60px;
-            height: 4px;
-            background-color: var(--red);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue));
             margin: 15px auto 0 auto;
         }
         .title-divider.left {
@@ -393,7 +423,7 @@
             color: var(--text-muted);
             margin-bottom: 15px;
         }
-        /* Heavy Block Features */
+        /* Heavy Block Features — each unique */
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -403,30 +433,82 @@
             .feature-grid { grid-template-columns: 1fr 1fr; }
         }
         .feature-box {
-            background: var(--white);
-            padding: 25px;
+            padding: 28px;
             border: 1px solid var(--gray-mid);
-            border-left: 4px solid var(--dark-blue);
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .feature-box:hover {
-            border-left-color: var(--red);
-            box-shadow: var(--shadow-subtle);
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .feature-box:hover::before { opacity: 1; }
+        .feature-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-strong); }
+        .feature-box .icon-wrap {
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px;
         }
         .feature-box svg {
-            width: 26px; height: 26px;
-            color: var(--red);
-            margin-bottom: 10px;
+            width: 28px; height: 28px;
+            position: relative; z-index: 1;
         }
         .feature-box h5 {
             font-size: 1.1rem;
             margin-bottom: 5px;
+            position: relative; z-index: 1;
         }
         .feature-box p {
             font-size: 0.9rem;
             color: var(--text-muted);
             margin: 0;
+            position: relative; z-index: 1;
         }
+        /* Walk-Ins: Red accent, solid feel */
+        .feature-walkins {
+            background: var(--white);
+            border-left: 5px solid var(--red);
+        }
+        .feature-walkins .icon-wrap { background: var(--red); }
+        .feature-walkins svg { color: var(--white); }
+        .feature-walkins:hover { border-left-color: var(--dark-blue); }
+        /* Hours: Navy accent, structured */
+        .feature-hours {
+            background: var(--dark-blue);
+            border: none;
+        }
+        .feature-hours .icon-wrap { background: rgba(255,255,255,0.1); }
+        .feature-hours svg { color: var(--red); }
+        .feature-hours h5 { color: var(--white); }
+        .feature-hours p { color: #8EACC7; }
+        .feature-hours:hover { box-shadow: 0 15px 40px rgba(10,30,61,0.4); }
+        /* Mobile Fleet: Outline bold style */
+        .feature-fleet {
+            background: var(--white);
+            border: 2px solid var(--dark-blue);
+            border-left: none;
+            border-right: none;
+        }
+        .feature-fleet .icon-wrap { background: var(--gray-light); border: 2px solid var(--dark-blue); }
+        .feature-fleet svg { color: var(--dark-blue); }
+        .feature-fleet:hover { background: var(--dark-blue); }
+        .feature-fleet:hover h5 { color: var(--white); }
+        .feature-fleet:hover p { color: #8EACC7; }
+        .feature-fleet:hover svg { color: var(--red); }
+        /* Power Washing: Red bg bold */
+        .feature-power {
+            background: linear-gradient(135deg, var(--red) 0%, #D4443D 100%);
+            border: none;
+        }
+        .feature-power .icon-wrap { background: rgba(255,255,255,0.2); }
+        .feature-power svg { color: var(--white); }
+        .feature-power h5 { color: var(--white); }
+        .feature-power p { color: rgba(255,255,255,0.8); }
         /* Services Grid - Structured & Boxy */
         .services-grid {
             display: grid;
@@ -448,59 +530,101 @@
         @media (min-width: 1024px) {
             .services-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        /* ClickFunnels-Style Service Cards — Bold & High Impact */
         .service-card {
             background: var(--white);
-            border: 1px solid var(--gray-mid);
+            border: 3px solid var(--gray-mid);
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
         }
         .service-card:hover {
-            box-shadow: var(--shadow-strong);
-            border-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-8px);
         }
         .service-header {
-            background-color: var(--dark-blue);
+            background: var(--dark-blue);
             color: var(--white);
-            padding: 25px 20px;
-            text-align: center;
+            padding: 25px 20px 20px;
             position: relative;
         }
-        .service-header h3 {
-            color: var(--white);
-            font-size: 1.4rem;
-            margin: 0;
-        }
         .service-header .pkg-num {
-            color: var(--red);
+            color: rgba(255,255,255,0.5);
             font-family: 'Montserrat';
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             display: block;
             margin-bottom: 5px;
         }
-        /* Featured Service Override */
+        .service-header h3 {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin: 0;
+        }
+        .service-price-hero {
+            background: var(--gray-light);
+            padding: 25px 20px;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+        .service-price-hero .from-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .service-price-hero .big-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: var(--dark-blue);
+            line-height: 1;
+            margin: 5px 0;
+        }
+        .service-price-hero .big-price .dollar {
+            font-size: 1.8rem;
+            vertical-align: super;
+        }
+        /* Featured — RED header, scaled up, bold border */
         .service-card.featured {
-            border: 2px solid var(--red);
-            box-shadow: var(--shadow-strong);
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.25);
         }
         @media (min-width: 1024px) {
-            .service-card.featured { z-index: 10; }
+            .service-card.featured {
+                z-index: 10;
+                transform: scale(1.05);
+            }
+            .service-card.featured:hover { transform: scale(1.08) translateY(-8px); }
         }
         .service-card.featured .service-header {
-            background-color: var(--red);
+            background: var(--red);
         }
-        .service-card.featured .service-header h3 {
+        .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.7); }
+        .service-card.featured .service-price-hero .big-price { color: var(--red); }
+        .featured-label {
+            background: var(--red);
             color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            text-transform: uppercase;
+            text-align: center;
         }
-
-        .service-card.featured .service-header .pkg-num {
-            color: var(--white);
-            opacity: 0.9;
-        }
+        /* Gold tier — subtle gold accent */
+        .tier-gold { border-color: #D4AF37; }
+        .tier-gold .service-price-hero .big-price { color: #B8941F; }
+        .tier-gold:hover { box-shadow: 0 15px 40px rgba(212,175,55,0.2); }
         .service-body {
-            padding: 30px 25px;
+            padding: 20px 25px 30px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -509,12 +633,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid var(--gray-mid);
         }
         .price-item:last-of-type {
             border-bottom: none;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .price-label {
             display: flex;
@@ -535,6 +659,10 @@
             font-size: 1.4rem;
             color: var(--dark-blue);
         }
+        .service-body .btn {
+            margin-top: auto;
+            width: 100%;
+        }
         /* Mobile Services Horizontal Strip */
         .mobile-strip-item {
             display: flex;
@@ -554,7 +682,8 @@
         }
         .mobile-strip-item:hover {
             border-color: var(--dark-blue);
-            box-shadow: var(--shadow-subtle);
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-3px);
         }
         .mobile-strip-icon {
             width: 60px; height: 60px;
@@ -609,36 +738,49 @@
         }
         .tint-pricing-box {
             background: var(--white);
-            padding: 30px;
+            padding: 35px;
             border-top: 6px solid var(--red);
             color: var(--text-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
         .tint-pricing-box .price-value { color: var(--red); font-size: 2rem; }
         /* Banner CTA */
         .cta-banner {
-            background-color: var(--gray-light);
-            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #132C52 50%, var(--red) 150%);
+            padding: 60px 20px;
             text-align: center;
-            border-top: 1px solid var(--gray-mid);
-            border-bottom: 1px solid var(--gray-mid);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), transparent, var(--red));
+        }
+        .cta-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), transparent, var(--red));
         }
         @media (min-width: 768px) {
             .cta-banner {
-                padding: 60px 40px;
-                max-width: 1200px;
-                margin: 0 auto;
-                border: none;
+                padding: 80px 40px;
             }
         }
         .cta-banner h2 {
-            color: var(--dark-blue);
+            color: var(--white);
             margin-bottom: 15px;
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         .cta-banner p {
-            color: var(--text-dark);
+            color: #C8D0DA;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-bottom: 0;
             max-width: 800px;
             margin-left: auto;
@@ -646,20 +788,23 @@
             line-height: 1.8;
         }
         .cta-banner a {
-            color: var(--red);
+            color: var(--white);
             font-weight: 800;
-            text-decoration: underline;
+            text-decoration: none;
+            background: var(--red);
+            padding: 2px 10px;
             transition: var(--transition);
         }
         .cta-banner a:hover {
-            color: var(--dark-blue);
+            background: var(--white);
+            color: var(--red);
         }
         /* Industrial Footer */
         footer {
             background-color: var(--darker-blue);
             color: #8C98A4;
-            padding: 50px 0 30px;
-            border-top: 4px solid var(--dark-blue);
+            padding: 60px 0 30px;
+            border-top: 4px solid var(--red);
         }
         .footer-grid {
             display: grid;
@@ -674,7 +819,7 @@
             .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
         }
         .footer-logo img {
-            max-height: 45px;
+            max-height: 100px;
             margin-bottom: 20px;
         }
         .footer-col h5 {
@@ -734,6 +879,8 @@
     </style>
 </head>
 <body class="bg-light">
+    <!-- Red Accent Stripe -->
+    <div class="accent-stripe"></div>
     <!-- Prohauz Style Dark Top Bar -->
     <div class="top-bar">
         <div class="container top-bar-inner">
@@ -751,7 +898,7 @@
         <div class="container nav-container">
             <div class="logo-area">
                 <a href="#">
-                    <img src="https://prowashdetail.net/wp-content/uploads/2017/08/logo_main.png" alt="Pro Wash Logo">
+                    <img src="images/logo.png" alt="Pro Wash Logo">
                 </a>
             </div>
 
@@ -772,8 +919,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content reveal">
-                <span class="hero-subtitle">America's Express Auto Salon</span>
-                <h1>THE FULL SERVICE WASH YOUR CAR DESERVES.</h1>
+                <span class="hero-subtitle">Premium Auto Detailing</span>
+                <h1>THE FULL SERVICE WASH YOUR CAR <span>DESERVES.</span></h1>
                 <div class="hero-divider left"></div>
                 <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
                 <div class="hero-actions">
@@ -851,23 +998,31 @@
             </div>
 
             <div class="feature-grid reveal delay-1">
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div class="feature-box feature-walkins">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
                     <h5>Walk-Ins Welcome</h5>
                     <p>No Appointment Needed</p>
                 </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div class="feature-box feature-hours">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
                     <h5>Mon-Sat: 8am-6pm</h5>
                     <p>Open for consistent service</p>
                 </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
+                <div class="feature-box feature-fleet">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
+                    </div>
                     <h5>Mobile Fleet</h5>
                     <p>Available (+$10 fee)</p>
                 </div>
-                <div class="feature-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></svg>
+                <div class="feature-box feature-power">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></svg>
+                    </div>
                     <h5>Power Washing</h5>
                     <p>Home & Fleet washing</p>
                 </div>
@@ -885,101 +1040,122 @@
             </div>
             <!-- Top 3 Column Tier -->
             <div class="services-grid mb-4" style="margin-bottom: 20px;">
-                <!-- Package #10 -->
+                <!-- Package #10 — Super Sport -->
                 <div class="service-card reveal">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #10</span>
                         <h3>Super Sport</h3>
                     </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>95</div>
+                    </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$95</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$110</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg> XL Trucks</span>
+                            <span class="price-label">XL Trucks</span>
                             <span class="price-value">$125</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #9 (Featured) -->
+                <!-- Package #9 — Master Detail (FEATURED) -->
                 <div class="service-card featured reveal delay-1">
+                    <div class="featured-label">MOST POPULAR</div>
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #9</span>
                         <h3>Master Detail</h3>
                     </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>295</div>
+                    </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$295</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$355</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-dark" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #5 -->
-                <div class="service-card reveal delay-2">
+                <!-- Package #5 — Express Detail -->
+                <div class="service-card tier-gold reveal delay-2">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #5</span>
                         <h3>Express Detail</h3>
                     </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>185</div>
+                    </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$185</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$210</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
             <!-- Bottom 2 Column Tier -->
             <div class="services-grid-bottom">
-                <!-- Package #4 -->
+                <!-- Package #4 — Steam Clean -->
                 <div class="service-card reveal">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #4</span>
                         <h3>Steam Clean</h3>
                     </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>150</div>
+                    </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$150</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$175</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
                     </div>
                 </div>
-                <!-- Package #8 -->
-                <div class="service-card reveal delay-1">
+                <!-- Package #8 — Buff Wax -->
+                <div class="service-card tier-gold reveal delay-1">
                     <div class="service-header">
                         <span class="pkg-num">PACKAGE #8</span>
                         <h3>Buff Wax</h3>
                     </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>175</div>
+                    </div>
                     <div class="service-body">
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg> Cars</span>
+                            <span class="price-label">Cars</span>
                             <span class="price-value">$175</span>
                         </div>
                         <div class="price-item">
-                            <span class="price-label"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> Trucks</span>
+                            <span class="price-label">Trucks</span>
                             <span class="price-value">$215</span>
                         </div>
-                        <a href="tel:3013071414" class="btn btn-outline" style="margin-top: auto;">Book Now</a>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1067,7 +1243,7 @@
             <div class="footer-grid">
                 <div class="reveal">
                     <span class="footer-logo">
-                        <img src="https://prowashdetail.net/wp-content/uploads/2017/08/logo_main.png" alt="Pro Wash Logo">
+                        <img src="images/logo.png" alt="Pro Wash Logo">
                     </span>
                     <p>Built to set the standard in auto care. The corporate standard in high-end vehicle detailing, paint preservation, and commercial fleet management.</p>
 
