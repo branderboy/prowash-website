@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -348,7 +348,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5.2rem);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
             color: var(--navy);
             margin-bottom: 20px;
             letter-spacing: -1px;
@@ -356,7 +356,7 @@
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-dark);
             margin-bottom: 32px;
             font-weight: 500;
@@ -365,8 +365,8 @@
 
         @media (min-width: 768px) {
             .hero p {
-                font-size: 1.3rem;
-                margin-bottom: 48px;
+                font-size: 1.2rem;
+                margin-bottom: 40px;
             }
         }
 
@@ -383,31 +383,36 @@
             }
         }
 
-        /* Hero Right Split - Transparent Locations */
+        /* Hero Right Split - Locations Box */
         .hero-info-stack {
             display: flex;
             flex-direction: column;
             gap: 24px;
+            align-items: flex-start; /* Keeps the box tightly wrapped to the text */
         }
 
-        .hero-transparent-list {
-            background: transparent;
-            padding: 10px 0 10px 20px;
-            border-left: 4px solid var(--red);
+        .hero-locations-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 6px solid var(--red);
+            box-shadow: var(--shadow-lg);
+            max-width: fit-content;
         }
 
         @media (min-width: 768px) {
-            .hero-transparent-list {
-                padding: 20px 0 20px 30px;
-                border-left: 6px solid var(--red);
+            .hero-locations-card {
+                padding: 24px 30px;
             }
         }
 
-        .hero-transparent-list h4 {
-            font-size: 1.5rem;
+        .hero-locations-card h4 {
+            font-size: 1.25rem;
             margin-bottom: 16px;
             color: var(--navy);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
         }
         
         .locations-list {
@@ -415,28 +420,27 @@
             padding: 0;
             margin: 0;
             color: var(--text-dark);
-            font-weight: 800;
-            font-size: 1.1rem;
-            line-height: 2;
-        }
-
-        @media (min-width: 768px) {
-            .locations-list { font-size: 1.2rem; line-height: 2.2; }
-            .hero-transparent-list h4 { font-size: 1.8rem; }
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         .locations-list li {
             display: flex;
             align-items: center;
             gap: 12px;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+
+        .locations-list li:last-child {
+            margin-bottom: 0;
         }
         
         .locations-list svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             color: var(--red);
-            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+            flex-shrink: 0;
         }
 
         /* Overlapping Proof Stats Bar (Borderless) */
@@ -577,10 +581,10 @@
         }
 
         .feature-item svg {
-            width: 24px; height: 24px;
+            width: 16px; height: 16px;
             color: var(--red);
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         .feature-item div h5 {
@@ -894,11 +898,15 @@
         .tint-content .feature-checklist {
             background: transparent;
             padding: 0; box-shadow: none; border: none;
-            display: flex; flex-direction: column; gap: 15px;
+            display: flex; flex-direction: column; gap: 12px;
         }
         
-        .tint-content .feature-item svg { color: var(--corp-blue); background: var(--white); border-radius: 50%; padding: 4px; width: 24px; height: 24px;}
-        .tint-content .feature-item div h5 { color: var(--white); margin: 0; font-size: 1.1rem;}
+        .tint-content .feature-checklist li {
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+
+        .tint-content .feature-checklist li svg { color: var(--corp-blue); background: var(--white); border-radius: 50%; padding: 3px; width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;}
+        .tint-content .feature-checklist li div h5 { color: var(--white); margin: 0; font-size: 1.1rem;}
 
         .tint-card {
             background: var(--white);
@@ -1261,6 +1269,7 @@
         <div class="container nav-container">
             <div class="logo-area">
                 <a href="#" class="logo">
+                    <!-- Link to user's specified logo image -->
                     <img src="https://prowashdetail.net/wp-content/uploads/2017/08/logo_main.png" alt="Pro Wash Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span style="display:none;">PRO WASH</span>
                 </a>
@@ -1302,7 +1311,7 @@
             </div>
             
             <div class="hero-info-stack reveal delay-1">
-                <div class="hero-transparent-list">
+                <div class="hero-locations-card">
                     <h4>Our Service Locations</h4>
                     <ul class="locations-list">
                         <li>
@@ -1658,7 +1667,7 @@
         </div>
     </section>
 
-    <!-- Floating Locations Grid -->
+    <!-- Floating Locations Grid (Borderless) -->
     <section id="locations" class="loc-section section-padding clip-angle-both pattern-stripes">
         <div class="container">
             <div class="services-header reveal">
