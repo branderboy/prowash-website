@@ -917,31 +917,27 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .mobile-row {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             padding: 30px 0;
             border-bottom: 1px solid var(--gray-mid);
-            gap: 20px;
+            gap: 10px;
         }
         .mobile-row:last-child { border-bottom: none; }
-        @media (min-width: 768px) {
-            .mobile-row {
-                flex-direction: row;
-                align-items: center;
-                gap: 20px;
-            }
-        }
         .mobile-row-num {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             font-size: 3rem;
             color: var(--gray-mid);
             line-height: 1;
-            min-width: 60px;
         }
-        .mobile-row-info { flex: 1; max-width: 500px; }
+        .mobile-row-info { max-width: 500px; }
         .mobile-row-info h3 {
             color: var(--dark-blue);
             font-size: 1.4rem;
