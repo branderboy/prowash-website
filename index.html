@@ -941,7 +941,7 @@
             line-height: 1;
             min-width: 60px;
         }
-        .mobile-row-info { flex-grow: 1; }
+        .mobile-row-info { flex: 1; max-width: 500px; }
         .mobile-row-info h3 {
             color: var(--dark-blue);
             font-size: 1.4rem;
@@ -965,7 +965,7 @@
         .mobile-row-tag.tag-price {
             color: var(--text-muted);
         }
-        .mobile-row-action { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+        .mobile-row-action { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
         /* Industrial Footer */
         footer {
             background-color: var(--darker-blue);
@@ -1264,15 +1264,15 @@
     <!-- Car Wash Promo Banner -->
     <section class="promo-banner">
         <div class="container promo-inner reveal">
-            <div class="promo-price-box">
-                <div class="price-label">Starting at</div>
-                <div class="price">$15</div>
-                <div class="price-note">Full Service Wash</div>
-            </div>
             <div class="promo-text">
                 <h2>Car Wash Starting at <span>$15</span></h2>
                 <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
                 <a href="#services" class="btn btn-blue" style="margin-top: 20px;">View Packages</a>
+            </div>
+            <div class="promo-price-box">
+                <div class="price-label">Starting at</div>
+                <div class="price">$15</div>
+                <div class="price-note">Full Service Wash</div>
             </div>
         </div>
     </section>
