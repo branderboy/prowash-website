@@ -1,1 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Car Wash & Car Detail</title>
 
+    <!-- Prohauz Style Industrial Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - ProWash Brand Palette */
+        :root {
+            --red: #B33A34;         /* Corporate Brand Red */
+            --red-hover: #9A322D;
+            --red-glow: rgba(179, 58, 52, 0.25);
+            --dark-blue: #0A1E3D;      /* Corporate Navy */
+            --darker-blue: #051024;
+            --white: #FFFFFF;
+            --gray-light: #F4F5F7;     /* Section Backgrounds */
+            --gray-mid: #E0E4E8;       /* Borders */
+            --text-dark: #333333;
+            --text-muted: #666666;
+
+            /* Sharp, structural shadows */
+            --shadow-subtle: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --shadow-strong: 0 10px 30px rgba(10, 30, 61, 0.15);
+            --shadow-elevated: 0 20px 50px rgba(10, 30, 61, 0.20);
+
+            --transition: all 0.3s ease;
+        }
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--dark-blue);
+            margin-bottom: 0.5em;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        ul { list-style: none; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        @media (min-width: 768px) {
+            .container { padding: 0 40px; }
+        }
+        /* SVG Utility */
+        svg {
+            fill: currentColor;
+            display: inline-block;
+        }
+        /* Bold Impact Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            border-radius: 4px;
+        }
+        .btn-big {
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        .btn-sm {
+            padding: 12px 24px;
+            font-size: 0.8rem;
+        }
+        .btn-red {
+            background-color: var(--red);
+            color: var(--white);
+            box-shadow: 0 4px 15px var(--red-glow);
+        }
+        .btn-red:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 30, 61, 0.3);
+        }
+        .btn-blue {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(10, 30, 61, 0.3);
+        }
+        .btn-blue:hover {
+            background-color: var(--red);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--red-glow);
+        }
+        .btn-dark {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--red);
+            color: var(--white);
+        }
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--gray-mid);
+            color: var(--dark-blue);
+        }
+        .btn-outline:hover {
+            border-color: var(--red);
+            background-color: var(--red);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--red-glow);
+        }
+        /* Red accent stripe */
+        .accent-stripe {
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
+        }
+        /* Top Bar - Classic Theme Style */
+        .top-bar {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 8px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        @media (min-width: 768px) {
+            .top-bar { font-size: 0.85rem; padding: 10px 0; }
+        }
+        .top-bar-inner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar-item svg { color: var(--red); width: 16px; height: 16px; }
+        .desktop-only { display: none; }
+        @media (min-width: 768px) {
+            .desktop-only { display: flex; }
+        }
+        /* Main Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-mid);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area img {
+            max-height: 90px;
+            width: auto;
+        }
+        @media (min-width: 768px) {
+            .logo-area img { max-height: 120px; }
+        }
+        .nav-links {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+                gap: 35px;
+                align-items: center;
+            }
+        }
+        .nav-item {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            position: relative;
+            padding: 10px 0;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--red);
+            transition: width 0.3s ease;
+        }
+        .nav-item:hover::after { width: 100%; }
+        .nav-item:hover { color: var(--red); }
+        .mobile-menu-btn {
+            display: block;
+            background: var(--red);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 2px;
+        }
+        @media (min-width: 1024px) {
+            .mobile-menu-btn { display: none; }
+        }
+        /* Dark, Structural Hero Section */
+        .hero {
+            position: relative;
+            background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.7) 0%, rgba(14, 26, 43, 0.6) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://images.pexels.com/photos/6872148/pexels-photo-6872148.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0 140px 0;
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue), var(--red));
+        }
+        @media (min-width: 768px) {
+            .hero {
+                padding: 120px 0 180px 0;
+                text-align: left;
+            }
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .hero-content { margin: 0; }
+        }
+        .hero-subtitle {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--red);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: var(--white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+        .hero h1 span {
+            color: var(--red);
+        }
+        .hero-divider {
+            width: 80px;
+            height: 4px;
+            background-color: var(--red);
+            margin: 0 auto 20px auto;
+        }
+        @media (min-width: 768px) {
+            .hero-divider { margin: 0 0 20px 0; }
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            max-width: 600px;
+            font-weight: 400;
+        }
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        @media (min-width: 600px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        @media (min-width: 768px) {
+            .hero-actions { justify-content: flex-start; }
+        }
+        /* Overlapping Locations Grid - Tightened margin */
+        .locations-overlap {
+            margin-top: -80px;
+            position: relative;
+            z-index: 20;
+            margin-bottom: 40px;
+        }
+        .loc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 600px) {
+            .loc-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
+        @media (min-width: 1024px) {
+            .loc-grid { grid-template-columns: repeat(5, 1fr); gap: 15px; }
+        }
+        .loc-card {
+            background: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gray-mid);
+            box-shadow: var(--shadow-strong);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .loc-card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+        }
+        .loc-card svg {
+            width: 32px;
+            height: 32px;
+            color: var(--red);
+            margin-bottom: 15px;
+        }
+        .loc-card h4 {
+            font-size: 1.1rem;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .loc-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .loc-btn-wrap {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Tightened Section Layouts */
+        .section-padding { padding: 50px 0; }
+        @media (min-width: 768px) {
+            .section-padding { padding: 70px 0; }
+        }
+        .bg-light { background-color: var(--gray-light); }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-subtitle {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        .title-divider {
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue));
+            margin: 15px auto 0 auto;
+        }
+        .title-divider.left {
+            margin: 15px 0 0 0;
+        }
+        /* Split Mission Section */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .mission-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+        }
+        .mission-content p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .founder-quote {
+            margin-top: 25px;
+            padding: 20px 25px;
+            border-left: 4px solid var(--red);
+            background: var(--white);
+        }
+        .founder-quote p {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .founder-quote span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--red);
+        }
+        /* Clean Feature Strips */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        @media (min-width: 600px) {
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .feature-box {
+            padding: 32px 35px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-mid);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+        @media (min-width: 600px) {
+            .feature-box:nth-child(odd) { border-right: 1px solid var(--gray-mid); }
+        }
+        .feature-box:hover { background: var(--gray-light); }
+        .feature-box .icon-wrap {
+            width: 64px; height: 64px;
+            min-width: 64px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .feature-box svg {
+            width: 56px; height: 56px;
+            color: var(--dark-blue);
+        }
+        .feature-box h5 {
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+            color: var(--dark-blue);
+        }
+        .feature-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        /* Car Wash Promo Banner */
+        .promo-banner {
+            background: #D6EAFF;
+            padding: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .promo-banner::before {
+            content: none;
+        }
+        .promo-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .promo-banner { padding: 70px 0; }
+            .promo-inner {
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+                justify-content: center;
+            }
+        }
+        .promo-text { flex: 0 1 auto; max-width: 550px; }
+        .promo-text h2 {
+            color: var(--dark-blue);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+        }
+        .promo-text h2 span { color: var(--dark-blue); }
+        .promo-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 550px;
+        }
+        .promo-price-box {
+            flex-shrink: 0;
+            background: var(--white);
+            color: var(--dark-blue);
+            border-radius: 10px;
+            padding: 40px 55px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .promo-price-box .price-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .promo-price-box .price {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .promo-price-box .price-note {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-top: 6px;
+        }
+        /* Services Grid - Structured & Boxy */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        /* Dedicated class for bottom 2 to prevent shrinking */
+        .services-grid-bottom {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 770px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid-bottom { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        /* ClickFunnels-Style Service Cards — Bold & High Impact */
+        .service-card {
+            background: var(--white);
+            border: 3px solid var(--gray-mid);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-8px);
+        }
+        .service-header {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 25px 20px 20px;
+            position: relative;
+        }
+        .service-header .pkg-num {
+            color: rgba(255,255,255,0.5);
+            font-family: 'Montserrat';
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .service-header h3 {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin: 0;
+        }
+        .service-price-hero {
+            background: var(--gray-light);
+            padding: 25px 20px;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+        .service-price-hero .from-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .service-price-hero .big-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: var(--dark-blue);
+            line-height: 1;
+            margin: 5px 0;
+        }
+        .service-price-hero .big-price .dollar {
+            font-size: 1.8rem;
+            vertical-align: super;
+        }
+        /* Featured — RED header, scaled up, bold border */
+        .service-card.featured {
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(179, 58, 52, 0.25);
+        }
+        @media (min-width: 1024px) {
+            .service-card.featured {
+                z-index: 10;
+                transform: scale(1.05);
+            }
+            .service-card.featured:hover { transform: scale(1.08) translateY(-8px); }
+        }
+        .service-card.featured .service-header {
+            background: var(--red);
+        }
+        .service-card.featured .service-header .pkg-num { color: rgba(255,255,255,0.7); }
+        .service-card.featured .service-price-hero .big-price { color: var(--red); }
+        .featured-label {
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        /* Red tier accent */
+        .tier-gold { border-color: var(--red); }
+        .tier-gold .service-price-hero .big-price { color: var(--red); }
+        .tier-gold:hover { box-shadow: 0 15px 40px var(--red-glow); }
+        .service-body {
+            padding: 20px 25px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+        .price-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+        .price-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .price-label svg {
+            width: 18px; height: 18px;
+            color: var(--red);
+        }
+        .price-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--dark-blue);
+        }
+        .service-body .btn {
+            margin-top: auto;
+            width: 100%;
+        }
+        /* Mobile Services Horizontal Strip */
+        .mobile-strip-item {
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border: 1px solid var(--gray-mid);
+            padding: 25px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        @media (min-width: 768px) {
+            .mobile-strip-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+        .mobile-strip-item:hover {
+            border-color: var(--dark-blue);
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-3px);
+        }
+        .mobile-strip-icon {
+            width: 60px; height: 60px;
+            background: var(--gray-light);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+        @media (min-width: 768px) {
+            .mobile-strip-icon { margin-bottom: 0; flex-shrink: 0; }
+        }
+        .mobile-strip-icon svg { width: 30px; height: 30px; }
+        .mobile-strip-content {
+            flex-grow: 1;
+        }
+        .mobile-strip-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .mobile-strip-content p { color: var(--text-muted); margin-bottom: 0; }
+        .mobile-strip-action {
+            margin-top: 15px;
+        }
+        @media (min-width: 768px) {
+            .mobile-strip-action { margin-top: 0; flex-shrink: 0; text-align: right; }
+        }
+        /* Solid Dark Section (Tinting & Programs) */
+        .dark-section {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+        .dark-section .section-title { color: var(--white); }
+        .dark-section .text-muted { color: #A0ABB5; }
+        .tint-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .tint-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .check-list svg {
+            color: var(--red);
+            width: 18px; height: 18px;
+            flex-shrink: 0;
+        }
+        .tint-pricing-box {
+            background: var(--white);
+            padding: 35px;
+            border-top: 6px solid var(--red);
+            color: var(--text-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .tint-pricing-box .price-value { color: var(--red); font-size: 2rem; }
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .review-card {
+            background: var(--white);
+            padding: 35px 30px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-mid);
+            transition: all 0.3s ease;
+        }
+        .review-card:hover {
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-4px);
+        }
+        .review-stars {
+            color: #F5A623;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .review-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), #D4443D);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .review-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--dark-blue);
+        }
+        .review-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        /* Loyalty & Birthday Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .programs-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .program-card {
+            padding: 40px 35px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+        .program-card .program-icon {
+            width: 64px; height: 64px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+        }
+        .program-card .program-icon svg {
+            width: 32px; height: 32px;
+        }
+        .program-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .program-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .program-loyalty {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .program-loyalty .program-icon { background: rgba(255,255,255,0.1); }
+        .program-loyalty .program-icon svg { color: var(--red); }
+        .program-loyalty h3 { color: var(--white); }
+        .program-loyalty p { color: var(--white); }
+        .program-birthday {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .program-birthday .program-icon { background: rgba(255,255,255,0.1); }
+        .program-birthday .program-icon svg { color: var(--red); }
+        .program-birthday h3 { color: var(--white); }
+        .program-birthday p { color: var(--white); }
+        /* Mobile Services — Clean Rows */
+        .mobile-dark {
+            background: var(--white);
+        }
+        .mobile-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mobile-row {
+            display: flex;
+            flex-direction: column;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--gray-mid);
+            gap: 20px;
+            align-items: center;
+        }
+        .mobile-row:last-child { border-bottom: none; }
+        @media (min-width: 768px) {
+            .mobile-row {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+        .mobile-row-num {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--gray-mid);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .mobile-row-info { width: 400px; flex-shrink: 0; }
+        .mobile-row-info h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+        .mobile-row-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .mobile-row-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        .mobile-row-tag.tag-fee {
+            color: var(--text-muted);
+        }
+        .mobile-row-tag.tag-price {
+            color: var(--text-muted);
+        }
+        .mobile-row-action { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 220px; }
+        .mobile-row-action .btn { width: 100%; }
+        /* Industrial Footer */
+        footer {
+            background-color: var(--darker-blue);
+            color: #FFFFFF;
+            padding: 60px 0 30px;
+            border-top: 4px solid var(--red);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 50px;}
+        }
+        @media (min-width: 1024px) {
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+        }
+        .footer-logo img {
+            max-height: 100px;
+            margin-bottom: 20px;
+        }
+        .footer-col h5 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .footer-col h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 30px; height: 3px;
+            background: var(--red);
+        }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { transition: var(--transition); color: #FFFFFF; }
+        .footer-links a:hover { color: var(--red); padding-left: 5px; }
+        .f-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .f-contact-item svg {
+            color: var(--red);
+            width: 20px; height: 20px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .f-contact-item strong {
+            display: block;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        /* FAQ Accordion */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-strong);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-align: left;
+            gap: 15px;
+        }
+        .faq-question:hover { color: var(--red); }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            color: var(--red);
+        }
+        .faq-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        .faq-item.faq-open .faq-icon {
+            transform: rotate(180deg);
+            background: var(--dark-blue);
+            color: var(--white);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 25px 22px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Red Accent Stripe -->
+    <div class="accent-stripe"></div>
+    <!-- Prohauz Style Dark Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving Washington DC &amp; Maryland</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Mon-Sat: 8 AM - 6 PM</span>
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins &amp; Appointments Welcome</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
+        </div>
+    </div>
+    <!-- Main Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <a href="#">
+                    <img src="images/logo.png" alt="Pro Wash Logo">
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#mission" class="nav-item">Our Mission</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#mobile" class="nav-item">Mobile Fleet</a>
+                <a href="#locations" class="nav-item">Locations</a>
+                <a href="tel:3013071414" class="btn btn-red">Book Now</a>
+            </nav>
+        </div>
+    </header>
+    <!-- Dark Structured Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle">Premium Auto Detailing</span>
+                <h1>THE FULL SERVICE WASH YOUR CAR <span>DESERVES.</span></h1>
+                <div class="hero-divider left"></div>
+                <p>Experience the time efficiency of an automated facility with the uncompromised precision and swirl-free finish of a premium full service car wash. In and out in 20 minutes.</p>
+                <div class="hero-actions reveal">
+                    <a href="tel:3013071414" class="btn btn-red">Call Now!</a>
+                    <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">View Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Overlapping Locations Grid -->
+    <div class="locations-overlap">
+        <div class="container">
+            <div class="loc-grid">
+                <div class="loc-card reveal">
+                    <h4>CLINTON</h4>
+                    <p>6311 Coventry Way<br>Clinton, MD 20735</p>
+                    <div class="loc-btn-wrap">
+                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                    </div>
+                </div>
+
+                <div class="loc-card reveal delay-1">
+                    <h4>CAPITOL HEIGHTS</h4>
+                    <p>29 Hampton Park Blvd<br>Capitol Heights, MD 20743</p>
+                    <div class="loc-btn-wrap">
+                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                    </div>
+                </div>
+
+                <div class="loc-card reveal delay-2">
+                    <h4>BOWIE</h4>
+                    <p>4406 NW Crain Hwy<br>Bowie, MD 20716</p>
+                    <div class="loc-btn-wrap">
+                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                    </div>
+                </div>
+
+                <div class="loc-card reveal delay-3">
+                    <h4>UPPER MARLBORO</h4>
+                    <p>7538 NW Crain Hwy<br>Upper Marlboro, MD 20716</p>
+                    <div class="loc-btn-wrap">
+                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                    </div>
+                </div>
+
+                <div class="loc-card reveal delay-1">
+                    <h4>WASHINGTON DC</h4>
+                    <p>1329 Kenilworth Ave NE<br>Washington, DC 20019</p>
+                    <div class="loc-btn-wrap">
+                        <a href="#" class="btn btn-outline btn-sm" style="width:100%;">Book a Wash</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Corporate Mission Section -->
+    <section id="mission" class="section-padding bg-light">
+        <div class="container mission-grid">
+            <div class="mission-content reveal">
+                <span class="section-subtitle">Corporate Mission</span>
+                <h2 class="section-title">BUILT TO SET THE STANDARD IN CAR CARE</h2>
+                <div class="title-divider left"></div>
+                <p style="margin-top: 25px;">Pro Wash is a premier full-service car wash. Pro Wash offers the time efficiency of an express automated car wash with the quality and swirl free paint results of a premium full service wash.</p>
+                <p>We offer an array of service packages from basic full service washes to the extensive master detail package. We also provide professional consultation and education on paint and interior car preservation.</p>
+
+                <div class="founder-quote">
+                    <p>"Early on I recognized a need for mobile full service washing and car detailing."</p>
+                    <span>— Founder & Owner</span>
+                </div>
+            </div>
+
+            <div class="feature-grid reveal delay-1" style="border: 1px solid var(--gray-mid); border-bottom: none; border-radius: 6px; overflow: hidden;">
+                <div class="feature-box">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <div>
+                        <h5>Walk-Ins Welcome</h5>
+                        <p>No Appointment Needed</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <div>
+                        <h5>Mon-Sat: 8am-6pm</h5>
+                        <p>Open for consistent service</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
+                    </div>
+                    <div>
+                        <h5>Mobile Fleet</h5>
+                        <p>Available (+$10 fee)</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zM11.48 20v-6.26H8L13 4v6.26h3.35L11.48 20z"/></svg>
+                    </div>
+                    <div>
+                        <h5>Power Washing</h5>
+                        <p>Home & Fleet washing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Car Wash Promo Banner -->
+    <section class="promo-banner">
+        <div class="container promo-inner reveal">
+            <div class="promo-text">
+                <h2>Car Wash Starting at <span>$15</span></h2>
+                <p>Pro Wash is a Professional Hand Wash and Detail Center. More shine, less time — from America's express car wash. We deliver spotless results with every visit.</p>
+                <a href="#services" class="btn btn-blue" style="margin-top: 20px;">View Packages</a>
+            </div>
+            <div class="promo-price-box">
+                <div class="price-label">Starting at</div>
+                <div class="price">$15</div>
+                <div class="price-note">Full Service Wash</div>
+            </div>
+        </div>
+    </section>
+    <!-- Detail Packages Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Our Services</span>
+                <h2 class="section-title">DETAIL PACKAGES</h2>
+                <div class="title-divider"></div>
+                <p style="margin-top:15px; color: var(--text-muted); font-size: 1.1rem;">From express washes to full master details. All detail jobs completed between 8am and 4:30pm.</p>
+            </div>
+            <!-- Top 3 Column Tier -->
+            <div class="services-grid mb-4" style="margin-bottom: 20px;">
+                <!-- Package #10 — Super Sport -->
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <span class="pkg-num">PACKAGE #10</span>
+                        <h3>Super Sport</h3>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>95</div>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-item">
+                            <span class="price-label">Cars</span>
+                            <span class="price-value">$95</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Trucks</span>
+                            <span class="price-value">$110</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">XL Trucks</span>
+                            <span class="price-value">$125</span>
+                        </div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
+                    </div>
+                </div>
+                <!-- Package #9 — Master Detail (FEATURED) -->
+                <div class="service-card featured reveal delay-1">
+                    <div class="featured-label">MOST POPULAR</div>
+                    <div class="service-header">
+                        <span class="pkg-num">PACKAGE #9</span>
+                        <h3>Master Detail</h3>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>295</div>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-item">
+                            <span class="price-label">Cars</span>
+                            <span class="price-value">$295</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Trucks</span>
+                            <span class="price-value">$355</span>
+                        </div>
+                        <a href="tel:3013071414" class="btn btn-red btn-big">Book Now</a>
+                    </div>
+                </div>
+                <!-- Package #5 — Express Detail -->
+                <div class="service-card tier-gold reveal delay-2">
+                    <div class="service-header">
+                        <span class="pkg-num">PACKAGE #5</span>
+                        <h3>Express Detail</h3>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>185</div>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-item">
+                            <span class="price-label">Cars</span>
+                            <span class="price-value">$185</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Trucks</span>
+                            <span class="price-value">$210</span>
+                        </div>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom 2 Column Tier -->
+            <div class="services-grid-bottom">
+                <!-- Package #4 — Steam Clean -->
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <span class="pkg-num">PACKAGE #4</span>
+                        <h3>Steam Clean</h3>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>150</div>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-item">
+                            <span class="price-label">Cars</span>
+                            <span class="price-value">$150</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Trucks</span>
+                            <span class="price-value">$175</span>
+                        </div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-big">Book Now</a>
+                    </div>
+                </div>
+                <!-- Package #8 — Buff Wax -->
+                <div class="service-card tier-gold reveal delay-1">
+                    <div class="service-header">
+                        <span class="pkg-num">PACKAGE #8</span>
+                        <h3>Buff Wax</h3>
+                    </div>
+                    <div class="service-price-hero">
+                        <span class="from-text">Starting at</span>
+                        <div class="big-price"><span class="dollar">$</span>175</div>
+                    </div>
+                    <div class="service-body">
+                        <div class="price-item">
+                            <span class="price-label">Cars</span>
+                            <span class="price-value">$175</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Trucks</span>
+                            <span class="price-value">$215</span>
+                        </div>
+                        <a href="tel:3013071414" class="btn btn-dark btn-big">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Mobile Services — Dark Rows -->
+    <section id="mobile" class="mobile-dark section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">We Come To You</span>
+                <h2 class="section-title">MOBILE SERVICES</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="mobile-rows">
+                <div class="mobile-row reveal">
+                    <div class="mobile-row-num">01</div>
+                    <div class="mobile-row-info">
+                        <h3>Mobile Car Wash</h3>
+                        <p>Book between 8am-6:30pm, Mon-Sat. Fast 20 minute turnaround.</p>
+                    </div>
+                    <div class="mobile-row-action">
+                        <span class="mobile-row-tag tag-fee">+$10 Dispatch</span>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="border-color:var(--dark-blue); color:var(--dark-blue);">I Need a Mobile Wash!</a>
+                    </div>
+                </div>
+
+                <div class="mobile-row reveal delay-1">
+                    <div class="mobile-row-num">02</div>
+                    <div class="mobile-row-info">
+                        <h3>Mobile Car Detail</h3>
+                        <p>Available 8am-4:30pm. Complete interior and exterior detail. Up to 90 minutes.</p>
+                    </div>
+                    <div class="mobile-row-action">
+                        <span class="mobile-row-tag tag-fee">+$10 Fee</span>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="border-color:var(--dark-blue); color:var(--dark-blue);">I Need a Car Detail!</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Verified Client Experiences -->
+    <section id="reviews" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">What Our Clients Say</span>
+                <h2 class="section-title">VERIFIED CLIENT EXPERIENCES</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Best car wash in the DMV area. My car looked brand new after the Master Detail package. The attention to detail is unmatched — they got every crevice and the paint looks incredible."</p>
+                    <div class="review-author">
+                        <div>
+                            <div class="review-name">Mark T.</div>
+                            <div class="review-label">Master Detail Client</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card reveal delay-1">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"I've been using Pro Wash for over 2 years now. The mobile service is a game changer — they come right to my office. Consistent quality every single time. Highly recommend!"</p>
+                    <div class="review-author">
+                        <div>
+                            <div class="review-name">Sarah J.</div>
+                            <div class="review-label">Loyalty Member</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card reveal delay-2">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Got window tinting done here and the results are perfect. Lifetime warranty gave me confidence and the free car wash was a nice bonus. Professional team from start to finish."</p>
+                    <div class="review-author">
+                        <div>
+                            <div class="review-name">David R.</div>
+                            <div class="review-label">Tinting Client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Rewards & Birthday Club -->
+    <section id="programs" class="dark-section section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Member Perks</span>
+                <h2 class="section-title">LOYALTY REWARDS & BIRTHDAY CLUB</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card program-loyalty reveal">
+                    <h3>Loyalty Rewards</h3>
+                    <p>Earn points with every wash and detail service. Redeem for free washes, upgrades, and exclusive member-only discounts. The more you wash, the more you save.</p>
+                    <a href="#" class="btn btn-red">Join The Program</a>
+                </div>
+
+                <div class="program-card program-birthday reveal delay-1">
+                    <h3>Birthday Club</h3>
+                    <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
+                    <a href="#" class="btn btn-outline" style="border-color:var(--white); color:var(--white);">Sign Up Free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Got Questions?</span>
+                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need an appointment for a car wash?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">No appointment necessary! All walk-ins are welcomed. Simply drive in during our operating hours and we'll take care of the rest. You'll be in and out in about 20 minutes.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How does mobile service work and what does it cost?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We come to you! Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. Mobile detail jobs are available between 8 am and 4:30 pm. There is an additional $10 fee for us to come out to your location.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does a detail or wash take?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">A standard car wash takes up to 20 minutes. Detail jobs take up to 90 minutes depending on the package and vehicle size. Window tinting jobs take up to 2 hours.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Does window tinting come with a warranty?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! All of our window tinting jobs come with a lifetime warranty. We use industry-leading products installed by certified technicians. Plus, every tint job includes a free car wash.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What are your hours and locations?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We have five convenient locations across the DMV area: Clinton, Capitol Heights, Bowie, Upper Marlboro, and Washington DC. Car wash services run Mon-Sat with mobile washes available 8 am – 6:30 pm. Call us at (301) 307-1414 for specific location hours.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo">
+                        <img src="images/logo.png" alt="Pro Wash Logo">
+                    </span>
+                    <p>Built to set the standard in auto care. The standard in high-end vehicle detailing, paint preservation, and commercial fleet management.</p>
+
+                    <div style="margin-top:20px; display:flex; gap:10px; align-items:center;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" style="color:var(--red);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        
+                    </div>
+                </div>
+
+                <div class="footer-col reveal delay-1">
+                    <h5>QUICK LINKS</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Detail Packages</a></li>
+                        <li><a href="#tinting">Window Tinting</a></li>
+                        <li><a href="#locations">Facility Locations</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col reveal delay-2">
+                    <h5>PROGRAMS</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Loyalty Program</a></li>
+                        <li><a href="#">Birthday Club</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col reveal delay-3">
+                    <h5>CONTACT US</h5>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div>
+                            <span>Phone Number</span>
+                            <strong>(301) 307-1414</strong>
+                        </div>
+                    </div>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <div>
+                            <span>Working Hours</span>
+                            <strong>Mon-Sat: 8am - 6pm</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom reveal">
+                <p>&copy; 2026 Pro Wash Inc. All Rights Reserved. | Designed with Industrial Standard</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script>
+        // Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        // Mobile Nav
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'var(--white)';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                navLinks.style.borderTop = '1px solid var(--gray-mid)';
+            }
+        });
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth < 1024) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+        // Handle window resize for nav
+        window.addEventListener('resize', () => {
+            if(window.innerWidth >= 1024) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'static';
+                navLinks.style.boxShadow = 'none';
+                navLinks.style.borderTop = 'none';
+                navLinks.style.padding = '0';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+        // Staggered Scroll Reveal via Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -20px 0px"
+        });
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+        // FAQ Accordion — only one open at a time
+        function toggleFaq(btn) {
+            var item = btn.parentElement;
+            var answer = btn.nextElementSibling;
+            var isOpen = item.classList.contains('faq-open');
+            // Close all FAQ items first
+            document.querySelectorAll('.faq-item').forEach(function(fi) {
+                fi.classList.remove('faq-open');
+                fi.querySelector('.faq-answer').style.maxHeight = null;
+            });
+            // If it wasn't open, open it
+            if (!isOpen) {
+                item.classList.add('faq-open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
