@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Hand Car Wash & Car Detail</title>
+    <meta name="description" content="Shop professional car care products from Hand Car Wash & Car Detail. Premium detailing products available for purchase.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 600px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .product-card {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-6px);
+        }
+        .product-img {
+            height: 220px;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-img svg { width: 64px; height: 64px; color: var(--gray-mid); }
+        .product-img-placeholder {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .product-body {
+            padding: 25px;
+        }
+        .product-category {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .product-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .product-body p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; }
+        .product-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+        .product-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            border-radius: 2px;
+        }
+        /* Loopy Loyalty Integration Banner */
+        .loyalty-banner {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #142d52 100%);
+            border-radius: 8px;
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .loyalty-banner { flex-direction: row; text-align: left; padding: 50px 45px; }
+        }
+        .loyalty-banner-text { flex: 1; }
+        .loyalty-banner-text h3 { color: var(--white); font-size: 1.6rem; margin-bottom: 10px; }
+        .loyalty-banner-text p { color: #A0ABB5; font-size: 1rem; margin: 0; }
+        .loyalty-banner-action { flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="accent-stripe"></div>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving Washington DC &amp; Maryland</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Facility Hours: Mon-Sat 8 AM - 6 PM</span>
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins &amp; Appointments Welcome</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <a href="index.html"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="services/index.html" class="nav-item">Services</a>
+                <a href="locations/index.html" class="nav-item">Locations</a>
+                <a href="shop.html" class="nav-item">Shop</a>
+                <a href="book.html" class="btn btn-red">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/ Shop</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
+        <div class="container">
+            <div class="reveal">
+                <span class="hero-subtitle">Pro Products</span>
+                <h1>SHOP <span>CAR CARE PRODUCTS</span></h1>
+                <div class="hero-divider"></div>
+                <p>The same professional-grade products our technicians use, available for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loopy Loyalty Banner -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="loyalty-banner reveal">
+                <div class="loyalty-banner-text">
+                    <h3>EARN POINTS ON EVERY PURCHASE</h3>
+                    <p>Join our Loopy Loyalty rewards program to earn points on all purchases and services. Redeem for free washes, discounts, and exclusive perks.</p>
+                </div>
+                <div class="loyalty-banner-action">
+                    <a href="tel:3013071414" class="btn btn-red">Join Loyalty Program</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Our Products</span>
+                <h2 class="section-title">PROFESSIONAL CAR CARE</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Exterior</span>
+                        <h3>Premium Car Wash Soap</h3>
+                        <p>pH-balanced, high-suds formula that lifts dirt without stripping wax or sealant protection.</p>
+                        <div class="product-price">$24.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card reveal delay-1">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Interior</span>
+                        <h3>Interior Detailing Spray</h3>
+                        <p>All-in-one interior cleaner and protectant. Safe on leather, vinyl, plastic, and rubber surfaces.</p>
+                        <div class="product-price">$19.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card reveal delay-2">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Exterior</span>
+                        <h3>Spray Wax &amp; Sealant</h3>
+                        <p>Quick-apply spray wax that delivers deep gloss and 3 months of paint protection in minutes.</p>
+                        <div class="product-price">$29.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Accessories</span>
+                        <h3>Microfiber Towel Pack (6)</h3>
+                        <p>Ultra-soft, lint-free microfiber towels. Perfect for drying, buffing, and applying products.</p>
+                        <div class="product-price">$14.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card reveal delay-1">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Interior</span>
+                        <h3>Leather Conditioner</h3>
+                        <p>Premium leather conditioner that moisturizes, protects, and restores natural softness.</p>
+                        <div class="product-price">$22.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card reveal delay-2">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Wheels</span>
+                        <h3>Tire Shine &amp; Dressing</h3>
+                        <p>Long-lasting, non-sling tire dressing that delivers a rich, dark finish to your tires.</p>
+                        <div class="product-price">$16.99</div>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;" class="reveal">
+                <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 5px;">Products available for purchase at all 5 locations.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Call or visit to check availability and place orders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark-section section-padding">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <span class="section-subtitle">Need Professional Service Instead?</span>
+                <h2 class="section-title" style="color: var(--white);">LET US DO IT FOR YOU</h2>
+                <div class="title-divider"></div>
+                <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">From a quick wash to a full master detail, our trained technicians deliver professional results every time.</p>
+                <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="book.html" class="btn btn-red">Book a Service</a>
+                    <a href="services/index.html" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">View All Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></span>
+                    <p>Built to set the standard in auto care with hand car wash, auto detailing, mobile service, and fleet washing.</p>
+                </div>
+                <div class="footer-col reveal delay-1">
+                    <h5>QUICK LINKS</h5>
+                    <ul class="footer-links">
+                        <li><a href="services/index.html">All Services</a></li>
+                        <li><a href="services/car-wash.html">Car Wash</a></li>
+                        <li><a href="services/car-detailing.html">Car Detailing</a></li>
+                        <li><a href="services/window-tinting.html">Window Tinting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-2">
+                    <h5>COMPANY</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="book.html">Book Online</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-3">
+                    <h5>CONTACT US</h5>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div><span>Phone Number</span><strong>(301) 307-1414</strong></div>
+                    </div>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <div><span>Working Hours</span><strong>Mon-Sat 8am - 6pm</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom reveal"><p>&copy; 2026 Hand Car Wash &amp; Car Detail. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); });
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
+            else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
+        });
+        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

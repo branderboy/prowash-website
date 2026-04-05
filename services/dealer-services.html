@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealer Services | Lot Washing &amp; In-House Detailing | Hand Car Wash &amp; Car Detail</title>
+    <meta name="description" content="Professional car dealer services in Maryland &amp; DC. Lot washing, in-house detailing, new and used car delivery clean up, and inventory detail. Eliminate employee overhead since 1997.">
+    <meta name="keywords" content="car dealer lot washing Maryland, dealership car wash DC, dealer inventory detailing, in-house car wash dealership, lot washing service, car dealer detailing Maryland, dealership detail service">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .dealer-services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) { .dealer-services-grid { grid-template-columns: repeat(2, 1fr); } }
+        .dealer-service-card {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            padding: 35px 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dealer-service-card:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-6px);
+        }
+        .dealer-service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .dealer-service-card h3 svg { color: var(--red); flex-shrink: 0; }
+        .dealer-service-card ul { list-style: none; padding: 0; margin: 0; }
+        .dealer-service-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .dealer-service-card li:last-child { border-bottom: none; }
+        .dealer-service-card li svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--red); margin-top: 2px; }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) { .advantages-grid { grid-template-columns: repeat(3, 1fr); } }
+        .advantage-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .advantage-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-6px);
+        }
+        .advantage-card svg { color: var(--red); margin-bottom: 15px; }
+        .advantage-card h4 { color: var(--white); margin-bottom: 10px; font-size: 1.15rem; }
+        .advantage-card p { color: #A0ABB5; font-size: 0.95rem; }
+        .dealer-additional-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) { .dealer-additional-grid { grid-template-columns: repeat(3, 1fr); } }
+        .dealer-add-card {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dealer-add-card:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-6px);
+        }
+        .dealer-add-card-header {
+            background: var(--dark-blue);
+            padding: 20px;
+            text-align: center;
+        }
+        .dealer-add-card-header h4 { color: var(--white); font-size: 1.1rem; }
+        .dealer-add-card-body { padding: 25px 20px; }
+        .dealer-add-card-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="accent-stripe"></div>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving Washington DC &amp; Maryland</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Facility Hours: Mon-Sat 8 AM - 6 PM</span>
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins &amp; Appointments Welcome</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <a href="../index.html"><img src="../images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="../about.html" class="nav-item">About</a>
+                <a href="index.html" class="nav-item">Services</a>
+                <a href="../locations/index.html" class="nav-item">Locations</a>
+                <a href="../shop.html" class="nav-item">Shop</a>
+                <a href="../book.html" class="btn btn-red">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a> <span>/</span> <a href="index.html">Services</a> <span>/ Dealer Services</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2017/08/banner.jpg');">
+        <div class="container">
+            <div class="reveal">
+                <span class="hero-subtitle">Car Dealerships</span>
+                <h1>DEALER <span>SERVICES</span></h1>
+                <div class="hero-divider"></div>
+                <p>Professional lot washing, in-house detailing, and inventory management for car dealerships across Maryland &amp; DC. Helping customers since 1997.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lot Washing + In-House Services -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="content-block reveal" style="text-align: center; margin-bottom: 10px;">
+                <span class="section-subtitle">Dealership Solutions</span>
+                <h2 class="section-title">COMPREHENSIVE DEALER SERVICES</h2>
+                <div class="title-divider"></div>
+                <p style="margin-top: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">We partner with car dealerships to deliver consistent, professional vehicle care. From daily lot maintenance to full inventory detailing, our team integrates seamlessly with your operations so you can focus on selling cars.</p>
+            </div>
+
+            <div class="dealer-services-grid">
+                <!-- Lot Washing -->
+                <div class="dealer-service-card reveal">
+                    <h3>
+                        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M17 16.99c-1.35 0-2.2.42-2.95.8-.65.33-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.18.6-2.05.6v1.95c1.35 0 2.2-.42 2.95-.8.65-.33 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.57.8 2.95.8s2.2-.42 2.95-.8c.65-.33 1.18-.6 2.05-.6v-1.95c-.9 0-1.4.25-2.05.6-.75.38-1.6.8-2.95.8zM17 12.54c-1.35 0-2.2.43-2.95.8-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.32-1.18.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.33 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.33 1.18-.6 2.05-.6v-1.95c-.9 0-1.4.25-2.05.6-.75.38-1.6.8-2.95.8zM17 8.09c-1.35 0-2.2.43-2.95.8-.65.35-1.15.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.35-1.15.6-2.05.6v1.93c1.35 0 2.2-.43 2.95-.8.65-.33 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.33 1.18-.6 2.05-.6V8.49c-.9 0-1.4.25-2.05.6-.75.38-1.6.8-2.95.8z"/></svg>
+                        LOT WASHING
+                    </h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Keep your entire lot showroom-ready with our professional lot washing program.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> High pressure rinse of all inventory</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Wipe down and dry all vehicles</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Spray car lot and exterior cleaning</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Scheduled daily or weekly service</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Professional uniformed team</li>
+                    </ul>
+                </div>
+
+                <!-- In-House Services -->
+                <div class="dealer-service-card reveal delay-1">
+                    <h3>
+                        <svg viewBox="0 0 24 24" width="28" height="28"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z"/></svg>
+                        IN-HOUSE SERVICES
+                    </h3>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Our team operates on-site at your dealership during business hours.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Wash and detail all service department vehicles</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Professional uniformed employees during operation hours</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> New and used car delivery clean up</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Detail used car inventory for sale readiness</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ensure the highest CSI ratings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Advantages -->
+    <section class="dark-section section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Why Partner With Us</span>
+                <h2 class="section-title" style="color: var(--white);">KEY ADVANTAGES</h2>
+                <div class="title-divider"></div>
+                <p style="color: #A0ABB5; margin-top: 15px; font-size: 1.05rem;">Improve your bottom line by outsourcing vehicle care to the professionals.</p>
+            </div>
+
+            <div class="advantages-grid">
+                <div class="advantage-card reveal">
+                    <svg viewBox="0 0 24 24" width="48" height="48"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <h4>Eliminate Employee Overhead</h4>
+                    <p>No more hourly wages, benefits, or payroll taxes for in-house wash staff. We handle the labor so you save on costs.</p>
+                </div>
+                <div class="advantage-card reveal delay-1">
+                    <svg viewBox="0 0 24 24" width="48" height="48"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <h4>Eliminate Employee Management</h4>
+                    <p>No hiring, training, scheduling, or managing wash employees. Our professional uniformed team arrives ready to work.</p>
+                </div>
+                <div class="advantage-card reveal delay-2">
+                    <svg viewBox="0 0 24 24" width="48" height="48"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    <h4>Eliminate Supply Costs</h4>
+                    <p>We bring our own professional-grade products, equipment, and supplies. Zero overhead cost on cleaning materials for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Dealer Services -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Complete Vehicle Care</span>
+                <h2 class="section-title">ADDITIONAL SERVICES FOR DEALERS</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="dealer-additional-grid">
+                <div class="dealer-add-card reveal">
+                    <div class="dealer-add-card-header">
+                        <h4>Inventory Detailing</h4>
+                    </div>
+                    <div class="dealer-add-card-body">
+                        <p>Full interior and exterior detail packages for used car inventory. Get vehicles sale-ready with professional results that impress buyers.</p>
+                        <a href="car-detailing.html" class="btn btn-outline btn-sm" style="width:100%;">View Detail Packages</a>
+                    </div>
+                </div>
+                <div class="dealer-add-card reveal delay-1">
+                    <div class="dealer-add-card-header" style="background: var(--red);">
+                        <h4>Window Tinting</h4>
+                    </div>
+                    <div class="dealer-add-card-body">
+                        <p>Add value to your inventory with professional window tinting. Lifetime warranty included. Installed in under 2 hours per vehicle.</p>
+                        <a href="window-tinting.html" class="btn btn-red btn-sm" style="width:100%;">View Tinting Pricing</a>
+                    </div>
+                </div>
+                <div class="dealer-add-card reveal delay-2">
+                    <div class="dealer-add-card-header">
+                        <h4>Fleet Washing</h4>
+                    </div>
+                    <div class="dealer-add-card-body">
+                        <p>Service department loaners, courtesy shuttles, and company vehicles kept clean on a regular schedule. Custom plans available.</p>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width:100%;">Call for Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Banner -->
+    <section class="promo-banner">
+        <div class="container promo-inner reveal">
+            <div class="promo-text">
+                <h2>Helping Dealerships in Maryland &amp; DC Since <span>1997</span></h2>
+                <p>Hand Car Wash &amp; Car Detail has been the trusted partner for car dealerships across the DMV for nearly three decades. We understand the demands of dealership operations and deliver reliable, professional service that keeps your lot looking its best and your customers satisfied.</p>
+                <a href="tel:3013071414" class="btn btn-blue" style="margin-top: 20px;">Call for a Custom Quote</a>
+            </div>
+            <div class="promo-price-box">
+                <div class="price-label">Since</div>
+                <div class="price" style="font-size: 2.8rem;">1997</div>
+                <div class="price-note">Trusted by Dealers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Common Questions</span>
+                <h2 class="section-title">DEALER SERVICES FAQ</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How does the in-house service work at my dealership?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We station our professional uniformed team at your dealership during your operating hours. They handle all vehicle washing, detailing, and delivery prep on-site. You get consistent, high-quality results without the hassle of managing employees or supplies.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What size dealerships do you serve?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We work with dealerships of all sizes across Maryland and Washington DC. Whether you have 50 vehicles on the lot or 500, we scale our team and service schedule to match your needs. Call us at (301) 307-1414 for a custom quote.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How does outsourcing save my dealership money?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">By outsourcing to us, you eliminate hourly employee wages, benefits, payroll taxes, training costs, supply expenses, and equipment maintenance. Our all-inclusive service means one predictable cost with zero overhead. Most dealerships see significant savings compared to maintaining an in-house wash crew.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can you handle new car delivery prep?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Absolutely. New and used car delivery clean up is one of our core dealer services. We ensure every vehicle that leaves your lot is spotless and presentation-ready, helping you deliver a premium customer experience that drives CSI scores.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you offer window tinting for dealer inventory?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes. We offer professional <a href="window-tinting.html" style="color: var(--red);">window tinting</a> with a lifetime warranty for dealer inventory. Tinting adds value to your vehicles and is a popular upsell for customers. Cars from $108, trucks from $60.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark-section section-padding">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <span class="section-subtitle">Partner With the Best</span>
+                <h2 class="section-title" style="color: var(--white);">GET A CUSTOM DEALER QUOTE</h2>
+                <div class="title-divider"></div>
+                <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">Eliminate overhead. Improve your bottom line. Let us handle the washing and detailing so your team can focus on selling.</p>
+                <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:3013071414" class="btn btn-red">Call (301) 307-1414</a>
+                    <a href="../locations/index.html" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Our Locations</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo"><img src="../images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></span>
+                    <p>Built to set the standard in auto care with hand car wash, auto detailing, mobile service, and fleet washing.</p>
+                </div>
+                <div class="footer-col reveal delay-1">
+                    <h5>QUICK LINKS</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">All Services</a></li>
+                        <li><a href="car-wash.html">Car Wash</a></li>
+                        <li><a href="car-detailing.html">Car Detailing</a></li>
+                        <li><a href="window-tinting.html">Window Tinting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-2">
+                    <h5>COMPANY</h5>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../book.html">Book Online</a></li>
+                        <li><a href="../shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-3">
+                    <h5>CONTACT US</h5>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div><span>Phone Number</span><strong>(301) 307-1414</strong></div>
+                    </div>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <div><span>Working Hours</span><strong>Mon-Sat 8am - 6pm</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom reveal"><p>&copy; 2026 Hand Car Wash &amp; Car Detail. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); });
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
+            else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
+        });
+        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+        revealElements.forEach(el => revealObserver.observe(el));
+        function toggleFaq(btn) {
+            var item = btn.parentElement; var answer = btn.nextElementSibling; var isOpen = item.classList.contains('faq-open');
+            document.querySelectorAll('.faq-item').forEach(function(fi) { fi.classList.remove('faq-open'); fi.querySelector('.faq-answer').style.maxHeight = null; });
+            if (!isOpen) { item.classList.add('faq-open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Hand Car Wash & Car Detail</title>
+    <meta name="description" content="Full range of professional car care services: hand car wash, auto detailing, window tinting, and mobile fleet services across 5 DMV locations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .service-overview-card {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-overview-card:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow-elevated);
+            transform: translateY(-6px);
+        }
+        .service-overview-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .service-overview-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--dark-blue));
+        }
+        .service-overview-body {
+            padding: 30px 25px;
+        }
+        .service-overview-body h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .service-overview-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 8px; }
+        .service-overview-body .price-start {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--red);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .service-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .service-overview-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .service-overview-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="accent-stripe"></div>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving Washington DC &amp; Maryland</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Facility Hours: Mon-Sat 8 AM - 6 PM</span>
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins &amp; Appointments Welcome</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <a href="../index.html"><img src="../images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="../about.html" class="nav-item">About</a>
+                <a href="index.html" class="nav-item">Services</a>
+                <a href="../locations/index.html" class="nav-item">Locations</a>
+                <a href="../shop.html" class="nav-item">Shop</a>
+                <a href="../book.html" class="btn btn-red">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a> <span>/ Services</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');">
+        <div class="container">
+            <div class="reveal">
+                <span class="hero-subtitle">What We Offer</span>
+                <h1>OUR <span>SERVICES</span></h1>
+                <div class="hero-divider"></div>
+                <p>From quick washes to full master details, window tinting, and mobile fleet services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Explore Our Services</span>
+                <h2 class="section-title">PROFESSIONAL AUTO CARE</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="service-overview-grid">
+                <!-- Car Wash -->
+                <div class="service-overview-card reveal">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Car Wash</h3>
+                        <p>Full service hand wash with swirl-free finish. In and out in 20 minutes. Walk-ins welcome.</p>
+                        <span class="price-start">Starting at $15</span>
+                        <a href="car-wash.html" class="btn btn-outline btn-sm" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Car Detailing -->
+                <div class="service-overview-card reveal delay-1">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Car Detailing</h3>
+                        <p>From super sport to master detail packages. Interior steam clean, buff wax, and more.</p>
+                        <span class="price-start">Starting at $95</span>
+                        <a href="car-detailing.html" class="btn btn-red btn-sm" style="width: 100%;">View Packages</a>
+                    </div>
+                </div>
+
+                <!-- Window Tinting -->
+                <div class="service-overview-card reveal delay-2">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2016/07/tinting.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Window Tinting</h3>
+                        <p>Professional window tinting with lifetime warranty. Free car wash included with every job.</p>
+                        <span class="price-start">Starting at $60</span>
+                        <a href="window-tinting.html" class="btn btn-outline btn-sm" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Wash -->
+                <div class="service-overview-card reveal">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2017/08/car.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Mobile Car Wash</h3>
+                        <p>We come to your home or office. Full service hand wash on your schedule. 20 minute turnaround.</p>
+                        <span class="price-start">+$10 Dispatch Fee</span>
+                        <a href="../book.html" class="btn btn-outline btn-sm" style="width: 100%;">Book Mobile Wash</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Detail -->
+                <div class="service-overview-card reveal delay-1">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2017/08/carbg.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Mobile Car Detail</h3>
+                        <p>All detail packages available at your location. Available 8am-4:30pm, Mon-Sat. Up to 90 minutes.</p>
+                        <span class="price-start">+$10 Dispatch Fee</span>
+                        <a href="../book.html" class="btn btn-outline btn-sm" style="width: 100%;">Book Mobile Detail</a>
+                    </div>
+                </div>
+
+                <!-- Fleet / Power Washing -->
+                <div class="service-overview-card reveal delay-2">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2017/08/banner.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Fleet &amp; Power Washing</h3>
+                        <p>Commercial fleet washing and residential power washing services. Custom quotes available.</p>
+                        <span class="price-start">Call for Quote</span>
+                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call for Details</a>
+                    </div>
+                </div>
+
+                <!-- Rideshare Drivers -->
+                <div class="service-overview-card reveal">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2017/08/img_homenew.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Rideshare Drivers</h3>
+                        <p>Uber &amp; Lyft drivers: keep your vehicle rider-ready with fast washes, detailing, and tinting.</p>
+                        <span class="price-start">Washes from $15</span>
+                        <a href="rideshare.html" class="btn btn-outline btn-sm" style="width: 100%;">View Driver Services</a>
+                    </div>
+                </div>
+
+                <!-- Dealer Services -->
+                <div class="service-overview-card reveal delay-1">
+                    <div class="service-overview-img" style="background-image: linear-gradient(rgba(10,30,61,0.3), rgba(10,30,61,0.3)), url('https://prowashdetail.net/wp-content/uploads/2017/08/banner.jpg');"></div>
+                    <div class="service-overview-body">
+                        <h3>Dealer Services</h3>
+                        <p>Lot washing, in-house detailing, and inventory management for car dealerships. Since 1997.</p>
+                        <span class="price-start">Call for Quote</span>
+                        <a href="dealer-services.html" class="btn btn-red btn-sm" style="width: 100%;">View Dealer Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark-section section-padding">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <span class="section-subtitle">Ready to Get Started?</span>
+                <h2 class="section-title" style="color: var(--white);">BOOK YOUR SERVICE TODAY</h2>
+                <div class="title-divider"></div>
+                <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">Book online through Acuity Scheduling or call us. Walk-ins welcome for car washes.</p>
+                <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="../book.html" class="btn btn-red">Book Online</a>
+                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Call (301) 307-1414</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo"><img src="../images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></span>
+                    <p>Built to set the standard in auto care with hand car wash, auto detailing, mobile service, and fleet washing.</p>
+                </div>
+                <div class="footer-col reveal delay-1">
+                    <h5>QUICK LINKS</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">All Services</a></li>
+                        <li><a href="car-wash.html">Car Wash</a></li>
+                        <li><a href="car-detailing.html">Car Detailing</a></li>
+                        <li><a href="window-tinting.html">Window Tinting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-2">
+                    <h5>COMPANY</h5>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../book.html">Book Online</a></li>
+                        <li><a href="../shop.html">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-3">
+                    <h5>CONTACT US</h5>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div><span>Phone Number</span><strong>(301) 307-1414</strong></div>
+                    </div>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <div><span>Working Hours</span><strong>Mon-Sat 8am - 6pm</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom reveal"><p>&copy; 2026 Hand Car Wash &amp; Car Detail. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); });
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
+            else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
+        });
+        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
