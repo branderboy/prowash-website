@@ -46,21 +46,14 @@
             box-shadow: var(--shadow-elevated);
             transform: translateY(-6px);
         }
-        .location-map-placeholder {
+        .location-map {
             height: 200px;
-            background: var(--dark-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
         }
-        .location-map-placeholder svg { width: 48px; height: 48px; color: var(--red); }
-        .location-map-placeholder::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--red), var(--dark-blue));
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         .location-card-body {
             padding: 30px 25px;
@@ -104,21 +97,48 @@
             <button class="mobile-menu-btn" id="mobileBtn"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
             <nav class="nav-links" id="navLinks">
                 <a href="../index.html" class="nav-item">Home</a>
-                <a href="../about.html" class="nav-item">About</a>
-                <a href="../services/index.html" class="nav-item">Services</a>
-                <a href="index.html" class="nav-item">Locations</a>
-                <a href="../shop.html" class="nav-item">Shop</a>
+                <div class="nav-dropdown">
+                    <a href="../services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/car-wash.html">Car Wash</a>
+                        <a href="../services/car-detailing.html">Car Detailing</a>
+                        <a href="../services/window-tinting.html">Window Tinting</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../services/index.html" class="nav-item dropdown-toggle">Industries <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/car-dealerships.html">Car Dealerships</a>
+                        <a href="../services/rideshare.html">Rideshare Drivers</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-item dropdown-toggle">Programs <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="../rewards.html">Loyalty Rewards</a>
+                        <a href="../birthday-club.html">Birthday Club</a>
+                        <a href="../shop.html">Shop</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../locations/index.html" class="nav-item dropdown-toggle">Locations <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../locations/capitol-heights.html">Capitol Heights</a>
+                        <a href="../locations/clinton.html">Clinton</a>
+                        <a href="../locations/bowie.html">Bowie</a>
+                        <a href="../locations/upper-marlboro.html">Upper Marlboro</a>
+                        <a href="../locations/washington-dc.html">Washington DC</a>
+                    </div>
+                </div>
                 <a href="../book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
     </header>
 
-    <div class="breadcrumb">
-        <div class="container"><a href="../index.html">Home</a> <span>/ Locations</span></div>
     </div>
 
     <!-- Hero -->
-    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
         <div class="container">
             <div class="reveal">
                 <span class="hero-subtitle">Find Us Near You</span>
@@ -141,8 +161,8 @@
             <div class="locations-full-grid">
                 <!-- Clinton -->
                 <div class="location-card-full reveal">
-                    <div class="location-map-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3109.5!2d-76.898!3d38.748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s6311+Coventry+Way+Clinton+MD+20735!5e0!3m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="location-card-body">
                         <h3>Clinton, MD</h3>
@@ -153,15 +173,15 @@
                         </div>
                         <div class="location-card-actions">
                             <a href="clinton.html" class="btn btn-outline btn-sm" style="width:100%;">View Location</a>
-                            <a href="tel:3013071414" class="btn btn-red btn-sm" style="width:100%;">Call to Book</a>
+                            <a href="../book.html" class="btn btn-red btn-sm" style="width:100%;">Book Now</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Capitol Heights -->
                 <div class="location-card-full reveal delay-1">
-                    <div class="location-map-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3108.5!2d-76.886!3d38.734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s29+Hampton+Park+Blvd+Capitol+Heights+MD+20743!5e0!3m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="location-card-body">
                         <h3>Capitol Heights, MD</h3>
@@ -172,15 +192,15 @@
                         </div>
                         <div class="location-card-actions">
                             <a href="capitol-heights.html" class="btn btn-outline btn-sm" style="width:100%;">View Location</a>
-                            <a href="tel:3013071414" class="btn btn-red btn-sm" style="width:100%;">Call to Book</a>
+                            <a href="../book.html" class="btn btn-red btn-sm" style="width:100%;">Book Now</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Bowie -->
                 <div class="location-card-full reveal delay-2">
-                    <div class="location-map-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.5!2d-76.729!3d38.953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s4406+NW+Crain+Hwy+Bowie+MD+20716!5e0!3m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="location-card-body">
                         <h3>Bowie, MD</h3>
@@ -191,15 +211,15 @@
                         </div>
                         <div class="location-card-actions">
                             <a href="bowie.html" class="btn btn-outline btn-sm" style="width:100%;">View Location</a>
-                            <a href="tel:3013071414" class="btn btn-red btn-sm" style="width:100%;">Call to Book</a>
+                            <a href="../book.html" class="btn btn-red btn-sm" style="width:100%;">Book Now</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Upper Marlboro -->
                 <div class="location-card-full reveal">
-                    <div class="location-map-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.5!2d-76.749!3d38.816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s7538+NW+Crain+Hwy+Upper+Marlboro+MD+20772!5e0!3m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="location-card-body">
                         <h3>Upper Marlboro, MD</h3>
@@ -210,15 +230,15 @@
                         </div>
                         <div class="location-card-actions">
                             <a href="upper-marlboro.html" class="btn btn-outline btn-sm" style="width:100%;">View Location</a>
-                            <a href="tel:3013071414" class="btn btn-red btn-sm" style="width:100%;">Call to Book</a>
+                            <a href="../book.html" class="btn btn-red btn-sm" style="width:100%;">Book Now</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Washington DC -->
                 <div class="location-card-full reveal delay-1">
-                    <div class="location-map-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.5!2d-76.933!3d38.905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1329+Kenilworth+Ave+NE+Washington+DC+20019!5e0!3m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="location-card-body">
                         <h3>Washington, DC</h3>
@@ -229,7 +249,7 @@
                         </div>
                         <div class="location-card-actions">
                             <a href="washington-dc.html" class="btn btn-outline btn-sm" style="width:100%;">View Location</a>
-                            <a href="tel:3013071414" class="btn btn-red btn-sm" style="width:100%;">Call to Book</a>
+                            <a href="../book.html" class="btn btn-red btn-sm" style="width:100%;">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -258,12 +278,11 @@
         <div class="container" style="text-align: center;">
             <div class="reveal">
                 <span class="section-subtitle">Visit Any Location</span>
-                <h2 class="section-title" style="color: var(--white);">WALK-INS ALWAYS WELCOME</h2>
+                <h2 class="section-title" style="color: var(--dark-blue);">WALK-INS ALWAYS WELCOME</h2>
                 <div class="title-divider"></div>
                 <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">No appointment necessary for car washes. Drive in during operating hours and we'll take care of the rest.</p>
                 <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="../book.html" class="btn btn-red">Book Online</a>
-                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Call (301) 307-1414</a>
                 </div>
             </div>
         </div>
@@ -322,8 +341,20 @@
             if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
             else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
         });
-        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
-        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        // Mobile dropdown toggles
+        if (window.innerWidth < 1024) {
+            document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var dd = toggle.closest('.nav-dropdown');
+                    var wasOpen = dd.classList.contains('open');
+                    document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+                    if (!wasOpen) dd.classList.add('open');
+                });
+            });
+        }
+        document.querySelectorAll('.nav-links > .nav-item, .dropdown-menu a').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) { navLinks.style.display = 'none'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } else { navLinks.style.display = 'none'; } });
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));

@@ -31,94 +31,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "How long does a car detail take?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Most car detailing packages take between 60 and 90 minutes. Our Super Sport takes about 60 minutes, while the Master Detail can take up to 90 minutes or more depending on vehicle size and condition. We complete all detail jobs between 8am and 4:30pm."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What's the difference between a car wash and a detail?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A car wash cleans the surface of your vehicle in about 20 minutes. A car detail is a thorough, multi-step process that deep cleans, restores, and protects both the interior and exterior. Detailing includes steps like clay bar treatment, paint correction, interior steam cleaning, leather conditioning, and more."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How often should I detail my car?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We recommend a full detail every 4 to 6 months to maintain your vehicle's appearance and protect its value. If you drive frequently, have kids, pets, or eat in your car, every 2 to 3 months is ideal. Regular car washes between details help maintain results."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you remove scratches from my paint?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our Buff & Wax and Master Detail packages include paint correction that removes light surface scratches, swirl marks, and oxidation. Deep scratches that go through the clear coat into the base paint may require touch-up paint or body work, which is beyond the scope of detailing."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do you detail trucks and SUVs?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely. We detail all vehicle types including sedans, trucks, SUVs, minivans, and luxury vehicles. Trucks and larger vehicles are priced slightly higher due to the additional surface area and time required. Check our package pricing for truck rates."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What products do you use for detailing?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We use professional-grade detailing products including pH-balanced soaps, premium clay bars, high-quality compounds and polishes, UV-protective waxes, and professional leather and vinyl conditioners. Our products are chosen for effectiveness and safety on all paint types and interior materials."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Should I detail my car before selling it?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, detailing before selling is one of the best investments you can make. A professionally detailed car looks newer, photographs better for listings, and can increase your sale price by hundreds of dollars. Our Master Detail or Buff & Wax packages are popular choices for pre-sale preparation."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you remove pet hair and odors?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Our Steam Clean and Master Detail packages are designed to tackle pet hair, dander, and odors. We use specialized tools and steam extraction to remove embedded pet hair from upholstery and carpets, and our deep cleaning process neutralizes odors rather than just masking them."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What's included in the Master Detail?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The Master Detail is our most comprehensive package starting at $295 for cars and $355 for trucks. It includes a full exterior wash and decontamination, clay bar treatment, paint correction with buff and wax, complete interior deep clean with steam, leather and vinyl conditioning, window and glass treatment, tire and wheel dressing, and a final quality inspection."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do I need an appointment for detailing?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Walk-ins are always welcome at any of our 5 locations across the DC and Maryland area. However, we recommend booking an appointment for detail jobs to guarantee your preferred time slot, especially on weekends. You can book online or call us at (301) 307-1414."
-                }
-            }
-        ]
-    }
-    </script>
 </head>
 <body class="bg-light">
     <div class="accent-stripe"></div>
@@ -142,23 +54,48 @@
             </button>
             <nav class="nav-links" id="navLinks">
                 <a href="../index.html" class="nav-item">Home</a>
-                <a href="../about.html" class="nav-item">About</a>
-                <a href="index.html" class="nav-item">Services</a>
-                <a href="../locations/index.html" class="nav-item">Locations</a>
-                <a href="../shop.html" class="nav-item">Shop</a>
+                <div class="nav-dropdown">
+                    <a href="../services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/car-wash.html">Car Wash</a>
+                        <a href="../services/car-detailing.html">Car Detailing</a>
+                        <a href="../services/window-tinting.html">Window Tinting</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../services/index.html" class="nav-item dropdown-toggle">Industries <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/car-dealerships.html">Car Dealerships</a>
+                        <a href="../services/rideshare.html">Rideshare Drivers</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-item dropdown-toggle">Programs <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="../rewards.html">Loyalty Rewards</a>
+                        <a href="../birthday-club.html">Birthday Club</a>
+                        <a href="../shop.html">Shop</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../locations/index.html" class="nav-item dropdown-toggle">Locations <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../locations/capitol-heights.html">Capitol Heights</a>
+                        <a href="../locations/clinton.html">Clinton</a>
+                        <a href="../locations/bowie.html">Bowie</a>
+                        <a href="../locations/upper-marlboro.html">Upper Marlboro</a>
+                        <a href="../locations/washington-dc.html">Washington DC</a>
+                    </div>
+                </div>
                 <a href="../book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
     </header>
 
-    <div class="breadcrumb">
-        <div class="container">
-            <a href="../index.html">Home</a> <span>/</span> <a href="index.html">Services</a> <span>/ Car Detailing</span>
-        </div>
     </div>
 
     <!-- Hero -->
-    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
         <div class="container">
             <div class="reveal">
                 <span class="hero-subtitle">Pro Detail&trade;</span>
@@ -195,7 +132,7 @@
                         <div class="price-item"><span class="price-label">Cars</span><span class="price-value">$95</span></div>
                         <div class="price-item"><span class="price-label">Trucks</span><span class="price-value">$110</span></div>
                         <div class="price-item"><span class="price-label">XL Trucks</span><span class="price-value">$125</span></div>
-                        <a href="../book.html" class="btn btn-outline btn-big">Book Now</a>
+                        <a href="../book.html" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
 
@@ -230,7 +167,7 @@
                     <div class="service-body">
                         <div class="price-item"><span class="price-label">Cars</span><span class="price-value">$185</span></div>
                         <div class="price-item"><span class="price-label">Trucks</span><span class="price-value">$210</span></div>
-                        <a href="../book.html" class="btn btn-dark btn-big">Book Now</a>
+                        <a href="../book.html" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +187,7 @@
                     <div class="service-body">
                         <div class="price-item"><span class="price-label">Cars</span><span class="price-value">$150</span></div>
                         <div class="price-item"><span class="price-label">Trucks</span><span class="price-value">$175</span></div>
-                        <a href="../book.html" class="btn btn-outline btn-big">Book Now</a>
+                        <a href="../book.html" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
 
@@ -267,7 +204,7 @@
                     <div class="service-body">
                         <div class="price-item"><span class="price-label">Cars</span><span class="price-value">$175</span></div>
                         <div class="price-item"><span class="price-label">Trucks</span><span class="price-value">$215</span></div>
-                        <a href="../book.html" class="btn btn-dark btn-big">Book Now</a>
+                        <a href="../book.html" class="btn btn-red btn-big">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -299,17 +236,89 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Got Questions?</span>
+                <h2 class="section-title">WHAT IS CAR DETAILING?</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What is car detailing exactly?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Car detailing is a deep, thorough cleaning and restoration of your vehicle — way beyond a normal car wash. It involves meticulous cleaning, polishing, and protecting every surface inside and out. Interior detailing covers deep vacuuming, steam cleaning, leather conditioning, stain removal, and odor elimination. Exterior detailing includes clay bar treatment, polish, wax or sealant, and paint correction. The goal is to make your car look and feel like it just rolled off the lot.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What's the difference between a car wash and a detail?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A car wash cleans the surface — soap, rinse, dry, done in 20 minutes. A detail goes deep. We're talking about getting into every seam, vent, crevice, and fiber. Steam cleaning carpets, conditioning leather, removing water spots, polishing paint, and applying protective coatings. A wash maintains your car. A detail restores it. Most people need a wash every 2 weeks and a full detail every 3-6 months.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How long does a car detail take?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>It depends on the package. An express detail takes about 45-60 minutes. A master detail can take 2-3 hours because we're covering everything — interior deep clean, exterior buff and wax, engine bay, the works. We complete all detail jobs between 8 AM and 4:30 PM so your car is ready same-day.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How often should I detail my car?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Every 3-6 months is ideal for most vehicles. If you have kids, pets, eat in your car, or park outside regularly, consider every 2-3 months. Regular detailing protects your interior from UV damage, keeps leather from cracking, maintains paint condition, and honestly — it just makes driving more enjoyable when your car is clean.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Is detailing worth the money?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. A properly detailed car can add hundreds — sometimes thousands — to your resale value. Beyond money, it prevents long-term damage like cracked leather, faded paint, permanent stains, and musty odors. It's maintenance, not luxury. The same way you service your engine, you should service the surfaces you actually see and touch every day.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Can you detail my car at my home or office?</span>
+                        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All of our detail packages are available as mobile service. We come to your home, office, or anywhere in the DMV area. There's just a $10 dispatch fee added to any service. <a href="../book.html" style="color:var(--red); font-weight:600;">Book your mobile detail here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="dark-section section-padding">
         <div class="container" style="text-align: center;">
             <div class="reveal">
                 <span class="section-subtitle">Ready for a Detail?</span>
-                <h2 class="section-title" style="color: var(--white);">BOOK YOUR PRO DETAIL&trade; TODAY</h2>
+                <h2 class="section-title" style="color: var(--dark-blue);">BOOK YOUR PRO DETAIL&trade; TODAY</h2>
                 <div class="title-divider"></div>
-                <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">Schedule online or call us. All detail jobs completed between 8am and 4:30pm.</p>
+                <p style="color: var(--text-muted); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">Schedule online. All detail jobs completed between 8am and 4:30pm.</p>
                 <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="../book.html" class="btn btn-red">Book Online</a>
-                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Call (301) 307-1414</a>
+                    <a href="../book.html" class="btn btn-red">Book Your Detail Now</a>
                 </div>
             </div>
         </div>
@@ -366,8 +375,20 @@
             if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
             else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
         });
-        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
-        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        // Mobile dropdown toggles
+        if (window.innerWidth < 1024) {
+            document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var dd = toggle.closest('.nav-dropdown');
+                    var wasOpen = dd.classList.contains('open');
+                    document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+                    if (!wasOpen) dd.classList.add('open');
+                });
+            });
+        }
+        document.querySelectorAll('.nav-links > .nav-item, .dropdown-menu a').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) { navLinks.style.display = 'none'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } else { navLinks.style.display = 'none'; } });
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));

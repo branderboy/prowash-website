@@ -71,21 +71,48 @@
             <button class="mobile-menu-btn" id="mobileBtn"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
             <nav class="nav-links" id="navLinks">
                 <a href="../../index.html" class="nav-item">Home</a>
-                <a href="../../about.html" class="nav-item">About</a>
-                <a href="../../services/index.html" class="nav-item">Services</a>
-                <a href="../index.html" class="nav-item">Locations</a>
-                <a href="../../shop.html" class="nav-item">Shop</a>
+                <div class="nav-dropdown">
+                    <a href="../../services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../services/car-wash.html">Car Wash</a>
+                        <a href="../../services/car-detailing.html">Car Detailing</a>
+                        <a href="../../services/window-tinting.html">Window Tinting</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../services/index.html" class="nav-item dropdown-toggle">Industries <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../services/car-dealerships.html">Car Dealerships</a>
+                        <a href="../../services/rideshare.html">Rideshare Drivers</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-item dropdown-toggle">Programs <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="../../rewards.html">Loyalty Rewards</a>
+                        <a href="../../birthday-club.html">Birthday Club</a>
+                        <a href="../../shop.html">Shop</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../locations/index.html" class="nav-item dropdown-toggle">Locations <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../locations/capitol-heights.html">Capitol Heights</a>
+                        <a href="../../locations/clinton.html">Clinton</a>
+                        <a href="../../locations/bowie.html">Bowie</a>
+                        <a href="../../locations/upper-marlboro.html">Upper Marlboro</a>
+                        <a href="../../locations/washington-dc.html">Washington DC</a>
+                    </div>
+                </div>
                 <a href="../../book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
     </header>
 
-    <div class="breadcrumb">
-        <div class="container"><a href="../../index.html">Home</a> <span>/</span> <a href="../index.html">Locations</a> <span>/</span> <a href="../washington-dc.html">Washington, DC</a> <span>/ Car Wash</span></div>
     </div>
 
     <!-- Hero -->
-    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');">
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');">
         <div class="container">
             <div class="reveal">
                 <span class="local-hero-badge">Washington, DC</span>
@@ -94,7 +121,7 @@
                 <p>Professional full service hand car wash with swirl-free finish. In and out in 20 minutes. Experience the time efficiency of an express facility with the quality of a premium full service wash.</p>
                 <div class="hero-actions" style="margin-top: 25px;">
                     <a href="tel:3013071414" class="btn btn-red">Call to Book - Washington, DC</a>
-                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: white; color: white;">Call (301) 307-1414</a>
+                    <a href="tel:3013071414" class="btn btn-dark">Call (301) 307-1414</a>
                 </div>
             </div>
         </div>
@@ -196,71 +223,16 @@
         <div class="container" style="text-align: center;">
             <div class="reveal">
                 <span class="section-subtitle">Washington, DC</span>
-                <h2 class="section-title" style="color: var(--white);">READY FOR A CAR WASH?</h2>
+                <h2 class="section-title" style="color: var(--dark-blue);">READY FOR A CAR WASH?</h2>
                 <div class="title-divider"></div>
                 <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">Visit our Washington, DC location or book online. Walk-ins always welcome.</p>
                 <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="tel:3013071414" class="btn btn-red">Call to Book - Washington, DC</a>
-                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Call (301) 307-1414</a>
+                    <a href="tel:3013071414" class="btn btn-outline">Call (301) 307-1414</a>
                 </div>
             </div>
         </div>
     </section>
-
-<!-- FAQ Section -->
-<section class="section-padding bg-light">
-    <div class="container">
-        <div class="section-header reveal">
-            <span class="section-subtitle">Common Questions</span>
-            <h2 class="section-title">FAQ: CAR WASH IN WASHINGTON, DC</h2>
-            <div class="title-divider"></div>
-        </div>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>How much does a car wash cost at your Washington, DC location?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>Our full service hand car wash starts at just $15 for cars, $20 for trucks, and $25 for XL trucks at our 1329 Kenilworth Ave NE, Washington, DC 20019 location. Mobile wash service is also available starting at $25 plus a $10 dispatch fee for customers in NE DC, Deanwood, and Capitol Hill.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>What are the hours for the Washington, DC car wash?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>Our Washington, DC location is open Monday through Saturday 9am-5pm. We are closed on Sundays. Walk-ins are always welcome during business hours — no appointment needed for a car wash.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Do I need an appointment for a car wash in Washington, DC?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>No appointment is needed for our car wash service. Walk-ins are welcome at our Washington, DC location anytime during business hours. If you prefer, you can also book online for a specific time slot, but it is not required.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>What is included in your full service car wash?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>Our full service hand car wash includes a thorough exterior hand wash with a swirl-free finish, window cleaning, tire and rim cleaning, interior vacuum, dashboard wipe-down, and door jamb cleaning. Every vehicle is carefully washed by hand — we never use automated brushes.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>How long does the car wash take at the Washington, DC location?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>Most full service car washes are completed in approximately 20 minutes. We combine the speed of an express facility with the quality of a premium hand wash, so you can get back on the road quickly without sacrificing results.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Do you wash large vehicles like SUVs and trucks in Washington, DC?</span>
-                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
-                <div class="faq-answer"><p>Yes, we wash vehicles of all sizes at our Washington, DC location. Standard trucks are $20 and XL trucks or oversized vehicles are $25. We regularly service SUVs, pickup trucks, vans, and fleet vehicles from throughout NE DC, Deanwood, and Capitol Hill.</p></div>
-            </div>
-        </div>
-    </div>
-</section>
 
     <!-- Footer -->
     <footer>
@@ -314,19 +286,23 @@
             if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
             else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
         });
-        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
-        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        // Mobile dropdown toggles
+        if (window.innerWidth < 1024) {
+            document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var dd = toggle.closest('.nav-dropdown');
+                    var wasOpen = dd.classList.contains('open');
+                    document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+                    if (!wasOpen) dd.classList.add('open');
+                });
+            });
+        }
+        document.querySelectorAll('.nav-links > .nav-item, .dropdown-menu a').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) { navLinks.style.display = 'none'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open')); } else { navLinks.style.display = 'none'; } });
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                const wasActive = item.classList.contains('active');
-                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                if (!wasActive) item.classList.add('active');
-            });
-        });
     </script>
 </body>
 </html>
