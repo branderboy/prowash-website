@@ -186,6 +186,61 @@
         </div>
     </section>
 
+<!-- FAQ Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Common Questions</span>
+            <h2 class="section-title">FAQ: MOBILE SERVICES IN UPPER MARLBORO, MD</h2>
+            <div class="title-divider"></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What areas do your mobile services cover from the Upper Marlboro location?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Our mobile team dispatches from our Upper Marlboro location at 7538 NW Crain Hwy, Upper Marlboro, MD 20772 and covers Brandywine and Cheltenham and surrounding communities. If you are unsure whether your address is within our service area, give us a call at (301) 307-1414 and we will confirm.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is there a dispatch fee for mobile services in Upper Marlboro?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Yes, a flat $10 dispatch fee applies to all mobile services. This covers the cost of our technician traveling to your location in Upper Marlboro or the surrounding area. The dispatch fee is the same regardless of distance within our service area.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What services are available as mobile in Upper Marlboro?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>All of our facility services are available mobile, including full service hand car wash, Super Sport detail, Express Detail, and Master Detail. Our mobile technicians bring all necessary equipment and supplies to perform the same quality service at your home, office, or any location in Upper Marlboro and Brandywine and Cheltenham.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do I schedule a mobile car wash or detail in Upper Marlboro?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>You can schedule mobile services by booking online through our website or by calling (301) 307-1414. We recommend booking at least 24 hours in advance to ensure availability, especially on weekends. Provide your address in the Upper Marlboro area and preferred time, and our team will confirm your appointment.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How much do mobile services cost compared to in-shop services?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Mobile service pricing includes a $10 dispatch fee on top of the regular service price. For example, a mobile car wash starts at $25 (compared to $15 in-shop), a Mobile Super Sport starts at $105, and a Mobile Master Detail starts at $305. The convenience of having us come to you in Upper Marlboro is well worth the small additional fee.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer mobile fleet washing services in the Upper Marlboro area?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Yes, we offer mobile fleet washing services for businesses throughout Upper Marlboro, Brandywine and Cheltenham, and the greater DMV area. Whether you have a small fleet or a large commercial operation, our mobile team can service your vehicles on-site on a regular schedule. Call (301) 307-1414 for fleet pricing and scheduling.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -242,6 +297,14 @@
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasActive = item.classList.contains('active');
+                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
