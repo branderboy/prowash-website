@@ -81,6 +81,9 @@
         @media (min-width: 1024px) {
             .service-overview-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        @media (min-width: 768px) {
+            .comparison-cols { grid-template-columns: 1fr 1fr !important; }
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -228,6 +231,87 @@
                         <span class="price-start">Call for Quote</span>
                         <a href="dealer-services.html" class="btn btn-red btn-sm" style="width: 100%;">View Dealer Services</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hand Wash vs Automatic Comparison -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">The Facts</span>
+                <h2 class="section-title">HAND WASH VS. AUTOMATIC CAR WASH</h2>
+                <div class="title-divider"></div>
+                <p style="margin-top: 15px; color: var(--text-muted); max-width: 700px; margin-left: auto; margin-right: auto;">Not all car washes are equal. Here's what the research shows — and why Pro Wash&trade; is the smarter choice for your vehicle's long-term health.</p>
+            </div>
+
+            <div style="display: grid; gap: 20px; margin-top: 10px;">
+                <div class="comparison-cols" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                    <!-- Pro Wash column -->
+                    <div class="reveal" style="background: var(--dark-blue); border-radius: 8px; overflow: hidden;">
+                        <div style="background: var(--red); padding: 20px 25px;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; color: rgba(255,255,255,0.7); text-transform: uppercase; display: block; margin-bottom: 4px;">Recommended</span>
+                            <h3 style="color: var(--white); font-size: 1.3rem; margin: 0;">Pro Wash&trade; Hand Car Wash</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 25px; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #4ade80; flex-shrink: 0; margin-top: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                                <span style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--white);">Superior paint protection</strong> — no abrasive brushes, zero swirl marks or micro-scratches to your clear coat</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #4ade80; flex-shrink: 0; margin-top: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                                <span style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--white);">Thorough cleaning of crevices</strong> — door jambs, trim lines, mirrors, and tight spots that machines miss entirely</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #4ade80; flex-shrink: 0; margin-top: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                                <span style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--white);">Trained eyes on your vehicle</strong> — our technicians spot paint issues, chips, and problem areas as they work</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #4ade80; flex-shrink: 0; margin-top: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                                <span style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--white);">Interior included</strong> — vacuum, window cleaning, and tire dressing with every wash package</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #4ade80; flex-shrink: 0; margin-top: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                                <span style="color: #d1d5db; font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--white);">Still fast</strong> — in and out in 20 minutes. Express speed without machine damage</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Automatic Wash column -->
+                    <div class="reveal delay-1" style="background: var(--white); border: 2px solid var(--gray-mid); border-radius: 8px; overflow: hidden;">
+                        <div style="background: var(--gray-light); padding: 20px 25px; border-bottom: 2px solid var(--gray-mid);">
+                            <span style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 4px;">The Alternative</span>
+                            <h3 style="color: var(--text-dark); font-size: 1.3rem; margin: 0;">Automatic Car Wash</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 25px; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #ef4444; flex-shrink: 0; margin-top: 2px;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                                <span style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--text-dark);">Brush-type machines damage clear coats</strong> — repeated use causes micro-scratches and swirl marks that dull paint over time</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #ef4444; flex-shrink: 0; margin-top: 2px;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                                <span style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--text-dark);">Misses crevices entirely</strong> — automated nozzles can't reach door jambs, trim, mirrors, or tight body contours</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #ef4444; flex-shrink: 0; margin-top: 2px;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                                <span style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--text-dark);">No interior service</strong> — exterior only; vacuuming, windows, and tires are left to you</span>
+                            </li>
+                            <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="color: #f59e0b; flex-shrink: 0; margin-top: 2px;"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="currentColor"/></svg>
+                                <span style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;"><strong style="color: var(--text-dark);">Convenient for a quick underbody rinse</strong> — best when time is critical and paint condition isn't a priority</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Verdict bar -->
+                <div class="reveal" style="background: linear-gradient(135deg, var(--dark-blue), #142d52); border-radius: 8px; padding: 25px 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px; justify-content: space-between;">
+                    <div>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 5px;">The Verdict</p>
+                        <p style="color: var(--white); font-size: 1rem; margin: 0; max-width: 600px; line-height: 1.6;">"Hand washing is superior for paint protection and thorough cleaning. Automatic washes (especially brush-type) can damage clear coats with micro-scratches over time." <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">— Google</span></p>
+                    </div>
+                    <a href="car-wash.html" class="btn btn-red" style="flex-shrink: 0;">View Pro Wash&trade;</a>
                 </div>
             </div>
         </div>
