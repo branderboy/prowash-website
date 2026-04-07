@@ -1704,6 +1704,70 @@
             </div>
         </div>
     </div>
+    <!-- Location Finder -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div style="max-width:700px; margin:0 auto; text-align:center;">
+                <div class="reveal">
+                    <span class="section-subtitle">5 Locations Across the DMV</span>
+                    <h2 class="section-title">FIND A LOCATION NEAR YOU</h2>
+                    <div class="title-divider"></div>
+                    <p style="font-size:1.05rem; color:var(--text-muted); margin-top:20px; margin-bottom:28px;">Enter your zip code to find the closest Hand Car Wash &amp; Car Detail.</p>
+                    <div style="display:flex; gap:12px; max-width:420px; margin:0 auto;">
+                        <input type="text" id="zipInput" placeholder="Enter your zip code" maxlength="5" style="flex:1; padding:16px 18px; border:1px solid var(--gray-mid); border-radius:6px; font-size:1.05rem; font-family:'Open Sans',sans-serif; text-align:center; letter-spacing:2px;">
+                        <button onclick="findLocation()" class="btn btn-red" style="padding:16px 28px; border:none; cursor:pointer; white-space:nowrap;">Find Now</button>
+                    </div>
+                    <div id="zipResult" style="margin-top:24px; display:none;">
+                        <div style="background:var(--white); border:1px solid var(--gray-mid); border-radius:8px; padding:24px; text-align:left; max-width:420px; margin:0 auto;">
+                            <h4 id="resultName" style="color:var(--dark-blue); margin-bottom:8px;"></h4>
+                            <p id="resultAddress" style="color:var(--text-muted); font-size:0.95rem; margin-bottom:14px;"></p>
+                            <a id="resultLink" href="" class="btn btn-red btn-sm" style="width:100%; text-align:center;">View Location</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    function findLocation() {
+        var zip = document.getElementById('zipInput').value.trim();
+        if (!zip || zip.length < 5) return;
+        var locations = [
+            { name: 'Capitol Heights, MD', address: '29 Hampton Park Blvd, Capitol Heights, MD 20743', link: 'locations/capitol-heights.html', zips: ['20743','20744','20785','20747','20781','20782','20784','20710','20737'] },
+            { name: 'Clinton, MD', address: '6311 Coventry Way, Clinton, MD 20735', link: 'locations/clinton.html', zips: ['20735','20748','20762','20745','20746','20744','20373','20388'] },
+            { name: 'Bowie, MD', address: '4406 Crain Highway, Bowie, MD 20716', link: 'locations/bowie.html', zips: ['20716','20715','20720','20721','21114','20706','20770','20707','20708'] },
+            { name: 'Upper Marlboro, MD', address: '7538 Crain Highway, Upper Marlboro, MD 20772', link: 'locations/upper-marlboro.html', zips: ['20772','20774','20613','20623','20769'] },
+            { name: 'Washington, DC', address: 'Washington, DC', link: 'locations/washington-dc.html', zips: ['20019','20020','20032','20002','20003','20017','20018','20001','20024','20037'] }
+        ];
+        var found = null;
+        for (var i = 0; i < locations.length; i++) {
+            if (locations[i].zips.indexOf(zip) !== -1) { found = locations[i]; break; }
+        }
+        if (!found) {
+            var zipNum = parseInt(zip);
+            if (zipNum >= 20000 && zipNum <= 20099) found = locations[4];
+            else if (zipNum >= 20700 && zipNum <= 20799) {
+                var dists = [
+                    { loc: locations[0], center: 20743 },
+                    { loc: locations[1], center: 20735 },
+                    { loc: locations[2], center: 20716 },
+                    { loc: locations[3], center: 20772 }
+                ];
+                dists.sort(function(a,b) { return Math.abs(zipNum - a.center) - Math.abs(zipNum - b.center); });
+                found = dists[0].loc;
+            } else {
+                found = locations[0];
+            }
+        }
+        document.getElementById('resultName').textContent = 'Your closest location: ' + found.name;
+        document.getElementById('resultAddress').textContent = found.address;
+        document.getElementById('resultLink').href = found.link;
+        document.getElementById('zipResult').style.display = 'block';
+    }
+    document.getElementById('zipInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') findLocation(); });
+    </script>
+
     <!-- Corporate Mission Section -->
     <section id="mission" class="section-padding">
         <div class="container mission-grid">
