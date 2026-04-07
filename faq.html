@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Hand Car Wash & Car Detail</title>
+    <meta name="description" content="Frequently asked questions about Hand Car Wash & Car Detail — appointments, pricing, mobile service, window tinting, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+    <div class="accent-stripe"></div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Serving Washington DC &amp; Maryland</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Facility Hours: Mon-Sat 8 AM - 6 PM</span>
+            <span class="top-bar-item desktop-only"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Walk-Ins &amp; Appointments Welcome</span>
+            <span class="top-bar-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> (301) 307-1414</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <a href="index.html"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileBtn">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="services/index.html" class="nav-item">Services</a>
+                <a href="locations/index.html" class="nav-item">Locations</a>
+                <a href="shop.html" class="nav-item">Shop</a>
+                <a href="book.html" class="btn btn-red">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/ FAQ</span>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.8) 0%, rgba(14, 26, 43, 0.7) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/detail2.jpg');">
+        <div class="container">
+            <div class="reveal">
+                <span class="hero-subtitle">Got Questions?</span>
+                <h1>FREQUENTLY ASKED <span>QUESTIONS</span></h1>
+                <div class="hero-divider"></div>
+                <p>Everything you need to know about our services, pricing, and locations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- General Questions -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">General</span>
+                <h2 class="section-title">GENERAL QUESTIONS</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need an appointment for a car wash?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">No appointment necessary! All walk-ins are welcomed. Simply drive in during our operating hours and we'll take care of the rest. You'll be in and out in about 20 minutes.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What are your hours and locations?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We have five convenient locations across the DMV area: Clinton, Capitol Heights, Bowie, Upper Marlboro, and Washington DC. Car wash services run Mon-Sat with mobile washes available 8 am – 6:30 pm. Call us at (301) 307-1414 for specific location hours.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does a detail or wash take?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">A standard car wash takes up to 20 minutes. Detail jobs take up to 90 minutes depending on the package and vehicle size. Window tinting jobs take up to 2 hours.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What payment methods do you accept?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We accept all major credit cards, debit cards, Apple Pay, Google Pay, and cash at all of our locations.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Services</span>
+                <h2 class="section-title">SERVICES &amp; PRICING</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What car wash packages do you offer?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We offer a range of packages from a basic full service wash to our premium master detail package. Each includes hand washing with professional-grade products for a swirl-free finish. Visit our <a href="services/car-wash.html">Car Wash</a> page for full details and pricing.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What's included in a car detail?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Our detail packages range from interior-only or exterior-only options to our comprehensive master detail. Services can include clay bar treatment, polish, wax, interior deep clean, leather conditioning, and more. Check our <a href="services/car-detailing.html">Car Detailing</a> page for package breakdowns.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you offer services for SUVs, trucks, and large vehicles?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! We service all vehicle types including sedans, SUVs, trucks, and vans. Pricing may vary slightly based on vehicle size. Our team is equipped to handle vehicles of all sizes.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Service -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">On the Go</span>
+                <h2 class="section-title">MOBILE SERVICE</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How does mobile service work and what does it cost?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We come to you! Book a mobile wash between 8 am – 6:30 pm, Mon-Sat. Mobile detail jobs are available between 8 am and 4:30 pm. There is an additional $10 fee for us to come out to your location.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What areas do you serve for mobile service?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Our mobile fleet covers the entire Washington DC and Maryland area, including Clinton, Capitol Heights, Bowie, Upper Marlboro, and surrounding communities. Call us at (301) 307-1414 to confirm service availability in your area.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need to provide water or electricity for mobile service?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">No, our mobile units are fully self-contained with their own water supply and equipment. All you need to do is make sure we have access to your vehicle at the scheduled time.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Window Tinting -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Tinting</span>
+                <h2 class="section-title">WINDOW TINTING</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Does window tinting come with a warranty?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! All of our window tinting jobs come with a lifetime warranty. We use industry-leading products installed by certified technicians. Plus, every tint job includes a free car wash.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does window tinting take?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Most window tinting jobs are completed within 2 hours. The exact time depends on the number of windows and the vehicle type. We recommend scheduling an appointment for tinting services.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What tint shades are available?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We offer a variety of tint shades to suit your preference and comply with Maryland and DC regulations. Our technicians can walk you through the options and help you choose the right shade for your vehicle. Visit our <a href="services/window-tinting.html">Window Tinting</a> page for more details.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dealership & Fleet -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Fleet &amp; Business</span>
+                <h2 class="section-title">DEALERSHIPS &amp; FLEET SERVICES</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you offer services for car dealerships?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! We provide dedicated services for car dealerships including lot washing, detail prep for sales, and ongoing fleet maintenance. Visit our <a href="services/car-dealerships.html">Dealership Services</a> page or call (301) 307-1414 for a custom quote.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you work with rideshare and fleet drivers?
+                        <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Absolutely! We offer special packages for Uber, Lyft, and fleet drivers to keep your vehicles looking their best. Check out our <a href="services/rideshare.html">Rideshare</a> page for more information on our tailored packages.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark-section section-padding">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <span class="section-subtitle">Still Have Questions?</span>
+                <h2 class="section-title" style="color: var(--white);">WE'RE HERE TO HELP</h2>
+                <div class="title-divider"></div>
+                <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">Give us a call or stop by any of our 5 locations. Our team is happy to answer any questions you have.</p>
+                <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="book.html" class="btn btn-red">Book Online</a>
+                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Call (301) 307-1414</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <span class="footer-logo"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></span>
+                    <p>Built to set the standard in auto care with hand car wash, auto detailing, mobile service, and fleet washing.</p>
+                </div>
+                <div class="footer-col reveal delay-1">
+                    <h5>QUICK LINKS</h5>
+                    <ul class="footer-links">
+                        <li><a href="services/index.html">All Services</a></li>
+                        <li><a href="services/car-wash.html">Car Wash</a></li>
+                        <li><a href="services/car-detailing.html">Car Detailing</a></li>
+                        <li><a href="services/window-tinting.html">Window Tinting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-2">
+                    <h5>COMPANY</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="book.html">Book Online</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col reveal delay-3">
+                    <h5>CONTACT US</h5>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div><span>Phone Number</span><strong>(301) 307-1414</strong></div>
+                    </div>
+                    <div class="f-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <div><span>Working Hours</span><strong>Mon-Sat 8am - 6pm</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom reveal"><p>&copy; 2026 Hand Car Wash &amp; Car Detail. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); });
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            if(navLinks.style.display === 'flex') { navLinks.style.display = 'none'; }
+            else { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '100%'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--white)'; navLinks.style.padding = '20px'; navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; navLinks.style.borderTop = '1px solid var(--gray-mid)'; }
+        });
+        document.querySelectorAll('.nav-item').forEach(link => { link.addEventListener('click', () => { if(window.innerWidth < 1024) navLinks.style.display = 'none'; }); });
+        window.addEventListener('resize', () => { if(window.innerWidth >= 1024) { navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'row'; navLinks.style.position = 'static'; navLinks.style.boxShadow = 'none'; navLinks.style.borderTop = 'none'; navLinks.style.padding = '0'; } else { navLinks.style.display = 'none'; } });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        function toggleFaq(btn) {
+            var item = btn.parentElement;
+            var answer = btn.nextElementSibling;
+            var isOpen = item.classList.contains('faq-open');
+            document.querySelectorAll('.faq-item').forEach(function(fi) {
+                fi.classList.remove('faq-open');
+                fi.querySelector('.faq-answer').style.maxHeight = null;
+            });
+            if (!isOpen) {
+                item.classList.add('faq-open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
