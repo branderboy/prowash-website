@@ -560,7 +560,7 @@
             font-weight: 700;
             font-size: 1rem;
             text-transform: uppercase;
-            color: var(--red);
+            color: rgba(255,255,255,0.85);
             letter-spacing: 2px;
             margin-bottom: 15px;
             position: relative;
@@ -574,12 +574,12 @@
             text-shadow: 0 4px 30px rgba(0,0,0,0.4);
         }
         .hero h1 span {
-            color: var(--red);
+            color: var(--white);
         }
         .hero-divider {
             width: 80px;
             height: 4px;
-            background-color: var(--red);
+            background-color: rgba(255,255,255,0.5);
             margin: 0 auto 20px auto;
         }
         @media (min-width: 768px) {
@@ -1610,7 +1610,6 @@
 
             <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-item">Home</a>
-                <a href="about.html" class="nav-item">About</a>
                 <div class="nav-dropdown">
                     <a href="services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
                     <div class="dropdown-menu">
@@ -1996,30 +1995,6 @@
         </div>
     </section>
 
-    <!-- Loyalty Rewards & Birthday Club -->
-    <section id="programs" class="dark-section section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">Member Perks</span>
-                <h2 class="section-title">LOYALTY REWARDS & BIRTHDAY CLUB</h2>
-                <div class="title-divider"></div>
-            </div>
-
-            <div class="programs-grid">
-                <div class="program-card program-loyalty reveal">
-                    <h3>Loyalty Rewards</h3>
-                    <p>Earn points with every wash and detail service. Redeem for free washes, upgrades, and exclusive member-only discounts. The more you wash, the more you save.</p>
-                    <a href="rewards.html" class="btn btn-red">Start Earning Rewards</a>
-                </div>
-
-                <div class="program-card program-birthday reveal delay-1">
-                    <h3>Birthday Club</h3>
-                    <p>Sign up for our Birthday Club and receive a complimentary wash during your birthday month. It's our way of celebrating you — because your car deserves a birthday treat too.</p>
-                    <a href="birthday-club.html" class="btn btn-dark">Get My Free Birthday Wash</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Trust Signals Section -->
     <section id="trust" class="dark-section section-padding">
@@ -2070,9 +2045,8 @@
             <div class="reveal">
                 <h2>Your Car Deserves Better Than <span>An Automated Wash</span></h2>
                 <p>Every vehicle at Hand Car Wash &amp; Car Detail is hand washed by trained professionals using premium products. No spinning brushes. No tunnel scratches. Just a showroom-quality finish in 20 minutes at any of our 5 DMV locations.</p>
-                <div class="final-cta-actions">
-                    <a href="book.html" class="btn btn-red btn-big" style="max-width:450px;">Book Your Wash Now</a>
-                    <span class="btn-subtext">5 locations &bull; Mon-Sat 8am-6pm &bull; (301) 307-1414</span>
+                <div class="final-cta-actions" style="align-items:center;">
+                    <a href="book.html" class="btn btn-red btn-big" style="max-width:450px; margin:0 auto;">Book Your Wash Now</a>
                 </div>
             </div>
         </div>
@@ -2103,8 +2077,8 @@
                         <li><a href="#services">Detail Packages</a></li>
                         <li><a href="#mobile">Mobile Car Wash &amp; Detail</a></li>
                         <li><a href="#locations">Locations</a></li>
-                        <li><a href="#programs">Loyalty &amp; Birthday Club</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </nav>
 

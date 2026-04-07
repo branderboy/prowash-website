@@ -71,21 +71,48 @@
             <button class="mobile-menu-btn" id="mobileBtn"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
             <nav class="nav-links" id="navLinks">
                 <a href="../../index.html" class="nav-item">Home</a>
-                <a href="../../about.html" class="nav-item">About</a>
-                <a href="../../services/index.html" class="nav-item">Services</a>
-                <a href="../index.html" class="nav-item">Locations</a>
-                <a href="../../shop.html" class="nav-item">Shop</a>
+                <div class="nav-dropdown">
+                    <a href="../../services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../services/car-wash.html">Car Wash</a>
+                        <a href="../../services/car-detailing.html">Car Detailing</a>
+                        <a href="../../services/window-tinting.html">Window Tinting</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../services/index.html" class="nav-item dropdown-toggle">Industries <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../services/car-dealerships.html">Car Dealerships</a>
+                        <a href="../../services/rideshare.html">Rideshare Drivers</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-item dropdown-toggle">Programs <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="../../rewards.html">Loyalty Rewards</a>
+                        <a href="../../birthday-club.html">Birthday Club</a>
+                        <a href="../../shop.html">Shop</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../../locations/index.html" class="nav-item dropdown-toggle">Locations <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="../../locations/capitol-heights.html">Capitol Heights</a>
+                        <a href="../../locations/clinton.html">Clinton</a>
+                        <a href="../../locations/bowie.html">Bowie</a>
+                        <a href="../../locations/upper-marlboro.html">Upper Marlboro</a>
+                        <a href="../../locations/washington-dc.html">Washington DC</a>
+                    </div>
+                </div>
                 <a href="../../book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
     </header>
 
-    <div class="breadcrumb">
-        <div class="container"><a href="../../index.html">Home</a> <span>/</span> <a href="../index.html">Locations</a> <span>/</span> <a href="../washington-dc.html">Washington, DC</a> <span>/ Car Detailing</span></div>
     </div>
 
     <!-- Hero -->
-    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 50%, rgba(179, 58, 52, 0.15) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');">
+    <section class="subpage-hero" style="background-image: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(14, 26, 43, 0.75) 100%), url('https://prowashdetail.net/wp-content/uploads/2016/07/carw.jpg');">
         <div class="container">
             <div class="reveal">
                 <span class="local-hero-badge">Washington, DC</span>
@@ -94,7 +121,7 @@
                 <p>Professional auto detailing packages from express to master detail. Interior and exterior treatments, steam cleaning, buff wax, and full detail services with meticulous attention to every surface.</p>
                 <div class="hero-actions" style="margin-top: 25px;">
                     <a href="tel:3013071414" class="btn btn-red">Call to Book - Washington, DC</a>
-                    <a href="tel:3013071414" class="btn btn-outline" style="border-color: white; color: white;">Call (301) 307-1414</a>
+                    <a href="tel:3013071414" class="btn btn-dark">Call (301) 307-1414</a>
                 </div>
             </div>
         </div>

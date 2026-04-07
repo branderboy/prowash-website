@@ -37,24 +37,44 @@
         }
         .book-heading {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         .book-heading h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--dark-blue);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
+        .book-heading h1 span { color: var(--red); }
         .book-heading p {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
         .book-heading p a {
             color: var(--red);
             font-weight: 700;
         }
+        .book-trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 18px;
+        }
+        .book-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .book-trust-item svg { width: 20px; height: 20px; color: var(--red); }
         .location-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -69,23 +89,37 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
-            padding: 12px 20px;
+            padding: 14px 24px;
             border: 2px solid var(--gray-mid);
-            border-radius: 6px;
+            border-radius: 8px;
             background: var(--white);
             color: var(--dark-blue);
             cursor: pointer;
             transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            flex: 1;
+            min-width: 140px;
         }
         .loc-tab:hover {
             border-color: var(--dark-blue);
+            box-shadow: 0 3px 10px rgba(10,30,61,0.1);
         }
         .loc-tab.active {
-            background: var(--dark-blue);
+            background: linear-gradient(180deg, #1A3A66 0%, #0A1E3D 100%);
             color: var(--white);
             border-color: var(--dark-blue);
+            box-shadow: 0 4px 15px rgba(10,30,61,0.25);
+            border-bottom: 3px solid #040D1A;
+        }
+        .loc-address {
+            display: block;
+            font-weight: 400;
+            font-size: 0.7rem;
+            margin-top: 4px;
+            opacity: 0.7;
+            text-transform: none;
+            letter-spacing: 0;
         }
         .acuity-embed-wrap {
             max-width: 900px;
@@ -152,10 +186,39 @@
             </button>
             <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-item">Home</a>
-                <a href="about.html" class="nav-item">About</a>
-                <a href="services/index.html" class="nav-item">Services</a>
-                <a href="locations/index.html" class="nav-item">Locations</a>
-                <a href="shop.html" class="nav-item">Shop</a>
+                <div class="nav-dropdown">
+                    <a href="services/index.html" class="nav-item dropdown-toggle">Services <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="services/car-wash.html">Car Wash</a>
+                        <a href="services/car-detailing.html">Car Detailing</a>
+                        <a href="services/window-tinting.html">Window Tinting</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="services/index.html" class="nav-item dropdown-toggle">Industries <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="services/car-dealerships.html">Car Dealerships</a>
+                        <a href="services/rideshare.html">Rideshare Drivers</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-item dropdown-toggle">Programs <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="rewards.html">Loyalty Rewards</a>
+                        <a href="birthday-club.html">Birthday Club</a>
+                        <a href="shop.html">Shop</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="locations/index.html" class="nav-item dropdown-toggle">Locations <svg class="dd-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></a>
+                    <div class="dropdown-menu">
+                        <a href="locations/capitol-heights.html">Capitol Heights</a>
+                        <a href="locations/clinton.html">Clinton</a>
+                        <a href="locations/bowie.html">Bowie</a>
+                        <a href="locations/upper-marlboro.html">Upper Marlboro</a>
+                        <a href="locations/washington-dc.html">Washington DC</a>
+                    </div>
+                </div>
                 <a href="book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
@@ -165,16 +228,22 @@
     <section class="book-page-main">
         <div class="container">
             <div class="book-heading">
-                <h1>Book Your Appointment</h1>
-                <p>Select a service, pick your date &amp; time. Or call <a href="tel:3013071414">(301) 307-1414</a></p>
+                <h1>Book Your <span>Appointment</span></h1>
+                <p>Choose your location, pick a service, and select your date &amp; time.</p>
+                <div class="book-trust-strip">
+                    <span class="book-trust-item"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Walk-Ins Welcome</span>
+                    <span class="book-trust-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> Mon-Sat 8am-6pm</span>
+                    <span class="book-trust-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> 100% Satisfaction</span>
+                    <span class="book-trust-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> 5 DMV Locations</span>
+                </div>
             </div>
 
             <!-- Location Selector -->
             <div class="location-tabs">
-                <button class="loc-tab active" data-loc="clinton">Clinton</button>
-                <button class="loc-tab" data-loc="capitol-heights">Capitol Heights</button>
-                <button class="loc-tab" data-loc="bowie">Bowie</button>
-                <button class="loc-tab" data-loc="upper-marlboro">Upper Marlboro</button>
+                <button class="loc-tab active" data-loc="clinton">Clinton<span class="loc-address">6311 Coventry Way</span></button>
+                <button class="loc-tab" data-loc="capitol-heights">Capitol Heights<span class="loc-address">29 Hampton Park Blvd</span></button>
+                <button class="loc-tab" data-loc="bowie">Bowie<span class="loc-address">4406 NW Crain Hwy</span></button>
+                <button class="loc-tab" data-loc="upper-marlboro">Upper Marlboro<span class="loc-address">7538 NW Crain Hwy</span></button>
             </div>
 
             <!-- Acuity Scheduling Embeds (one per location) -->
@@ -183,13 +252,13 @@
                     <iframe src="https://app.acuityscheduling.com/schedule.php?owner=14099514&location=+6311+C+Coventry+Way+Clinton+MD+20735+US" title="Book - Clinton" width="100%" height="800" frameBorder="0"></iframe>
                 </div>
                 <div class="embed-panel" id="embed-capitol-heights">
-                    <iframe src="" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&location=29+Hampton+Park+Blvd+Capitol+Heights+MD+20743-3816+US" title="Book - Capitol Heights" width="100%" height="800" frameBorder="0"></iframe>
+                    <iframe src="about:blank" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&location=29+Hampton+Park+Blvd+Capitol+Heights+MD+20743-3816+US" title="Book - Capitol Heights" width="100%" height="800" frameBorder="0"></iframe>
                 </div>
                 <div class="embed-panel" id="embed-bowie">
-                    <iframe src="" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&calendarID=1838107" title="Book - Bowie" width="100%" height="800" frameBorder="0"></iframe>
+                    <iframe src="about:blank" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&calendarID=1838107" title="Book - Bowie" width="100%" height="800" frameBorder="0"></iframe>
                 </div>
                 <div class="embed-panel" id="embed-upper-marlboro">
-                    <iframe src="" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&calendarID=4794913" title="Book - Upper Marlboro" width="100%" height="800" frameBorder="0"></iframe>
+                    <iframe src="about:blank" data-src="https://app.acuityscheduling.com/schedule.php?owner=14099514&calendarID=4794913" title="Book - Upper Marlboro" width="100%" height="800" frameBorder="0"></iframe>
                 </div>
                 <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
             </div>
@@ -257,7 +326,7 @@
                 panel.classList.add('active');
                 // Lazy-load iframe src on first click
                 var iframe = panel.querySelector('iframe');
-                if (iframe && !iframe.src && iframe.dataset.src) {
+                if (iframe && iframe.dataset.src && iframe.getAttribute('src') !== iframe.dataset.src) {
                     iframe.src = iframe.dataset.src;
                 }
             });
