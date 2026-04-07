@@ -10,6 +10,7 @@
     --dark-blue: #0A1E3D;
     --darker-blue: #051024;
     --white: #FFFFFF;
+    --baby-blue: #E8F1FA;
     --gray-light: #F4F5F7;
     --gray-mid: #E0E4E8;
     --text-dark: #333333;
@@ -859,13 +860,13 @@ header {
     .mobile-strip-action { margin-top: 0; flex-shrink: 0; text-align: right; }
 }
 
-/* Dark Section */
+/* Accent Section (baby blue — dark blue reserved for footer only) */
 .dark-section {
-    background-color: var(--dark-blue);
-    color: var(--white);
+    background-color: var(--baby-blue);
+    color: var(--text-dark);
 }
-.dark-section .section-title { color: var(--white); }
-.dark-section .text-muted { color: #A0ABB5; }
+.dark-section .section-title { color: var(--dark-blue); }
+.dark-section .text-muted { color: var(--text-muted); }
 .tint-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -995,21 +996,21 @@ header {
     margin-bottom: 20px;
 }
 .program-loyalty {
-    background: rgba(255,255,255,0.08);
-    border: 2px solid rgba(255,255,255,0.2);
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
 }
-.program-loyalty .program-icon { background: rgba(255,255,255,0.1); }
+.program-loyalty .program-icon { background: var(--baby-blue); }
 .program-loyalty .program-icon svg { color: var(--red); }
-.program-loyalty h3 { color: var(--white); }
-.program-loyalty p { color: var(--white); }
+.program-loyalty h3 { color: var(--dark-blue); }
+.program-loyalty p { color: var(--text-dark); }
 .program-birthday {
-    background: rgba(255,255,255,0.08);
-    border: 2px solid rgba(255,255,255,0.2);
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
 }
-.program-birthday .program-icon { background: rgba(255,255,255,0.1); }
+.program-birthday .program-icon { background: var(--baby-blue); }
 .program-birthday .program-icon svg { color: var(--red); }
-.program-birthday h3 { color: var(--white); }
-.program-birthday p { color: var(--white); }
+.program-birthday h3 { color: var(--dark-blue); }
+.program-birthday p { color: var(--text-dark); }
 
 /* Mobile Services Rows */
 .mobile-dark {
