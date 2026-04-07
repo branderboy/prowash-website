@@ -406,6 +406,9 @@ header {
 .hero h1 span {
     color: var(--white);
 }
+/* Trademark symbol sizing */
+.tm { font-size: 0.5em; vertical-align: super; line-height: 0; }
+
 .hero-divider {
     width: 80px;
     height: 4px;
