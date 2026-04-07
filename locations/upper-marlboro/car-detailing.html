@@ -210,6 +210,61 @@
         </div>
     </section>
 
+<!-- FAQ Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Common Questions</span>
+            <h2 class="section-title">FAQ: CAR DETAILING IN UPPER MARLBORO, MD</h2>
+            <div class="title-divider"></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What detailing packages do you offer at the Upper Marlboro location?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>At our Upper Marlboro location we offer several detailing packages: Super Sport starting at $95 for cars and $110 for trucks, Steam Clean at $150, Buff Wax at $175, Express Detail at $185, and our Master Detail starting at $295 for cars and $355 for trucks. Each package offers progressively deeper cleaning and restoration.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does a car detail take in Upper Marlboro?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Detailing times vary by package. A Super Sport detail takes approximately 45-60 minutes, while our Express Detail runs about 60-90 minutes. Our Master Detail, which is the most comprehensive service, can take 2-3 hours depending on vehicle size and condition. We recommend booking in advance for detail services.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is included in the Master Detail package?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>The Master Detail is our most complete service. It includes a full exterior hand wash, clay bar treatment, machine buff and wax, complete interior deep clean with steam cleaning, leather conditioning, carpet shampooing, engine bay cleaning, and meticulous attention to every surface. It is ideal for vehicles that need a full restoration to like-new condition.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do I need an appointment for detailing in Upper Marlboro?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>While walk-ins are welcome at our 7538 NW Crain Hwy, Upper Marlboro, MD 20772 location, we recommend booking detailing appointments in advance to guarantee your preferred time slot. You can book online or call us at (301) 307-1414. Customers from Brandywine and Cheltenham frequently schedule ahead to ensure availability.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can you do mobile detailing in the Upper Marlboro area?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Yes, all of our detailing packages are available as mobile services throughout Upper Marlboro, Brandywine and Cheltenham, and surrounding areas. A $10 dispatch fee applies for mobile service. Our technicians bring all equipment needed to perform a full detail at your home or office.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is the difference between the Super Sport and Express Detail?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>The Super Sport ($95 for cars) is a step above a basic wash and includes interior and exterior cleaning with more attention to detail. The Express Detail ($185) adds deeper treatments like steam cleaning, more thorough interior work, and exterior polishing. For vehicles that just need a solid refresh, the Super Sport is a great value. For a more thorough restoration, choose the Express Detail.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -267,6 +322,14 @@
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasActive = item.classList.contains('active');
+                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>

@@ -207,6 +207,61 @@
         </div>
     </section>
 
+<!-- FAQ Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Common Questions</span>
+            <h2 class="section-title">FAQ: CAR WASH IN CLINTON, MD</h2>
+            <div class="title-divider"></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How much does a car wash cost at your Clinton location?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Our full service hand car wash starts at just $15 for cars, $20 for trucks, and $25 for XL trucks at our 6311 Coventry Way, Clinton, MD 20735 location. Mobile wash service is also available starting at $25 plus a $10 dispatch fee for customers in Camp Springs, Fort Washington, and Waldorf.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What are the hours for the Clinton car wash?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Our Clinton location is open Monday through Thursday 8am-6pm, Friday and Saturday 8am-5pm. We are closed on Sundays. Walk-ins are always welcome during business hours — no appointment needed for a car wash.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do I need an appointment for a car wash in Clinton?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>No appointment is needed for our car wash service. Walk-ins are welcome at our Clinton location anytime during business hours. If you prefer, you can also book online for a specific time slot, but it is not required.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is included in your full service car wash?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Our full service hand car wash includes a thorough exterior hand wash with a swirl-free finish, window cleaning, tire and rim cleaning, interior vacuum, dashboard wipe-down, and door jamb cleaning. Every vehicle is carefully washed by hand — we never use automated brushes.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does the car wash take at the Clinton location?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Most full service car washes are completed in approximately 20 minutes. We combine the speed of an express facility with the quality of a premium hand wash, so you can get back on the road quickly without sacrificing results.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you wash large vehicles like SUVs and trucks in Clinton?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Yes, we wash vehicles of all sizes at our Clinton location. Standard trucks are $20 and XL trucks or oversized vehicles are $25. We regularly service SUVs, pickup trucks, vans, and fleet vehicles from throughout Camp Springs, Fort Washington, and Waldorf.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -264,6 +319,14 @@
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasActive = item.classList.contains('active');
+                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
