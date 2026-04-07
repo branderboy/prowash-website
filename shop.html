@@ -110,6 +110,77 @@
             right: 15px;
             border-radius: 2px;
         }
+        .product-badge-sale {
+            background: #27ae60;
+        }
+        .product-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 10px;
+        }
+        .product-stars svg { width: 16px; height: 16px; color: #f5a623; }
+        .product-stars span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: 6px;
+        }
+        .product-price-was {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+        .product-price-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+        .btn-add-cart {
+            background: var(--dark-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-add-cart:hover {
+            background: var(--red);
+        }
+        .btn-add-cart svg { width: 18px; height: 18px; fill: currentColor; }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-mid);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+        .product-sku {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .product-stock {
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #27ae60;
+        }
         /* Loopy Loyalty Integration Banner */
         .loyalty-banner {
             background: linear-gradient(135deg, var(--dark-blue) 0%, #142d52 100%);
@@ -305,6 +376,112 @@
                         <p>Long-lasting, non-sling tire dressing that delivers a rich, dark finish to your tires.</p>
                         <div class="product-price">$16.99</div>
                         <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
+                    </div>
+                </div>
+                <!-- WooCommerce-Style Product 7 -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge product-badge-sale">Sale!</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Exterior</span>
+                        <h3>Pro Wash&trade; Clay Bar Kit</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <span>(12 reviews)</span>
+                        </div>
+                        <p>Professional-grade clay bar kit with lubricant spray. Removes embedded contaminants, overspray, and industrial fallout for a glass-smooth finish.</p>
+                        <div class="product-price-row">
+                            <span class="product-price-was">$44.99</span>
+                            <div class="product-price">$34.99</div>
+                        </div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PWK-001</span>
+                            <span class="product-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WooCommerce-Style Product 8 -->
+                <div class="product-card reveal delay-1">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Interior</span>
+                        <h3>Pro Detail&trade; Ceramic Interior Coating</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27l.9.53V9.24z" fill="currentColor"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2v15.27z" fill="currentColor" opacity="0.35"/></svg>
+                            <span>(8 reviews)</span>
+                        </div>
+                        <p>Advanced ceramic coating for dashboards, door panels, and trim. Provides UV protection and a rich satin finish that lasts up to 6 months.</p>
+                        <div class="product-price-row">
+                            <div class="product-price">$39.99</div>
+                        </div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PDC-002</span>
+                            <span class="product-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WooCommerce-Style Product 9 -->
+                <div class="product-card reveal delay-2">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge product-badge-sale">Sale!</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Bundles</span>
+                        <h3>Pro Wash&trade; Complete Car Care Bundle</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <span>(21 reviews)</span>
+                        </div>
+                        <p>Everything you need in one box: wash soap, spray wax, interior detailer, tire dressing, 4 microfiber towels, and a wash mitt. Save 25% vs buying individually.</p>
+                        <div class="product-price-row">
+                            <span class="product-price-was">$89.99</span>
+                            <div class="product-price">$67.49</div>
+                        </div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PWB-003</span>
+                            <span class="product-stock">In Stock</span>
+                        </div>
                     </div>
                 </div>
             </div>
