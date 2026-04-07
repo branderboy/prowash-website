@@ -186,6 +186,61 @@
         </div>
     </section>
 
+<!-- FAQ Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Common Questions</span>
+            <h2 class="section-title">FAQ: WINDOW TINTING IN BOWIE, MD</h2>
+            <div class="title-divider"></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How much does window tinting cost at the Bowie location?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Full car tinting at our Bowie location starts at $108 for cars. Truck tinting starts at $60, and a windshield strip is just $25. Every tint job includes a complimentary car wash and a lifetime warranty on the tint film.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does the window tint come with a warranty?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Yes, every window tinting job at our Bowie location includes a lifetime warranty. If the tint bubbles, peels, or discolors, we will replace it at no charge. We use industry-leading tint film products installed by certified technicians to ensure lasting results.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What are the Maryland window tint laws?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Maryland law allows any tint darkness on rear windows but requires the front side windows to allow more than 35% of light through. The windshield can have a tint strip along the top. Our technicians at the Bowie location are familiar with local regulations and can advise you on the darkest legal tint for your vehicle.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does window tinting take?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Most window tinting jobs are completed within 1-2 hours depending on the number of windows and vehicle type. We recommend arriving early in the day so the tint has time to begin the curing process. Walk-ins are welcome, but booking ahead ensures you get your preferred time.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does window tint take to cure?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Window tint typically takes 3-5 days to fully cure, depending on weather conditions. During this time you may notice small water bubbles or a slightly hazy appearance — this is completely normal and will disappear as the film dries. Avoid rolling down your windows for at least 48 hours after installation.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer window tinting for customers from Crofton, Mitchellville, and Glenn Dale?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer"><p>Absolutely. Our Bowie location at 4406 NW Crain Hwy, Bowie, MD 20716 serves customers from throughout the area including Crofton, Mitchellville, and Glenn Dale. Many of our tinting clients drive from surrounding communities because of our competitive pricing, lifetime warranty, and complimentary car wash with every tint job.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -242,6 +297,14 @@
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { root: null, threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasActive = item.classList.contains('active');
+                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
