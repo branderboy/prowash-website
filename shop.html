@@ -4,46 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop | Hand Car Wash & Car Detail</title>
-    <meta name="description" content="Shop professional car care products from Hand Car Wash & Car Detail. Premium detailing products available for purchase.">
-    <meta name="keywords" content="car care products, detailing products, car wash supplies, auto detailing products, car care shop">
+    <meta name="description" content="Shop professional car care products from Hand Car Wash &amp; Car Detail. Premium Pro Detail&trade; products available for purchase.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.handcarwashandcardetail.com/shop">
-    <meta name="geo.region" content="US-MD">
-    <meta name="geo.placename" content="Capitol Heights, Maryland">
-    <!-- Open Graph -->
+    <link rel="canonical" href="https://www.handcarwashandcardetail.com/shop.html">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.handcarwashandcardetail.com/shop.html">
     <meta property="og:title" content="Shop | Hand Car Wash &amp; Car Detail">
-    <meta property="og:description" content="Shop professional car care and detailing products from Hand Car Wash &amp; Car Detail.">
+    <meta property="og:description" content="Shop professional car care products from Hand Car Wash &amp; Car Detail. Premium Pro Detail products available for purchase.">
     <meta property="og:image" content="https://www.handcarwashandcardetail.com/images/logo.png">
     <meta property="og:site_name" content="Hand Car Wash &amp; Car Detail">
     <meta property="og:locale" content="en_US">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Shop | Hand Car Wash &amp; Car Detail">
-    <meta name="twitter:description" content="Shop professional car care and detailing products from Hand Car Wash &amp; Car Detail.">
+    <meta name="twitter:description" content="Shop professional car care products from Hand Car Wash &amp; Car Detail. Premium Pro Detail products available for purchase.">
     <meta name="twitter:image" content="https://www.handcarwashandcardetail.com/images/logo.png">
-    <!-- BreadcrumbList JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.handcarwashandcardetail.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Shop",
-          "item": "https://www.handcarwashandcardetail.com/shop.html"
-        }
-      ]
-    }
-    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -127,6 +110,77 @@
             right: 15px;
             border-radius: 2px;
         }
+        .product-badge-sale {
+            background: #27ae60;
+        }
+        .product-stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 10px;
+        }
+        .product-stars svg { width: 16px; height: 16px; color: #f5a623; }
+        .product-stars span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: 6px;
+        }
+        .product-price-was {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+        .product-price-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+        .btn-add-cart {
+            background: var(--dark-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-add-cart:hover {
+            background: var(--red);
+        }
+        .btn-add-cart svg { width: 18px; height: 18px; fill: currentColor; }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-mid);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+        .product-sku {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .product-stock {
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #27ae60;
+        }
         /* Loopy Loyalty Integration Banner */
         .loyalty-banner {
             background: linear-gradient(135deg, var(--dark-blue) 0%, #142d52 100%);
@@ -162,25 +216,25 @@
     <header id="header">
         <div class="container nav-container">
             <div class="logo-area">
-                <a href="./"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
+                <a href="index.html"><img src="images/logo.png" alt="Hand Car Wash &amp; Car Detail Logo"></a>
             </div>
             <button class="mobile-menu-btn" id="mobileBtn">
                 <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
             <nav class="nav-links" id="navLinks">
-                <a href="./" class="nav-item">Home</a>
-                <a href="about" class="nav-item">About</a>
-                <a href="services/" class="nav-item">Services</a>
-                <a href="locations/" class="nav-item">Locations</a>
-                <a href="shop" class="nav-item">Shop</a>
-                <a href="book" class="btn btn-red">Book Now</a>
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="services/index.html" class="nav-item">Services</a>
+                <a href="locations/index.html" class="nav-item">Locations</a>
+                <a href="shop.html" class="nav-item">Shop</a>
+                <a href="book.html" class="btn btn-red">Book Now</a>
             </nav>
         </div>
     </header>
 
     <div class="breadcrumb">
         <div class="container">
-            <a href="./">Home</a> <span>/ Shop</span>
+            <a href="index.html">Home</a> <span>/ Shop</span>
         </div>
     </div>
 
@@ -221,8 +275,44 @@
             </div>
 
             <div class="product-grid">
-                <!-- Product 1 -->
+                <!-- Product 1: Pro Wash Clay Bar Kit -->
                 <div class="product-card reveal">
+                    <div class="product-img">
+                        <div class="product-img-placeholder">
+                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                            <div style="margin-top: 8px;">Product Image</div>
+                        </div>
+                        <span class="product-badge product-badge-sale">Sale!</span>
+                    </div>
+                    <div class="product-body">
+                        <span class="product-category">Exterior</span>
+                        <h3>Pro Wash&trade; Clay Bar Kit</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <span>(12 reviews)</span>
+                        </div>
+                        <p>Professional-grade clay bar kit with lubricant spray. Removes embedded contaminants, overspray, and industrial fallout for a glass-smooth finish.</p>
+                        <div class="product-price-row">
+                            <span class="product-price-was">$44.99</span>
+                            <div class="product-price">$34.99</div>
+                        </div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PWK-001</span>
+                            <span class="product-stock">In Stock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Pro Detail Ceramic Interior Coating -->
+                <div class="product-card reveal delay-1">
                     <div class="product-img">
                         <div class="product-img-placeholder">
                             <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
@@ -231,97 +321,64 @@
                         <span class="product-badge">Best Seller</span>
                     </div>
                     <div class="product-body">
-                        <span class="product-category">Exterior</span>
-                        <h3>Premium Car Wash Soap</h3>
-                        <p>pH-balanced, high-suds formula that lifts dirt without stripping wax or sealant protection.</p>
-                        <div class="product-price">$24.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card reveal delay-1">
-                    <div class="product-img">
-                        <div class="product-img-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                            <div style="margin-top: 8px;">Product Image</div>
+                        <span class="product-category">Interior</span>
+                        <h3>Pro Detail&trade; Ceramic Interior Coating</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27l.9.53V9.24z" fill="currentColor"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2v15.27z" fill="currentColor" opacity="0.35"/></svg>
+                            <span>(8 reviews)</span>
+                        </div>
+                        <p>Advanced ceramic coating for dashboards, door panels, and trim. Provides UV protection and a rich satin finish that lasts up to 6 months.</p>
+                        <div class="product-price-row">
+                            <div class="product-price">$39.99</div>
+                        </div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PDC-002</span>
+                            <span class="product-stock">In Stock</span>
                         </div>
                     </div>
-                    <div class="product-body">
-                        <span class="product-category">Interior</span>
-                        <h3>Interior Detailing Spray</h3>
-                        <p>All-in-one interior cleaner and protectant. Safe on leather, vinyl, plastic, and rubber surfaces.</p>
-                        <div class="product-price">$19.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
-                    </div>
                 </div>
 
-                <!-- Product 3 -->
+                <!-- Product 3: Pro Wash Complete Car Care Bundle -->
                 <div class="product-card reveal delay-2">
                     <div class="product-img">
                         <div class="product-img-placeholder">
                             <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
                             <div style="margin-top: 8px;">Product Image</div>
                         </div>
-                        <span class="product-badge">New</span>
+                        <span class="product-badge product-badge-sale">Sale!</span>
                     </div>
                     <div class="product-body">
-                        <span class="product-category">Exterior</span>
-                        <h3>Spray Wax &amp; Sealant</h3>
-                        <p>Quick-apply spray wax that delivers deep gloss and 3 months of paint protection in minutes.</p>
-                        <div class="product-price">$29.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card reveal">
-                    <div class="product-img">
-                        <div class="product-img-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                            <div style="margin-top: 8px;">Product Image</div>
+                        <span class="product-category">Bundles</span>
+                        <h3>Pro Wash&trade; Complete Car Care Bundle</h3>
+                        <div class="product-stars">
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
+                            <span>(21 reviews)</span>
                         </div>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-category">Accessories</span>
-                        <h3>Microfiber Towel Pack (6)</h3>
-                        <p>Ultra-soft, lint-free microfiber towels. Perfect for drying, buffing, and applying products.</p>
-                        <div class="product-price">$14.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card reveal delay-1">
-                    <div class="product-img">
-                        <div class="product-img-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                            <div style="margin-top: 8px;">Product Image</div>
+                        <p>Everything you need in one box: wash soap, spray wax, interior detailer, tire dressing, 4 microfiber towels, and a wash mitt. Save 25% vs buying individually.</p>
+                        <div class="product-price-row">
+                            <span class="product-price-was">$89.99</span>
+                            <div class="product-price">$67.49</div>
                         </div>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-category">Interior</span>
-                        <h3>Leather Conditioner</h3>
-                        <p>Premium leather conditioner that moisturizes, protects, and restores natural softness.</p>
-                        <div class="product-price">$22.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card reveal delay-2">
-                    <div class="product-img">
-                        <div class="product-img-placeholder">
-                            <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                            <div style="margin-top: 8px;">Product Image</div>
+                        <a href="tel:3013071414" class="btn-add-cart">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            Add to Cart
+                        </a>
+                        <div class="product-meta">
+                            <span class="product-sku">SKU: PWB-003</span>
+                            <span class="product-stock">In Stock</span>
                         </div>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-category">Wheels</span>
-                        <h3>Tire Shine &amp; Dressing</h3>
-                        <p>Long-lasting, non-sling tire dressing that delivers a rich, dark finish to your tires.</p>
-                        <div class="product-price">$16.99</div>
-                        <a href="tel:3013071414" class="btn btn-outline btn-sm" style="width: 100%;">Call to Order</a>
                     </div>
                 </div>
             </div>
@@ -342,8 +399,8 @@
                 <div class="title-divider"></div>
                 <p style="color: #A0ABB5; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">From a quick wash to a full master detail, our trained technicians deliver professional results every time.</p>
                 <div style="margin-top: 30px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="book" class="btn btn-red">Book a Service</a>
-                    <a href="services/" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">View All Services</a>
+                    <a href="book.html" class="btn btn-red">Book a Service</a>
+                    <a href="services/index.html" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">View All Services</a>
                 </div>
             </div>
         </div>
@@ -360,18 +417,19 @@
                 <div class="footer-col reveal delay-1">
                     <h5>QUICK LINKS</h5>
                     <ul class="footer-links">
-                        <li><a href="services/">All Services</a></li>
-                        <li><a href="services/car-wash">Car Wash</a></li>
-                        <li><a href="services/car-detailing">Car Detailing</a></li>
-                        <li><a href="services/window-tinting">Window Tinting</a></li>
+                        <li><a href="services/index.html">All Services</a></li>
+                        <li><a href="services/car-wash.html">Car Wash</a></li>
+                        <li><a href="services/car-detailing.html">Car Detailing</a></li>
+                        <li><a href="services/window-tinting.html">Window Tinting</a></li>
                     </ul>
                 </div>
                 <div class="footer-col reveal delay-2">
                     <h5>COMPANY</h5>
                     <ul class="footer-links">
-                        <li><a href="about">About Us</a></li>
-                        <li><a href="book">Book Online</a></li>
-                        <li><a href="shop">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="book.html">Book Online</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-col reveal delay-3">
