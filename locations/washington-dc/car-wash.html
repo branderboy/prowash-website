@@ -52,6 +52,53 @@
         .why-box h4 { font-size: 1rem; margin-bottom: 6px; }
         .why-box p { font-size: 0.85rem; color: var(--text-muted); }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "AutoWash",
+                "name": "Hand Car Wash & Car Detail — Washington, DC",
+                "description": "Professional hand car wash in Washington, DC. Swirl-free finish, in and out in 20 minutes. Walk-ins welcome, Mon–Sat 8 AM–6 PM.",
+                "url": "https://www.handcarwashandcardetail.com/locations/washington-dc/car-wash.html",
+                "telephone": "+1-301-307-1414",
+                "foundingDate": "1997",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "1329 Kenilworth Ave NE",
+                    "addressLocality": "Washington",
+                    "addressRegion": "DC",
+                    "postalCode": "20019",
+                    "addressCountry": "US"
+                },
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                    "opens": "08:00",
+                    "closes": "18:00"
+                },
+                "sameAs": ["https://en.wikipedia.org/wiki/Car_washing"],
+                "parentOrganization": {
+                    "@type": "Organization",
+                    "name": "Hand Car Wash & Car Detail",
+                    "url": "https://www.handcarwashandcardetail.com",
+                    "foundingDate": "1997"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.handcarwashandcardetail.com/"},
+                    {"@type": "ListItem", "position": 2, "name": "Locations", "item": "https://www.handcarwashandcardetail.com/locations/index.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Washington DC", "item": "https://www.handcarwashandcardetail.com/locations/washington-dc.html"},
+                    {"@type": "ListItem", "position": 4, "name": "Car Wash", "item": "https://www.handcarwashandcardetail.com/locations/washington-dc/car-wash.html"}
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="accent-stripe"></div>
