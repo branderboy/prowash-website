@@ -52,6 +52,43 @@
         .why-box h4 { font-size: 1rem; margin-bottom: 6px; }
         .why-box p { font-size: 0.85rem; color: var(--text-muted); }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "name": "Window Tinting — Capitol Heights, MD",
+                "serviceType": "Window Tinting",
+                "description": "Professional window tinting in Capitol Heights, MD with lifetime warranty. Certified technicians using industry-leading film. Blocks up to 99% of UV rays. Every tint job includes a free car wash.",
+                "url": "https://www.handcarwashandcardetail.com/locations/capitol-heights/window-tinting.html",
+                "provider": {
+                    "@type": "AutoWash",
+                    "name": "Hand Car Wash & Car Detail",
+                    "telephone": "+1-301-307-1414",
+                    "url": "https://www.handcarwashandcardetail.com",
+                    "foundingDate": "1997",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "29 Hampton Park Blvd",
+                        "addressLocality": "Capitol Heights",
+                        "addressRegion": "MD",
+                        "postalCode": "20743",
+                        "addressCountry": "US"
+                    }
+                },
+                "areaServed": {"@type": "City", "name": "Capitol Heights", "addressRegion": "MD"},
+                "sameAs": ["https://en.wikipedia.org/wiki/Window_film"],
+                "offers": [
+                    {"@type": "Offer", "name": "2-Window Tint", "price": "59.95", "priceCurrency": "USD", "description": "First 2 windows tinted with lifetime warranty. Includes free car wash."},
+                    {"@type": "Offer", "name": "Full Sedan Tint", "price": "120.00", "priceCurrency": "USD", "description": "Full sedan window tinting with lifetime warranty. Includes free car wash."}
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="accent-stripe"></div>

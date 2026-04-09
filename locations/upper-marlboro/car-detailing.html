@@ -52,6 +52,39 @@
         .why-box h4 { font-size: 1rem; margin-bottom: 6px; }
         .why-box p { font-size: 0.85rem; color: var(--text-muted); }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "name": "Car Detailing — Upper Marlboro, MD",
+                "serviceType": "Auto Detailing",
+                "description": "Professional auto detailing in Upper Marlboro, MD. Interior and exterior packages from express to master detail. Steam cleaning, clay bar treatment, polish, wax, and paint correction available. Call to book.",
+                "url": "https://www.handcarwashandcardetail.com/locations/upper-marlboro/car-detailing.html",
+                "provider": {
+                    "@type": "AutoWash",
+                    "name": "Hand Car Wash & Car Detail",
+                    "telephone": "+1-301-307-1414",
+                    "url": "https://www.handcarwashandcardetail.com",
+                    "foundingDate": "1997",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "7538 NW Crain Hwy",
+                        "addressLocality": "Upper Marlboro",
+                        "addressRegion": "MD",
+                        "postalCode": "20716",
+                        "addressCountry": "US"
+                    }
+                },
+                "areaServed": {"@type": "City", "name": "Upper Marlboro", "addressRegion": "MD"},
+                "sameAs": ["https://en.wikipedia.org/wiki/Car_detailing"]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="accent-stripe"></div>

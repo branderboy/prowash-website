@@ -52,6 +52,39 @@
         .why-box h4 { font-size: 1rem; margin-bottom: 6px; }
         .why-box p { font-size: 0.85rem; color: var(--text-muted); }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "name": "Fleet Washing & Mobile Detail — Bowie, MD Area",
+                "serviceType": "Mobile Car Wash",
+                "description": "Mobile car wash and detailing serving Bowie, MD. We come to you — home, office, or anywhere in the area. All facility services available mobile with a $10 dispatch fee. Call to book.",
+                "url": "https://www.handcarwashandcardetail.com/locations/bowie/mobile-services.html",
+                "provider": {
+                    "@type": "AutoWash",
+                    "name": "Hand Car Wash & Car Detail",
+                    "telephone": "+1-301-307-1414",
+                    "url": "https://www.handcarwashandcardetail.com",
+                    "foundingDate": "1997",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "4406 NW Crain Hwy",
+                        "addressLocality": "Bowie",
+                        "addressRegion": "MD",
+                        "postalCode": "20716",
+                        "addressCountry": "US"
+                    }
+                },
+                "areaServed": {"@type": "City", "name": "Bowie", "addressRegion": "MD"},
+                "sameAs": ["https://en.wikipedia.org/wiki/Car_washing"]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="accent-stripe"></div>
