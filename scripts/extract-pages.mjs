@@ -1,15 +1,17 @@
 #!/usr/bin/env node
-// Reads the legacy HTML files from the repo root and emits
-// src/seed/prowash-pages.json — one entry per page with title, meta,
-// structured data, and the body HTML between </header> and <footer>.
-//
-// Run: node scripts/extract-pages.mjs
+// Reads the legacy HTML files (from --src argument or repo root), strips the
+// shared header/footer chrome, and emits src/seed/prowash-pages.json with
+// path-aware link rewrites so relative URLs like ../bowie.html resolve to
+// the correct slug.
 import { readFileSync, readdirSync, writeFileSync, statSync, existsSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join, relative, dirname, posix } from "node:path";
 
-const ROOT = process.cwd();
+const args = process.argv.slice(2);
+const srcArgIdx = args.indexOf("--src");
+const SRC = srcArgIdx >= 0 ? args[srcArgIdx + 1] : process.cwd();
+const OUT_ROOT = process.cwd();
 
-const SKIP_DIRS = new Set(["node_modules", ".git", ".next", "src", "public", "scripts"]);
+const SKIP_DIRS = new Set(["node_modules", ".git", ".next", "src", "public", "scripts", "legacy-archive"]);
 
 function walk(dir, acc = []) {
   for (const entry of readdirSync(dir)) {
@@ -23,24 +25,18 @@ function walk(dir, acc = []) {
 }
 
 function pathToSlug(absPath) {
-  let rel = relative(ROOT, absPath).replace(/\\/g, "/");
+  let rel = relative(SRC, absPath).replace(/\\/g, "/");
   if (rel.endsWith("/index.html")) rel = rel.slice(0, -"/index.html".length);
   else if (rel === "index.html") rel = "";
   else if (rel.endsWith(".html")) rel = rel.slice(0, -".html".length);
   return rel;
 }
 
-const FILES = walk(ROOT).map((abs) => [relative(ROOT, abs), pathToSlug(abs)]);
+const FILES = walk(SRC).map((abs) => [relative(SRC, abs).replace(/\\/g, "/"), pathToSlug(abs)]);
 
 function pick(html, regex) {
   const m = html.match(regex);
   return m ? m[1].trim() : null;
-}
-
-function pickAttr(html, tag, attrName) {
-  const re = new RegExp(`<${tag}[^>]*${attrName}=["']([^"']+)["'][^>]*>`, "i");
-  const m = html.match(re);
-  return m ? m[1] : null;
 }
 
 function pickMeta(html, name) {
@@ -53,7 +49,6 @@ function pickMeta(html, name) {
 }
 
 function pickStructuredData(html) {
-  // First <script type="application/ld+json"> block
   const m = html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i);
   if (!m) return null;
   try {
@@ -63,39 +58,64 @@ function pickStructuredData(html) {
   }
 }
 
-function rewriteLinks(body) {
-  // Convert .html links to clean URLs and "index.html" → "/"
-  let out = body;
-  // Strip ../ prefixes from hrefs entirely; we always anchor to root
-  out = out.replace(/href="(?:\.\.\/)+/g, 'href="/');
-  out = out.replace(/src="(?:\.\.\/)+/g, 'src="/');
-  // Make src="images/..." absolute
-  out = out.replace(/src="images\//g, 'src="/images/');
-  // index.html in any folder → folder root
-  out = out.replace(/href="\/?([\w\/-]*)index\.html"/g, (_m, p) => `href="/${p.replace(/\/$/, "")}"`);
-  out = out.replace(/href="index\.html"/g, 'href="/"');
-  // Generic .html → clean
-  out = out.replace(/href="\/?([\w\-\/]+)\.html"/g, 'href="/$1"');
-  return out;
+/**
+ * Rewrite href= and src= URLs from the perspective of `fromRel` (the relative
+ * path of the source HTML file). Strips ".html" and "index.html" so the
+ * result is a clean slug-based URL like "/locations/bowie".
+ */
+function rewriteAttrs(body, fromRel) {
+  const fromDir = dirname(fromRel === "index.html" ? "" : fromRel);
+  const attrRegex = /(href|src)="([^"]+)"/g;
+  return body.replace(attrRegex, (full, attr, rawUrl) => {
+    if (!rawUrl) return full;
+    if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://") || rawUrl.startsWith("//")) return full;
+    if (rawUrl.startsWith("mailto:") || rawUrl.startsWith("tel:") || rawUrl.startsWith("#") || rawUrl.startsWith("javascript:") || rawUrl.startsWith("data:")) return full;
+
+    // Split fragment / query
+    let path = rawUrl;
+    let suffix = "";
+    const hashIdx = path.indexOf("#");
+    const qIdx = path.indexOf("?");
+    let cut = -1;
+    if (hashIdx >= 0 && (qIdx < 0 || hashIdx < qIdx)) cut = hashIdx;
+    else if (qIdx >= 0) cut = qIdx;
+    if (cut >= 0) {
+      suffix = path.slice(cut);
+      path = path.slice(0, cut);
+    }
+
+    // Resolve against the source file's directory using POSIX path math
+    const resolved = posix.normalize(
+      path.startsWith("/") ? path : posix.join(fromDir, path)
+    ).replace(/^\/+/, "");
+
+    // For src= leave as a /-prefixed path (assets in /public)
+    if (attr === "src") {
+      return `${attr}="/${resolved}${suffix}"`;
+    }
+
+    // For href= turn .html / index.html into clean slugs
+    let slug = resolved;
+    if (slug.endsWith("/index.html")) slug = slug.slice(0, -"/index.html".length);
+    else if (slug === "index.html") slug = "";
+    else if (slug.endsWith(".html")) slug = slug.slice(0, -".html".length);
+
+    return `${attr}="/${slug}${suffix}"`;
+  });
 }
 
 function extractBody(html) {
-  // From end of </header> to start of <footer>
   const after = html.indexOf("</header>");
   if (after < 0) return null;
   const before = html.indexOf("<footer", after);
   if (before < 0) return null;
-  const body = html.slice(after + "</header>".length, before).trim();
-  return rewriteLinks(body);
+  return html.slice(after + "</header>".length, before).trim();
 }
 
 const out = [];
 for (const [file, slug] of FILES) {
-  const path = join(ROOT, file);
-  if (!existsSync(path)) {
-    console.warn(`[skip] ${file} does not exist`);
-    continue;
-  }
+  const path = join(SRC, file);
+  if (!existsSync(path)) continue;
   const html = readFileSync(path, "utf8");
   const title = pick(html, /<title[^>]*>([\s\S]*?)<\/title>/i);
   const description = pickMeta(html, "description");
@@ -110,6 +130,7 @@ for (const [file, slug] of FILES) {
     console.warn(`[skip] ${file} body not extractable`);
     continue;
   }
+  const rewritten = rewriteAttrs(body, file);
   out.push({
     slug,
     title: title || file,
@@ -117,10 +138,10 @@ for (const [file, slug] of FILES) {
     meta_keywords: keywords,
     og_image_url: ogImage,
     structured_data: structured,
-    body_html: body,
+    body_html: rewritten,
   });
-  console.log(`[ok] ${file} → /${slug} (${body.length} bytes)`);
+  console.log(`[ok] ${file} → /${slug} (${rewritten.length} bytes)`);
 }
 
-writeFileSync(join(ROOT, "src/seed/prowash-pages.json"), JSON.stringify(out, null, 2));
+writeFileSync(join(OUT_ROOT, "src/seed/prowash-pages.json"), JSON.stringify(out, null, 2));
 console.log(`\nWrote ${out.length} pages to src/seed/prowash-pages.json`);
