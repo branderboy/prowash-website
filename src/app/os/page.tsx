@@ -4,6 +4,9 @@ import { withClient } from "@/lib/os/tenancy";
 import { getDb } from "@/lib/db";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
+import { runHealthChecks } from "@/lib/os/health";
+
+export const dynamic = "force-dynamic";
 
 async function getStats() {
   return withClient(async ({ clientId }) => {
@@ -24,7 +27,18 @@ async function getStats() {
 
 export default async function OsHome() {
   requireOsSession();
-  const stats = await getStats();
+  const [stats, health] = await Promise.all([
+    getStats(),
+    withClient(({ clientId }) => runHealthChecks(clientId)),
+  ]);
+
+  const errorCount = health.summary.error;
+  const warningCount = health.summary.warning;
+  const totalIssues = errorCount + warningCount;
+  const topIssues = health.checks
+    .filter((c) => c.severity === "error" || c.severity === "warning")
+    .slice(0, 5);
+
   return (
     <div className="space-y-6">
       <div>
@@ -34,34 +48,111 @@ export default async function OsHome() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {totalIssues > 0 ? (
+        <div
+          className={`rounded-lg border p-4 flex items-center justify-between ${
+            errorCount > 0
+              ? "bg-red-50 border-red-200 text-red-900"
+              : "bg-amber-50 border-amber-200 text-amber-900"
+          }`}
+        >
+          <div>
+            <div className="font-semibold">
+              {errorCount > 0
+                ? `${errorCount} error${errorCount === 1 ? "" : "s"} need attention`
+                : `${warningCount} warning${warningCount === 1 ? "" : "s"} to review`}
+            </div>
+            <div className="text-sm opacity-80">
+              {errorCount > 0 && warningCount > 0
+                ? `Plus ${warningCount} warning${warningCount === 1 ? "" : "s"}.`
+                : null}
+            </div>
+          </div>
+          <Link href="/os/health" className="text-sm font-medium underline hover:no-underline">
+            View Health →
+          </Link>
+        </div>
+      ) : (
+        <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-green-800 flex items-center justify-between">
+          <div className="font-semibold">All systems healthy</div>
+          <Link href="/os/health" className="text-sm font-medium underline hover:no-underline">
+            View Health →
+          </Link>
+        </div>
+      )}
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <Card>
           <CardBody>
             <div className="text-xs uppercase text-navy/50">Pages</div>
             <div className="text-3xl font-bold mt-1">{stats.pageCount}</div>
             <Link href="/os/pages" className="text-sm text-orange hover:underline mt-2 inline-block">
-              Manage pages →
+              Manage →
             </Link>
           </CardBody>
         </Card>
         <Card>
           <CardBody>
-            <div className="text-xs uppercase text-navy/50">Published Posts</div>
+            <div className="text-xs uppercase text-navy/50">Posts</div>
             <div className="text-3xl font-bold mt-1">{stats.publishedPosts}</div>
             <Link href="/os/posts" className="text-sm text-orange hover:underline mt-2 inline-block">
-              Manage blog →
+              Manage →
             </Link>
           </CardBody>
         </Card>
         <Card>
           <CardBody>
-            <div className="text-xs uppercase text-navy/50">Live Site</div>
-            <div className="text-sm mt-2 text-navy/70">
-              Your edits show up at your custom domain via the public render path.
+            <div className="text-xs uppercase text-navy/50">Errors</div>
+            <div className={`text-3xl font-bold mt-1 ${errorCount > 0 ? "text-red-700" : "text-navy/60"}`}>
+              {errorCount}
             </div>
+            <Link href="/os/health" className="text-sm text-orange hover:underline mt-2 inline-block">
+              View →
+            </Link>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardBody>
+            <div className="text-xs uppercase text-navy/50">Warnings</div>
+            <div className={`text-3xl font-bold mt-1 ${warningCount > 0 ? "text-amber-700" : "text-navy/60"}`}>
+              {warningCount}
+            </div>
+            <Link href="/os/health" className="text-sm text-orange hover:underline mt-2 inline-block">
+              View →
+            </Link>
           </CardBody>
         </Card>
       </div>
+
+      {topIssues.length > 0 ? (
+        <Card>
+          <CardHeader>
+            <CardTitle>Top issues</CardTitle>
+          </CardHeader>
+          <CardBody className="p-0">
+            <ul className="divide-y divide-navy/5">
+              {topIssues.map((c) => (
+                <li key={c.id} className="px-5 py-3 flex items-start gap-3">
+                  <span
+                    className={`mt-2 h-2 w-2 rounded-full ${
+                      c.severity === "error" ? "bg-red-500" : "bg-amber-500"
+                    }`}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium text-navy">{c.title}</div>
+                    {c.detail ? <p className="text-sm text-navy/60 mt-0.5">{c.detail}</p> : null}
+                  </div>
+                  {c.link ? (
+                    <Link href={c.link.href} className="text-sm text-orange hover:underline whitespace-nowrap">
+                      {c.link.label} →
+                    </Link>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+      ) : null}
 
       <Card>
         <CardHeader>

@@ -7,6 +7,7 @@ import { getDb } from "@/lib/db";
 import { withClient } from "@/lib/os/tenancy";
 import { audit } from "@/lib/os/audit";
 import { clearStripeCache } from "@/lib/stripe";
+import { getCloudflareCreds, purgeCloudflare, verifyCloudflare } from "@/lib/cloudflare";
 
 const schema = z.object({
   favicon_url: z.string().max(500),
@@ -65,12 +66,64 @@ export async function saveStripeKeysAction(formData: FormData) {
   redirect("/os/settings?saved=1");
 }
 
+const cloudflareSchema = z.object({
+  cloudflare_api_token: z.string().max(200),
+  cloudflare_zone_id: z.string().max(120),
+});
+
+export async function saveCloudflareAction(formData: FormData) {
+  const parsed = cloudflareSchema.parse({
+    cloudflare_api_token: String(formData.get("cloudflare_api_token") || ""),
+    cloudflare_zone_id: String(formData.get("cloudflare_zone_id") || ""),
+  });
+  await withClient(async ({ session, clientId }) => {
+    const sql = getDb();
+    await sql`
+      INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
+      VALUES (${clientId}, ${parsed.cloudflare_api_token || null}, ${parsed.cloudflare_zone_id || null})
+      ON CONFLICT (client_id) DO UPDATE SET
+        cloudflare_api_token = EXCLUDED.cloudflare_api_token,
+        cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+        updated_at = NOW()
+    `;
+    await audit(session, "cloudflare.update", "site_settings", clientId, {
+      has_token: Boolean(parsed.cloudflare_api_token),
+      zone_id: parsed.cloudflare_zone_id || null,
+    });
+  });
+  redirect("/os/settings?saved=1");
+}
+
+export async function testCloudflareAction() {
+  const result = await withClient(async ({ clientId }) => {
+    const creds = await getCloudflareCreds(clientId);
+    if (!creds) return { ok: false, msg: "Cloudflare credentials not set" };
+    const v = await verifyCloudflare(creds);
+    return v.ok ? { ok: true, msg: `Connected to zone: ${v.name}` } : { ok: false, msg: v.error || "Verification failed" };
+  });
+  const param = result.ok ? "cf_ok" : "cf_err";
+  redirect(`/os/settings?${param}=${encodeURIComponent(result.msg)}`);
+}
+
 export async function clearCacheAction() {
-  await withClient(async ({ session }) => {
+  let cfMsg = "";
+  await withClient(async ({ session, clientId }) => {
     revalidatePath("/", "layout");
     revalidatePath("/site", "layout");
     revalidateTag("os");
-    await audit(session, "cache.clear", "cache");
+
+    const creds = await getCloudflareCreds(clientId);
+    if (creds) {
+      const purge = await purgeCloudflare(creds, { everything: true });
+      cfMsg = purge.ok ? "purged" : `error:${purge.errors.join(",")}`;
+      await audit(session, "cache.clear", "cache", null, {
+        cloudflare: purge.ok ? "ok" : "error",
+        cf_errors: purge.errors,
+      });
+    } else {
+      cfMsg = "no-cf";
+      await audit(session, "cache.clear", "cache", null, { cloudflare: "not_configured" });
+    }
   });
-  redirect("/os/settings?cache=1");
+  redirect(`/os/settings?cache=${encodeURIComponent(cfMsg)}`);
 }

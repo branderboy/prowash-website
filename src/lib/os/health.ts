@@ -1,4 +1,6 @@
 import { getDb } from "@/lib/db";
+import { getCloudflareCreds, verifyCloudflare } from "@/lib/cloudflare";
+import { getStripeForClient } from "@/lib/stripe";
 
 export type Severity = "error" | "warning" | "info";
 
@@ -138,6 +140,67 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
     }
   }
 
+  // 4a. Slug pattern check — slugs should only contain [a-z0-9/-]
+  for (const p of pages) {
+    if (p.slug && !/^[a-z0-9\-/]*$/.test(p.slug)) {
+      checks.push({
+        id: `page:slug-pattern:${p.id}`,
+        severity: "warning",
+        title: `Page slug /${p.slug} contains unusual characters`,
+        detail: "Slugs should be lowercase letters, numbers, hyphens, and slashes only.",
+        link: { href: `/os/pages/${encodeURIComponent(p.slug)}`, label: "Edit" },
+      });
+    }
+  }
+
+  // 4b. Duplicate-title check — two pages sharing a title is a SEO smell
+  const titleCounts = new Map<string, number[]>();
+  for (const p of pages) {
+    if (!p.title) continue;
+    const t = p.title.trim().toLowerCase();
+    if (!titleCounts.has(t)) titleCounts.set(t, []);
+    titleCounts.get(t)!.push(p.id);
+  }
+  for (const [title, ids] of titleCounts) {
+    if (ids.length > 1) {
+      checks.push({
+        id: `page:duplicate-title:${title}`,
+        severity: "warning",
+        title: `${ids.length} pages share the same title`,
+        detail: `Title: "${title}". Distinct titles improve SEO.`,
+        link: { href: "/os/pages", label: "Open pages" },
+      });
+    }
+  }
+
+  // 4c. Pages with very short body content
+  for (const p of pages) {
+    const bodyLen = (p.body_html || "").replace(/<[^>]+>/g, "").trim().length;
+    if (bodyLen > 0 && bodyLen < 100) {
+      checks.push({
+        id: `page:thin:${p.id}`,
+        severity: "warning",
+        title: `Page /${p.slug} has thin content (${bodyLen} chars after stripping HTML)`,
+        link: { href: `/os/pages/${encodeURIComponent(p.slug)}`, label: "Edit" },
+      });
+    }
+  }
+
+  // 4d. og_image_url that doesn't look like a URL
+  for (const p of pages) {
+    if (!p.og_image_url) continue;
+    const url = p.og_image_url.trim();
+    if (!/^https?:\/\//.test(url) && !url.startsWith("/")) {
+      checks.push({
+        id: `page:og-malformed:${p.id}`,
+        severity: "warning",
+        title: `Page /${p.slug} OG image isn't an absolute URL or root-relative path`,
+        detail: `Got: "${url}".`,
+        link: { href: `/os/pages/${encodeURIComponent(p.slug)}`, label: "Edit" },
+      });
+    }
+  }
+
   // 5. Internal-link audit — find href="/path" inside body_html and ensure
   // each target resolves to a page slug or a redirect.
   const redirects = (await sql`SELECT source FROM redirects WHERE client_id = ${clientId}`) as Array<{ source: string }>;
@@ -166,7 +229,7 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
     }
   }
 
-  // 6. Stripe — products without sync IDs
+  // 6. Stripe — connection + sync status
   const unsynced = (await sql`
     SELECT COUNT(*)::int AS n FROM products
     WHERE client_id = ${clientId} AND active = TRUE AND stripe_product_id IS NULL
@@ -180,8 +243,81 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
       link: { href: "/os/settings", label: "Connect Stripe" },
     });
   }
+  // Stripe API ping — only if a key is configured
+  const stripe = await getStripeForClient(clientId);
+  if (stripe) {
+    try {
+      await stripe.products.list({ limit: 1 });
+      checks.push({ id: "stripe:ok", severity: "info", title: "Stripe API reachable" });
+    } catch (err) {
+      checks.push({
+        id: "stripe:invalid",
+        severity: "error",
+        title: "Stripe API call failed",
+        detail: err instanceof Error ? err.message : String(err),
+        link: { href: "/os/settings", label: "Update Stripe key" },
+      });
+    }
+  } else {
+    const productCount = (await sql`
+      SELECT COUNT(*)::int AS n FROM products WHERE client_id = ${clientId}
+    `) as Array<{ n: number }>;
+    if ((productCount[0]?.n ?? 0) > 0) {
+      checks.push({
+        id: "stripe:none",
+        severity: "warning",
+        title: "Stripe not connected, but products exist",
+        detail: "Add your Stripe key so product edits sync to your Stripe account.",
+        link: { href: "/os/settings", label: "Connect Stripe" },
+      });
+    }
+  }
 
-  // 7. Audit log volume (pure info)
+  // 6a. Posts overdue for publish — scheduled past their scheduled_for
+  const overdue = (await sql`
+    SELECT id, slug, title, scheduled_for FROM posts
+    WHERE client_id = ${clientId} AND status = 'scheduled' AND scheduled_for < NOW()
+  `) as Array<{ id: number; slug: string; title: string; scheduled_for: string }>;
+  for (const p of overdue) {
+    checks.push({
+      id: `post:overdue:${p.id}`,
+      severity: "warning",
+      title: `Post "${p.title}" is overdue`,
+      detail: `Scheduled for ${new Date(p.scheduled_for).toLocaleString()} but still in 'scheduled' state.`,
+      link: { href: `/os/posts`, label: "Open posts" },
+    });
+  }
+
+  // 7. Cloudflare — info if missing, verify if present
+  const cf = await getCloudflareCreds(clientId);
+  if (!cf) {
+    checks.push({
+      id: "cloudflare:none",
+      severity: "info",
+      title: "Cloudflare not connected",
+      detail: "Connect Cloudflare so Clear cache can purge the CDN as well.",
+      link: { href: "/os/settings", label: "Connect Cloudflare" },
+    });
+  } else {
+    const v = await verifyCloudflare(cf);
+    if (v.ok) {
+      checks.push({
+        id: "cloudflare:ok",
+        severity: "info",
+        title: `Cloudflare connected (${v.name})`,
+      });
+    } else {
+      checks.push({
+        id: "cloudflare:invalid",
+        severity: "error",
+        title: "Cloudflare credentials invalid",
+        detail: v.error,
+        link: { href: "/os/settings", label: "Update Cloudflare" },
+      });
+    }
+  }
+
+  // 8. Audit log volume (pure info)
   const auditCount = (await sql`SELECT COUNT(*)::int AS n FROM audit_log WHERE client_id = ${clientId}`) as Array<{ n: number }>;
   checks.push({
     id: "audit:count",

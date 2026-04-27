@@ -11,7 +11,17 @@ export async function GET(req: NextRequest) {
     });
   }
   const sql = getDb();
-  const proto = headers().get("x-forwarded-proto") || (req.url.startsWith("https") ? "https" : "http");
+  // Cloudflare proxies the original scheme via cf-visitor:'{"scheme":"https"}'.
+  // Fall back to standard x-forwarded-proto, then the request URL.
+  const cfVisitor = headers().get("cf-visitor");
+  let cfScheme: string | null = null;
+  if (cfVisitor) {
+    try {
+      const parsed = JSON.parse(cfVisitor) as { scheme?: string };
+      if (parsed.scheme) cfScheme = parsed.scheme;
+    } catch { /* ignore malformed header */ }
+  }
+  const proto = cfScheme || headers().get("x-forwarded-proto") || (req.url.startsWith("https") ? "https" : "http");
   const host = headers().get("host");
   const origin = `${proto}://${host}`;
 
