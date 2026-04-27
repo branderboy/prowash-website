@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b1f3a;
+  --orange: #ff6a13;
+  --cream: #fdf6ec;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #f6f7fb;
+  color: var(--navy);
+}
