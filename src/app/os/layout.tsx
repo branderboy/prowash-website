@@ -7,10 +7,12 @@ const NAV = [
   { href: "/os", label: "Dashboard" },
   { href: "/os/pages", label: "Pages" },
   { href: "/os/posts", label: "Blog Posts" },
+  { href: "/os/products", label: "Products" },
   { href: "/os/menus", label: "Menus" },
   { href: "/os/seo", label: "SEO" },
   { href: "/os/tracking", label: "Tracking" },
   { href: "/os/media", label: "Media" },
+  { href: "/os/health", label: "Health" },
   { href: "/os/settings", label: "Settings" },
 ];
 

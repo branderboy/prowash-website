@@ -125,8 +125,32 @@ CREATE TABLE IF NOT EXISTS site_settings (
   primary_phone TEXT,
   robots_txt TEXT,
   sitemap_extra_urls TEXT,
+  stripe_secret_key TEXT,
+  stripe_publishable_key TEXT,
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+-- Idempotent column adds for older deployments
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_secret_key TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_publishable_key TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS robots_txt TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS sitemap_extra_urls TEXT;
+
+-- Stripe-backed products (mirror of objects in the client's Stripe account)
+CREATE TABLE IF NOT EXISTS products (
+  id SERIAL PRIMARY KEY,
+  client_id INTEGER NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+  stripe_product_id TEXT,
+  stripe_price_id TEXT,
+  name TEXT NOT NULL,
+  description TEXT,
+  image_url TEXT,
+  unit_amount INTEGER NOT NULL,
+  currency TEXT NOT NULL DEFAULT 'usd',
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_products_client_active ON products(client_id, active);
 
 -- URL redirects (used when an editor renames a page slug)
 CREATE TABLE IF NOT EXISTS redirects (
