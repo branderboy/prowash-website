@@ -127,6 +127,8 @@ CREATE TABLE IF NOT EXISTS site_settings (
   sitemap_extra_urls TEXT,
   stripe_secret_key TEXT,
   stripe_publishable_key TEXT,
+  cloudflare_api_token TEXT,
+  cloudflare_zone_id TEXT,
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 -- Idempotent column adds for older deployments
@@ -134,6 +136,8 @@ ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_secret_key TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_publishable_key TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS robots_txt TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS sitemap_extra_urls TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS cloudflare_api_token TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS cloudflare_zone_id TEXT;
 
 -- Stripe-backed products (mirror of objects in the client's Stripe account)
 CREATE TABLE IF NOT EXISTS products (

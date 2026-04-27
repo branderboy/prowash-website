@@ -1,4 +1,5 @@
 import { getDb } from "@/lib/db";
+import { getCloudflareCreds, verifyCloudflare } from "@/lib/cloudflare";
 
 export type Severity = "error" | "warning" | "info";
 
@@ -181,7 +182,36 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
     });
   }
 
-  // 7. Audit log volume (pure info)
+  // 7. Cloudflare — info if missing, verify if present
+  const cf = await getCloudflareCreds(clientId);
+  if (!cf) {
+    checks.push({
+      id: "cloudflare:none",
+      severity: "info",
+      title: "Cloudflare not connected",
+      detail: "Connect Cloudflare so Clear cache can purge the CDN as well.",
+      link: { href: "/os/settings", label: "Connect Cloudflare" },
+    });
+  } else {
+    const v = await verifyCloudflare(cf);
+    if (v.ok) {
+      checks.push({
+        id: "cloudflare:ok",
+        severity: "info",
+        title: `Cloudflare connected (${v.name})`,
+      });
+    } else {
+      checks.push({
+        id: "cloudflare:invalid",
+        severity: "error",
+        title: "Cloudflare credentials invalid",
+        detail: v.error,
+        link: { href: "/os/settings", label: "Update Cloudflare" },
+      });
+    }
+  }
+
+  // 8. Audit log volume (pure info)
   const auditCount = (await sql`SELECT COUNT(*)::int AS n FROM audit_log WHERE client_id = ${clientId}`) as Array<{ n: number }>;
   checks.push({
     id: "audit:count",
