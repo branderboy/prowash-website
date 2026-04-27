@@ -3,10 +3,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-type SearchParams = { sent?: string; error?: string; next?: string };
+type SearchParams = { error?: string; next?: string };
 
 export default function LoginPage({ searchParams }: { searchParams: SearchParams }) {
-  const sent = searchParams.sent === "1";
   const error = searchParams.error;
   const next = searchParams.next || "/os";
 
@@ -17,32 +16,37 @@ export default function LoginPage({ searchParams }: { searchParams: SearchParams
           <div className="text-xs uppercase tracking-wide text-navy/50">Tagglefish OS</div>
           <h1 className="text-2xl font-bold text-navy mt-1">Sign in</h1>
           <p className="text-sm text-navy/60 mt-2">
-            Enter your email and we'll send you a one-time sign-in link.
+            Enter your email and password.
           </p>
 
-          {sent ? (
-            <div className="mt-6 rounded-lg bg-green-50 border border-green-200 p-4 text-sm text-green-800">
-              Check your email — a sign-in link is on its way. It expires in 15 minutes.
+          <form action="/api/os/auth/login" method="post" className="mt-6 space-y-4">
+            <input type="hidden" name="next" value={next} />
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="you@yourcompany.com"
+                className="mt-1"
+              />
             </div>
-          ) : (
-            <form action="/api/os/auth/request" method="post" className="mt-6 space-y-4">
-              <input type="hidden" name="next" value={next} />
-              <div>
-                <Label htmlFor="email">Email address</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="you@yourcompany.com"
-                  className="mt-1"
-                />
-              </div>
-              {error ? <p className="text-sm text-red-600">{error}</p> : null}
-              <Button type="submit" size="lg" className="w-full">Send sign-in link</Button>
-            </form>
-          )}
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                autoComplete="current-password"
+                className="mt-1"
+              />
+            </div>
+            {error ? <p className="text-sm text-red-600">{error}</p> : null}
+            <Button type="submit" size="lg" className="w-full">Sign in</Button>
+          </form>
         </CardBody>
       </Card>
     </main>

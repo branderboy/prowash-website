@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import crypto from "node:crypto";
-import { getDb } from "@/lib/db";
 
 export const OS_COOKIE = "os_auth";
 const SECRET = () => process.env.OS_AUTH_SECRET || "dev-only-insecure-secret-change-me";
@@ -81,27 +80,3 @@ export async function clearSessionCookie() {
   cookies().delete(OS_COOKIE);
 }
 
-/**
- * Resolve a session from the database to ensure the user still has the membership
- * we encoded. Use this on the first request after verify; for normal page loads
- * the cookie alone is fine.
- */
-export async function resolveSession(userId: number, clientId: number): Promise<OsSession | null> {
-  const sql = getDb();
-  const rows = (await sql`
-    SELECT u.id AS user_id, u.email, m.client_id, m.role
-    FROM users u
-    JOIN memberships m ON m.user_id = u.id
-    WHERE u.id = ${userId} AND m.client_id = ${clientId}
-    LIMIT 1
-  `) as Array<{ user_id: number; email: string; client_id: number; role: OsSession["role"] }>;
-  const row = rows[0];
-  if (!row) return null;
-  return {
-    userId: row.user_id,
-    email: row.email,
-    clientId: row.client_id,
-    role: row.role,
-    expiresAt: Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000,
-  };
-}

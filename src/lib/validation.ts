@@ -21,6 +21,7 @@ export const pageUpdateSchema = z.object({
 
 export type PageUpdateInput = z.infer<typeof pageUpdateSchema>;
 
-export const magicLinkRequestSchema = z.object({
+export const loginSchema = z.object({
   email: emailSchema,
+  password: z.string().min(1).max(200),
 });

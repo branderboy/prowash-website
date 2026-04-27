@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
   name TEXT,
+  password_hash TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -50,16 +51,6 @@ CREATE TABLE IF NOT EXISTS memberships (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(user_id, client_id)
 );
-
-CREATE TABLE IF NOT EXISTS magic_links (
-  id SERIAL PRIMARY KEY,
-  email TEXT NOT NULL,
-  token_hash TEXT NOT NULL,
-  expires_at TIMESTAMPTZ NOT NULL,
-  used_at TIMESTAMPTZ,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-CREATE INDEX IF NOT EXISTS idx_magic_links_token ON magic_links(token_hash);
 
 -- Site pages (CMS-managed page content)
 CREATE TABLE IF NOT EXISTS site_pages (
@@ -176,18 +167,6 @@ CREATE TABLE IF NOT EXISTS leads (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_leads_client ON leads(client_id, created_at DESC);
-
--- Outbound email log (Resend)
-CREATE TABLE IF NOT EXISTS email_log (
-  id SERIAL PRIMARY KEY,
-  client_id INTEGER REFERENCES clients(id) ON DELETE SET NULL,
-  to_email TEXT NOT NULL,
-  subject TEXT,
-  status TEXT,
-  provider_id TEXT,
-  error TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
 
 -- Audit trail of every /os mutation
 CREATE TABLE IF NOT EXISTS audit_log (

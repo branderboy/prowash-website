@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
+import { hashPassword } from "@/lib/os/password";
 import seedPages from "@/seed/prowash-pages.json";
 
 function authorized(req: NextRequest): boolean {
@@ -27,7 +28,14 @@ export async function POST(req: NextRequest) {
   const sql = getDb();
   const ownerEmail = (process.env.PROWASH_OWNER_EMAIL || "owner@prowash.com").toLowerCase();
   const ownerName = process.env.PROWASH_OWNER_NAME || "Prowash Owner";
+  const ownerPassword = process.env.PROWASH_OWNER_PASSWORD;
   const primaryHost = (process.env.PROWASH_PRIMARY_HOST || "prowash.com").toLowerCase();
+  if (!ownerPassword) {
+    return NextResponse.json(
+      { ok: false, error: "PROWASH_OWNER_PASSWORD is required" },
+      { status: 400 }
+    );
+  }
 
   // Upsert client
   await sql`
@@ -38,10 +46,12 @@ export async function POST(req: NextRequest) {
   const clientRow = (await sql`SELECT id FROM clients WHERE slug = 'prowash' LIMIT 1`) as Array<{ id: number }>;
   const clientId = clientRow[0].id;
 
-  // Upsert owner user
+  // Upsert owner user (and reset password to env value on every seed run)
+  const passwordHash = hashPassword(ownerPassword);
   await sql`
-    INSERT INTO users (email, name) VALUES (${ownerEmail}, ${ownerName})
-    ON CONFLICT (email) DO UPDATE SET name = EXCLUDED.name
+    INSERT INTO users (email, name, password_hash)
+    VALUES (${ownerEmail}, ${ownerName}, ${passwordHash})
+    ON CONFLICT (email) DO UPDATE SET name = EXCLUDED.name, password_hash = EXCLUDED.password_hash
   `;
   const userRow = (await sql`SELECT id FROM users WHERE email = ${ownerEmail} LIMIT 1`) as Array<{ id: number }>;
   const userId = userRow[0].id;
