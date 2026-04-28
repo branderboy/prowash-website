@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS clients (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Domain → client mapping. The middleware uses this to resolve which tenant
+-- Domain → client mapping. The proxy (src/proxy.ts) uses this to resolve which tenant
 -- owns an incoming request when the host is a custom domain.
 CREATE TABLE IF NOT EXISTS domains (
   id SERIAL PRIMARY KEY,
