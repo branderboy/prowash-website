@@ -18,7 +18,7 @@ async function listPages() {
 }
 
 export default async function PagesIndex() {
-  requireOsSession();
+  await requireOsSession();
   const pages = await listPages();
 
   return (

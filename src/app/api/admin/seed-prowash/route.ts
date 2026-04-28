@@ -26,10 +26,10 @@ export async function POST(req: NextRequest) {
   }
 
   const sql = getDb();
-  const ownerEmail = (process.env.PROWASH_OWNER_EMAIL || "owner@prowash.com").toLowerCase();
+  const ownerEmail = (process.env.PROWASH_OWNER_EMAIL || "owner@prowashdetail.net").toLowerCase();
   const ownerName = process.env.PROWASH_OWNER_NAME || "Prowash Owner";
   const ownerPassword = process.env.PROWASH_OWNER_PASSWORD;
-  const primaryHost = (process.env.PROWASH_PRIMARY_HOST || "prowash.com").toLowerCase();
+  const primaryHost = (process.env.PROWASH_PRIMARY_HOST || "prowashdetail.net").toLowerCase();
   if (!ownerPassword) {
     return NextResponse.json(
       { ok: false, error: "PROWASH_OWNER_PASSWORD is required" },
@@ -105,6 +105,7 @@ export async function POST(req: NextRequest) {
         { label: "Bowie", href: "/locations/bowie" },
         { label: "Upper Marlboro", href: "/locations/upper-marlboro" },
         { label: "Washington DC", href: "/locations/washington-dc" },
+        { label: "Carrolton (in-store pickup)", href: "/locations/carrolton" },
       ],
     },
     { label: "Shop", href: "/shop" },

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS clients (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Domain → client mapping. The middleware uses this to resolve which tenant
+-- Domain → client mapping. The proxy (src/proxy.ts) uses this to resolve which tenant
 -- owns an incoming request when the host is a custom domain.
 CREATE TABLE IF NOT EXISTS domains (
   id SERIAL PRIMARY KEY,
@@ -127,17 +127,33 @@ CREATE TABLE IF NOT EXISTS site_settings (
   sitemap_extra_urls TEXT,
   stripe_secret_key TEXT,
   stripe_publishable_key TEXT,
+  stripe_webhook_secret TEXT,
   cloudflare_api_token TEXT,
   cloudflare_zone_id TEXT,
+  shipping_rate_amount INTEGER,
+  shipping_rate_label TEXT,
+  shipping_countries TEXT,
+  tax_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+  pickup_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+  pickup_label TEXT,
+  pickup_address TEXT,
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 -- Idempotent column adds for older deployments
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_secret_key TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_publishable_key TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_webhook_secret TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS robots_txt TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS sitemap_extra_urls TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS cloudflare_api_token TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS cloudflare_zone_id TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS shipping_rate_amount INTEGER;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS shipping_rate_label TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS shipping_countries TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS tax_enabled BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS pickup_enabled BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS pickup_label TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS pickup_address TEXT;
 
 -- Stripe-backed products (mirror of objects in the client's Stripe account)
 CREATE TABLE IF NOT EXISTS products (
@@ -208,4 +224,21 @@ CREATE TABLE IF NOT EXISTS audit_log (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_audit_client ON audit_log(client_id, created_at DESC);
+
+-- Orders placed through the public store (Stripe Checkout)
+CREATE TABLE IF NOT EXISTS orders (
+  id SERIAL PRIMARY KEY,
+  client_id INTEGER NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+  stripe_session_id TEXT UNIQUE NOT NULL,
+  stripe_payment_intent_id TEXT,
+  customer_email TEXT,
+  customer_name TEXT,
+  amount_total INTEGER,
+  currency TEXT,
+  status TEXT NOT NULL DEFAULT 'paid',
+  line_items JSONB,
+  metadata JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_orders_client ON orders(client_id, created_at DESC);
 `;

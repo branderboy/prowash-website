@@ -8,6 +8,7 @@ const NAV = [
   { href: "/os/pages", label: "Pages" },
   { href: "/os/posts", label: "Blog Posts" },
   { href: "/os/products", label: "Products" },
+  { href: "/os/orders", label: "Orders" },
   { href: "/os/menus", label: "Menus" },
   { href: "/os/seo", label: "SEO" },
   { href: "/os/tracking", label: "Tracking" },
@@ -27,9 +28,9 @@ async function getClientName(clientId: number): Promise<string> {
 }
 
 export default async function OsLayout({ children }: { children: React.ReactNode }) {
-  const session = getOsSession();
+  const session = await getOsSession();
   // headers() ensures this layout opts out of static rendering
-  headers();
+  await headers();
 
   // Login + verify are served via this layout but render their own full-screen UI
   if (!session) {

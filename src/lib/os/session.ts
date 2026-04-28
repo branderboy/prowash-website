@@ -31,7 +31,10 @@ export function decodeSession(raw: string | undefined | null): OsSession | null 
   const payload = raw.slice(0, dot);
   const sig = raw.slice(dot + 1);
   const expected = sign(payload);
-  if (!crypto.timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expected, "hex"))) return null;
+  const sigBuf = Buffer.from(sig, "hex");
+  const expectedBuf = Buffer.from(expected, "hex");
+  if (sigBuf.length !== expectedBuf.length) return null;
+  if (!crypto.timingSafeEqual(sigBuf, expectedBuf)) return null;
   const [uid, cid, role, email, exp] = payload.split(":");
   const expiresAt = Number(exp);
   if (!uid || !cid || !email || !expiresAt) return null;
@@ -46,19 +49,19 @@ export function decodeSession(raw: string | undefined | null): OsSession | null 
   };
 }
 
-export function getOsSession(): OsSession | null {
-  const c = cookies().get(OS_COOKIE)?.value;
+export async function getOsSession(): Promise<OsSession | null> {
+  const c = (await cookies()).get(OS_COOKIE)?.value;
   return decodeSession(c);
 }
 
-export function requireOsSession(): OsSession {
-  const s = getOsSession();
+export async function requireOsSession(): Promise<OsSession> {
+  const s = await getOsSession();
   if (!s) redirect("/os/login");
   return s;
 }
 
-export function requireRole(min: "owner" | "manager" | "staff"): OsSession {
-  const s = requireOsSession();
+export async function requireRole(min: "owner" | "manager" | "staff"): Promise<OsSession> {
+  const s = await requireOsSession();
   const order = { staff: 0, manager: 1, owner: 2 } as const;
   if (order[s.role] < order[min]) {
     throw new Error(`forbidden: requires ${min}`);
@@ -67,7 +70,7 @@ export function requireRole(min: "owner" | "manager" | "staff"): OsSession {
 }
 
 export async function setSessionCookie(s: OsSession) {
-  cookies().set(OS_COOKIE, encodeSession(s), {
+  (await cookies()).set(OS_COOKIE, encodeSession(s), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
@@ -77,6 +80,5 @@ export async function setSessionCookie(s: OsSession) {
 }
 
 export async function clearSessionCookie() {
-  cookies().delete(OS_COOKIE);
+  (await cookies()).delete(OS_COOKIE);
 }
-

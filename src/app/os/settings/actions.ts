@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
@@ -41,26 +41,91 @@ export async function saveSettingsAction(formData: FormData) {
 const stripeSchema = z.object({
   stripe_secret_key: z.string().max(200),
   stripe_publishable_key: z.string().max(200),
+  stripe_webhook_secret: z.string().max(200),
 });
 
 export async function saveStripeKeysAction(formData: FormData) {
   const parsed = stripeSchema.parse({
     stripe_secret_key: String(formData.get("stripe_secret_key") || ""),
     stripe_publishable_key: String(formData.get("stripe_publishable_key") || ""),
+    stripe_webhook_secret: String(formData.get("stripe_webhook_secret") || ""),
+  });
+  // Both secret fields are blank-by-default; an empty submission means
+  // "keep the stored value", not "delete it".
+  const newSecret = parsed.stripe_secret_key.trim() === "" ? null : parsed.stripe_secret_key;
+  const newWebhookSecret = parsed.stripe_webhook_secret.trim() === "" ? null : parsed.stripe_webhook_secret;
+  await withClient(async ({ session, clientId }) => {
+    const sql = getDb();
+    // Always update publishable key (not a secret); conditionally update each secret.
+    await sql`
+      INSERT INTO site_settings (client_id, stripe_publishable_key)
+      VALUES (${clientId}, ${parsed.stripe_publishable_key || null})
+      ON CONFLICT (client_id) DO UPDATE SET
+        stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+        updated_at = NOW()
+    `;
+    if (newSecret !== null) {
+      await sql`UPDATE site_settings SET stripe_secret_key = ${newSecret}, updated_at = NOW() WHERE client_id = ${clientId}`;
+    }
+    if (newWebhookSecret !== null) {
+      await sql`UPDATE site_settings SET stripe_webhook_secret = ${newWebhookSecret}, updated_at = NOW() WHERE client_id = ${clientId}`;
+    }
+    clearStripeCache(clientId);
+    await audit(session, "stripe.update", "site_settings", clientId, {
+      has_secret: newSecret !== null,
+      has_webhook_secret: newWebhookSecret !== null,
+    });
+  });
+  redirect("/os/settings?saved=1");
+}
+
+const storeSchema = z.object({
+  shipping_rate_amount: z.coerce.number().int().min(0).max(1000000).nullable(),
+  shipping_rate_label: z.string().max(120),
+  shipping_countries: z.string().max(500),
+  tax_enabled: z.boolean(),
+  pickup_enabled: z.boolean(),
+  pickup_label: z.string().max(120),
+  pickup_address: z.string().max(400),
+});
+
+export async function saveStoreSettingsAction(formData: FormData) {
+  const rawAmount = String(formData.get("shipping_rate_amount") || "").trim();
+  const parsed = storeSchema.parse({
+    shipping_rate_amount: rawAmount === "" ? null : Math.round(Number(rawAmount) * 100),
+    shipping_rate_label: String(formData.get("shipping_rate_label") || ""),
+    shipping_countries: String(formData.get("shipping_countries") || ""),
+    tax_enabled: formData.get("tax_enabled") === "on",
+    pickup_enabled: formData.get("pickup_enabled") === "on",
+    pickup_label: String(formData.get("pickup_label") || ""),
+    pickup_address: String(formData.get("pickup_address") || ""),
   });
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
     await sql`
-      INSERT INTO site_settings (client_id, stripe_secret_key, stripe_publishable_key)
-      VALUES (${clientId}, ${parsed.stripe_secret_key || null}, ${parsed.stripe_publishable_key || null})
+      INSERT INTO site_settings (
+        client_id, shipping_rate_amount, shipping_rate_label, shipping_countries, tax_enabled,
+        pickup_enabled, pickup_label, pickup_address
+      )
+      VALUES (
+        ${clientId}, ${parsed.shipping_rate_amount}, ${parsed.shipping_rate_label || null},
+        ${parsed.shipping_countries || null}, ${parsed.tax_enabled},
+        ${parsed.pickup_enabled}, ${parsed.pickup_label || null}, ${parsed.pickup_address || null}
+      )
       ON CONFLICT (client_id) DO UPDATE SET
-        stripe_secret_key = EXCLUDED.stripe_secret_key,
-        stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+        shipping_rate_amount = EXCLUDED.shipping_rate_amount,
+        shipping_rate_label = EXCLUDED.shipping_rate_label,
+        shipping_countries = EXCLUDED.shipping_countries,
+        tax_enabled = EXCLUDED.tax_enabled,
+        pickup_enabled = EXCLUDED.pickup_enabled,
+        pickup_label = EXCLUDED.pickup_label,
+        pickup_address = EXCLUDED.pickup_address,
         updated_at = NOW()
     `;
-    clearStripeCache(clientId);
-    await audit(session, "stripe.update", "site_settings", clientId, {
-      has_secret: Boolean(parsed.stripe_secret_key),
+    await audit(session, "store.update", "site_settings", clientId, {
+      tax_enabled: parsed.tax_enabled,
+      ships: parsed.shipping_countries || null,
+      pickup_enabled: parsed.pickup_enabled,
     });
   });
   redirect("/os/settings?saved=1");
@@ -76,18 +141,31 @@ export async function saveCloudflareAction(formData: FormData) {
     cloudflare_api_token: String(formData.get("cloudflare_api_token") || ""),
     cloudflare_zone_id: String(formData.get("cloudflare_zone_id") || ""),
   });
+  // The token field starts blank on every render; an empty submission
+  // means "keep the stored token", not "delete it".
+  const newToken = parsed.cloudflare_api_token.trim() === "" ? null : parsed.cloudflare_api_token;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
-    await sql`
-      INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
-      VALUES (${clientId}, ${parsed.cloudflare_api_token || null}, ${parsed.cloudflare_zone_id || null})
-      ON CONFLICT (client_id) DO UPDATE SET
-        cloudflare_api_token = EXCLUDED.cloudflare_api_token,
-        cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
-        updated_at = NOW()
-    `;
+    if (newToken === null) {
+      await sql`
+        INSERT INTO site_settings (client_id, cloudflare_zone_id)
+        VALUES (${clientId}, ${parsed.cloudflare_zone_id || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+          updated_at = NOW()
+      `;
+    } else {
+      await sql`
+        INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
+        VALUES (${clientId}, ${newToken}, ${parsed.cloudflare_zone_id || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          cloudflare_api_token = EXCLUDED.cloudflare_api_token,
+          cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+          updated_at = NOW()
+      `;
+    }
     await audit(session, "cloudflare.update", "site_settings", clientId, {
-      has_token: Boolean(parsed.cloudflare_api_token),
+      has_token: newToken !== null,
       zone_id: parsed.cloudflare_zone_id || null,
     });
   });
@@ -110,7 +188,6 @@ export async function clearCacheAction() {
   await withClient(async ({ session, clientId }) => {
     revalidatePath("/", "layout");
     revalidatePath("/site", "layout");
-    revalidateTag("os");
 
     const creds = await getCloudflareCreds(clientId);
     if (creds) {

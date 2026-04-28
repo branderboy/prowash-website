@@ -13,7 +13,7 @@ function isInternalHost(host: string): boolean {
   return false;
 }
 
-export function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   const url = req.nextUrl;
   const host = req.headers.get("host") || "";
   const pathname = url.pathname;

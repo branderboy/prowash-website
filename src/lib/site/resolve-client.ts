@@ -8,7 +8,8 @@ import { getDb } from "@/lib/db";
  */
 export async function resolveTenantClientId(): Promise<number | null> {
   const sql = getDb();
-  const host = (headers().get("host") || "").split(":")[0].toLowerCase();
+  const h = await headers();
+  const host = (h.get("host") || "").split(":")[0].toLowerCase();
   if (host) {
     const rows = (await sql`
       SELECT client_id FROM domains WHERE host = ${host} LIMIT 1

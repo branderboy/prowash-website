@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { getDb } from "@/lib/db";
 import { resolveTenantClientId } from "@/lib/site/resolve-client";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   const clientId = await resolveTenantClientId();
   if (!clientId) {
@@ -13,7 +15,8 @@ export async function GET(req: NextRequest) {
   const sql = getDb();
   // Cloudflare proxies the original scheme via cf-visitor:'{"scheme":"https"}'.
   // Fall back to standard x-forwarded-proto, then the request URL.
-  const cfVisitor = headers().get("cf-visitor");
+  const h = await headers();
+  const cfVisitor = h.get("cf-visitor");
   let cfScheme: string | null = null;
   if (cfVisitor) {
     try {
@@ -21,8 +24,8 @@ export async function GET(req: NextRequest) {
       if (parsed.scheme) cfScheme = parsed.scheme;
     } catch { /* ignore malformed header */ }
   }
-  const proto = cfScheme || headers().get("x-forwarded-proto") || (req.url.startsWith("https") ? "https" : "http");
-  const host = headers().get("host");
+  const proto = cfScheme || h.get("x-forwarded-proto") || (req.url.startsWith("https") ? "https" : "http");
+  const host = h.get("host");
   const origin = `${proto}://${host}`;
 
   const [pages, posts, settings] = await Promise.all([
