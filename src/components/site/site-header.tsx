@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
+import type { HeaderMenuItem } from "@/lib/site/load";
 
-export function SiteHeader() {
+type Props = {
+  menu: HeaderMenuItem[] | null;
+  primaryPhone: string | null;
+};
+
+export function SiteHeader({ menu, primaryPhone }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -10,6 +16,8 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const phone = primaryPhone || "(301) 307-1414";
 
   return (
     <>
@@ -31,7 +39,7 @@ export function SiteHeader() {
           </span>
           <span className="top-bar-item">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            {" "}(301) 307-1414
+            {" "}{phone}
           </span>
         </div>
       </div>
@@ -53,38 +61,37 @@ export function SiteHeader() {
                 : undefined
             }
           >
-            <a href="/" className="nav-item">Home</a>
-            <div className="nav-dropdown">
-              <a href="/services" className="nav-item dropdown-toggle">Services</a>
-              <div className="dropdown-menu">
-                <a href="/services/car-wash">Car Wash</a>
-                <a href="/services/car-detailing">Car Detailing</a>
-                <a href="/services/window-tinting">Window Tinting</a>
-                <a href="/services/snow-removal">Snow Removal</a>
-                <a href="/services/car-dealerships">Car Dealerships</a>
-                <a href="/services/rideshare">Rideshare Drivers</a>
-              </div>
-            </div>
-            <div className="nav-dropdown">
-              <span className="nav-item dropdown-toggle">Programs</span>
-              <div className="dropdown-menu">
-                <a href="/rewards">Loyalty Rewards</a>
-                <a href="/birthday-club">Birthday Club</a>
-              </div>
-            </div>
-            <div className="nav-dropdown">
-              <a href="/locations" className="nav-item dropdown-toggle">Locations</a>
-              <div className="dropdown-menu">
-                <a href="/locations/capitol-heights">Capitol Heights</a>
-                <a href="/locations/clinton">Clinton</a>
-                <a href="/locations/bowie">Bowie</a>
-                <a href="/locations/upper-marlboro">Upper Marlboro</a>
-                <a href="/locations/washington-dc">Washington DC</a>
-              </div>
-            </div>
-            <a href="/shop" className="nav-item">Shop</a>
-            <a href="/faq" className="nav-item">FAQ</a>
-            <a href="/book" className="btn btn-red">Book Now</a>
+            {menu && menu.length > 0 ? menu.map((item, i) => {
+              if (item.children && item.children.length > 0) {
+                return (
+                  <div className="nav-dropdown" key={`${item.label}-${i}`}>
+                    {item.href && item.href !== "#" ? (
+                      <a href={item.href} className="nav-item dropdown-toggle">{item.label}</a>
+                    ) : (
+                      <span className="nav-item dropdown-toggle">{item.label}</span>
+                    )}
+                    <div className="dropdown-menu">
+                      {item.children.map((c) => (
+                        <a key={c.href} href={c.href}>{c.label}</a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              const cls = item.style === "cta" ? "btn btn-red" : "nav-item";
+              return (
+                <a key={`${item.label}-${i}`} href={item.href} className={cls}>{item.label}</a>
+              );
+            }) : (
+              <>
+                <a href="/" className="nav-item">Home</a>
+                <a href="/services" className="nav-item">Services</a>
+                <a href="/locations" className="nav-item">Locations</a>
+                <a href="/shop" className="nav-item">Shop</a>
+                <a href="/faq" className="nav-item">FAQ</a>
+                <a href="/book" className="btn btn-red">Book Now</a>
+              </>
+            )}
           </nav>
         </div>
       </header>

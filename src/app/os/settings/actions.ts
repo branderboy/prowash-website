@@ -41,40 +41,39 @@ export async function saveSettingsAction(formData: FormData) {
 const stripeSchema = z.object({
   stripe_secret_key: z.string().max(200),
   stripe_publishable_key: z.string().max(200),
+  stripe_webhook_secret: z.string().max(200),
 });
 
 export async function saveStripeKeysAction(formData: FormData) {
   const parsed = stripeSchema.parse({
     stripe_secret_key: String(formData.get("stripe_secret_key") || ""),
     stripe_publishable_key: String(formData.get("stripe_publishable_key") || ""),
+    stripe_webhook_secret: String(formData.get("stripe_webhook_secret") || ""),
   });
-  // The form's secret_key input is intentionally blank-by-default; treat
-  // empty string as "keep existing" so the user doesn't have to retype the
-  // secret on every save.
+  // Both secret fields are blank-by-default; an empty submission means
+  // "keep the stored value", not "delete it".
   const newSecret = parsed.stripe_secret_key.trim() === "" ? null : parsed.stripe_secret_key;
+  const newWebhookSecret = parsed.stripe_webhook_secret.trim() === "" ? null : parsed.stripe_webhook_secret;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
-    if (newSecret === null) {
-      await sql`
-        INSERT INTO site_settings (client_id, stripe_publishable_key)
-        VALUES (${clientId}, ${parsed.stripe_publishable_key || null})
-        ON CONFLICT (client_id) DO UPDATE SET
-          stripe_publishable_key = EXCLUDED.stripe_publishable_key,
-          updated_at = NOW()
-      `;
-    } else {
-      await sql`
-        INSERT INTO site_settings (client_id, stripe_secret_key, stripe_publishable_key)
-        VALUES (${clientId}, ${newSecret}, ${parsed.stripe_publishable_key || null})
-        ON CONFLICT (client_id) DO UPDATE SET
-          stripe_secret_key = EXCLUDED.stripe_secret_key,
-          stripe_publishable_key = EXCLUDED.stripe_publishable_key,
-          updated_at = NOW()
-      `;
+    // Always update publishable key (not a secret); conditionally update each secret.
+    await sql`
+      INSERT INTO site_settings (client_id, stripe_publishable_key)
+      VALUES (${clientId}, ${parsed.stripe_publishable_key || null})
+      ON CONFLICT (client_id) DO UPDATE SET
+        stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+        updated_at = NOW()
+    `;
+    if (newSecret !== null) {
+      await sql`UPDATE site_settings SET stripe_secret_key = ${newSecret}, updated_at = NOW() WHERE client_id = ${clientId}`;
+    }
+    if (newWebhookSecret !== null) {
+      await sql`UPDATE site_settings SET stripe_webhook_secret = ${newWebhookSecret}, updated_at = NOW() WHERE client_id = ${clientId}`;
     }
     clearStripeCache(clientId);
     await audit(session, "stripe.update", "site_settings", clientId, {
       has_secret: newSecret !== null,
+      has_webhook_secret: newWebhookSecret !== null,
     });
   });
   redirect("/os/settings?saved=1");

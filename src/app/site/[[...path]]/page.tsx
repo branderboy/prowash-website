@@ -33,6 +33,16 @@ async function loadPage(path: string[] | undefined): Promise<PageRow | null> {
 export async function generateMetadata({ params }: { params: { path?: string[] } }): Promise<Metadata> {
   const page = await loadPage(params.path);
   if (!page) return { title: "Not found" };
+  const clientId = await resolveTenantClientId();
+  let defaultOg: string | null = null;
+  if (clientId) {
+    const sql = getDb();
+    const rows = (await sql`
+      SELECT default_og_image_url FROM site_settings WHERE client_id = ${clientId} LIMIT 1
+    `) as Array<{ default_og_image_url: string | null }>;
+    defaultOg = rows[0]?.default_og_image_url ?? null;
+  }
+  const ogImage = page.og_image_url || defaultOg;
   return {
     title: page.title,
     description: page.meta_description ?? undefined,
@@ -40,7 +50,7 @@ export async function generateMetadata({ params }: { params: { path?: string[] }
     openGraph: {
       title: page.title,
       description: page.meta_description ?? undefined,
-      images: page.og_image_url ? [{ url: page.og_image_url }] : undefined,
+      images: ogImage ? [{ url: ogImage }] : undefined,
     },
   };
 }

@@ -27,6 +27,7 @@ const TEXT_TABLES = [
   "site_settings",
   "redirects",
   "products",
+  "orders",
   "audit_log",
 ];
 

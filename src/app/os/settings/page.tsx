@@ -12,11 +12,12 @@ async function load() {
     const sql = getDb();
     const [client, settings] = await Promise.all([
       sql`SELECT name, primary_host FROM clients WHERE id = ${clientId}` as unknown as Promise<Array<{ name: string; primary_host: string | null }>>,
-      sql`SELECT favicon_url, default_og_image_url, primary_phone, stripe_secret_key, stripe_publishable_key, cloudflare_api_token, cloudflare_zone_id FROM site_settings WHERE client_id = ${clientId}` as unknown as Promise<Array<{ favicon_url: string | null; default_og_image_url: string | null; primary_phone: string | null; stripe_secret_key: string | null; stripe_publishable_key: string | null; cloudflare_api_token: string | null; cloudflare_zone_id: string | null }>>,
+      sql`SELECT favicon_url, default_og_image_url, primary_phone, stripe_secret_key, stripe_publishable_key, stripe_webhook_secret, cloudflare_api_token, cloudflare_zone_id FROM site_settings WHERE client_id = ${clientId}` as unknown as Promise<Array<{ favicon_url: string | null; default_og_image_url: string | null; primary_phone: string | null; stripe_secret_key: string | null; stripe_publishable_key: string | null; stripe_webhook_secret: string | null; cloudflare_api_token: string | null; cloudflare_zone_id: string | null }>>,
     ]);
     return {
+      clientId,
       client: client[0],
-      settings: settings[0] ?? { favicon_url: null, default_og_image_url: null, primary_phone: null, stripe_secret_key: null, stripe_publishable_key: null, cloudflare_api_token: null, cloudflare_zone_id: null },
+      settings: settings[0] ?? { favicon_url: null, default_og_image_url: null, primary_phone: null, stripe_secret_key: null, stripe_publishable_key: null, stripe_webhook_secret: null, cloudflare_api_token: null, cloudflare_zone_id: null },
     };
   });
 }
@@ -125,6 +126,23 @@ export default async function SettingsPage({ searchParams }: { searchParams: { s
                 placeholder="pk_live_…"
                 className="mt-1"
               />
+            </div>
+            <div>
+              <Label htmlFor="stripe_webhook_secret">Webhook signing secret</Label>
+              <Input
+                id="stripe_webhook_secret"
+                name="stripe_webhook_secret"
+                type="password"
+                placeholder={data.settings.stripe_webhook_secret ? `Stored: ${maskSecret(data.settings.stripe_webhook_secret)}` : "whsec_…"}
+                className="mt-1"
+              />
+              <p className="text-xs text-navy/50 mt-1">
+                In Stripe → Developers → Webhooks, add an endpoint pointing to{" "}
+                <code className="font-mono">
+                  https://{data.client?.primary_host ?? "your-domain"}/api/webhooks/stripe/{data.clientId}
+                </code>
+                {" "}listening for <code>checkout.session.completed</code>, then paste the signing secret above. Leave blank to keep the existing value.
+              </p>
             </div>
             <div className="flex justify-end">
               <Button type="submit">Save Stripe keys</Button>

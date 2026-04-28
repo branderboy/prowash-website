@@ -127,6 +127,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
   sitemap_extra_urls TEXT,
   stripe_secret_key TEXT,
   stripe_publishable_key TEXT,
+  stripe_webhook_secret TEXT,
   cloudflare_api_token TEXT,
   cloudflare_zone_id TEXT,
   updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -134,6 +135,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
 -- Idempotent column adds for older deployments
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_secret_key TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_publishable_key TEXT;
+ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS stripe_webhook_secret TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS robots_txt TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS sitemap_extra_urls TEXT;
 ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS cloudflare_api_token TEXT;
@@ -208,4 +210,21 @@ CREATE TABLE IF NOT EXISTS audit_log (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_audit_client ON audit_log(client_id, created_at DESC);
+
+-- Orders placed through the public store (Stripe Checkout)
+CREATE TABLE IF NOT EXISTS orders (
+  id SERIAL PRIMARY KEY,
+  client_id INTEGER NOT NULL REFERENCES clients(id) ON DELETE CASCADE,
+  stripe_session_id TEXT UNIQUE NOT NULL,
+  stripe_payment_intent_id TEXT,
+  customer_email TEXT,
+  customer_name TEXT,
+  amount_total INTEGER,
+  currency TEXT,
+  status TEXT NOT NULL DEFAULT 'paid',
+  line_items JSONB,
+  metadata JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_orders_client ON orders(client_id, created_at DESC);
 `;
