@@ -9,9 +9,18 @@ import { audit } from "@/lib/os/audit";
 import { clearStripeCache } from "@/lib/stripe";
 import { getCloudflareCreds, purgeCloudflare, verifyCloudflare } from "@/lib/cloudflare";
 
+// Allow empty (clears the field) or a valid http(s) / root-relative URL.
+const optionalUrl = z
+  .string()
+  .max(500)
+  .refine(
+    (v) => v === "" || /^https?:\/\//.test(v) || v.startsWith("/"),
+    "Must be empty, an http(s) URL, or a root-relative path"
+  );
+
 const schema = z.object({
-  favicon_url: z.string().max(500),
-  default_og_image_url: z.string().max(500),
+  favicon_url: optionalUrl,
+  default_og_image_url: optionalUrl,
   primary_phone: z.string().max(40),
 });
 
@@ -48,19 +57,24 @@ export async function saveStripeKeysAction(formData: FormData) {
     stripe_secret_key: String(formData.get("stripe_secret_key") || ""),
     stripe_publishable_key: String(formData.get("stripe_publishable_key") || ""),
   });
+  // Empty submission means "keep existing" (matches the UI hint). The COALESCE
+  // on the existing column preserves the stored value; a non-empty submission
+  // overwrites it.
+  const newSecret = parsed.stripe_secret_key || null;
+  const newPublishable = parsed.stripe_publishable_key || null;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
     await sql`
       INSERT INTO site_settings (client_id, stripe_secret_key, stripe_publishable_key)
-      VALUES (${clientId}, ${parsed.stripe_secret_key || null}, ${parsed.stripe_publishable_key || null})
+      VALUES (${clientId}, ${newSecret}, ${newPublishable})
       ON CONFLICT (client_id) DO UPDATE SET
-        stripe_secret_key = EXCLUDED.stripe_secret_key,
-        stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+        stripe_secret_key = COALESCE(${newSecret}, site_settings.stripe_secret_key),
+        stripe_publishable_key = COALESCE(${newPublishable}, site_settings.stripe_publishable_key),
         updated_at = NOW()
     `;
     clearStripeCache(clientId);
     await audit(session, "stripe.update", "site_settings", clientId, {
-      has_secret: Boolean(parsed.stripe_secret_key),
+      has_secret: Boolean(newSecret),
     });
   });
   redirect("/os/settings?saved=1");
@@ -76,19 +90,23 @@ export async function saveCloudflareAction(formData: FormData) {
     cloudflare_api_token: String(formData.get("cloudflare_api_token") || ""),
     cloudflare_zone_id: String(formData.get("cloudflare_zone_id") || ""),
   });
+  // Blank token = keep existing (matches UI hint). Zone ID overwrites if
+  // submitted (it's not secret and the input isn't masked).
+  const newToken = parsed.cloudflare_api_token || null;
+  const newZone = parsed.cloudflare_zone_id || null;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
     await sql`
       INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
-      VALUES (${clientId}, ${parsed.cloudflare_api_token || null}, ${parsed.cloudflare_zone_id || null})
+      VALUES (${clientId}, ${newToken}, ${newZone})
       ON CONFLICT (client_id) DO UPDATE SET
-        cloudflare_api_token = EXCLUDED.cloudflare_api_token,
-        cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+        cloudflare_api_token = COALESCE(${newToken}, site_settings.cloudflare_api_token),
+        cloudflare_zone_id = ${newZone},
         updated_at = NOW()
     `;
     await audit(session, "cloudflare.update", "site_settings", clientId, {
-      has_token: Boolean(parsed.cloudflare_api_token),
-      zone_id: parsed.cloudflare_zone_id || null,
+      has_token: Boolean(newToken),
+      zone_id: newZone,
     });
   });
   redirect("/os/settings?saved=1");

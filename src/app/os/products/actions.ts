@@ -11,7 +11,15 @@ import { getStripeForClient } from "@/lib/stripe";
 const productInput = z.object({
   name: z.string().min(1).max(200),
   description: z.string().max(2000).optional().nullable(),
-  image_url: z.string().max(500).optional().nullable(),
+  image_url: z
+    .string()
+    .max(500)
+    .optional()
+    .nullable()
+    .refine(
+      (v) => !v || /^https?:\/\//.test(v) || v.startsWith("/"),
+      "Image URL must be http(s) or a root-relative path"
+    ),
   unit_amount_dollars: z.coerce.number().min(0).max(100000),
   currency: z.string().min(3).max(3).default("usd"),
   active: z.boolean().optional(),
@@ -45,13 +53,19 @@ export async function createProductAction(formData: FormData) {
         images: parsed.image_url ? [parsed.image_url] : undefined,
         active: parsed.active ?? true,
       });
-      const price = await stripe.prices.create({
-        product: prod.id,
-        unit_amount: cents,
-        currency: parsed.currency,
-      });
-      stripeProductId = prod.id;
-      stripePriceId = price.id;
+      try {
+        const price = await stripe.prices.create({
+          product: prod.id,
+          unit_amount: cents,
+          currency: parsed.currency,
+        });
+        stripeProductId = prod.id;
+        stripePriceId = price.id;
+      } catch (err) {
+        // Roll back the orphan Stripe product so a retry doesn't create dupes.
+        await stripe.products.update(prod.id, { active: false }).catch(() => {});
+        throw err;
+      }
     }
 
     const rows = (await sql`
@@ -122,11 +136,17 @@ export async function updateProductAction(productId: number, formData: FormData)
         images: parsed.image_url ? [parsed.image_url] : undefined,
         active: parsed.active ?? true,
       });
-      const price = await stripe.prices.create({
-        product: prod.id,
-        unit_amount: cents,
-        currency: parsed.currency,
-      });
+      let price;
+      try {
+        price = await stripe.prices.create({
+          product: prod.id,
+          unit_amount: cents,
+          currency: parsed.currency,
+        });
+      } catch (err) {
+        await stripe.products.update(prod.id, { active: false }).catch(() => {});
+        throw err;
+      }
       await sql`
         UPDATE products SET stripe_product_id = ${prod.id} WHERE id = ${productId}
       `;

@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getDb } from "@/lib/db";
@@ -15,7 +16,7 @@ type PageRow = {
   is_published: boolean;
 };
 
-async function loadPage(path: string[] | undefined): Promise<PageRow | null> {
+const loadPage = cache(async (path: string[] | undefined): Promise<PageRow | null> => {
   const slug = (path ?? []).join("/");
   const clientId = await resolveTenantClientId();
   if (!clientId) return null;
@@ -28,6 +29,16 @@ async function loadPage(path: string[] | undefined): Promise<PageRow | null> {
     LIMIT 1
   `) as PageRow[];
   return rows[0] ?? null;
+});
+
+// Escape `</`, line separators, and HTML comment terminators so JSON-LD
+// embedded in the page can't break out of its <script> tag.
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value)
+    .replace(/</g, "\\u003c")
+    .replace(/-->/g, "--\\u003e")
+    .replace(new RegExp(String.fromCharCode(0x2028), "g"), "\\u2028")
+    .replace(new RegExp(String.fromCharCode(0x2029), "g"), "\\u2029");
 }
 
 export async function generateMetadata({ params }: { params: { path?: string[] } }): Promise<Metadata> {
@@ -45,18 +56,20 @@ export async function generateMetadata({ params }: { params: { path?: string[] }
   };
 }
 
-async function loadRedirect(path: string[] | undefined): Promise<{ destination: string; status_code: number } | null> {
-  const slug = (path ?? []).join("/");
-  const clientId = await resolveTenantClientId();
-  if (!clientId) return null;
-  const sql = getDb();
-  const rows = (await sql`
-    SELECT destination, status_code FROM redirects
-    WHERE client_id = ${clientId} AND source = ${slug}
-    LIMIT 1
-  `) as Array<{ destination: string; status_code: number }>;
-  return rows[0] ?? null;
-}
+const loadRedirect = cache(
+  async (path: string[] | undefined): Promise<{ destination: string; status_code: number } | null> => {
+    const slug = (path ?? []).join("/");
+    const clientId = await resolveTenantClientId();
+    if (!clientId) return null;
+    const sql = getDb();
+    const rows = (await sql`
+      SELECT destination, status_code FROM redirects
+      WHERE client_id = ${clientId} AND source = ${slug}
+      LIMIT 1
+    `) as Array<{ destination: string; status_code: number }>;
+    return rows[0] ?? null;
+  }
+);
 
 export default async function SitePage({ params }: { params: { path?: string[] } }) {
   const page = await loadPage(params.path);
@@ -70,7 +83,7 @@ export default async function SitePage({ params }: { params: { path?: string[] }
       {page.structured_data ? (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(page.structured_data) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(page.structured_data) }}
         />
       ) : null}
       <div dangerouslySetInnerHTML={{ __html: page.body_html }} />

@@ -24,6 +24,8 @@ export async function getCloudflareCreds(clientId: number): Promise<CloudflareCr
 
 export type PurgeOptions = { everything?: boolean; files?: string[] };
 
+const CF_TIMEOUT_MS = 8000;
+
 export async function purgeCloudflare(
   creds: CloudflareCreds,
   opts: PurgeOptions = { everything: true }
@@ -40,6 +42,7 @@ export async function purgeCloudflare(
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(CF_TIMEOUT_MS),
     });
   } catch (err) {
     return { ok: false, errors: [err instanceof Error ? err.message : String(err)] };
@@ -62,6 +65,7 @@ export async function verifyCloudflare(creds: CloudflareCreds): Promise<{ ok: bo
     const res = await fetch(`https://api.cloudflare.com/client/v4/zones/${creds.zoneId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${creds.apiToken}` },
+      signal: AbortSignal.timeout(CF_TIMEOUT_MS),
     });
     const json = (await res.json()) as { success?: boolean; result?: { name?: string }; errors?: Array<{ message: string }> };
     if (res.ok && json?.success && json.result?.name) return { ok: true, name: json.result.name };

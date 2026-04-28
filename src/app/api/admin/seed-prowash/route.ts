@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "node:crypto";
 import { getDb } from "@/lib/db";
 import { hashPassword } from "@/lib/os/password";
 import seedPages from "@/seed/prowash-pages.json";
@@ -6,8 +7,11 @@ import seedPages from "@/seed/prowash-pages.json";
 function authorized(req: NextRequest): boolean {
   const expected = process.env.ADMIN_SETUP_TOKEN;
   if (!expected) return false;
-  const provided = req.headers.get("x-admin-token") || new URL(req.url).searchParams.get("token");
-  return provided === expected;
+  const provided = req.headers.get("x-admin-token");
+  if (!provided) return false;
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
 type SeedPage = {
@@ -47,7 +51,7 @@ export async function POST(req: NextRequest) {
   const clientId = clientRow[0].id;
 
   // Upsert owner user (and reset password to env value on every seed run)
-  const passwordHash = hashPassword(ownerPassword);
+  const passwordHash = await hashPassword(ownerPassword);
   await sql`
     INSERT INTO users (email, name, password_hash)
     VALUES (${ownerEmail}, ${ownerName}, ${passwordHash})

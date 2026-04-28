@@ -3,7 +3,13 @@ import { redirect } from "next/navigation";
 import crypto from "node:crypto";
 
 export const OS_COOKIE = "os_auth";
-const SECRET = () => process.env.OS_AUTH_SECRET || "dev-only-insecure-secret-change-me";
+const SECRET = () => {
+  const v = process.env.OS_AUTH_SECRET;
+  if (!v || v.length < 32) {
+    throw new Error("OS_AUTH_SECRET must be set to a value of at least 32 characters");
+  }
+  return v;
+};
 const SESSION_DAYS = 30;
 
 export type OsSession = {
@@ -30,16 +36,27 @@ export function decodeSession(raw: string | undefined | null): OsSession | null 
   if (dot < 0) return null;
   const payload = raw.slice(0, dot);
   const sig = raw.slice(dot + 1);
-  const expected = sign(payload);
-  if (!crypto.timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expected, "hex"))) return null;
+  let expected: string;
+  try {
+    expected = sign(payload);
+  } catch {
+    return null;
+  }
+  const sigBuf = Buffer.from(sig, "hex");
+  const expBuf = Buffer.from(expected, "hex");
+  if (sigBuf.length !== expBuf.length || sigBuf.length === 0) return null;
+  if (!crypto.timingSafeEqual(sigBuf, expBuf)) return null;
   const [uid, cid, role, email, exp] = payload.split(":");
   const expiresAt = Number(exp);
   if (!uid || !cid || !email || !expiresAt) return null;
+  const userId = Number(uid);
+  const clientId = Number(cid);
+  if (!Number.isFinite(userId) || !Number.isFinite(clientId)) return null;
   if (Date.now() > expiresAt) return null;
   if (!["owner", "manager", "staff"].includes(role)) return null;
   return {
-    userId: Number(uid),
-    clientId: Number(cid),
+    userId,
+    clientId,
     role: role as OsSession["role"],
     email: decodeURIComponent(email),
     expiresAt,

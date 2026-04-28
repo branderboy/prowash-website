@@ -4,6 +4,22 @@ import { getStripeForClient } from "@/lib/stripe";
 
 export type Severity = "error" | "warning" | "info";
 
+// External calls (Stripe, Cloudflare) must not be allowed to block the
+// dashboard. Race them against a short timeout and treat the timeout as
+// "unknown" so the page still renders.
+const EXTERNAL_TIMEOUT_MS = 4000;
+function withTimeout<T>(p: Promise<T>, label: string): Promise<T | { __timeout: true; label: string }> {
+  return Promise.race<T | { __timeout: true; label: string }>([
+    p,
+    new Promise((resolve) =>
+      setTimeout(() => resolve({ __timeout: true, label }), EXTERNAL_TIMEOUT_MS)
+    ),
+  ]);
+}
+function isTimeout<T>(v: T | { __timeout: true; label: string }): v is { __timeout: true; label: string } {
+  return typeof v === "object" && v !== null && (v as { __timeout?: boolean }).__timeout === true;
+}
+
 export type HealthCheck = {
   id: string;
   severity: Severity;
@@ -37,6 +53,11 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
   // 1. Schema sanity — every table is reachable
   let schemaOk = 0;
   for (const t of TEXT_TABLES) {
+    // Defense in depth — TEXT_TABLES is a hardcoded list, but the moment it
+    // becomes dynamic this guard prevents SQL injection via the raw query path.
+    if (!/^[a-z_]+$/.test(t)) {
+      throw new Error(`refusing to probe table with unsafe name: ${t}`);
+    }
     try {
       await (sql as unknown as (q: string) => Promise<unknown>)(`SELECT 1 FROM ${t} LIMIT 1`);
       schemaOk++;
@@ -205,15 +226,14 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
   // each target resolves to a page slug or a redirect.
   const redirects = (await sql`SELECT source FROM redirects WHERE client_id = ${clientId}`) as Array<{ source: string }>;
   const redirectSet = new Set(redirects.map((r) => r.source));
-  const linkRegex = /href="\/([a-z0-9\-/]*)"/gi;
+  const linkRegex = /href="\/([^"#?]*)"/g;
   const seenBroken = new Set<string>();
   for (const p of pages) {
     if (!p.body_html) continue;
     const matches = p.body_html.matchAll(linkRegex);
     for (const m of matches) {
-      const target = (m[1] || "").replace(/\/$/, "");
+      const target = (m[1] || "").toLowerCase().replace(/\/$/, "");
       if (target === "" && publishedSlugs.has("")) continue;
-      if (target.includes("#") || target.includes("?")) continue;
       if (target.startsWith("blog/")) continue;
       if (publishedSlugs.has(target) || redirectSet.has(target)) continue;
       const key = `link:${target}`;
@@ -243,12 +263,22 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
       link: { href: "/os/settings", label: "Connect Stripe" },
     });
   }
-  // Stripe API ping — only if a key is configured
+  // Stripe API ping — only if a key is configured. Bounded by EXTERNAL_TIMEOUT_MS
+  // so a slow Stripe response can't make the whole dashboard hang.
   const stripe = await getStripeForClient(clientId);
   if (stripe) {
     try {
-      await stripe.products.list({ limit: 1 });
-      checks.push({ id: "stripe:ok", severity: "info", title: "Stripe API reachable" });
+      const result = await withTimeout(stripe.products.list({ limit: 1 }), "stripe.products.list");
+      if (isTimeout(result)) {
+        checks.push({
+          id: "stripe:timeout",
+          severity: "warning",
+          title: "Stripe API slow to respond",
+          detail: `No response in ${EXTERNAL_TIMEOUT_MS}ms; skipped this check.`,
+        });
+      } else {
+        checks.push({ id: "stripe:ok", severity: "info", title: "Stripe API reachable" });
+      }
     } catch (err) {
       checks.push({
         id: "stripe:invalid",
@@ -299,8 +329,15 @@ export async function runHealthChecks(clientId: number): Promise<HealthReport> {
       link: { href: "/os/settings", label: "Connect Cloudflare" },
     });
   } else {
-    const v = await verifyCloudflare(cf);
-    if (v.ok) {
+    const v = await withTimeout(verifyCloudflare(cf), "verifyCloudflare");
+    if (isTimeout(v)) {
+      checks.push({
+        id: "cloudflare:timeout",
+        severity: "warning",
+        title: "Cloudflare slow to respond",
+        detail: `No response in ${EXTERNAL_TIMEOUT_MS}ms; skipped this check.`,
+      });
+    } else if (v.ok) {
       checks.push({
         id: "cloudflare:ok",
         severity: "info",

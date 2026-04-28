@@ -1,22 +1,29 @@
 import crypto from "node:crypto";
+import { promisify } from "node:util";
 
-/**
- * scrypt-based password hashing using only Node's built-in crypto.
- * Stored format: "salt:hash" (both hex).
- */
-export function hashPassword(password: string): string {
+// Async scrypt — keeps the event loop free under concurrent logins.
+const scryptAsync = promisify(crypto.scrypt) as (
+  password: string,
+  salt: string,
+  keylen: number
+) => Promise<Buffer>;
+
+export async function hashPassword(password: string): Promise<string> {
   const salt = crypto.randomBytes(16).toString("hex");
-  const hash = crypto.scryptSync(password, salt, 64).toString("hex");
+  const hash = (await scryptAsync(password, salt, 64)).toString("hex");
   return `${salt}:${hash}`;
 }
 
-export function verifyPassword(password: string, stored: string | null | undefined): boolean {
+export async function verifyPassword(
+  password: string,
+  stored: string | null | undefined
+): Promise<boolean> {
   if (!stored) return false;
   const [salt, hash] = stored.split(":");
   if (!salt || !hash) return false;
   let expected: Buffer;
   try {
-    expected = crypto.scryptSync(password, salt, 64);
+    expected = await scryptAsync(password, salt, 64);
   } catch {
     return false;
   }

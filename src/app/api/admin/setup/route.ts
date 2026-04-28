@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "node:crypto";
 import { getDb, SCHEMA_SQL } from "@/lib/db";
 
 function authorized(req: NextRequest): boolean {
   const expected = process.env.ADMIN_SETUP_TOKEN;
   if (!expected) return false;
-  const provided = req.headers.get("x-admin-token") || new URL(req.url).searchParams.get("token");
-  return provided === expected;
+  const provided = req.headers.get("x-admin-token");
+  if (!provided) return false;
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
 export async function POST(req: NextRequest) {
