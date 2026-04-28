@@ -26,7 +26,7 @@ async function load() {
 }
 
 export default async function SeoPage() {
-  requireOsSession();
+  await requireOsSession();
   const data = await load();
 
   return (

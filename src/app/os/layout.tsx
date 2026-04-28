@@ -28,9 +28,9 @@ async function getClientName(clientId: number): Promise<string> {
 }
 
 export default async function OsLayout({ children }: { children: React.ReactNode }) {
-  const session = getOsSession();
+  const session = await getOsSession();
   // headers() ensures this layout opts out of static rendering
-  headers();
+  await headers();
 
   // Login + verify are served via this layout but render their own full-screen UI
   if (!session) {

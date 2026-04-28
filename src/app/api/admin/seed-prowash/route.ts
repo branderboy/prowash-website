@@ -105,6 +105,7 @@ export async function POST(req: NextRequest) {
         { label: "Bowie", href: "/locations/bowie" },
         { label: "Upper Marlboro", href: "/locations/upper-marlboro" },
         { label: "Washington DC", href: "/locations/washington-dc" },
+        { label: "Carrolton (in-store pickup)", href: "/locations/carrolton" },
       ],
     },
     { label: "Shop", href: "/shop" },

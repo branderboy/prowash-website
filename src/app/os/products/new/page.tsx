@@ -7,8 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { createProductAction } from "../actions";
 
-export default function NewProductPage() {
-  requireOsSession();
+export default async function NewProductPage() {
+  await requireOsSession();
   return (
     <div className="space-y-6 max-w-2xl">
       <div>

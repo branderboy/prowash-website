@@ -33,7 +33,7 @@ function formatMoney(cents: number, currency: string): string {
 }
 
 export default async function ProductsPage() {
-  requireOsSession();
+  await requireOsSession();
   const data = await load();
   return (
     <div className="space-y-6">

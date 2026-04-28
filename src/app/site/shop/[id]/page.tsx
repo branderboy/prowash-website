@@ -18,8 +18,9 @@ function formatMoney(cents: number, currency: string): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: currency.toUpperCase() }).format(cents / 100);
 }
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const id = Number(rawId);
   if (!Number.isFinite(id)) notFound();
   const clientId = await resolveTenantClientId();
   if (!clientId) notFound();

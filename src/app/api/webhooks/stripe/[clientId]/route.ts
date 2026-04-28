@@ -5,8 +5,9 @@ import { getStripeForClient } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: NextRequest, { params }: { params: { clientId: string } }) {
-  const clientId = Number(params.clientId);
+export async function POST(req: NextRequest, { params }: { params: Promise<{ clientId: string }> }) {
+  const { clientId: clientIdRaw } = await params;
+  const clientId = Number(clientIdRaw);
   if (!Number.isFinite(clientId)) {
     return NextResponse.json({ error: "invalid clientId" }, { status: 400 });
   }

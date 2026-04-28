@@ -21,7 +21,7 @@ async function loadMenus() {
 }
 
 export default async function MenusPage() {
-  requireOsSession();
+  await requireOsSession();
   const menus = await loadMenus();
   return (
     <div className="space-y-6">

@@ -41,11 +41,13 @@ export default async function PageEditor({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams: { saved?: string };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ saved?: string }>;
 }) {
-  requireOsSession();
-  const slug = decodeURIComponent(params.slug);
+  await requireOsSession();
+  const { slug: rawSlug } = await params;
+  const sp = await searchParams;
+  const slug = decodeURIComponent(rawSlug);
   const page = await getPage(slug);
   if (!page) notFound();
 
@@ -71,7 +73,7 @@ export default async function PageEditor({
         </div>
       </div>
 
-      {searchParams.saved ? (
+      {sp.saved ? (
         <div className="rounded-lg bg-green-50 border border-green-200 p-3 text-sm text-green-800">Saved.</div>
       ) : null}
 

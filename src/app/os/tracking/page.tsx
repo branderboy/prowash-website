@@ -18,7 +18,7 @@ async function load() {
 }
 
 export default async function TrackingPage() {
-  requireOsSession();
+  await requireOsSession();
   const data = await load();
   return (
     <div className="space-y-6">

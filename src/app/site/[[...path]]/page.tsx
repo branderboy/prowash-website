@@ -30,8 +30,9 @@ async function loadPage(path: string[] | undefined): Promise<PageRow | null> {
   return rows[0] ?? null;
 }
 
-export async function generateMetadata({ params }: { params: { path?: string[] } }): Promise<Metadata> {
-  const page = await loadPage(params.path);
+export async function generateMetadata({ params }: { params: Promise<{ path?: string[] }> }): Promise<Metadata> {
+  const { path } = await params;
+  const page = await loadPage(path);
   if (!page) return { title: "Not found" };
   const clientId = await resolveTenantClientId();
   let defaultOg: string | null = null;
@@ -68,10 +69,11 @@ async function loadRedirect(path: string[] | undefined): Promise<{ destination: 
   return rows[0] ?? null;
 }
 
-export default async function SitePage({ params }: { params: { path?: string[] } }) {
-  const page = await loadPage(params.path);
+export default async function SitePage({ params }: { params: Promise<{ path?: string[] }> }) {
+  const { path } = await params;
+  const page = await loadPage(path);
   if (!page) {
-    const r = await loadRedirect(params.path);
+    const r = await loadRedirect(path);
     if (r) redirect(`/${r.destination}`);
     notFound();
   }

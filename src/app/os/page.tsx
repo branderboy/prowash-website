@@ -26,7 +26,7 @@ async function getStats() {
 }
 
 export default async function OsHome() {
-  requireOsSession();
+  await requireOsSession();
   const [stats, health] = await Promise.all([
     getStats(),
     withClient(({ clientId }) => runHealthChecks(clientId)),

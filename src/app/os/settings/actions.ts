@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getDb } from "@/lib/db";
@@ -79,6 +79,58 @@ export async function saveStripeKeysAction(formData: FormData) {
   redirect("/os/settings?saved=1");
 }
 
+const storeSchema = z.object({
+  shipping_rate_amount: z.coerce.number().int().min(0).max(1000000).nullable(),
+  shipping_rate_label: z.string().max(120),
+  shipping_countries: z.string().max(500),
+  tax_enabled: z.boolean(),
+  pickup_enabled: z.boolean(),
+  pickup_label: z.string().max(120),
+  pickup_address: z.string().max(400),
+});
+
+export async function saveStoreSettingsAction(formData: FormData) {
+  const rawAmount = String(formData.get("shipping_rate_amount") || "").trim();
+  const parsed = storeSchema.parse({
+    shipping_rate_amount: rawAmount === "" ? null : Math.round(Number(rawAmount) * 100),
+    shipping_rate_label: String(formData.get("shipping_rate_label") || ""),
+    shipping_countries: String(formData.get("shipping_countries") || ""),
+    tax_enabled: formData.get("tax_enabled") === "on",
+    pickup_enabled: formData.get("pickup_enabled") === "on",
+    pickup_label: String(formData.get("pickup_label") || ""),
+    pickup_address: String(formData.get("pickup_address") || ""),
+  });
+  await withClient(async ({ session, clientId }) => {
+    const sql = getDb();
+    await sql`
+      INSERT INTO site_settings (
+        client_id, shipping_rate_amount, shipping_rate_label, shipping_countries, tax_enabled,
+        pickup_enabled, pickup_label, pickup_address
+      )
+      VALUES (
+        ${clientId}, ${parsed.shipping_rate_amount}, ${parsed.shipping_rate_label || null},
+        ${parsed.shipping_countries || null}, ${parsed.tax_enabled},
+        ${parsed.pickup_enabled}, ${parsed.pickup_label || null}, ${parsed.pickup_address || null}
+      )
+      ON CONFLICT (client_id) DO UPDATE SET
+        shipping_rate_amount = EXCLUDED.shipping_rate_amount,
+        shipping_rate_label = EXCLUDED.shipping_rate_label,
+        shipping_countries = EXCLUDED.shipping_countries,
+        tax_enabled = EXCLUDED.tax_enabled,
+        pickup_enabled = EXCLUDED.pickup_enabled,
+        pickup_label = EXCLUDED.pickup_label,
+        pickup_address = EXCLUDED.pickup_address,
+        updated_at = NOW()
+    `;
+    await audit(session, "store.update", "site_settings", clientId, {
+      tax_enabled: parsed.tax_enabled,
+      ships: parsed.shipping_countries || null,
+      pickup_enabled: parsed.pickup_enabled,
+    });
+  });
+  redirect("/os/settings?saved=1");
+}
+
 const cloudflareSchema = z.object({
   cloudflare_api_token: z.string().max(200),
   cloudflare_zone_id: z.string().max(120),
@@ -136,7 +188,6 @@ export async function clearCacheAction() {
   await withClient(async ({ session, clientId }) => {
     revalidatePath("/", "layout");
     revalidatePath("/site", "layout");
-    revalidateTag("os");
 
     const creds = await getCloudflareCreds(clientId);
     if (creds) {

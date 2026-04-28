@@ -6,7 +6,7 @@ import { getOsSession, type OsSession } from "./session";
  * run without a tenant scope.
  */
 export async function withClient<T>(fn: (ctx: { session: OsSession; clientId: number }) => Promise<T>): Promise<T> {
-  const session = getOsSession();
+  const session = await getOsSession();
   if (!session) throw new Error("no os session");
   if (!session.clientId || typeof session.clientId !== "number") {
     throw new Error("session missing clientId — refusing query");

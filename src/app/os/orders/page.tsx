@@ -36,7 +36,7 @@ async function listOrders() {
 }
 
 export default async function OrdersPage() {
-  requireOsSession();
+  await requireOsSession();
   const orders = await listOrders();
   return (
     <div className="space-y-6">

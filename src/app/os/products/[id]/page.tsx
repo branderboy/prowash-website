@@ -33,9 +33,11 @@ async function getProduct(id: number) {
   });
 }
 
-export default async function ProductEditPage({ params, searchParams }: { params: { id: string }; searchParams: { saved?: string } }) {
-  requireOsSession();
-  const id = Number(params.id);
+export default async function ProductEditPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ saved?: string }> }) {
+  await requireOsSession();
+  const { id: rawId } = await params;
+  const sp = await searchParams;
+  const id = Number(rawId);
   if (!Number.isFinite(id)) notFound();
   const product = await getProduct(id);
   if (!product) notFound();
@@ -55,7 +57,7 @@ export default async function ProductEditPage({ params, searchParams }: { params
         )}
       </div>
 
-      {searchParams.saved ? (
+      {sp.saved ? (
         <div className="rounded-lg bg-green-50 border border-green-200 p-3 text-sm text-green-800">Saved.</div>
       ) : null}
 

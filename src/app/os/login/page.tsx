@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 
 type SearchParams = { error?: string; next?: string };
 
-export default function LoginPage({ searchParams }: { searchParams: SearchParams }) {
-  const error = searchParams.error;
-  const next = searchParams.next || "/os";
+export default async function LoginPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const sp = await searchParams;
+  const error = sp.error;
+  const next = sp.next || "/os";
 
   return (
     <main className="min-h-screen flex items-center justify-center p-8 bg-cream">

@@ -19,7 +19,7 @@ const dot: Record<Severity, string> = {
 };
 
 export default async function HealthPage() {
-  requireOsSession();
+  await requireOsSession();
   const report = await withClient(({ clientId }) => runHealthChecks(clientId));
   const { checks, summary } = report;
 
