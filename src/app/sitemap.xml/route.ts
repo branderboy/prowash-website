@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { getDb } from "@/lib/db";
 import { resolveTenantClientId } from "@/lib/site/resolve-client";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   const clientId = await resolveTenantClientId();
   if (!clientId) {
