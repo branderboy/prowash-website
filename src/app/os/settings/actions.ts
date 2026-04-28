@@ -48,19 +48,33 @@ export async function saveStripeKeysAction(formData: FormData) {
     stripe_secret_key: String(formData.get("stripe_secret_key") || ""),
     stripe_publishable_key: String(formData.get("stripe_publishable_key") || ""),
   });
+  // The form's secret_key input is intentionally blank-by-default; treat
+  // empty string as "keep existing" so the user doesn't have to retype the
+  // secret on every save.
+  const newSecret = parsed.stripe_secret_key.trim() === "" ? null : parsed.stripe_secret_key;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
-    await sql`
-      INSERT INTO site_settings (client_id, stripe_secret_key, stripe_publishable_key)
-      VALUES (${clientId}, ${parsed.stripe_secret_key || null}, ${parsed.stripe_publishable_key || null})
-      ON CONFLICT (client_id) DO UPDATE SET
-        stripe_secret_key = EXCLUDED.stripe_secret_key,
-        stripe_publishable_key = EXCLUDED.stripe_publishable_key,
-        updated_at = NOW()
-    `;
+    if (newSecret === null) {
+      await sql`
+        INSERT INTO site_settings (client_id, stripe_publishable_key)
+        VALUES (${clientId}, ${parsed.stripe_publishable_key || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+          updated_at = NOW()
+      `;
+    } else {
+      await sql`
+        INSERT INTO site_settings (client_id, stripe_secret_key, stripe_publishable_key)
+        VALUES (${clientId}, ${newSecret}, ${parsed.stripe_publishable_key || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          stripe_secret_key = EXCLUDED.stripe_secret_key,
+          stripe_publishable_key = EXCLUDED.stripe_publishable_key,
+          updated_at = NOW()
+      `;
+    }
     clearStripeCache(clientId);
     await audit(session, "stripe.update", "site_settings", clientId, {
-      has_secret: Boolean(parsed.stripe_secret_key),
+      has_secret: newSecret !== null,
     });
   });
   redirect("/os/settings?saved=1");
@@ -76,18 +90,31 @@ export async function saveCloudflareAction(formData: FormData) {
     cloudflare_api_token: String(formData.get("cloudflare_api_token") || ""),
     cloudflare_zone_id: String(formData.get("cloudflare_zone_id") || ""),
   });
+  // The token field starts blank on every render; an empty submission
+  // means "keep the stored token", not "delete it".
+  const newToken = parsed.cloudflare_api_token.trim() === "" ? null : parsed.cloudflare_api_token;
   await withClient(async ({ session, clientId }) => {
     const sql = getDb();
-    await sql`
-      INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
-      VALUES (${clientId}, ${parsed.cloudflare_api_token || null}, ${parsed.cloudflare_zone_id || null})
-      ON CONFLICT (client_id) DO UPDATE SET
-        cloudflare_api_token = EXCLUDED.cloudflare_api_token,
-        cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
-        updated_at = NOW()
-    `;
+    if (newToken === null) {
+      await sql`
+        INSERT INTO site_settings (client_id, cloudflare_zone_id)
+        VALUES (${clientId}, ${parsed.cloudflare_zone_id || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+          updated_at = NOW()
+      `;
+    } else {
+      await sql`
+        INSERT INTO site_settings (client_id, cloudflare_api_token, cloudflare_zone_id)
+        VALUES (${clientId}, ${newToken}, ${parsed.cloudflare_zone_id || null})
+        ON CONFLICT (client_id) DO UPDATE SET
+          cloudflare_api_token = EXCLUDED.cloudflare_api_token,
+          cloudflare_zone_id = EXCLUDED.cloudflare_zone_id,
+          updated_at = NOW()
+      `;
+    }
     await audit(session, "cloudflare.update", "site_settings", clientId, {
-      has_token: Boolean(parsed.cloudflare_api_token),
+      has_token: newToken !== null,
       zone_id: parsed.cloudflare_zone_id || null,
     });
   });

@@ -31,7 +31,10 @@ export function decodeSession(raw: string | undefined | null): OsSession | null 
   const payload = raw.slice(0, dot);
   const sig = raw.slice(dot + 1);
   const expected = sign(payload);
-  if (!crypto.timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expected, "hex"))) return null;
+  const sigBuf = Buffer.from(sig, "hex");
+  const expectedBuf = Buffer.from(expected, "hex");
+  if (sigBuf.length !== expectedBuf.length) return null;
+  if (!crypto.timingSafeEqual(sigBuf, expectedBuf)) return null;
   const [uid, cid, role, email, exp] = payload.split(":");
   const expiresAt = Number(exp);
   if (!uid || !cid || !email || !expiresAt) return null;

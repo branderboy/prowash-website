@@ -13,7 +13,12 @@ export const pageUpdateSchema = z.object({
   title: z.string().min(1).max(200),
   meta_description: z.string().max(320).nullable().optional(),
   meta_keywords: z.string().max(320).nullable().optional(),
-  og_image_url: z.string().url().max(500).nullable().optional().or(z.literal("")),
+  og_image_url: z
+    .string()
+    .max(500)
+    .regex(/^(https?:\/\/.+|\/.+)?$/, "must be an absolute URL or a root-relative path")
+    .nullable()
+    .optional(),
   structured_data: z.string().max(20000).nullable().optional(),
   body_html: z.string().max(500000),
   is_published: z.boolean().optional(),
