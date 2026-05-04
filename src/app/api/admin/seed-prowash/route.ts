@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
       label: "Programs",
       href: "#",
       children: [
-        { label: "Loyalty Rewards", href: "/rewards" },
+        { label: "Loyalty Rewards", href: "/loyalty" },
         { label: "Birthday Club", href: "/birthday-club" },
       ],
     },
@@ -118,9 +118,11 @@ export async function POST(req: NextRequest) {
       { label: "Car Wash", href: "/services/car-wash" },
       { label: "Car Detailing", href: "/services/car-detailing" },
       { label: "Window Tinting", href: "/services/window-tinting" },
+      { label: "Loyalty Rewards", href: "/loyalty" },
     ]},
     { heading: "Company", items: [
       { label: "About Us", href: "/about" },
+      { label: "Contact", href: "/contact" },
       { label: "Book A Car Detailing Appt.", href: "/book" },
       { label: "FAQ", href: "/faq" },
     ]},
@@ -137,7 +139,16 @@ export async function POST(req: NextRequest) {
   `;
 
   // Default site settings (incl. robots.txt)
-  const robots = `User-agent: *\nAllow: /\n\nSitemap: https://${primaryHost}/sitemap.xml\n`;
+  const robots = [
+    "User-agent: *",
+    "Allow: /",
+    "Disallow: /os/",
+    "Disallow: /api/",
+    "Disallow: /site/checkout/",
+    "",
+    `Sitemap: https://${primaryHost}/sitemap.xml`,
+    "",
+  ].join("\n");
   await sql`
     INSERT INTO site_settings (client_id, primary_phone, robots_txt)
     VALUES (${clientId}, '(301) 307-1414', ${robots})
@@ -178,11 +189,25 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Redirects — keep legacy URLs alive after slug renames.
+  const redirects: Array<{ source: string; destination: string }> = [
+    { source: "rewards", destination: "loyalty" },
+    { source: "locations/carrolton", destination: "locations/carrollton" },
+  ];
+  for (const r of redirects) {
+    await sql`
+      INSERT INTO redirects (client_id, source, destination, status_code)
+      VALUES (${clientId}, ${r.source}, ${r.destination}, 301)
+      ON CONFLICT (client_id, source) DO UPDATE SET destination = EXCLUDED.destination, status_code = 301
+    `;
+  }
+
   return NextResponse.json({
     ok: true,
     clientId,
     userId,
     primaryHost,
     pages: { inserted, updated, total: pages.length },
+    redirects: redirects.length,
   });
 }

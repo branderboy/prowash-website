@@ -16,9 +16,11 @@ export function SiteFooter({ menu, primaryPhone }: Props) {
           { label: "Car Wash", href: "/services/car-wash" },
           { label: "Car Detailing", href: "/services/car-detailing" },
           { label: "Window Tinting", href: "/services/window-tinting" },
+          { label: "Loyalty Rewards", href: "/loyalty" },
         ] },
         { heading: "COMPANY", items: [
           { label: "About Us", href: "/about" },
+          { label: "Contact", href: "/contact" },
           { label: "Book A Car Detailing Appt.", href: "/book" },
           { label: "FAQ", href: "/faq" },
         ] },

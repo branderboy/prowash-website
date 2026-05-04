@@ -1,7 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { getOsSession } from "@/lib/os/session";
 import { getDb } from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "Tagglefish OS",
+  robots: { index: false, follow: false },
+};
 
 const NAV = [
   { href: "/os", label: "Dashboard" },

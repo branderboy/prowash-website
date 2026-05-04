@@ -44,14 +44,24 @@ export async function generateMetadata({ params }: { params: Promise<{ path?: st
     defaultOg = rows[0]?.default_og_image_url ?? null;
   }
   const ogImage = page.og_image_url || defaultOg;
+  const canonicalPath = page.slug ? `/${page.slug}` : "/";
   return {
     title: page.title,
     description: page.meta_description ?? undefined,
     keywords: page.meta_keywords ?? undefined,
+    alternates: { canonical: canonicalPath },
     openGraph: {
       title: page.title,
       description: page.meta_description ?? undefined,
+      url: canonicalPath,
       images: ogImage ? [{ url: ogImage }] : undefined,
+      type: "website",
+    },
+    twitter: {
+      card: ogImage ? "summary_large_image" : "summary",
+      title: page.title,
+      description: page.meta_description ?? undefined,
+      images: ogImage ? [ogImage] : undefined,
     },
   };
 }
@@ -69,6 +79,38 @@ async function loadRedirect(path: string[] | undefined): Promise<{ destination: 
   return rows[0] ?? null;
 }
 
+function buildBreadcrumbSchema(slug: string): Record<string, unknown> | null {
+  if (!slug) return null;
+  const parts = slug.split("/").filter(Boolean);
+  if (parts.length === 0) return null;
+  const items = [
+    { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+  ];
+  let acc = "";
+  parts.forEach((part, idx) => {
+    acc += `/${part}`;
+    items.push({
+      "@type": "ListItem",
+      position: idx + 2,
+      name: part
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" "),
+      item: acc,
+    });
+  });
+  return { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items };
+}
+
+function injectImgAttrs(html: string): string {
+  // Add loading="lazy" decoding="async" to <img> tags that don't already
+  // declare a loading strategy. Helps LCP/CLS without touching seed content.
+  return html.replace(/<img\b([^>]*)>/g, (match, attrs) => {
+    if (/\bloading\s*=/.test(attrs)) return match;
+    return `<img loading="lazy" decoding="async"${attrs}>`;
+  });
+}
+
 export default async function SitePage({ params }: { params: Promise<{ path?: string[] }> }) {
   const { path } = await params;
   const page = await loadPage(path);
@@ -77,6 +119,8 @@ export default async function SitePage({ params }: { params: Promise<{ path?: st
     if (r) redirect(`/${r.destination}`);
     notFound();
   }
+  const breadcrumb = buildBreadcrumbSchema(page.slug);
+  const body = injectImgAttrs(page.body_html);
   return (
     <>
       {page.structured_data ? (
@@ -85,7 +129,13 @@ export default async function SitePage({ params }: { params: Promise<{ path?: st
           dangerouslySetInnerHTML={{ __html: JSON.stringify(page.structured_data) }}
         />
       ) : null}
-      <div dangerouslySetInnerHTML={{ __html: page.body_html }} />
+      {breadcrumb ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        />
+      ) : null}
+      <div dangerouslySetInnerHTML={{ __html: body }} />
     </>
   );
 }
