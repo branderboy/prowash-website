@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { PageBehaviors } from "@/components/site/page-behaviors";
 import { resolveTenantClientId } from "@/lib/site/resolve-client";
 import { loadSiteChrome } from "@/lib/site/load";
 
@@ -21,6 +22,11 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <>
       {/* Per-tenant CSS lives at /css/styles.css from the legacy theme */}
       <link rel="stylesheet" href="/css/styles.css" />
+      {/* Reveal animations rely on JS to add .active. If JS is disabled, show
+          the content immediately. */}
+      <noscript>
+        <style>{`.reveal{opacity:1!important;transform:none!important;}`}</style>
+      </noscript>
       {settings.favicon_url ? <link rel="icon" href={settings.favicon_url} /> : null}
       {settings.google_verification ? (
         <meta name="google-site-verification" content={settings.google_verification} />
@@ -61,6 +67,10 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <SiteHeader menu={headerMenu} primaryPhone={settings.primary_phone} />
       <main>{children}</main>
       <SiteFooter menu={footerMenu} primaryPhone={settings.primary_phone} />
+      <PageBehaviors />
+      {/* Acuity scheduling embed used on /book. Loading globally is cheap and
+          guarantees the script tag executes (it can't from dangerouslySetInnerHTML). */}
+      <Script src="https://embed.acuityscheduling.com/js/embed.js" strategy="lazyOnload" />
     </>
   );
 }

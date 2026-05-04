@@ -89,6 +89,7 @@ export function SiteHeader({ menu, primaryPhone }: Props) {
                 <a href="/locations" className="nav-item">Locations</a>
                 <a href="/shop" className="nav-item">Shop</a>
                 <a href="/faq" className="nav-item">FAQ</a>
+                <a href="/contact" className="nav-item">Contact</a>
                 <a href="/book" className="btn btn-red">Book Now</a>
               </>
             )}

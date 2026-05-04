@@ -28,9 +28,10 @@ export async function GET(req: NextRequest) {
   const host = h.get("host");
   const origin = `${proto}://${host}`;
 
-  const [pages, posts, settings] = await Promise.all([
+  const [pages, posts, products, settings] = await Promise.all([
     sql`SELECT slug, updated_at FROM site_pages WHERE client_id = ${clientId} AND is_published = TRUE ORDER BY slug` as unknown as Promise<Array<{ slug: string; updated_at: string }>>,
     sql`SELECT slug, COALESCE(published_at, updated_at) AS updated_at FROM posts WHERE client_id = ${clientId} AND status = 'published' ORDER BY slug` as unknown as Promise<Array<{ slug: string; updated_at: string }>>,
+    sql`SELECT id, updated_at FROM products WHERE client_id = ${clientId} AND active = TRUE ORDER BY id` as unknown as Promise<Array<{ id: number; updated_at: string }>>,
     sql`SELECT sitemap_extra_urls FROM site_settings WHERE client_id = ${clientId} LIMIT 1` as unknown as Promise<Array<{ sitemap_extra_urls: string | null }>>,
   ]);
 
@@ -41,6 +42,12 @@ export async function GET(req: NextRequest) {
   for (const p of posts) {
     urls.push({ loc: `${origin}/blog/${p.slug}`, lastmod: new Date(p.updated_at).toISOString() });
   }
+  for (const pr of products) {
+    urls.push({ loc: `${origin}/shop/${pr.id}`, lastmod: new Date(pr.updated_at).toISOString() });
+  }
+  // Shop and blog index pages
+  urls.push({ loc: `${origin}/shop` });
+  urls.push({ loc: `${origin}/blog` });
   const extra = settings[0]?.sitemap_extra_urls;
   if (extra) {
     for (const line of extra.split("\n").map((l) => l.trim()).filter(Boolean)) {
