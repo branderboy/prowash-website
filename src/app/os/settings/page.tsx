@@ -243,7 +243,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
                 id="pickup_label"
                 name="pickup_label"
                 defaultValue={data.settings.pickup_label ?? ""}
-                placeholder="In-store pickup at Carrolton"
+                placeholder="In-store pickup at Carrollton"
                 className="mt-1"
               />
             </div>
@@ -253,7 +253,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
                 id="pickup_address"
                 name="pickup_address"
                 defaultValue={data.settings.pickup_address ?? ""}
-                placeholder="123 Main St, Carrolton, MD 20784"
+                placeholder="123 Main St, New Carrollton, MD 20784"
                 className="mt-1"
               />
             </div>

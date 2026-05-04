@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
       shipping_rate_data: {
         type: "fixed_amount",
         fixed_amount: { amount: 0, currency: "usd" },
-        display_name: settings.pickup_label || "In-store pickup at Carrolton",
+        display_name: settings.pickup_label || "In-store pickup at Carrollton",
       },
     });
   }
