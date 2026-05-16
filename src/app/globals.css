@@ -12,7 +12,12 @@ html, body {
   height: 100%;
 }
 
+html {
+  font-size: 17px;
+}
+
 body {
   background: #f6f7fb;
   color: var(--navy);
+  font-weight: 600;
 }
