@@ -1178,7 +1178,7 @@ header {
     line-height: 1;
     flex-shrink: 0;
 }
-.mobile-row-info { width: 400px; flex-shrink: 0; }
+.mobile-row-info { width: 400px; flex-shrink: 0; text-align: center; }
 .mobile-row-info h3 {
     color: var(--dark-blue);
     font-size: 1.4rem;
